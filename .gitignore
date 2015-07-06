@@ -1,0 +1,6 @@
+*.egg
+*.so
+*.pyc
+*.tar.gz
+build/
+joshua/joshua.egg-info/
