@@ -242,8 +242,8 @@ class __Pyx_FakeReference {
 #define _USE_MATH_DEFINES
 #endif
 #include <math.h>
-#define __PYX_HAVE__intervaltree
-#define __PYX_HAVE_API__intervaltree
+#define __PYX_HAVE__joshua__intervaltree
+#define __PYX_HAVE_API__joshua__intervaltree
 #include "stdlib.h"
 #ifdef _OPENMP
 #include <omp.h>
@@ -427,52 +427,52 @@ static const char *__pyx_filename;
 
 
 static const char *__pyx_f[] = {
-  "intervaltree.pyx",
+  "joshua/intervaltree.pyx",
 };
 
 /*--- Type declarations ---*/
-struct __pyx_obj_12intervaltree_IntervalNode;
-struct __pyx_obj_12intervaltree_Interval;
-struct __pyx_obj_12intervaltree_IntervalTree;
-struct __pyx_opt_args_12intervaltree_12IntervalNode_left;
-struct __pyx_opt_args_12intervaltree_12IntervalNode_right;
+struct __pyx_obj_6joshua_12intervaltree_IntervalNode;
+struct __pyx_obj_6joshua_12intervaltree_Interval;
+struct __pyx_obj_6joshua_12intervaltree_IntervalTree;
+struct __pyx_opt_args_6joshua_12intervaltree_12IntervalNode_left;
+struct __pyx_opt_args_6joshua_12intervaltree_12IntervalNode_right;
 
-/* "intervaltree.pyx":232
+/* "joshua/intervaltree.pyx":232
  * 
  * 
  *     cpdef left(self, position, int n=1, int max_dist=2500):             # <<<<<<<<<<<<<<
  *         """
  *         find n features with a start > than `position`
  */
-struct __pyx_opt_args_12intervaltree_12IntervalNode_left {
+struct __pyx_opt_args_6joshua_12intervaltree_12IntervalNode_left {
   int __pyx_n;
   int n;
   int max_dist;
 };
 
-/* "intervaltree.pyx":247
+/* "joshua/intervaltree.pyx":247
  *         return r[:n]
  * 
  *     cpdef right(self, position, int n=1, int max_dist=2500):             # <<<<<<<<<<<<<<
  *         """
  *         find n features with a end < than position
  */
-struct __pyx_opt_args_12intervaltree_12IntervalNode_right {
+struct __pyx_opt_args_6joshua_12intervaltree_12IntervalNode_right {
   int __pyx_n;
   int n;
   int max_dist;
 };
 
-/* "intervaltree.pyx":61
+/* "joshua/intervaltree.pyx":61
  * cdef float nlog = -1.0 / log(0.5)
  * 
  * cdef class IntervalNode:             # <<<<<<<<<<<<<<
  *     """
  *     A single node of an `IntervalTree`.
  */
-struct __pyx_obj_12intervaltree_IntervalNode {
+struct __pyx_obj_6joshua_12intervaltree_IntervalNode {
   PyObject_HEAD
-  struct __pyx_vtabstruct_12intervaltree_IntervalNode *__pyx_vtab;
+  struct __pyx_vtabstruct_6joshua_12intervaltree_IntervalNode *__pyx_vtab;
   float priority;
   PyObject *interval;
   int start;
@@ -481,20 +481,20 @@ struct __pyx_obj_12intervaltree_IntervalNode {
   int minend;
   int maxend;
   int minstart;
-  struct __pyx_obj_12intervaltree_IntervalNode *cleft;
-  struct __pyx_obj_12intervaltree_IntervalNode *cright;
-  struct __pyx_obj_12intervaltree_IntervalNode *croot;
+  struct __pyx_obj_6joshua_12intervaltree_IntervalNode *cleft;
+  struct __pyx_obj_6joshua_12intervaltree_IntervalNode *cright;
+  struct __pyx_obj_6joshua_12intervaltree_IntervalNode *croot;
 };
 
 
-/* "intervaltree.pyx":276
+/* "joshua/intervaltree.pyx":276
  * ## ---- Wrappers that retain the old interface -------------------------------
  * 
  * cdef class Interval:             # <<<<<<<<<<<<<<
  *     """
  *     Basic feature, with required integer start and end properties.
  */
-struct __pyx_obj_12intervaltree_Interval {
+struct __pyx_obj_6joshua_12intervaltree_Interval {
   PyObject_HEAD
   int start;
   int end;
@@ -505,22 +505,22 @@ struct __pyx_obj_12intervaltree_Interval {
 };
 
 
-/* "intervaltree.pyx":332
+/* "joshua/intervaltree.pyx":332
  *         return self.length
  * 
  * cdef class IntervalTree:             # <<<<<<<<<<<<<<
  *     """
  *     Data structure for performing window intersect queries on a set of
  */
-struct __pyx_obj_12intervaltree_IntervalTree {
+struct __pyx_obj_6joshua_12intervaltree_IntervalTree {
   PyObject_HEAD
-  struct __pyx_obj_12intervaltree_IntervalNode *root;
+  struct __pyx_obj_6joshua_12intervaltree_IntervalNode *root;
   int size;
 };
 
 
 
-/* "intervaltree.pyx":61
+/* "joshua/intervaltree.pyx":61
  * cdef float nlog = -1.0 / log(0.5)
  * 
  * cdef class IntervalNode:             # <<<<<<<<<<<<<<
@@ -528,20 +528,20 @@ struct __pyx_obj_12intervaltree_IntervalTree {
  *     A single node of an `IntervalTree`.
  */
 
-struct __pyx_vtabstruct_12intervaltree_IntervalNode {
-  struct __pyx_obj_12intervaltree_IntervalNode *(*insert)(struct __pyx_obj_12intervaltree_IntervalNode *, int, int, PyObject *, int __pyx_skip_dispatch);
-  struct __pyx_obj_12intervaltree_IntervalNode *(*rotate_right)(struct __pyx_obj_12intervaltree_IntervalNode *);
-  struct __pyx_obj_12intervaltree_IntervalNode *(*rotate_left)(struct __pyx_obj_12intervaltree_IntervalNode *);
-  void (*set_ends)(struct __pyx_obj_12intervaltree_IntervalNode *);
-  void (*_intersect)(struct __pyx_obj_12intervaltree_IntervalNode *, int, int, PyObject *);
-  void (*_seek_left)(struct __pyx_obj_12intervaltree_IntervalNode *, int, PyObject *, int, int);
-  void (*_seek_right)(struct __pyx_obj_12intervaltree_IntervalNode *, int, PyObject *, int, int);
-  PyObject *(*left)(struct __pyx_obj_12intervaltree_IntervalNode *, PyObject *, int __pyx_skip_dispatch, struct __pyx_opt_args_12intervaltree_12IntervalNode_left *__pyx_optional_args);
-  PyObject *(*right)(struct __pyx_obj_12intervaltree_IntervalNode *, PyObject *, int __pyx_skip_dispatch, struct __pyx_opt_args_12intervaltree_12IntervalNode_right *__pyx_optional_args);
-  void (*_traverse)(struct __pyx_obj_12intervaltree_IntervalNode *, PyObject *, PyObject *);
+struct __pyx_vtabstruct_6joshua_12intervaltree_IntervalNode {
+  struct __pyx_obj_6joshua_12intervaltree_IntervalNode *(*insert)(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *, int, int, PyObject *, int __pyx_skip_dispatch);
+  struct __pyx_obj_6joshua_12intervaltree_IntervalNode *(*rotate_right)(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *);
+  struct __pyx_obj_6joshua_12intervaltree_IntervalNode *(*rotate_left)(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *);
+  void (*set_ends)(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *);
+  void (*_intersect)(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *, int, int, PyObject *);
+  void (*_seek_left)(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *, int, PyObject *, int, int);
+  void (*_seek_right)(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *, int, PyObject *, int, int);
+  PyObject *(*left)(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *, PyObject *, int __pyx_skip_dispatch, struct __pyx_opt_args_6joshua_12intervaltree_12IntervalNode_left *__pyx_optional_args);
+  PyObject *(*right)(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *, PyObject *, int __pyx_skip_dispatch, struct __pyx_opt_args_6joshua_12intervaltree_12IntervalNode_right *__pyx_optional_args);
+  void (*_traverse)(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *, PyObject *, PyObject *);
 };
-static struct __pyx_vtabstruct_12intervaltree_IntervalNode *__pyx_vtabptr_12intervaltree_IntervalNode;
-static CYTHON_INLINE void __pyx_f_12intervaltree_12IntervalNode_set_ends(struct __pyx_obj_12intervaltree_IntervalNode *);
+static struct __pyx_vtabstruct_6joshua_12intervaltree_IntervalNode *__pyx_vtabptr_6joshua_12intervaltree_IntervalNode;
+static CYTHON_INLINE void __pyx_f_6joshua_12intervaltree_12IntervalNode_set_ends(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *);
 
 /* --- Runtime support code (head) --- */
 #ifndef CYTHON_REFNANNY
@@ -732,86 +732,86 @@ static int __Pyx_check_binary_version(void);
 
 static int __Pyx_InitStrings(__Pyx_StringTabEntry *t);
 
-static struct __pyx_obj_12intervaltree_IntervalNode *__pyx_f_12intervaltree_12IntervalNode_insert(struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_self, int __pyx_v_start, int __pyx_v_end, PyObject *__pyx_v_interval, int __pyx_skip_dispatch); /* proto*/
-static struct __pyx_obj_12intervaltree_IntervalNode *__pyx_f_12intervaltree_12IntervalNode_rotate_right(struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_self); /* proto*/
-static struct __pyx_obj_12intervaltree_IntervalNode *__pyx_f_12intervaltree_12IntervalNode_rotate_left(struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_self); /* proto*/
-static CYTHON_INLINE void __pyx_f_12intervaltree_12IntervalNode_set_ends(struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_self); /* proto*/
-static void __pyx_f_12intervaltree_12IntervalNode__intersect(struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_self, int __pyx_v_start, int __pyx_v_end, PyObject *__pyx_v_results); /* proto*/
-static void __pyx_f_12intervaltree_12IntervalNode__seek_left(struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_self, int __pyx_v_position, PyObject *__pyx_v_results, int __pyx_v_n, int __pyx_v_max_dist); /* proto*/
-static void __pyx_f_12intervaltree_12IntervalNode__seek_right(struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_self, int __pyx_v_position, PyObject *__pyx_v_results, int __pyx_v_n, int __pyx_v_max_dist); /* proto*/
-static PyObject *__pyx_f_12intervaltree_12IntervalNode_left(struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_self, PyObject *__pyx_v_position, int __pyx_skip_dispatch, struct __pyx_opt_args_12intervaltree_12IntervalNode_left *__pyx_optional_args); /* proto*/
-static PyObject *__pyx_f_12intervaltree_12IntervalNode_right(struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_self, PyObject *__pyx_v_position, int __pyx_skip_dispatch, struct __pyx_opt_args_12intervaltree_12IntervalNode_right *__pyx_optional_args); /* proto*/
-static void __pyx_f_12intervaltree_12IntervalNode__traverse(struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_self, PyObject *__pyx_v_func, PyObject *__pyx_v_results); /* proto*/
+static struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_f_6joshua_12intervaltree_12IntervalNode_insert(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self, int __pyx_v_start, int __pyx_v_end, PyObject *__pyx_v_interval, int __pyx_skip_dispatch); /* proto*/
+static struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_f_6joshua_12intervaltree_12IntervalNode_rotate_right(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self); /* proto*/
+static struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_f_6joshua_12intervaltree_12IntervalNode_rotate_left(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self); /* proto*/
+static CYTHON_INLINE void __pyx_f_6joshua_12intervaltree_12IntervalNode_set_ends(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self); /* proto*/
+static void __pyx_f_6joshua_12intervaltree_12IntervalNode__intersect(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self, int __pyx_v_start, int __pyx_v_end, PyObject *__pyx_v_results); /* proto*/
+static void __pyx_f_6joshua_12intervaltree_12IntervalNode__seek_left(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self, int __pyx_v_position, PyObject *__pyx_v_results, int __pyx_v_n, int __pyx_v_max_dist); /* proto*/
+static void __pyx_f_6joshua_12intervaltree_12IntervalNode__seek_right(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self, int __pyx_v_position, PyObject *__pyx_v_results, int __pyx_v_n, int __pyx_v_max_dist); /* proto*/
+static PyObject *__pyx_f_6joshua_12intervaltree_12IntervalNode_left(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self, PyObject *__pyx_v_position, int __pyx_skip_dispatch, struct __pyx_opt_args_6joshua_12intervaltree_12IntervalNode_left *__pyx_optional_args); /* proto*/
+static PyObject *__pyx_f_6joshua_12intervaltree_12IntervalNode_right(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self, PyObject *__pyx_v_position, int __pyx_skip_dispatch, struct __pyx_opt_args_6joshua_12intervaltree_12IntervalNode_right *__pyx_optional_args); /* proto*/
+static void __pyx_f_6joshua_12intervaltree_12IntervalNode__traverse(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self, PyObject *__pyx_v_func, PyObject *__pyx_v_results); /* proto*/
 
-/* Module declarations from 'intervaltree' */
-static PyTypeObject *__pyx_ptype_12intervaltree_IntervalNode = 0;
-static PyTypeObject *__pyx_ptype_12intervaltree_Interval = 0;
-static PyTypeObject *__pyx_ptype_12intervaltree_IntervalTree = 0;
-static float __pyx_v_12intervaltree_nlog;
-static struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_12intervaltree_EmptyNode = 0;
-static CYTHON_INLINE int __pyx_f_12intervaltree_imax2(int, int); /*proto*/
-static CYTHON_INLINE int __pyx_f_12intervaltree_imax3(int, int, int); /*proto*/
-static CYTHON_INLINE int __pyx_f_12intervaltree_imin3(int, int, int); /*proto*/
-static CYTHON_INLINE int __pyx_f_12intervaltree_imin2(int, int); /*proto*/
-#define __Pyx_MODULE_NAME "intervaltree"
-int __pyx_module_is_main_intervaltree = 0;
+/* Module declarations from 'joshua.intervaltree' */
+static PyTypeObject *__pyx_ptype_6joshua_12intervaltree_IntervalNode = 0;
+static PyTypeObject *__pyx_ptype_6joshua_12intervaltree_Interval = 0;
+static PyTypeObject *__pyx_ptype_6joshua_12intervaltree_IntervalTree = 0;
+static float __pyx_v_6joshua_12intervaltree_nlog;
+static struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_6joshua_12intervaltree_EmptyNode = 0;
+static CYTHON_INLINE int __pyx_f_6joshua_12intervaltree_imax2(int, int); /*proto*/
+static CYTHON_INLINE int __pyx_f_6joshua_12intervaltree_imax3(int, int, int); /*proto*/
+static CYTHON_INLINE int __pyx_f_6joshua_12intervaltree_imin3(int, int, int); /*proto*/
+static CYTHON_INLINE int __pyx_f_6joshua_12intervaltree_imin2(int, int); /*proto*/
+#define __Pyx_MODULE_NAME "joshua.intervaltree"
+int __pyx_module_is_main_joshua__intervaltree = 0;
 
-/* Implementation of 'intervaltree' */
-static PyObject *__pyx_pf_12intervaltree_12IntervalNode_9left_node___get__(struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_12intervaltree_12IntervalNode_10right_node___get__(struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_12intervaltree_12IntervalNode_9root_node___get__(struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_12intervaltree_12IntervalNode___repr__(struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_self); /* proto */
-static int __pyx_pf_12intervaltree_12IntervalNode_2__cinit__(struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_self, int __pyx_v_start, int __pyx_v_end, PyObject *__pyx_v_interval); /* proto */
-static PyObject *__pyx_pf_12intervaltree_12IntervalNode_4insert(struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_self, int __pyx_v_start, int __pyx_v_end, PyObject *__pyx_v_interval); /* proto */
-static PyObject *__pyx_pf_12intervaltree_12IntervalNode_6intersect(struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_self, int __pyx_v_start, int __pyx_v_end, CYTHON_UNUSED PyObject *__pyx_v_sort); /* proto */
-static PyObject *__pyx_pf_12intervaltree_12IntervalNode_8left(struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_self, PyObject *__pyx_v_position, int __pyx_v_n, int __pyx_v_max_dist); /* proto */
-static PyObject *__pyx_pf_12intervaltree_12IntervalNode_10right(struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_self, PyObject *__pyx_v_position, int __pyx_v_n, int __pyx_v_max_dist); /* proto */
-static PyObject *__pyx_pf_12intervaltree_12IntervalNode_12traverse(struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_self, PyObject *__pyx_v_func); /* proto */
-static PyObject *__pyx_pf_12intervaltree_12IntervalNode_8interval___get__(struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_self); /* proto */
-static int __pyx_pf_12intervaltree_12IntervalNode_8interval_2__set__(struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
-static int __pyx_pf_12intervaltree_12IntervalNode_8interval_4__del__(struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_12intervaltree_12IntervalNode_5start___get__(struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_self); /* proto */
-static int __pyx_pf_12intervaltree_12IntervalNode_5start_2__set__(struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
-static PyObject *__pyx_pf_12intervaltree_12IntervalNode_3end___get__(struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_self); /* proto */
-static int __pyx_pf_12intervaltree_12IntervalNode_3end_2__set__(struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
-static PyObject *__pyx_pf_12intervaltree_12IntervalNode_6length___get__(struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_self); /* proto */
-static int __pyx_pf_12intervaltree_12IntervalNode_6length_2__set__(struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
-static int __pyx_pf_12intervaltree_8Interval___init__(struct __pyx_obj_12intervaltree_Interval *__pyx_v_self, int __pyx_v_start, int __pyx_v_end, PyObject *__pyx_v_value, PyObject *__pyx_v_chrom, PyObject *__pyx_v_strand); /* proto */
-static PyObject *__pyx_pf_12intervaltree_8Interval_2__repr__(struct __pyx_obj_12intervaltree_Interval *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_12intervaltree_8Interval_4__richcmp__(PyObject *__pyx_v_self, PyObject *__pyx_v_other, PyObject *__pyx_v_op); /* proto */
-static Py_ssize_t __pyx_pf_12intervaltree_8Interval_6__len__(struct __pyx_obj_12intervaltree_Interval *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_12intervaltree_8Interval_5start___get__(struct __pyx_obj_12intervaltree_Interval *__pyx_v_self); /* proto */
-static int __pyx_pf_12intervaltree_8Interval_5start_2__set__(struct __pyx_obj_12intervaltree_Interval *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
-static PyObject *__pyx_pf_12intervaltree_8Interval_3end___get__(struct __pyx_obj_12intervaltree_Interval *__pyx_v_self); /* proto */
-static int __pyx_pf_12intervaltree_8Interval_3end_2__set__(struct __pyx_obj_12intervaltree_Interval *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
-static PyObject *__pyx_pf_12intervaltree_8Interval_6length___get__(struct __pyx_obj_12intervaltree_Interval *__pyx_v_self); /* proto */
-static int __pyx_pf_12intervaltree_8Interval_6length_2__set__(struct __pyx_obj_12intervaltree_Interval *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
-static PyObject *__pyx_pf_12intervaltree_8Interval_5value___get__(struct __pyx_obj_12intervaltree_Interval *__pyx_v_self); /* proto */
-static int __pyx_pf_12intervaltree_8Interval_5value_2__set__(struct __pyx_obj_12intervaltree_Interval *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
-static int __pyx_pf_12intervaltree_8Interval_5value_4__del__(struct __pyx_obj_12intervaltree_Interval *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_12intervaltree_8Interval_5chrom___get__(struct __pyx_obj_12intervaltree_Interval *__pyx_v_self); /* proto */
-static int __pyx_pf_12intervaltree_8Interval_5chrom_2__set__(struct __pyx_obj_12intervaltree_Interval *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
-static int __pyx_pf_12intervaltree_8Interval_5chrom_4__del__(struct __pyx_obj_12intervaltree_Interval *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_12intervaltree_8Interval_6strand___get__(struct __pyx_obj_12intervaltree_Interval *__pyx_v_self); /* proto */
-static int __pyx_pf_12intervaltree_8Interval_6strand_2__set__(struct __pyx_obj_12intervaltree_Interval *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
-static int __pyx_pf_12intervaltree_8Interval_6strand_4__del__(struct __pyx_obj_12intervaltree_Interval *__pyx_v_self); /* proto */
-static int __pyx_pf_12intervaltree_12IntervalTree___cinit__(struct __pyx_obj_12intervaltree_IntervalTree *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_12intervaltree_12IntervalTree_2insert(struct __pyx_obj_12intervaltree_IntervalTree *__pyx_v_self, int __pyx_v_start, int __pyx_v_end, PyObject *__pyx_v_value); /* proto */
-static PyObject *__pyx_pf_12intervaltree_12IntervalTree_4find(struct __pyx_obj_12intervaltree_IntervalTree *__pyx_v_self, PyObject *__pyx_v_start, PyObject *__pyx_v_end); /* proto */
-static PyObject *__pyx_pf_12intervaltree_12IntervalTree_6before(struct __pyx_obj_12intervaltree_IntervalTree *__pyx_v_self, PyObject *__pyx_v_position, PyObject *__pyx_v_num_intervals, PyObject *__pyx_v_max_dist); /* proto */
-static PyObject *__pyx_pf_12intervaltree_12IntervalTree_8after(struct __pyx_obj_12intervaltree_IntervalTree *__pyx_v_self, PyObject *__pyx_v_position, PyObject *__pyx_v_num_intervals, PyObject *__pyx_v_max_dist); /* proto */
-static PyObject *__pyx_pf_12intervaltree_12IntervalTree_10insert_interval(struct __pyx_obj_12intervaltree_IntervalTree *__pyx_v_self, PyObject *__pyx_v_interval); /* proto */
-static PyObject *__pyx_pf_12intervaltree_12IntervalTree_12before_interval(struct __pyx_obj_12intervaltree_IntervalTree *__pyx_v_self, PyObject *__pyx_v_interval, PyObject *__pyx_v_num_intervals, PyObject *__pyx_v_max_dist); /* proto */
-static PyObject *__pyx_pf_12intervaltree_12IntervalTree_14after_interval(struct __pyx_obj_12intervaltree_IntervalTree *__pyx_v_self, PyObject *__pyx_v_interval, PyObject *__pyx_v_num_intervals, PyObject *__pyx_v_max_dist); /* proto */
-static PyObject *__pyx_pf_12intervaltree_12IntervalTree_16upstream_of_interval(struct __pyx_obj_12intervaltree_IntervalTree *__pyx_v_self, PyObject *__pyx_v_interval, PyObject *__pyx_v_num_intervals, PyObject *__pyx_v_max_dist); /* proto */
-static PyObject *__pyx_pf_12intervaltree_12IntervalTree_18downstream_of_interval(struct __pyx_obj_12intervaltree_IntervalTree *__pyx_v_self, PyObject *__pyx_v_interval, PyObject *__pyx_v_num_intervals, PyObject *__pyx_v_max_dist); /* proto */
-static PyObject *__pyx_pf_12intervaltree_12IntervalTree_20traverse(struct __pyx_obj_12intervaltree_IntervalTree *__pyx_v_self, PyObject *__pyx_v_fn); /* proto */
-static Py_ssize_t __pyx_pf_12intervaltree_12IntervalTree_22__len__(struct __pyx_obj_12intervaltree_IntervalTree *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_12intervaltree_12IntervalTree_4size___get__(struct __pyx_obj_12intervaltree_IntervalTree *__pyx_v_self); /* proto */
-static int __pyx_pf_12intervaltree_12IntervalTree_4size_2__set__(struct __pyx_obj_12intervaltree_IntervalTree *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
-static PyObject *__pyx_tp_new_12intervaltree_IntervalNode(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
-static PyObject *__pyx_tp_new_12intervaltree_Interval(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
-static PyObject *__pyx_tp_new_12intervaltree_IntervalTree(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+/* Implementation of 'joshua.intervaltree' */
+static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalNode_9left_node___get__(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalNode_10right_node___get__(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalNode_9root_node___get__(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalNode___repr__(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self); /* proto */
+static int __pyx_pf_6joshua_12intervaltree_12IntervalNode_2__cinit__(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self, int __pyx_v_start, int __pyx_v_end, PyObject *__pyx_v_interval); /* proto */
+static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalNode_4insert(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self, int __pyx_v_start, int __pyx_v_end, PyObject *__pyx_v_interval); /* proto */
+static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalNode_6intersect(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self, int __pyx_v_start, int __pyx_v_end, CYTHON_UNUSED PyObject *__pyx_v_sort); /* proto */
+static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalNode_8left(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self, PyObject *__pyx_v_position, int __pyx_v_n, int __pyx_v_max_dist); /* proto */
+static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalNode_10right(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self, PyObject *__pyx_v_position, int __pyx_v_n, int __pyx_v_max_dist); /* proto */
+static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalNode_12traverse(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self, PyObject *__pyx_v_func); /* proto */
+static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalNode_8interval___get__(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self); /* proto */
+static int __pyx_pf_6joshua_12intervaltree_12IntervalNode_8interval_2__set__(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
+static int __pyx_pf_6joshua_12intervaltree_12IntervalNode_8interval_4__del__(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalNode_5start___get__(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self); /* proto */
+static int __pyx_pf_6joshua_12intervaltree_12IntervalNode_5start_2__set__(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
+static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalNode_3end___get__(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self); /* proto */
+static int __pyx_pf_6joshua_12intervaltree_12IntervalNode_3end_2__set__(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
+static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalNode_6length___get__(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self); /* proto */
+static int __pyx_pf_6joshua_12intervaltree_12IntervalNode_6length_2__set__(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
+static int __pyx_pf_6joshua_12intervaltree_8Interval___init__(struct __pyx_obj_6joshua_12intervaltree_Interval *__pyx_v_self, int __pyx_v_start, int __pyx_v_end, PyObject *__pyx_v_value, PyObject *__pyx_v_chrom, PyObject *__pyx_v_strand); /* proto */
+static PyObject *__pyx_pf_6joshua_12intervaltree_8Interval_2__repr__(struct __pyx_obj_6joshua_12intervaltree_Interval *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6joshua_12intervaltree_8Interval_4__richcmp__(PyObject *__pyx_v_self, PyObject *__pyx_v_other, PyObject *__pyx_v_op); /* proto */
+static Py_ssize_t __pyx_pf_6joshua_12intervaltree_8Interval_6__len__(struct __pyx_obj_6joshua_12intervaltree_Interval *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6joshua_12intervaltree_8Interval_5start___get__(struct __pyx_obj_6joshua_12intervaltree_Interval *__pyx_v_self); /* proto */
+static int __pyx_pf_6joshua_12intervaltree_8Interval_5start_2__set__(struct __pyx_obj_6joshua_12intervaltree_Interval *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
+static PyObject *__pyx_pf_6joshua_12intervaltree_8Interval_3end___get__(struct __pyx_obj_6joshua_12intervaltree_Interval *__pyx_v_self); /* proto */
+static int __pyx_pf_6joshua_12intervaltree_8Interval_3end_2__set__(struct __pyx_obj_6joshua_12intervaltree_Interval *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
+static PyObject *__pyx_pf_6joshua_12intervaltree_8Interval_6length___get__(struct __pyx_obj_6joshua_12intervaltree_Interval *__pyx_v_self); /* proto */
+static int __pyx_pf_6joshua_12intervaltree_8Interval_6length_2__set__(struct __pyx_obj_6joshua_12intervaltree_Interval *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
+static PyObject *__pyx_pf_6joshua_12intervaltree_8Interval_5value___get__(struct __pyx_obj_6joshua_12intervaltree_Interval *__pyx_v_self); /* proto */
+static int __pyx_pf_6joshua_12intervaltree_8Interval_5value_2__set__(struct __pyx_obj_6joshua_12intervaltree_Interval *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
+static int __pyx_pf_6joshua_12intervaltree_8Interval_5value_4__del__(struct __pyx_obj_6joshua_12intervaltree_Interval *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6joshua_12intervaltree_8Interval_5chrom___get__(struct __pyx_obj_6joshua_12intervaltree_Interval *__pyx_v_self); /* proto */
+static int __pyx_pf_6joshua_12intervaltree_8Interval_5chrom_2__set__(struct __pyx_obj_6joshua_12intervaltree_Interval *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
+static int __pyx_pf_6joshua_12intervaltree_8Interval_5chrom_4__del__(struct __pyx_obj_6joshua_12intervaltree_Interval *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6joshua_12intervaltree_8Interval_6strand___get__(struct __pyx_obj_6joshua_12intervaltree_Interval *__pyx_v_self); /* proto */
+static int __pyx_pf_6joshua_12intervaltree_8Interval_6strand_2__set__(struct __pyx_obj_6joshua_12intervaltree_Interval *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
+static int __pyx_pf_6joshua_12intervaltree_8Interval_6strand_4__del__(struct __pyx_obj_6joshua_12intervaltree_Interval *__pyx_v_self); /* proto */
+static int __pyx_pf_6joshua_12intervaltree_12IntervalTree___cinit__(struct __pyx_obj_6joshua_12intervaltree_IntervalTree *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_2insert(struct __pyx_obj_6joshua_12intervaltree_IntervalTree *__pyx_v_self, int __pyx_v_start, int __pyx_v_end, PyObject *__pyx_v_value); /* proto */
+static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_4find(struct __pyx_obj_6joshua_12intervaltree_IntervalTree *__pyx_v_self, PyObject *__pyx_v_start, PyObject *__pyx_v_end); /* proto */
+static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_6before(struct __pyx_obj_6joshua_12intervaltree_IntervalTree *__pyx_v_self, PyObject *__pyx_v_position, PyObject *__pyx_v_num_intervals, PyObject *__pyx_v_max_dist); /* proto */
+static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_8after(struct __pyx_obj_6joshua_12intervaltree_IntervalTree *__pyx_v_self, PyObject *__pyx_v_position, PyObject *__pyx_v_num_intervals, PyObject *__pyx_v_max_dist); /* proto */
+static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_10insert_interval(struct __pyx_obj_6joshua_12intervaltree_IntervalTree *__pyx_v_self, PyObject *__pyx_v_interval); /* proto */
+static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_12before_interval(struct __pyx_obj_6joshua_12intervaltree_IntervalTree *__pyx_v_self, PyObject *__pyx_v_interval, PyObject *__pyx_v_num_intervals, PyObject *__pyx_v_max_dist); /* proto */
+static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_14after_interval(struct __pyx_obj_6joshua_12intervaltree_IntervalTree *__pyx_v_self, PyObject *__pyx_v_interval, PyObject *__pyx_v_num_intervals, PyObject *__pyx_v_max_dist); /* proto */
+static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_16upstream_of_interval(struct __pyx_obj_6joshua_12intervaltree_IntervalTree *__pyx_v_self, PyObject *__pyx_v_interval, PyObject *__pyx_v_num_intervals, PyObject *__pyx_v_max_dist); /* proto */
+static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_18downstream_of_interval(struct __pyx_obj_6joshua_12intervaltree_IntervalTree *__pyx_v_self, PyObject *__pyx_v_interval, PyObject *__pyx_v_num_intervals, PyObject *__pyx_v_max_dist); /* proto */
+static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_20traverse(struct __pyx_obj_6joshua_12intervaltree_IntervalTree *__pyx_v_self, PyObject *__pyx_v_fn); /* proto */
+static Py_ssize_t __pyx_pf_6joshua_12intervaltree_12IntervalTree_22__len__(struct __pyx_obj_6joshua_12intervaltree_IntervalTree *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_4size___get__(struct __pyx_obj_6joshua_12intervaltree_IntervalTree *__pyx_v_self); /* proto */
+static int __pyx_pf_6joshua_12intervaltree_12IntervalTree_4size_2__set__(struct __pyx_obj_6joshua_12intervaltree_IntervalTree *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
+static PyObject *__pyx_tp_new_6joshua_12intervaltree_IntervalNode(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_tp_new_6joshua_12intervaltree_Interval(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_tp_new_6joshua_12intervaltree_IntervalTree(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static char __pyx_k_n[] = "n";
 static char __pyx_k__3[] = ")";
 static char __pyx_k__4[] = "-";
@@ -847,7 +847,7 @@ static char __pyx_k_num_intervals[] = "num_intervals";
 static char __pyx_k_insert_interval[] = "insert_interval";
 static char __pyx_k_IntervalNode_i_i[] = "IntervalNode(%i, %i)";
 static char __pyx_k_start_must_be_less_than_end[] = "start must be less than end";
-static char __pyx_k_Data_structure_for_performing_i[] = "\nData structure for performing intersect queries on a set of intervals which\npreserves all information about the intervals (unlike bitset projection methods).\n\n:Authors: Camille Scott\n          James Taylor (james@jamestaylor.org),\n          Ian Schenk (ian.schenck@gmail.com),\n          Brent Pedersen (bpederse@gmail.com)\n";
+static char __pyx_k_Data_structure_for_performing_i[] = "\nData structure for performing intersect queries on a set of intervals which\npreserves all information about the intervals (unlike bitset projection methods).\n\n:Authors: Camille Scott (camille.scott.w@gmail.com),\n          James Taylor (james@jamestaylor.org),\n          Ian Schenk (ian.schenck@gmail.com),\n          Brent Pedersen (bpederse@gmail.com)\n";
 static PyObject *__pyx_n_s_Intersecter;
 static PyObject *__pyx_kp_s_IntervalNode_i_i;
 static PyObject *__pyx_kp_s_Interval_d_d;
@@ -895,7 +895,7 @@ static PyObject *__pyx_tuple_;
 static PyObject *__pyx_tuple__2;
 static PyObject *__pyx_tuple__5;
 
-/* "intervaltree.pyx":33
+/* "joshua/intervaltree.pyx":33
  *     int iabs(int)
  * 
  * cdef inline int imax2(int a, int b):             # <<<<<<<<<<<<<<
@@ -903,13 +903,13 @@ static PyObject *__pyx_tuple__5;
  *     return a
  */
 
-static CYTHON_INLINE int __pyx_f_12intervaltree_imax2(int __pyx_v_a, int __pyx_v_b) {
+static CYTHON_INLINE int __pyx_f_6joshua_12intervaltree_imax2(int __pyx_v_a, int __pyx_v_b) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
   __Pyx_RefNannySetupContext("imax2", 0);
 
-  /* "intervaltree.pyx":34
+  /* "joshua/intervaltree.pyx":34
  * 
  * cdef inline int imax2(int a, int b):
  *     if b > a: return b             # <<<<<<<<<<<<<<
@@ -922,7 +922,7 @@ static CYTHON_INLINE int __pyx_f_12intervaltree_imax2(int __pyx_v_a, int __pyx_v
     goto __pyx_L0;
   }
 
-  /* "intervaltree.pyx":35
+  /* "joshua/intervaltree.pyx":35
  * cdef inline int imax2(int a, int b):
  *     if b > a: return b
  *     return a             # <<<<<<<<<<<<<<
@@ -932,7 +932,7 @@ static CYTHON_INLINE int __pyx_f_12intervaltree_imax2(int __pyx_v_a, int __pyx_v
   __pyx_r = __pyx_v_a;
   goto __pyx_L0;
 
-  /* "intervaltree.pyx":33
+  /* "joshua/intervaltree.pyx":33
  *     int iabs(int)
  * 
  * cdef inline int imax2(int a, int b):             # <<<<<<<<<<<<<<
@@ -946,7 +946,7 @@ static CYTHON_INLINE int __pyx_f_12intervaltree_imax2(int __pyx_v_a, int __pyx_v
   return __pyx_r;
 }
 
-/* "intervaltree.pyx":37
+/* "joshua/intervaltree.pyx":37
  *     return a
  * 
  * cdef inline int imax3(int a, int b, int c):             # <<<<<<<<<<<<<<
@@ -954,13 +954,13 @@ static CYTHON_INLINE int __pyx_f_12intervaltree_imax2(int __pyx_v_a, int __pyx_v
  *         if c > b:
  */
 
-static CYTHON_INLINE int __pyx_f_12intervaltree_imax3(int __pyx_v_a, int __pyx_v_b, int __pyx_v_c) {
+static CYTHON_INLINE int __pyx_f_6joshua_12intervaltree_imax3(int __pyx_v_a, int __pyx_v_b, int __pyx_v_c) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
   __Pyx_RefNannySetupContext("imax3", 0);
 
-  /* "intervaltree.pyx":38
+  /* "joshua/intervaltree.pyx":38
  * 
  * cdef inline int imax3(int a, int b, int c):
  *     if b > a:             # <<<<<<<<<<<<<<
@@ -970,7 +970,7 @@ static CYTHON_INLINE int __pyx_f_12intervaltree_imax3(int __pyx_v_a, int __pyx_v
   __pyx_t_1 = ((__pyx_v_b > __pyx_v_a) != 0);
   if (__pyx_t_1) {
 
-    /* "intervaltree.pyx":39
+    /* "joshua/intervaltree.pyx":39
  * cdef inline int imax3(int a, int b, int c):
  *     if b > a:
  *         if c > b:             # <<<<<<<<<<<<<<
@@ -980,7 +980,7 @@ static CYTHON_INLINE int __pyx_f_12intervaltree_imax3(int __pyx_v_a, int __pyx_v
     __pyx_t_1 = ((__pyx_v_c > __pyx_v_b) != 0);
     if (__pyx_t_1) {
 
-      /* "intervaltree.pyx":40
+      /* "joshua/intervaltree.pyx":40
  *     if b > a:
  *         if c > b:
  *             return c             # <<<<<<<<<<<<<<
@@ -991,7 +991,7 @@ static CYTHON_INLINE int __pyx_f_12intervaltree_imax3(int __pyx_v_a, int __pyx_v
       goto __pyx_L0;
     }
 
-    /* "intervaltree.pyx":41
+    /* "joshua/intervaltree.pyx":41
  *         if c > b:
  *             return c
  *         return b             # <<<<<<<<<<<<<<
@@ -1002,7 +1002,7 @@ static CYTHON_INLINE int __pyx_f_12intervaltree_imax3(int __pyx_v_a, int __pyx_v
     goto __pyx_L0;
   }
 
-  /* "intervaltree.pyx":42
+  /* "joshua/intervaltree.pyx":42
  *             return c
  *         return b
  *     if a > c:             # <<<<<<<<<<<<<<
@@ -1012,7 +1012,7 @@ static CYTHON_INLINE int __pyx_f_12intervaltree_imax3(int __pyx_v_a, int __pyx_v
   __pyx_t_1 = ((__pyx_v_a > __pyx_v_c) != 0);
   if (__pyx_t_1) {
 
-    /* "intervaltree.pyx":43
+    /* "joshua/intervaltree.pyx":43
  *         return b
  *     if a > c:
  *         return a             # <<<<<<<<<<<<<<
@@ -1023,7 +1023,7 @@ static CYTHON_INLINE int __pyx_f_12intervaltree_imax3(int __pyx_v_a, int __pyx_v
     goto __pyx_L0;
   }
 
-  /* "intervaltree.pyx":44
+  /* "joshua/intervaltree.pyx":44
  *     if a > c:
  *         return a
  *     return c             # <<<<<<<<<<<<<<
@@ -1033,7 +1033,7 @@ static CYTHON_INLINE int __pyx_f_12intervaltree_imax3(int __pyx_v_a, int __pyx_v
   __pyx_r = __pyx_v_c;
   goto __pyx_L0;
 
-  /* "intervaltree.pyx":37
+  /* "joshua/intervaltree.pyx":37
  *     return a
  * 
  * cdef inline int imax3(int a, int b, int c):             # <<<<<<<<<<<<<<
@@ -1047,7 +1047,7 @@ static CYTHON_INLINE int __pyx_f_12intervaltree_imax3(int __pyx_v_a, int __pyx_v
   return __pyx_r;
 }
 
-/* "intervaltree.pyx":46
+/* "joshua/intervaltree.pyx":46
  *     return c
  * 
  * cdef inline int imin3(int a, int b, int c):             # <<<<<<<<<<<<<<
@@ -1055,13 +1055,13 @@ static CYTHON_INLINE int __pyx_f_12intervaltree_imax3(int __pyx_v_a, int __pyx_v
  *         if c < b:
  */
 
-static CYTHON_INLINE int __pyx_f_12intervaltree_imin3(int __pyx_v_a, int __pyx_v_b, int __pyx_v_c) {
+static CYTHON_INLINE int __pyx_f_6joshua_12intervaltree_imin3(int __pyx_v_a, int __pyx_v_b, int __pyx_v_c) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
   __Pyx_RefNannySetupContext("imin3", 0);
 
-  /* "intervaltree.pyx":47
+  /* "joshua/intervaltree.pyx":47
  * 
  * cdef inline int imin3(int a, int b, int c):
  *     if b < a:             # <<<<<<<<<<<<<<
@@ -1071,7 +1071,7 @@ static CYTHON_INLINE int __pyx_f_12intervaltree_imin3(int __pyx_v_a, int __pyx_v
   __pyx_t_1 = ((__pyx_v_b < __pyx_v_a) != 0);
   if (__pyx_t_1) {
 
-    /* "intervaltree.pyx":48
+    /* "joshua/intervaltree.pyx":48
  * cdef inline int imin3(int a, int b, int c):
  *     if b < a:
  *         if c < b:             # <<<<<<<<<<<<<<
@@ -1081,7 +1081,7 @@ static CYTHON_INLINE int __pyx_f_12intervaltree_imin3(int __pyx_v_a, int __pyx_v
     __pyx_t_1 = ((__pyx_v_c < __pyx_v_b) != 0);
     if (__pyx_t_1) {
 
-      /* "intervaltree.pyx":49
+      /* "joshua/intervaltree.pyx":49
  *     if b < a:
  *         if c < b:
  *             return c             # <<<<<<<<<<<<<<
@@ -1092,7 +1092,7 @@ static CYTHON_INLINE int __pyx_f_12intervaltree_imin3(int __pyx_v_a, int __pyx_v
       goto __pyx_L0;
     }
 
-    /* "intervaltree.pyx":50
+    /* "joshua/intervaltree.pyx":50
  *         if c < b:
  *             return c
  *         return b             # <<<<<<<<<<<<<<
@@ -1103,7 +1103,7 @@ static CYTHON_INLINE int __pyx_f_12intervaltree_imin3(int __pyx_v_a, int __pyx_v
     goto __pyx_L0;
   }
 
-  /* "intervaltree.pyx":51
+  /* "joshua/intervaltree.pyx":51
  *             return c
  *         return b
  *     if a < c:             # <<<<<<<<<<<<<<
@@ -1113,7 +1113,7 @@ static CYTHON_INLINE int __pyx_f_12intervaltree_imin3(int __pyx_v_a, int __pyx_v
   __pyx_t_1 = ((__pyx_v_a < __pyx_v_c) != 0);
   if (__pyx_t_1) {
 
-    /* "intervaltree.pyx":52
+    /* "joshua/intervaltree.pyx":52
  *         return b
  *     if a < c:
  *         return a             # <<<<<<<<<<<<<<
@@ -1124,7 +1124,7 @@ static CYTHON_INLINE int __pyx_f_12intervaltree_imin3(int __pyx_v_a, int __pyx_v
     goto __pyx_L0;
   }
 
-  /* "intervaltree.pyx":53
+  /* "joshua/intervaltree.pyx":53
  *     if a < c:
  *         return a
  *     return c             # <<<<<<<<<<<<<<
@@ -1134,7 +1134,7 @@ static CYTHON_INLINE int __pyx_f_12intervaltree_imin3(int __pyx_v_a, int __pyx_v
   __pyx_r = __pyx_v_c;
   goto __pyx_L0;
 
-  /* "intervaltree.pyx":46
+  /* "joshua/intervaltree.pyx":46
  *     return c
  * 
  * cdef inline int imin3(int a, int b, int c):             # <<<<<<<<<<<<<<
@@ -1148,7 +1148,7 @@ static CYTHON_INLINE int __pyx_f_12intervaltree_imin3(int __pyx_v_a, int __pyx_v
   return __pyx_r;
 }
 
-/* "intervaltree.pyx":55
+/* "joshua/intervaltree.pyx":55
  *     return c
  * 
  * cdef inline int imin2(int a, int b):             # <<<<<<<<<<<<<<
@@ -1156,13 +1156,13 @@ static CYTHON_INLINE int __pyx_f_12intervaltree_imin3(int __pyx_v_a, int __pyx_v
  *     return a
  */
 
-static CYTHON_INLINE int __pyx_f_12intervaltree_imin2(int __pyx_v_a, int __pyx_v_b) {
+static CYTHON_INLINE int __pyx_f_6joshua_12intervaltree_imin2(int __pyx_v_a, int __pyx_v_b) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
   __Pyx_RefNannySetupContext("imin2", 0);
 
-  /* "intervaltree.pyx":56
+  /* "joshua/intervaltree.pyx":56
  * 
  * cdef inline int imin2(int a, int b):
  *     if b < a: return b             # <<<<<<<<<<<<<<
@@ -1175,7 +1175,7 @@ static CYTHON_INLINE int __pyx_f_12intervaltree_imin2(int __pyx_v_a, int __pyx_v
     goto __pyx_L0;
   }
 
-  /* "intervaltree.pyx":57
+  /* "joshua/intervaltree.pyx":57
  * cdef inline int imin2(int a, int b):
  *     if b < a: return b
  *     return a             # <<<<<<<<<<<<<<
@@ -1185,7 +1185,7 @@ static CYTHON_INLINE int __pyx_f_12intervaltree_imin2(int __pyx_v_a, int __pyx_v
   __pyx_r = __pyx_v_a;
   goto __pyx_L0;
 
-  /* "intervaltree.pyx":55
+  /* "joshua/intervaltree.pyx":55
  *     return c
  * 
  * cdef inline int imin2(int a, int b):             # <<<<<<<<<<<<<<
@@ -1199,7 +1199,7 @@ static CYTHON_INLINE int __pyx_f_12intervaltree_imin2(int __pyx_v_a, int __pyx_v
   return __pyx_r;
 }
 
-/* "intervaltree.pyx":75
+/* "joshua/intervaltree.pyx":75
  * 
  *     property left_node:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -1208,26 +1208,26 @@ static CYTHON_INLINE int __pyx_f_12intervaltree_imin2(int __pyx_v_a, int __pyx_v
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_12intervaltree_12IntervalNode_9left_node_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_12intervaltree_12IntervalNode_9left_node_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalNode_9left_node_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalNode_9left_node_1__get__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_12intervaltree_12IntervalNode_9left_node___get__(((struct __pyx_obj_12intervaltree_IntervalNode *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6joshua_12intervaltree_12IntervalNode_9left_node___get__(((struct __pyx_obj_6joshua_12intervaltree_IntervalNode *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_12intervaltree_12IntervalNode_9left_node___get__(struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_self) {
+static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalNode_9left_node___get__(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   int __pyx_t_2;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "intervaltree.pyx":76
+  /* "joshua/intervaltree.pyx":76
  *     property left_node:
  *         def __get__(self):
  *             return self.cleft if self.cleft is not EmptyNode else None             # <<<<<<<<<<<<<<
@@ -1235,7 +1235,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalNode_9left_node___get__(struc
  *         def __get__(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = (__pyx_v_self->cleft != __pyx_v_12intervaltree_EmptyNode);
+  __pyx_t_2 = (__pyx_v_self->cleft != __pyx_v_6joshua_12intervaltree_EmptyNode);
   if ((__pyx_t_2 != 0)) {
     __Pyx_INCREF(((PyObject *)__pyx_v_self->cleft));
     __pyx_t_1 = ((PyObject *)__pyx_v_self->cleft);
@@ -1247,7 +1247,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalNode_9left_node___get__(struc
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "intervaltree.pyx":75
+  /* "joshua/intervaltree.pyx":75
  * 
  *     property left_node:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -1262,7 +1262,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalNode_9left_node___get__(struc
   return __pyx_r;
 }
 
-/* "intervaltree.pyx":78
+/* "joshua/intervaltree.pyx":78
  *             return self.cleft if self.cleft is not EmptyNode else None
  *     property right_node:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -1271,26 +1271,26 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalNode_9left_node___get__(struc
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_12intervaltree_12IntervalNode_10right_node_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_12intervaltree_12IntervalNode_10right_node_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalNode_10right_node_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalNode_10right_node_1__get__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_12intervaltree_12IntervalNode_10right_node___get__(((struct __pyx_obj_12intervaltree_IntervalNode *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6joshua_12intervaltree_12IntervalNode_10right_node___get__(((struct __pyx_obj_6joshua_12intervaltree_IntervalNode *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_12intervaltree_12IntervalNode_10right_node___get__(struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_self) {
+static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalNode_10right_node___get__(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   int __pyx_t_2;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "intervaltree.pyx":79
+  /* "joshua/intervaltree.pyx":79
  *     property right_node:
  *         def __get__(self):
  *             return self.cright if self.cright is not EmptyNode else None             # <<<<<<<<<<<<<<
@@ -1298,7 +1298,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalNode_10right_node___get__(str
  *         def __get__(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = (__pyx_v_self->cright != __pyx_v_12intervaltree_EmptyNode);
+  __pyx_t_2 = (__pyx_v_self->cright != __pyx_v_6joshua_12intervaltree_EmptyNode);
   if ((__pyx_t_2 != 0)) {
     __Pyx_INCREF(((PyObject *)__pyx_v_self->cright));
     __pyx_t_1 = ((PyObject *)__pyx_v_self->cright);
@@ -1310,7 +1310,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalNode_10right_node___get__(str
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "intervaltree.pyx":78
+  /* "joshua/intervaltree.pyx":78
  *             return self.cleft if self.cleft is not EmptyNode else None
  *     property right_node:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -1325,7 +1325,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalNode_10right_node___get__(str
   return __pyx_r;
 }
 
-/* "intervaltree.pyx":81
+/* "joshua/intervaltree.pyx":81
  *             return self.cright if self.cright is not EmptyNode else None
  *     property root_node:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -1334,26 +1334,26 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalNode_10right_node___get__(str
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_12intervaltree_12IntervalNode_9root_node_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_12intervaltree_12IntervalNode_9root_node_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalNode_9root_node_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalNode_9root_node_1__get__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_12intervaltree_12IntervalNode_9root_node___get__(((struct __pyx_obj_12intervaltree_IntervalNode *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6joshua_12intervaltree_12IntervalNode_9root_node___get__(((struct __pyx_obj_6joshua_12intervaltree_IntervalNode *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_12intervaltree_12IntervalNode_9root_node___get__(struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_self) {
+static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalNode_9root_node___get__(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   int __pyx_t_2;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "intervaltree.pyx":82
+  /* "joshua/intervaltree.pyx":82
  *     property root_node:
  *         def __get__(self):
  *             return self.croot if self.croot is not EmptyNode else None             # <<<<<<<<<<<<<<
@@ -1361,7 +1361,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalNode_9root_node___get__(struc
  *     def __repr__(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = (__pyx_v_self->croot != __pyx_v_12intervaltree_EmptyNode);
+  __pyx_t_2 = (__pyx_v_self->croot != __pyx_v_6joshua_12intervaltree_EmptyNode);
   if ((__pyx_t_2 != 0)) {
     __Pyx_INCREF(((PyObject *)__pyx_v_self->croot));
     __pyx_t_1 = ((PyObject *)__pyx_v_self->croot);
@@ -1373,7 +1373,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalNode_9root_node___get__(struc
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "intervaltree.pyx":81
+  /* "joshua/intervaltree.pyx":81
  *             return self.cright if self.cright is not EmptyNode else None
  *     property root_node:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -1388,7 +1388,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalNode_9root_node___get__(struc
   return __pyx_r;
 }
 
-/* "intervaltree.pyx":84
+/* "joshua/intervaltree.pyx":84
  *             return self.croot if self.croot is not EmptyNode else None
  * 
  *     def __repr__(self):             # <<<<<<<<<<<<<<
@@ -1397,19 +1397,19 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalNode_9root_node___get__(struc
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_12intervaltree_12IntervalNode_1__repr__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_12intervaltree_12IntervalNode_1__repr__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalNode_1__repr__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalNode_1__repr__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__repr__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_12intervaltree_12IntervalNode___repr__(((struct __pyx_obj_12intervaltree_IntervalNode *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6joshua_12intervaltree_12IntervalNode___repr__(((struct __pyx_obj_6joshua_12intervaltree_IntervalNode *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_12intervaltree_12IntervalNode___repr__(struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_self) {
+static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalNode___repr__(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -1420,7 +1420,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalNode___repr__(struct __pyx_ob
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__repr__", 0);
 
-  /* "intervaltree.pyx":85
+  /* "joshua/intervaltree.pyx":85
  * 
  *     def __repr__(self):
  *         return "IntervalNode(%i, %i)" % (self.start, self.end)             # <<<<<<<<<<<<<<
@@ -1447,7 +1447,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalNode___repr__(struct __pyx_ob
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "intervaltree.pyx":84
+  /* "joshua/intervaltree.pyx":84
  *             return self.croot if self.croot is not EmptyNode else None
  * 
  *     def __repr__(self):             # <<<<<<<<<<<<<<
@@ -1460,7 +1460,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalNode___repr__(struct __pyx_ob
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_AddTraceback("intervaltree.IntervalNode.__repr__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("joshua.intervaltree.IntervalNode.__repr__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -1468,7 +1468,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalNode___repr__(struct __pyx_ob
   return __pyx_r;
 }
 
-/* "intervaltree.pyx":87
+/* "joshua/intervaltree.pyx":87
  *         return "IntervalNode(%i, %i)" % (self.start, self.end)
  * 
  *     def __cinit__(IntervalNode self, int start, int end, object interval):             # <<<<<<<<<<<<<<
@@ -1477,8 +1477,8 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalNode___repr__(struct __pyx_ob
  */
 
 /* Python wrapper */
-static int __pyx_pw_12intervaltree_12IntervalNode_3__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static int __pyx_pw_12intervaltree_12IntervalNode_3__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static int __pyx_pw_6joshua_12intervaltree_12IntervalNode_3__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static int __pyx_pw_6joshua_12intervaltree_12IntervalNode_3__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   int __pyx_v_start;
   int __pyx_v_end;
   PyObject *__pyx_v_interval = 0;
@@ -1535,18 +1535,18 @@ static int __pyx_pw_12intervaltree_12IntervalNode_3__cinit__(PyObject *__pyx_v_s
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 87; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
-  __Pyx_AddTraceback("intervaltree.IntervalNode.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("joshua.intervaltree.IntervalNode.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_12intervaltree_12IntervalNode_2__cinit__(((struct __pyx_obj_12intervaltree_IntervalNode *)__pyx_v_self), __pyx_v_start, __pyx_v_end, __pyx_v_interval);
+  __pyx_r = __pyx_pf_6joshua_12intervaltree_12IntervalNode_2__cinit__(((struct __pyx_obj_6joshua_12intervaltree_IntervalNode *)__pyx_v_self), __pyx_v_start, __pyx_v_end, __pyx_v_interval);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_12intervaltree_12IntervalNode_2__cinit__(struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_self, int __pyx_v_start, int __pyx_v_end, PyObject *__pyx_v_interval) {
+static int __pyx_pf_6joshua_12intervaltree_12IntervalNode_2__cinit__(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self, int __pyx_v_start, int __pyx_v_end, PyObject *__pyx_v_interval) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   double __pyx_t_1;
@@ -1556,7 +1556,7 @@ static int __pyx_pf_12intervaltree_12IntervalNode_2__cinit__(struct __pyx_obj_12
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__cinit__", 0);
 
-  /* "intervaltree.pyx":92
+  /* "joshua/intervaltree.pyx":92
  *         # tree size.  Also, python's uniform is perfect since the
  *         # upper limit is not inclusive, which gives us undefined here.
  *         self.priority = ceil(nlog * log(-1.0/(1.0 * rand()/RAND_MAX - 1)))             # <<<<<<<<<<<<<<
@@ -1585,9 +1585,9 @@ static int __pyx_pf_12intervaltree_12IntervalNode_2__cinit__(struct __pyx_obj_12
     #endif
     {__pyx_filename = __pyx_f[0]; __pyx_lineno = 92; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
-  __pyx_v_self->priority = ceil((__pyx_v_12intervaltree_nlog * log((-1.0 / __pyx_t_2))));
+  __pyx_v_self->priority = ceil((__pyx_v_6joshua_12intervaltree_nlog * log((-1.0 / __pyx_t_2))));
 
-  /* "intervaltree.pyx":93
+  /* "joshua/intervaltree.pyx":93
  *         # upper limit is not inclusive, which gives us undefined here.
  *         self.priority = ceil(nlog * log(-1.0/(1.0 * rand()/RAND_MAX - 1)))
  *         self.start    = start             # <<<<<<<<<<<<<<
@@ -1596,7 +1596,7 @@ static int __pyx_pf_12intervaltree_12IntervalNode_2__cinit__(struct __pyx_obj_12
  */
   __pyx_v_self->start = __pyx_v_start;
 
-  /* "intervaltree.pyx":94
+  /* "joshua/intervaltree.pyx":94
  *         self.priority = ceil(nlog * log(-1.0/(1.0 * rand()/RAND_MAX - 1)))
  *         self.start    = start
  *         self.end      = end             # <<<<<<<<<<<<<<
@@ -1605,7 +1605,7 @@ static int __pyx_pf_12intervaltree_12IntervalNode_2__cinit__(struct __pyx_obj_12
  */
   __pyx_v_self->end = __pyx_v_end;
 
-  /* "intervaltree.pyx":95
+  /* "joshua/intervaltree.pyx":95
  *         self.start    = start
  *         self.end      = end
  *         self.length   = end - start             # <<<<<<<<<<<<<<
@@ -1614,7 +1614,7 @@ static int __pyx_pf_12intervaltree_12IntervalNode_2__cinit__(struct __pyx_obj_12
  */
   __pyx_v_self->length = (__pyx_v_end - __pyx_v_start);
 
-  /* "intervaltree.pyx":96
+  /* "joshua/intervaltree.pyx":96
  *         self.end      = end
  *         self.length   = end - start
  *         self.interval = interval             # <<<<<<<<<<<<<<
@@ -1627,7 +1627,7 @@ static int __pyx_pf_12intervaltree_12IntervalNode_2__cinit__(struct __pyx_obj_12
   __Pyx_DECREF(__pyx_v_self->interval);
   __pyx_v_self->interval = __pyx_v_interval;
 
-  /* "intervaltree.pyx":97
+  /* "joshua/intervaltree.pyx":97
  *         self.length   = end - start
  *         self.interval = interval
  *         self.maxend   = end             # <<<<<<<<<<<<<<
@@ -1636,7 +1636,7 @@ static int __pyx_pf_12intervaltree_12IntervalNode_2__cinit__(struct __pyx_obj_12
  */
   __pyx_v_self->maxend = __pyx_v_end;
 
-  /* "intervaltree.pyx":98
+  /* "joshua/intervaltree.pyx":98
  *         self.interval = interval
  *         self.maxend   = end
  *         self.minstart = start             # <<<<<<<<<<<<<<
@@ -1645,7 +1645,7 @@ static int __pyx_pf_12intervaltree_12IntervalNode_2__cinit__(struct __pyx_obj_12
  */
   __pyx_v_self->minstart = __pyx_v_start;
 
-  /* "intervaltree.pyx":99
+  /* "joshua/intervaltree.pyx":99
  *         self.maxend   = end
  *         self.minstart = start
  *         self.minend   = end             # <<<<<<<<<<<<<<
@@ -1654,46 +1654,46 @@ static int __pyx_pf_12intervaltree_12IntervalNode_2__cinit__(struct __pyx_obj_12
  */
   __pyx_v_self->minend = __pyx_v_end;
 
-  /* "intervaltree.pyx":100
+  /* "joshua/intervaltree.pyx":100
  *         self.minstart = start
  *         self.minend   = end
  *         self.cleft    = EmptyNode             # <<<<<<<<<<<<<<
  *         self.cright   = EmptyNode
  *         self.croot    = EmptyNode
  */
-  __Pyx_INCREF(((PyObject *)__pyx_v_12intervaltree_EmptyNode));
-  __Pyx_GIVEREF(((PyObject *)__pyx_v_12intervaltree_EmptyNode));
+  __Pyx_INCREF(((PyObject *)__pyx_v_6joshua_12intervaltree_EmptyNode));
+  __Pyx_GIVEREF(((PyObject *)__pyx_v_6joshua_12intervaltree_EmptyNode));
   __Pyx_GOTREF(__pyx_v_self->cleft);
   __Pyx_DECREF(((PyObject *)__pyx_v_self->cleft));
-  __pyx_v_self->cleft = __pyx_v_12intervaltree_EmptyNode;
+  __pyx_v_self->cleft = __pyx_v_6joshua_12intervaltree_EmptyNode;
 
-  /* "intervaltree.pyx":101
+  /* "joshua/intervaltree.pyx":101
  *         self.minend   = end
  *         self.cleft    = EmptyNode
  *         self.cright   = EmptyNode             # <<<<<<<<<<<<<<
  *         self.croot    = EmptyNode
  * 
  */
-  __Pyx_INCREF(((PyObject *)__pyx_v_12intervaltree_EmptyNode));
-  __Pyx_GIVEREF(((PyObject *)__pyx_v_12intervaltree_EmptyNode));
+  __Pyx_INCREF(((PyObject *)__pyx_v_6joshua_12intervaltree_EmptyNode));
+  __Pyx_GIVEREF(((PyObject *)__pyx_v_6joshua_12intervaltree_EmptyNode));
   __Pyx_GOTREF(__pyx_v_self->cright);
   __Pyx_DECREF(((PyObject *)__pyx_v_self->cright));
-  __pyx_v_self->cright = __pyx_v_12intervaltree_EmptyNode;
+  __pyx_v_self->cright = __pyx_v_6joshua_12intervaltree_EmptyNode;
 
-  /* "intervaltree.pyx":102
+  /* "joshua/intervaltree.pyx":102
  *         self.cleft    = EmptyNode
  *         self.cright   = EmptyNode
  *         self.croot    = EmptyNode             # <<<<<<<<<<<<<<
  * 
  *     cpdef IntervalNode insert(IntervalNode self, int start, int end, object interval):
  */
-  __Pyx_INCREF(((PyObject *)__pyx_v_12intervaltree_EmptyNode));
-  __Pyx_GIVEREF(((PyObject *)__pyx_v_12intervaltree_EmptyNode));
+  __Pyx_INCREF(((PyObject *)__pyx_v_6joshua_12intervaltree_EmptyNode));
+  __Pyx_GIVEREF(((PyObject *)__pyx_v_6joshua_12intervaltree_EmptyNode));
   __Pyx_GOTREF(__pyx_v_self->croot);
   __Pyx_DECREF(((PyObject *)__pyx_v_self->croot));
-  __pyx_v_self->croot = __pyx_v_12intervaltree_EmptyNode;
+  __pyx_v_self->croot = __pyx_v_6joshua_12intervaltree_EmptyNode;
 
-  /* "intervaltree.pyx":87
+  /* "joshua/intervaltree.pyx":87
  *         return "IntervalNode(%i, %i)" % (self.start, self.end)
  * 
  *     def __cinit__(IntervalNode self, int start, int end, object interval):             # <<<<<<<<<<<<<<
@@ -1705,14 +1705,14 @@ static int __pyx_pf_12intervaltree_12IntervalNode_2__cinit__(struct __pyx_obj_12
   __pyx_r = 0;
   goto __pyx_L0;
   __pyx_L1_error:;
-  __Pyx_AddTraceback("intervaltree.IntervalNode.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("joshua.intervaltree.IntervalNode.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "intervaltree.pyx":104
+/* "joshua/intervaltree.pyx":104
  *         self.croot    = EmptyNode
  * 
  *     cpdef IntervalNode insert(IntervalNode self, int start, int end, object interval):             # <<<<<<<<<<<<<<
@@ -1720,11 +1720,11 @@ static int __pyx_pf_12intervaltree_12IntervalNode_2__cinit__(struct __pyx_obj_12
  *         Insert a new IntervalNode into the tree of which this node is
  */
 
-static PyObject *__pyx_pw_12intervaltree_12IntervalNode_5insert(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static struct __pyx_obj_12intervaltree_IntervalNode *__pyx_f_12intervaltree_12IntervalNode_insert(struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_self, int __pyx_v_start, int __pyx_v_end, PyObject *__pyx_v_interval, int __pyx_skip_dispatch) {
-  struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_croot = 0;
+static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalNode_5insert(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_f_6joshua_12intervaltree_12IntervalNode_insert(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self, int __pyx_v_start, int __pyx_v_end, PyObject *__pyx_v_interval, int __pyx_skip_dispatch) {
+  struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_croot = 0;
   int __pyx_v_decision_endpoint;
-  struct __pyx_obj_12intervaltree_IntervalNode *__pyx_r = NULL;
+  struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   PyObject *__pyx_t_2 = NULL;
@@ -1746,7 +1746,7 @@ static struct __pyx_obj_12intervaltree_IntervalNode *__pyx_f_12intervaltree_12In
   else if (unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0)) {
     __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_insert); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 104; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
-    if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)__pyx_pw_12intervaltree_12IntervalNode_5insert)) {
+    if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)__pyx_pw_6joshua_12intervaltree_12IntervalNode_5insert)) {
       __Pyx_XDECREF(((PyObject *)__pyx_r));
       __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_start); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 104; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_3);
@@ -1783,8 +1783,8 @@ static struct __pyx_obj_12intervaltree_IntervalNode *__pyx_f_12intervaltree_12In
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_12intervaltree_IntervalNode))))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 104; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-      __pyx_r = ((struct __pyx_obj_12intervaltree_IntervalNode *)__pyx_t_2);
+      if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_6joshua_12intervaltree_IntervalNode))))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 104; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_r = ((struct __pyx_obj_6joshua_12intervaltree_IntervalNode *)__pyx_t_2);
       __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       goto __pyx_L0;
@@ -1792,7 +1792,7 @@ static struct __pyx_obj_12intervaltree_IntervalNode *__pyx_f_12intervaltree_12In
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
 
-  /* "intervaltree.pyx":110
+  /* "joshua/intervaltree.pyx":110
  *         may or may not be this node!)
  *         """
  *         cdef IntervalNode croot = self             # <<<<<<<<<<<<<<
@@ -1802,7 +1802,7 @@ static struct __pyx_obj_12intervaltree_IntervalNode *__pyx_f_12intervaltree_12In
   __Pyx_INCREF(((PyObject *)__pyx_v_self));
   __pyx_v_croot = __pyx_v_self;
 
-  /* "intervaltree.pyx":113
+  /* "joshua/intervaltree.pyx":113
  *         # If starts are the same, decide which to add interval to based on
  *         # end, thus maintaining sortedness relative to start/end
  *         cdef int decision_endpoint = start             # <<<<<<<<<<<<<<
@@ -1811,7 +1811,7 @@ static struct __pyx_obj_12intervaltree_IntervalNode *__pyx_f_12intervaltree_12In
  */
   __pyx_v_decision_endpoint = __pyx_v_start;
 
-  /* "intervaltree.pyx":114
+  /* "joshua/intervaltree.pyx":114
  *         # end, thus maintaining sortedness relative to start/end
  *         cdef int decision_endpoint = start
  *         if start == self.start:             # <<<<<<<<<<<<<<
@@ -1821,7 +1821,7 @@ static struct __pyx_obj_12intervaltree_IntervalNode *__pyx_f_12intervaltree_12In
   __pyx_t_9 = ((__pyx_v_start == __pyx_v_self->start) != 0);
   if (__pyx_t_9) {
 
-    /* "intervaltree.pyx":115
+    /* "joshua/intervaltree.pyx":115
  *         cdef int decision_endpoint = start
  *         if start == self.start:
  *             decision_endpoint = end             # <<<<<<<<<<<<<<
@@ -1833,7 +1833,7 @@ static struct __pyx_obj_12intervaltree_IntervalNode *__pyx_f_12intervaltree_12In
   }
   __pyx_L3:;
 
-  /* "intervaltree.pyx":117
+  /* "joshua/intervaltree.pyx":117
  *             decision_endpoint = end
  * 
  *         if decision_endpoint > self.start:             # <<<<<<<<<<<<<<
@@ -1843,36 +1843,36 @@ static struct __pyx_obj_12intervaltree_IntervalNode *__pyx_f_12intervaltree_12In
   __pyx_t_9 = ((__pyx_v_decision_endpoint > __pyx_v_self->start) != 0);
   if (__pyx_t_9) {
 
-    /* "intervaltree.pyx":119
+    /* "joshua/intervaltree.pyx":119
  *         if decision_endpoint > self.start:
  *             # insert to cright tree
  *             if self.cright is not EmptyNode:             # <<<<<<<<<<<<<<
  *                 self.cright = self.cright.insert( start, end, interval )
  *             else:
  */
-    __pyx_t_9 = (__pyx_v_self->cright != __pyx_v_12intervaltree_EmptyNode);
+    __pyx_t_9 = (__pyx_v_self->cright != __pyx_v_6joshua_12intervaltree_EmptyNode);
     __pyx_t_10 = (__pyx_t_9 != 0);
     if (__pyx_t_10) {
 
-      /* "intervaltree.pyx":120
+      /* "joshua/intervaltree.pyx":120
  *             # insert to cright tree
  *             if self.cright is not EmptyNode:
  *                 self.cright = self.cright.insert( start, end, interval )             # <<<<<<<<<<<<<<
  *             else:
  *                 self.cright = IntervalNode( start, end, interval )
  */
-      __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_12intervaltree_IntervalNode *)__pyx_v_self->cright->__pyx_vtab)->insert(__pyx_v_self->cright, __pyx_v_start, __pyx_v_end, __pyx_v_interval, 0)); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 120; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_6joshua_12intervaltree_IntervalNode *)__pyx_v_self->cright->__pyx_vtab)->insert(__pyx_v_self->cright, __pyx_v_start, __pyx_v_end, __pyx_v_interval, 0)); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 120; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_GIVEREF(__pyx_t_1);
       __Pyx_GOTREF(__pyx_v_self->cright);
       __Pyx_DECREF(((PyObject *)__pyx_v_self->cright));
-      __pyx_v_self->cright = ((struct __pyx_obj_12intervaltree_IntervalNode *)__pyx_t_1);
+      __pyx_v_self->cright = ((struct __pyx_obj_6joshua_12intervaltree_IntervalNode *)__pyx_t_1);
       __pyx_t_1 = 0;
       goto __pyx_L5;
     }
     /*else*/ {
 
-      /* "intervaltree.pyx":122
+      /* "joshua/intervaltree.pyx":122
  *                 self.cright = self.cright.insert( start, end, interval )
  *             else:
  *                 self.cright = IntervalNode( start, end, interval )             # <<<<<<<<<<<<<<
@@ -1894,18 +1894,18 @@ static struct __pyx_obj_12intervaltree_IntervalNode *__pyx_f_12intervaltree_12In
       __Pyx_GIVEREF(__pyx_v_interval);
       __pyx_t_1 = 0;
       __pyx_t_2 = 0;
-      __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_12intervaltree_IntervalNode)), __pyx_t_5, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 122; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_6joshua_12intervaltree_IntervalNode)), __pyx_t_5, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 122; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GIVEREF(__pyx_t_2);
       __Pyx_GOTREF(__pyx_v_self->cright);
       __Pyx_DECREF(((PyObject *)__pyx_v_self->cright));
-      __pyx_v_self->cright = ((struct __pyx_obj_12intervaltree_IntervalNode *)__pyx_t_2);
+      __pyx_v_self->cright = ((struct __pyx_obj_6joshua_12intervaltree_IntervalNode *)__pyx_t_2);
       __pyx_t_2 = 0;
     }
     __pyx_L5:;
 
-    /* "intervaltree.pyx":124
+    /* "joshua/intervaltree.pyx":124
  *                 self.cright = IntervalNode( start, end, interval )
  *             # rebalance tree
  *             if self.priority < self.cright.priority:             # <<<<<<<<<<<<<<
@@ -1915,16 +1915,16 @@ static struct __pyx_obj_12intervaltree_IntervalNode *__pyx_f_12intervaltree_12In
     __pyx_t_10 = ((__pyx_v_self->priority < __pyx_v_self->cright->priority) != 0);
     if (__pyx_t_10) {
 
-      /* "intervaltree.pyx":125
+      /* "joshua/intervaltree.pyx":125
  *             # rebalance tree
  *             if self.priority < self.cright.priority:
  *                 croot = self.rotate_left()             # <<<<<<<<<<<<<<
  *         else:
  *             # insert to cleft tree
  */
-      __pyx_t_2 = ((PyObject *)((struct __pyx_vtabstruct_12intervaltree_IntervalNode *)__pyx_v_self->__pyx_vtab)->rotate_left(__pyx_v_self)); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 125; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_2 = ((PyObject *)((struct __pyx_vtabstruct_6joshua_12intervaltree_IntervalNode *)__pyx_v_self->__pyx_vtab)->rotate_left(__pyx_v_self)); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 125; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_2);
-      __Pyx_DECREF_SET(__pyx_v_croot, ((struct __pyx_obj_12intervaltree_IntervalNode *)__pyx_t_2));
+      __Pyx_DECREF_SET(__pyx_v_croot, ((struct __pyx_obj_6joshua_12intervaltree_IntervalNode *)__pyx_t_2));
       __pyx_t_2 = 0;
       goto __pyx_L6;
     }
@@ -1933,36 +1933,36 @@ static struct __pyx_obj_12intervaltree_IntervalNode *__pyx_f_12intervaltree_12In
   }
   /*else*/ {
 
-    /* "intervaltree.pyx":128
+    /* "joshua/intervaltree.pyx":128
  *         else:
  *             # insert to cleft tree
  *             if self.cleft is not EmptyNode:             # <<<<<<<<<<<<<<
  *                 self.cleft = self.cleft.insert( start, end, interval)
  *             else:
  */
-    __pyx_t_10 = (__pyx_v_self->cleft != __pyx_v_12intervaltree_EmptyNode);
+    __pyx_t_10 = (__pyx_v_self->cleft != __pyx_v_6joshua_12intervaltree_EmptyNode);
     __pyx_t_9 = (__pyx_t_10 != 0);
     if (__pyx_t_9) {
 
-      /* "intervaltree.pyx":129
+      /* "joshua/intervaltree.pyx":129
  *             # insert to cleft tree
  *             if self.cleft is not EmptyNode:
  *                 self.cleft = self.cleft.insert( start, end, interval)             # <<<<<<<<<<<<<<
  *             else:
  *                 self.cleft = IntervalNode( start, end, interval)
  */
-      __pyx_t_2 = ((PyObject *)((struct __pyx_vtabstruct_12intervaltree_IntervalNode *)__pyx_v_self->cleft->__pyx_vtab)->insert(__pyx_v_self->cleft, __pyx_v_start, __pyx_v_end, __pyx_v_interval, 0)); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 129; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_2 = ((PyObject *)((struct __pyx_vtabstruct_6joshua_12intervaltree_IntervalNode *)__pyx_v_self->cleft->__pyx_vtab)->insert(__pyx_v_self->cleft, __pyx_v_start, __pyx_v_end, __pyx_v_interval, 0)); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 129; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_GIVEREF(__pyx_t_2);
       __Pyx_GOTREF(__pyx_v_self->cleft);
       __Pyx_DECREF(((PyObject *)__pyx_v_self->cleft));
-      __pyx_v_self->cleft = ((struct __pyx_obj_12intervaltree_IntervalNode *)__pyx_t_2);
+      __pyx_v_self->cleft = ((struct __pyx_obj_6joshua_12intervaltree_IntervalNode *)__pyx_t_2);
       __pyx_t_2 = 0;
       goto __pyx_L7;
     }
     /*else*/ {
 
-      /* "intervaltree.pyx":131
+      /* "joshua/intervaltree.pyx":131
  *                 self.cleft = self.cleft.insert( start, end, interval)
  *             else:
  *                 self.cleft = IntervalNode( start, end, interval)             # <<<<<<<<<<<<<<
@@ -1984,18 +1984,18 @@ static struct __pyx_obj_12intervaltree_IntervalNode *__pyx_f_12intervaltree_12In
       __Pyx_GIVEREF(__pyx_v_interval);
       __pyx_t_2 = 0;
       __pyx_t_5 = 0;
-      __pyx_t_5 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_12intervaltree_IntervalNode)), __pyx_t_1, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 131; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_5 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_6joshua_12intervaltree_IntervalNode)), __pyx_t_1, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 131; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_GIVEREF(__pyx_t_5);
       __Pyx_GOTREF(__pyx_v_self->cleft);
       __Pyx_DECREF(((PyObject *)__pyx_v_self->cleft));
-      __pyx_v_self->cleft = ((struct __pyx_obj_12intervaltree_IntervalNode *)__pyx_t_5);
+      __pyx_v_self->cleft = ((struct __pyx_obj_6joshua_12intervaltree_IntervalNode *)__pyx_t_5);
       __pyx_t_5 = 0;
     }
     __pyx_L7:;
 
-    /* "intervaltree.pyx":133
+    /* "joshua/intervaltree.pyx":133
  *                 self.cleft = IntervalNode( start, end, interval)
  *             # rebalance tree
  *             if self.priority < self.cleft.priority:             # <<<<<<<<<<<<<<
@@ -2005,16 +2005,16 @@ static struct __pyx_obj_12intervaltree_IntervalNode *__pyx_f_12intervaltree_12In
     __pyx_t_9 = ((__pyx_v_self->priority < __pyx_v_self->cleft->priority) != 0);
     if (__pyx_t_9) {
 
-      /* "intervaltree.pyx":134
+      /* "joshua/intervaltree.pyx":134
  *             # rebalance tree
  *             if self.priority < self.cleft.priority:
  *                 croot = self.rotate_right()             # <<<<<<<<<<<<<<
  * 
  *         croot.set_ends()
  */
-      __pyx_t_5 = ((PyObject *)((struct __pyx_vtabstruct_12intervaltree_IntervalNode *)__pyx_v_self->__pyx_vtab)->rotate_right(__pyx_v_self)); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 134; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_5 = ((PyObject *)((struct __pyx_vtabstruct_6joshua_12intervaltree_IntervalNode *)__pyx_v_self->__pyx_vtab)->rotate_right(__pyx_v_self)); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 134; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_5);
-      __Pyx_DECREF_SET(__pyx_v_croot, ((struct __pyx_obj_12intervaltree_IntervalNode *)__pyx_t_5));
+      __Pyx_DECREF_SET(__pyx_v_croot, ((struct __pyx_obj_6joshua_12intervaltree_IntervalNode *)__pyx_t_5));
       __pyx_t_5 = 0;
       goto __pyx_L8;
     }
@@ -2022,16 +2022,16 @@ static struct __pyx_obj_12intervaltree_IntervalNode *__pyx_f_12intervaltree_12In
   }
   __pyx_L4:;
 
-  /* "intervaltree.pyx":136
+  /* "joshua/intervaltree.pyx":136
  *                 croot = self.rotate_right()
  * 
  *         croot.set_ends()             # <<<<<<<<<<<<<<
  *         self.cleft.croot  = croot
  *         self.cright.croot = croot
  */
-  __pyx_f_12intervaltree_12IntervalNode_set_ends(__pyx_v_croot);
+  __pyx_f_6joshua_12intervaltree_12IntervalNode_set_ends(__pyx_v_croot);
 
-  /* "intervaltree.pyx":137
+  /* "joshua/intervaltree.pyx":137
  * 
  *         croot.set_ends()
  *         self.cleft.croot  = croot             # <<<<<<<<<<<<<<
@@ -2044,7 +2044,7 @@ static struct __pyx_obj_12intervaltree_IntervalNode *__pyx_f_12intervaltree_12In
   __Pyx_DECREF(((PyObject *)__pyx_v_self->cleft->croot));
   __pyx_v_self->cleft->croot = __pyx_v_croot;
 
-  /* "intervaltree.pyx":138
+  /* "joshua/intervaltree.pyx":138
  *         croot.set_ends()
  *         self.cleft.croot  = croot
  *         self.cright.croot = croot             # <<<<<<<<<<<<<<
@@ -2057,7 +2057,7 @@ static struct __pyx_obj_12intervaltree_IntervalNode *__pyx_f_12intervaltree_12In
   __Pyx_DECREF(((PyObject *)__pyx_v_self->cright->croot));
   __pyx_v_self->cright->croot = __pyx_v_croot;
 
-  /* "intervaltree.pyx":139
+  /* "joshua/intervaltree.pyx":139
  *         self.cleft.croot  = croot
  *         self.cright.croot = croot
  *         return croot             # <<<<<<<<<<<<<<
@@ -2069,7 +2069,7 @@ static struct __pyx_obj_12intervaltree_IntervalNode *__pyx_f_12intervaltree_12In
   __pyx_r = __pyx_v_croot;
   goto __pyx_L0;
 
-  /* "intervaltree.pyx":104
+  /* "joshua/intervaltree.pyx":104
  *         self.croot    = EmptyNode
  * 
  *     cpdef IntervalNode insert(IntervalNode self, int start, int end, object interval):             # <<<<<<<<<<<<<<
@@ -2086,7 +2086,7 @@ static struct __pyx_obj_12intervaltree_IntervalNode *__pyx_f_12intervaltree_12In
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_6);
   __Pyx_XDECREF(__pyx_t_8);
-  __Pyx_AddTraceback("intervaltree.IntervalNode.insert", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("joshua.intervaltree.IntervalNode.insert", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XDECREF((PyObject *)__pyx_v_croot);
@@ -2096,9 +2096,9 @@ static struct __pyx_obj_12intervaltree_IntervalNode *__pyx_f_12intervaltree_12In
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_12intervaltree_12IntervalNode_5insert(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_12intervaltree_12IntervalNode_4insert[] = "\n        Insert a new IntervalNode into the tree of which this node is\n        currently the root. The return value is the new root of the tree (which\n        may or may not be this node!)\n        ";
-static PyObject *__pyx_pw_12intervaltree_12IntervalNode_5insert(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalNode_5insert(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_6joshua_12intervaltree_12IntervalNode_4insert[] = "\n        Insert a new IntervalNode into the tree of which this node is\n        currently the root. The return value is the new root of the tree (which\n        may or may not be this node!)\n        ";
+static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalNode_5insert(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   int __pyx_v_start;
   int __pyx_v_end;
   PyObject *__pyx_v_interval = 0;
@@ -2155,18 +2155,18 @@ static PyObject *__pyx_pw_12intervaltree_12IntervalNode_5insert(PyObject *__pyx_
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("insert", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 104; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
-  __Pyx_AddTraceback("intervaltree.IntervalNode.insert", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("joshua.intervaltree.IntervalNode.insert", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_12intervaltree_12IntervalNode_4insert(((struct __pyx_obj_12intervaltree_IntervalNode *)__pyx_v_self), __pyx_v_start, __pyx_v_end, __pyx_v_interval);
+  __pyx_r = __pyx_pf_6joshua_12intervaltree_12IntervalNode_4insert(((struct __pyx_obj_6joshua_12intervaltree_IntervalNode *)__pyx_v_self), __pyx_v_start, __pyx_v_end, __pyx_v_interval);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_12intervaltree_12IntervalNode_4insert(struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_self, int __pyx_v_start, int __pyx_v_end, PyObject *__pyx_v_interval) {
+static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalNode_4insert(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self, int __pyx_v_start, int __pyx_v_end, PyObject *__pyx_v_interval) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -2175,7 +2175,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalNode_4insert(struct __pyx_obj
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("insert", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = ((PyObject *)__pyx_f_12intervaltree_12IntervalNode_insert(__pyx_v_self, __pyx_v_start, __pyx_v_end, __pyx_v_interval, 1)); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 104; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = ((PyObject *)__pyx_f_6joshua_12intervaltree_12IntervalNode_insert(__pyx_v_self, __pyx_v_start, __pyx_v_end, __pyx_v_interval, 1)); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 104; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -2184,7 +2184,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalNode_4insert(struct __pyx_obj
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("intervaltree.IntervalNode.insert", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("joshua.intervaltree.IntervalNode.insert", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -2192,7 +2192,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalNode_4insert(struct __pyx_obj
   return __pyx_r;
 }
 
-/* "intervaltree.pyx":141
+/* "joshua/intervaltree.pyx":141
  *         return croot
  * 
  *     cdef IntervalNode rotate_right(IntervalNode self):             # <<<<<<<<<<<<<<
@@ -2200,14 +2200,14 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalNode_4insert(struct __pyx_obj
  *         self.cleft  = self.cleft.cright
  */
 
-static struct __pyx_obj_12intervaltree_IntervalNode *__pyx_f_12intervaltree_12IntervalNode_rotate_right(struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_self) {
-  struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_croot = 0;
-  struct __pyx_obj_12intervaltree_IntervalNode *__pyx_r = NULL;
+static struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_f_6joshua_12intervaltree_12IntervalNode_rotate_right(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self) {
+  struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_croot = 0;
+  struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("rotate_right", 0);
 
-  /* "intervaltree.pyx":142
+  /* "joshua/intervaltree.pyx":142
  * 
  *     cdef IntervalNode rotate_right(IntervalNode self):
  *         cdef IntervalNode croot = self.cleft             # <<<<<<<<<<<<<<
@@ -2216,10 +2216,10 @@ static struct __pyx_obj_12intervaltree_IntervalNode *__pyx_f_12intervaltree_12In
  */
   __pyx_t_1 = ((PyObject *)__pyx_v_self->cleft);
   __Pyx_INCREF(__pyx_t_1);
-  __pyx_v_croot = ((struct __pyx_obj_12intervaltree_IntervalNode *)__pyx_t_1);
+  __pyx_v_croot = ((struct __pyx_obj_6joshua_12intervaltree_IntervalNode *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "intervaltree.pyx":143
+  /* "joshua/intervaltree.pyx":143
  *     cdef IntervalNode rotate_right(IntervalNode self):
  *         cdef IntervalNode croot = self.cleft
  *         self.cleft  = self.cleft.cright             # <<<<<<<<<<<<<<
@@ -2231,10 +2231,10 @@ static struct __pyx_obj_12intervaltree_IntervalNode *__pyx_f_12intervaltree_12In
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v_self->cleft);
   __Pyx_DECREF(((PyObject *)__pyx_v_self->cleft));
-  __pyx_v_self->cleft = ((struct __pyx_obj_12intervaltree_IntervalNode *)__pyx_t_1);
+  __pyx_v_self->cleft = ((struct __pyx_obj_6joshua_12intervaltree_IntervalNode *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "intervaltree.pyx":144
+  /* "joshua/intervaltree.pyx":144
  *         cdef IntervalNode croot = self.cleft
  *         self.cleft  = self.cleft.cright
  *         croot.cright = self             # <<<<<<<<<<<<<<
@@ -2247,16 +2247,16 @@ static struct __pyx_obj_12intervaltree_IntervalNode *__pyx_f_12intervaltree_12In
   __Pyx_DECREF(((PyObject *)__pyx_v_croot->cright));
   __pyx_v_croot->cright = __pyx_v_self;
 
-  /* "intervaltree.pyx":145
+  /* "joshua/intervaltree.pyx":145
  *         self.cleft  = self.cleft.cright
  *         croot.cright = self
  *         self.set_ends()             # <<<<<<<<<<<<<<
  *         return croot
  * 
  */
-  __pyx_f_12intervaltree_12IntervalNode_set_ends(__pyx_v_self);
+  __pyx_f_6joshua_12intervaltree_12IntervalNode_set_ends(__pyx_v_self);
 
-  /* "intervaltree.pyx":146
+  /* "joshua/intervaltree.pyx":146
  *         croot.cright = self
  *         self.set_ends()
  *         return croot             # <<<<<<<<<<<<<<
@@ -2268,7 +2268,7 @@ static struct __pyx_obj_12intervaltree_IntervalNode *__pyx_f_12intervaltree_12In
   __pyx_r = __pyx_v_croot;
   goto __pyx_L0;
 
-  /* "intervaltree.pyx":141
+  /* "joshua/intervaltree.pyx":141
  *         return croot
  * 
  *     cdef IntervalNode rotate_right(IntervalNode self):             # <<<<<<<<<<<<<<
@@ -2284,7 +2284,7 @@ static struct __pyx_obj_12intervaltree_IntervalNode *__pyx_f_12intervaltree_12In
   return __pyx_r;
 }
 
-/* "intervaltree.pyx":148
+/* "joshua/intervaltree.pyx":148
  *         return croot
  * 
  *     cdef IntervalNode rotate_left(IntervalNode self):             # <<<<<<<<<<<<<<
@@ -2292,14 +2292,14 @@ static struct __pyx_obj_12intervaltree_IntervalNode *__pyx_f_12intervaltree_12In
  *         self.cright = self.cright.cleft
  */
 
-static struct __pyx_obj_12intervaltree_IntervalNode *__pyx_f_12intervaltree_12IntervalNode_rotate_left(struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_self) {
-  struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_croot = 0;
-  struct __pyx_obj_12intervaltree_IntervalNode *__pyx_r = NULL;
+static struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_f_6joshua_12intervaltree_12IntervalNode_rotate_left(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self) {
+  struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_croot = 0;
+  struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("rotate_left", 0);
 
-  /* "intervaltree.pyx":149
+  /* "joshua/intervaltree.pyx":149
  * 
  *     cdef IntervalNode rotate_left(IntervalNode self):
  *         cdef IntervalNode croot = self.cright             # <<<<<<<<<<<<<<
@@ -2308,10 +2308,10 @@ static struct __pyx_obj_12intervaltree_IntervalNode *__pyx_f_12intervaltree_12In
  */
   __pyx_t_1 = ((PyObject *)__pyx_v_self->cright);
   __Pyx_INCREF(__pyx_t_1);
-  __pyx_v_croot = ((struct __pyx_obj_12intervaltree_IntervalNode *)__pyx_t_1);
+  __pyx_v_croot = ((struct __pyx_obj_6joshua_12intervaltree_IntervalNode *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "intervaltree.pyx":150
+  /* "joshua/intervaltree.pyx":150
  *     cdef IntervalNode rotate_left(IntervalNode self):
  *         cdef IntervalNode croot = self.cright
  *         self.cright = self.cright.cleft             # <<<<<<<<<<<<<<
@@ -2323,10 +2323,10 @@ static struct __pyx_obj_12intervaltree_IntervalNode *__pyx_f_12intervaltree_12In
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v_self->cright);
   __Pyx_DECREF(((PyObject *)__pyx_v_self->cright));
-  __pyx_v_self->cright = ((struct __pyx_obj_12intervaltree_IntervalNode *)__pyx_t_1);
+  __pyx_v_self->cright = ((struct __pyx_obj_6joshua_12intervaltree_IntervalNode *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "intervaltree.pyx":151
+  /* "joshua/intervaltree.pyx":151
  *         cdef IntervalNode croot = self.cright
  *         self.cright = self.cright.cleft
  *         croot.cleft  = self             # <<<<<<<<<<<<<<
@@ -2339,16 +2339,16 @@ static struct __pyx_obj_12intervaltree_IntervalNode *__pyx_f_12intervaltree_12In
   __Pyx_DECREF(((PyObject *)__pyx_v_croot->cleft));
   __pyx_v_croot->cleft = __pyx_v_self;
 
-  /* "intervaltree.pyx":152
+  /* "joshua/intervaltree.pyx":152
  *         self.cright = self.cright.cleft
  *         croot.cleft  = self
  *         self.set_ends()             # <<<<<<<<<<<<<<
  *         return croot
  * 
  */
-  __pyx_f_12intervaltree_12IntervalNode_set_ends(__pyx_v_self);
+  __pyx_f_6joshua_12intervaltree_12IntervalNode_set_ends(__pyx_v_self);
 
-  /* "intervaltree.pyx":153
+  /* "joshua/intervaltree.pyx":153
  *         croot.cleft  = self
  *         self.set_ends()
  *         return croot             # <<<<<<<<<<<<<<
@@ -2360,7 +2360,7 @@ static struct __pyx_obj_12intervaltree_IntervalNode *__pyx_f_12intervaltree_12In
   __pyx_r = __pyx_v_croot;
   goto __pyx_L0;
 
-  /* "intervaltree.pyx":148
+  /* "joshua/intervaltree.pyx":148
  *         return croot
  * 
  *     cdef IntervalNode rotate_left(IntervalNode self):             # <<<<<<<<<<<<<<
@@ -2376,7 +2376,7 @@ static struct __pyx_obj_12intervaltree_IntervalNode *__pyx_f_12intervaltree_12In
   return __pyx_r;
 }
 
-/* "intervaltree.pyx":155
+/* "joshua/intervaltree.pyx":155
  *         return croot
  * 
  *     cdef inline void set_ends(IntervalNode self):             # <<<<<<<<<<<<<<
@@ -2384,144 +2384,144 @@ static struct __pyx_obj_12intervaltree_IntervalNode *__pyx_f_12intervaltree_12In
  *             self.maxend = imax3(self.end, self.cright.maxend, self.cleft.maxend)
  */
 
-static CYTHON_INLINE void __pyx_f_12intervaltree_12IntervalNode_set_ends(struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_self) {
+static CYTHON_INLINE void __pyx_f_6joshua_12intervaltree_12IntervalNode_set_ends(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self) {
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
   int __pyx_t_2;
   int __pyx_t_3;
   __Pyx_RefNannySetupContext("set_ends", 0);
 
-  /* "intervaltree.pyx":156
+  /* "joshua/intervaltree.pyx":156
  * 
  *     cdef inline void set_ends(IntervalNode self):
  *         if self.cright is not EmptyNode and self.cleft is not EmptyNode:             # <<<<<<<<<<<<<<
  *             self.maxend = imax3(self.end, self.cright.maxend, self.cleft.maxend)
  *             self.minend = imin3(self.end, self.cright.minend, self.cleft.minend)
  */
-  __pyx_t_2 = (__pyx_v_self->cright != __pyx_v_12intervaltree_EmptyNode);
+  __pyx_t_2 = (__pyx_v_self->cright != __pyx_v_6joshua_12intervaltree_EmptyNode);
   __pyx_t_3 = (__pyx_t_2 != 0);
   if (__pyx_t_3) {
   } else {
     __pyx_t_1 = __pyx_t_3;
     goto __pyx_L4_bool_binop_done;
   }
-  __pyx_t_3 = (__pyx_v_self->cleft != __pyx_v_12intervaltree_EmptyNode);
+  __pyx_t_3 = (__pyx_v_self->cleft != __pyx_v_6joshua_12intervaltree_EmptyNode);
   __pyx_t_2 = (__pyx_t_3 != 0);
   __pyx_t_1 = __pyx_t_2;
   __pyx_L4_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "intervaltree.pyx":157
+    /* "joshua/intervaltree.pyx":157
  *     cdef inline void set_ends(IntervalNode self):
  *         if self.cright is not EmptyNode and self.cleft is not EmptyNode:
  *             self.maxend = imax3(self.end, self.cright.maxend, self.cleft.maxend)             # <<<<<<<<<<<<<<
  *             self.minend = imin3(self.end, self.cright.minend, self.cleft.minend)
  *             self.minstart = imin3(self.start, self.cright.minstart, self.cleft.minstart)
  */
-    __pyx_v_self->maxend = __pyx_f_12intervaltree_imax3(__pyx_v_self->end, __pyx_v_self->cright->maxend, __pyx_v_self->cleft->maxend);
+    __pyx_v_self->maxend = __pyx_f_6joshua_12intervaltree_imax3(__pyx_v_self->end, __pyx_v_self->cright->maxend, __pyx_v_self->cleft->maxend);
 
-    /* "intervaltree.pyx":158
+    /* "joshua/intervaltree.pyx":158
  *         if self.cright is not EmptyNode and self.cleft is not EmptyNode:
  *             self.maxend = imax3(self.end, self.cright.maxend, self.cleft.maxend)
  *             self.minend = imin3(self.end, self.cright.minend, self.cleft.minend)             # <<<<<<<<<<<<<<
  *             self.minstart = imin3(self.start, self.cright.minstart, self.cleft.minstart)
  *         elif self.cright is not EmptyNode:
  */
-    __pyx_v_self->minend = __pyx_f_12intervaltree_imin3(__pyx_v_self->end, __pyx_v_self->cright->minend, __pyx_v_self->cleft->minend);
+    __pyx_v_self->minend = __pyx_f_6joshua_12intervaltree_imin3(__pyx_v_self->end, __pyx_v_self->cright->minend, __pyx_v_self->cleft->minend);
 
-    /* "intervaltree.pyx":159
+    /* "joshua/intervaltree.pyx":159
  *             self.maxend = imax3(self.end, self.cright.maxend, self.cleft.maxend)
  *             self.minend = imin3(self.end, self.cright.minend, self.cleft.minend)
  *             self.minstart = imin3(self.start, self.cright.minstart, self.cleft.minstart)             # <<<<<<<<<<<<<<
  *         elif self.cright is not EmptyNode:
  *             self.maxend = imax2(self.end, self.cright.maxend)
  */
-    __pyx_v_self->minstart = __pyx_f_12intervaltree_imin3(__pyx_v_self->start, __pyx_v_self->cright->minstart, __pyx_v_self->cleft->minstart);
+    __pyx_v_self->minstart = __pyx_f_6joshua_12intervaltree_imin3(__pyx_v_self->start, __pyx_v_self->cright->minstart, __pyx_v_self->cleft->minstart);
     goto __pyx_L3;
   }
 
-  /* "intervaltree.pyx":160
+  /* "joshua/intervaltree.pyx":160
  *             self.minend = imin3(self.end, self.cright.minend, self.cleft.minend)
  *             self.minstart = imin3(self.start, self.cright.minstart, self.cleft.minstart)
  *         elif self.cright is not EmptyNode:             # <<<<<<<<<<<<<<
  *             self.maxend = imax2(self.end, self.cright.maxend)
  *             self.minend = imin2(self.end, self.cright.minend)
  */
-  __pyx_t_1 = (__pyx_v_self->cright != __pyx_v_12intervaltree_EmptyNode);
+  __pyx_t_1 = (__pyx_v_self->cright != __pyx_v_6joshua_12intervaltree_EmptyNode);
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "intervaltree.pyx":161
+    /* "joshua/intervaltree.pyx":161
  *             self.minstart = imin3(self.start, self.cright.minstart, self.cleft.minstart)
  *         elif self.cright is not EmptyNode:
  *             self.maxend = imax2(self.end, self.cright.maxend)             # <<<<<<<<<<<<<<
  *             self.minend = imin2(self.end, self.cright.minend)
  *             self.minstart = imin2(self.start, self.cright.minstart)
  */
-    __pyx_v_self->maxend = __pyx_f_12intervaltree_imax2(__pyx_v_self->end, __pyx_v_self->cright->maxend);
+    __pyx_v_self->maxend = __pyx_f_6joshua_12intervaltree_imax2(__pyx_v_self->end, __pyx_v_self->cright->maxend);
 
-    /* "intervaltree.pyx":162
+    /* "joshua/intervaltree.pyx":162
  *         elif self.cright is not EmptyNode:
  *             self.maxend = imax2(self.end, self.cright.maxend)
  *             self.minend = imin2(self.end, self.cright.minend)             # <<<<<<<<<<<<<<
  *             self.minstart = imin2(self.start, self.cright.minstart)
  *         elif self.cleft is not EmptyNode:
  */
-    __pyx_v_self->minend = __pyx_f_12intervaltree_imin2(__pyx_v_self->end, __pyx_v_self->cright->minend);
+    __pyx_v_self->minend = __pyx_f_6joshua_12intervaltree_imin2(__pyx_v_self->end, __pyx_v_self->cright->minend);
 
-    /* "intervaltree.pyx":163
+    /* "joshua/intervaltree.pyx":163
  *             self.maxend = imax2(self.end, self.cright.maxend)
  *             self.minend = imin2(self.end, self.cright.minend)
  *             self.minstart = imin2(self.start, self.cright.minstart)             # <<<<<<<<<<<<<<
  *         elif self.cleft is not EmptyNode:
  *             self.maxend = imax2(self.end, self.cleft.maxend)
  */
-    __pyx_v_self->minstart = __pyx_f_12intervaltree_imin2(__pyx_v_self->start, __pyx_v_self->cright->minstart);
+    __pyx_v_self->minstart = __pyx_f_6joshua_12intervaltree_imin2(__pyx_v_self->start, __pyx_v_self->cright->minstart);
     goto __pyx_L3;
   }
 
-  /* "intervaltree.pyx":164
+  /* "joshua/intervaltree.pyx":164
  *             self.minend = imin2(self.end, self.cright.minend)
  *             self.minstart = imin2(self.start, self.cright.minstart)
  *         elif self.cleft is not EmptyNode:             # <<<<<<<<<<<<<<
  *             self.maxend = imax2(self.end, self.cleft.maxend)
  *             self.minend = imin2(self.end, self.cleft.minend)
  */
-  __pyx_t_2 = (__pyx_v_self->cleft != __pyx_v_12intervaltree_EmptyNode);
+  __pyx_t_2 = (__pyx_v_self->cleft != __pyx_v_6joshua_12intervaltree_EmptyNode);
   __pyx_t_1 = (__pyx_t_2 != 0);
   if (__pyx_t_1) {
 
-    /* "intervaltree.pyx":165
+    /* "joshua/intervaltree.pyx":165
  *             self.minstart = imin2(self.start, self.cright.minstart)
  *         elif self.cleft is not EmptyNode:
  *             self.maxend = imax2(self.end, self.cleft.maxend)             # <<<<<<<<<<<<<<
  *             self.minend = imin2(self.end, self.cleft.minend)
  *             self.minstart = imin2(self.start, self.cleft.minstart)
  */
-    __pyx_v_self->maxend = __pyx_f_12intervaltree_imax2(__pyx_v_self->end, __pyx_v_self->cleft->maxend);
+    __pyx_v_self->maxend = __pyx_f_6joshua_12intervaltree_imax2(__pyx_v_self->end, __pyx_v_self->cleft->maxend);
 
-    /* "intervaltree.pyx":166
+    /* "joshua/intervaltree.pyx":166
  *         elif self.cleft is not EmptyNode:
  *             self.maxend = imax2(self.end, self.cleft.maxend)
  *             self.minend = imin2(self.end, self.cleft.minend)             # <<<<<<<<<<<<<<
  *             self.minstart = imin2(self.start, self.cleft.minstart)
  * 
  */
-    __pyx_v_self->minend = __pyx_f_12intervaltree_imin2(__pyx_v_self->end, __pyx_v_self->cleft->minend);
+    __pyx_v_self->minend = __pyx_f_6joshua_12intervaltree_imin2(__pyx_v_self->end, __pyx_v_self->cleft->minend);
 
-    /* "intervaltree.pyx":167
+    /* "joshua/intervaltree.pyx":167
  *             self.maxend = imax2(self.end, self.cleft.maxend)
  *             self.minend = imin2(self.end, self.cleft.minend)
  *             self.minstart = imin2(self.start, self.cleft.minstart)             # <<<<<<<<<<<<<<
  * 
  * 
  */
-    __pyx_v_self->minstart = __pyx_f_12intervaltree_imin2(__pyx_v_self->start, __pyx_v_self->cleft->minstart);
+    __pyx_v_self->minstart = __pyx_f_6joshua_12intervaltree_imin2(__pyx_v_self->start, __pyx_v_self->cleft->minstart);
     goto __pyx_L3;
   }
   __pyx_L3:;
 
-  /* "intervaltree.pyx":155
+  /* "joshua/intervaltree.pyx":155
  *         return croot
  * 
  *     cdef inline void set_ends(IntervalNode self):             # <<<<<<<<<<<<<<
@@ -2533,7 +2533,7 @@ static CYTHON_INLINE void __pyx_f_12intervaltree_12IntervalNode_set_ends(struct 
   __Pyx_RefNannyFinishContext();
 }
 
-/* "intervaltree.pyx":170
+/* "joshua/intervaltree.pyx":170
  * 
  * 
  *     def intersect( self, int start, int end, sort=True ):             # <<<<<<<<<<<<<<
@@ -2542,9 +2542,9 @@ static CYTHON_INLINE void __pyx_f_12intervaltree_12IntervalNode_set_ends(struct 
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_12intervaltree_12IntervalNode_7intersect(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_12intervaltree_12IntervalNode_6intersect[] = "\n        given a start and a end, return a list of features\n        falling within that range\n        ";
-static PyObject *__pyx_pw_12intervaltree_12IntervalNode_7intersect(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalNode_7intersect(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_6joshua_12intervaltree_12IntervalNode_6intersect[] = "\n        given a start and a end, return a list of features\n        falling within that range\n        ";
+static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalNode_7intersect(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   int __pyx_v_start;
   int __pyx_v_end;
   CYTHON_UNUSED PyObject *__pyx_v_sort = 0;
@@ -2604,18 +2604,18 @@ static PyObject *__pyx_pw_12intervaltree_12IntervalNode_7intersect(PyObject *__p
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("intersect", 0, 2, 3, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 170; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
-  __Pyx_AddTraceback("intervaltree.IntervalNode.intersect", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("joshua.intervaltree.IntervalNode.intersect", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_12intervaltree_12IntervalNode_6intersect(((struct __pyx_obj_12intervaltree_IntervalNode *)__pyx_v_self), __pyx_v_start, __pyx_v_end, __pyx_v_sort);
+  __pyx_r = __pyx_pf_6joshua_12intervaltree_12IntervalNode_6intersect(((struct __pyx_obj_6joshua_12intervaltree_IntervalNode *)__pyx_v_self), __pyx_v_start, __pyx_v_end, __pyx_v_sort);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_12intervaltree_12IntervalNode_6intersect(struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_self, int __pyx_v_start, int __pyx_v_end, CYTHON_UNUSED PyObject *__pyx_v_sort) {
+static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalNode_6intersect(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self, int __pyx_v_start, int __pyx_v_end, CYTHON_UNUSED PyObject *__pyx_v_sort) {
   PyObject *__pyx_v_results = 0;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -2625,7 +2625,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalNode_6intersect(struct __pyx_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("intersect", 0);
 
-  /* "intervaltree.pyx":175
+  /* "joshua/intervaltree.pyx":175
  *         falling within that range
  *         """
  *         cdef list results = []             # <<<<<<<<<<<<<<
@@ -2637,16 +2637,16 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalNode_6intersect(struct __pyx_
   __pyx_v_results = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "intervaltree.pyx":176
+  /* "joshua/intervaltree.pyx":176
  *         """
  *         cdef list results = []
  *         self._intersect( start, end, results )             # <<<<<<<<<<<<<<
  *         return results
  * 
  */
-  ((struct __pyx_vtabstruct_12intervaltree_IntervalNode *)__pyx_v_self->__pyx_vtab)->_intersect(__pyx_v_self, __pyx_v_start, __pyx_v_end, __pyx_v_results);
+  ((struct __pyx_vtabstruct_6joshua_12intervaltree_IntervalNode *)__pyx_v_self->__pyx_vtab)->_intersect(__pyx_v_self, __pyx_v_start, __pyx_v_end, __pyx_v_results);
 
-  /* "intervaltree.pyx":177
+  /* "joshua/intervaltree.pyx":177
  *         cdef list results = []
  *         self._intersect( start, end, results )
  *         return results             # <<<<<<<<<<<<<<
@@ -2658,7 +2658,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalNode_6intersect(struct __pyx_
   __pyx_r = __pyx_v_results;
   goto __pyx_L0;
 
-  /* "intervaltree.pyx":170
+  /* "joshua/intervaltree.pyx":170
  * 
  * 
  *     def intersect( self, int start, int end, sort=True ):             # <<<<<<<<<<<<<<
@@ -2669,7 +2669,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalNode_6intersect(struct __pyx_
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("intervaltree.IntervalNode.intersect", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("joshua.intervaltree.IntervalNode.intersect", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_results);
@@ -2678,7 +2678,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalNode_6intersect(struct __pyx_
   return __pyx_r;
 }
 
-/* "intervaltree.pyx":181
+/* "joshua/intervaltree.pyx":181
  *     find = intersect
  * 
  *     cdef void _intersect( IntervalNode self, int start, int end, list results):             # <<<<<<<<<<<<<<
@@ -2686,7 +2686,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalNode_6intersect(struct __pyx_
  *         if self.cleft is not EmptyNode and self.cleft.maxend > start:
  */
 
-static void __pyx_f_12intervaltree_12IntervalNode__intersect(struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_self, int __pyx_v_start, int __pyx_v_end, PyObject *__pyx_v_results) {
+static void __pyx_f_6joshua_12intervaltree_12IntervalNode__intersect(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self, int __pyx_v_start, int __pyx_v_end, PyObject *__pyx_v_results) {
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
   int __pyx_t_2;
@@ -2698,14 +2698,14 @@ static void __pyx_f_12intervaltree_12IntervalNode__intersect(struct __pyx_obj_12
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_intersect", 0);
 
-  /* "intervaltree.pyx":183
+  /* "joshua/intervaltree.pyx":183
  *     cdef void _intersect( IntervalNode self, int start, int end, list results):
  *         # Left subtree
  *         if self.cleft is not EmptyNode and self.cleft.maxend > start:             # <<<<<<<<<<<<<<
  *             self.cleft._intersect( start, end, results )
  *         # This interval
  */
-  __pyx_t_2 = (__pyx_v_self->cleft != __pyx_v_12intervaltree_EmptyNode);
+  __pyx_t_2 = (__pyx_v_self->cleft != __pyx_v_6joshua_12intervaltree_EmptyNode);
   __pyx_t_3 = (__pyx_t_2 != 0);
   if (__pyx_t_3) {
   } else {
@@ -2717,19 +2717,19 @@ static void __pyx_f_12intervaltree_12IntervalNode__intersect(struct __pyx_obj_12
   __pyx_L4_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "intervaltree.pyx":184
+    /* "joshua/intervaltree.pyx":184
  *         # Left subtree
  *         if self.cleft is not EmptyNode and self.cleft.maxend > start:
  *             self.cleft._intersect( start, end, results )             # <<<<<<<<<<<<<<
  *         # This interval
  *         if ( self.end > start ) and ( self.start < end ):
  */
-    ((struct __pyx_vtabstruct_12intervaltree_IntervalNode *)__pyx_v_self->cleft->__pyx_vtab)->_intersect(__pyx_v_self->cleft, __pyx_v_start, __pyx_v_end, __pyx_v_results);
+    ((struct __pyx_vtabstruct_6joshua_12intervaltree_IntervalNode *)__pyx_v_self->cleft->__pyx_vtab)->_intersect(__pyx_v_self->cleft, __pyx_v_start, __pyx_v_end, __pyx_v_results);
     goto __pyx_L3;
   }
   __pyx_L3:;
 
-  /* "intervaltree.pyx":186
+  /* "joshua/intervaltree.pyx":186
  *             self.cleft._intersect( start, end, results )
  *         # This interval
  *         if ( self.end > start ) and ( self.start < end ):             # <<<<<<<<<<<<<<
@@ -2747,7 +2747,7 @@ static void __pyx_f_12intervaltree_12IntervalNode__intersect(struct __pyx_obj_12
   __pyx_L7_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "intervaltree.pyx":187
+    /* "joshua/intervaltree.pyx":187
  *         # This interval
  *         if ( self.end > start ) and ( self.start < end ):
  *             results.append( self.interval )             # <<<<<<<<<<<<<<
@@ -2766,14 +2766,14 @@ static void __pyx_f_12intervaltree_12IntervalNode__intersect(struct __pyx_obj_12
   }
   __pyx_L6:;
 
-  /* "intervaltree.pyx":189
+  /* "joshua/intervaltree.pyx":189
  *             results.append( self.interval )
  *         # Right subtree
  *         if self.cright is not EmptyNode and self.start < end:             # <<<<<<<<<<<<<<
  *             self.cright._intersect( start, end, results )
  * 
  */
-  __pyx_t_3 = (__pyx_v_self->cright != __pyx_v_12intervaltree_EmptyNode);
+  __pyx_t_3 = (__pyx_v_self->cright != __pyx_v_6joshua_12intervaltree_EmptyNode);
   __pyx_t_2 = (__pyx_t_3 != 0);
   if (__pyx_t_2) {
   } else {
@@ -2785,19 +2785,19 @@ static void __pyx_f_12intervaltree_12IntervalNode__intersect(struct __pyx_obj_12
   __pyx_L10_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "intervaltree.pyx":190
+    /* "joshua/intervaltree.pyx":190
  *         # Right subtree
  *         if self.cright is not EmptyNode and self.start < end:
  *             self.cright._intersect( start, end, results )             # <<<<<<<<<<<<<<
  * 
  * 
  */
-    ((struct __pyx_vtabstruct_12intervaltree_IntervalNode *)__pyx_v_self->cright->__pyx_vtab)->_intersect(__pyx_v_self->cright, __pyx_v_start, __pyx_v_end, __pyx_v_results);
+    ((struct __pyx_vtabstruct_6joshua_12intervaltree_IntervalNode *)__pyx_v_self->cright->__pyx_vtab)->_intersect(__pyx_v_self->cright, __pyx_v_start, __pyx_v_end, __pyx_v_results);
     goto __pyx_L9;
   }
   __pyx_L9:;
 
-  /* "intervaltree.pyx":181
+  /* "joshua/intervaltree.pyx":181
  *     find = intersect
  * 
  *     cdef void _intersect( IntervalNode self, int start, int end, list results):             # <<<<<<<<<<<<<<
@@ -2809,12 +2809,12 @@ static void __pyx_f_12intervaltree_12IntervalNode__intersect(struct __pyx_obj_12
   goto __pyx_L0;
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_WriteUnraisable("intervaltree.IntervalNode._intersect", __pyx_clineno, __pyx_lineno, __pyx_filename, 0);
+  __Pyx_WriteUnraisable("joshua.intervaltree.IntervalNode._intersect", __pyx_clineno, __pyx_lineno, __pyx_filename, 0);
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
 }
 
-/* "intervaltree.pyx":193
+/* "joshua/intervaltree.pyx":193
  * 
  * 
  *     cdef void _seek_left(IntervalNode self, int position, list results, int n, int max_dist):             # <<<<<<<<<<<<<<
@@ -2822,7 +2822,7 @@ static void __pyx_f_12intervaltree_12IntervalNode__intersect(struct __pyx_obj_12
  *         if self.maxend + max_dist < position:
  */
 
-static void __pyx_f_12intervaltree_12IntervalNode__seek_left(struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_self, int __pyx_v_position, PyObject *__pyx_v_results, int __pyx_v_n, int __pyx_v_max_dist) {
+static void __pyx_f_6joshua_12intervaltree_12IntervalNode__seek_left(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self, int __pyx_v_position, PyObject *__pyx_v_results, int __pyx_v_n, int __pyx_v_max_dist) {
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
   int __pyx_t_2;
@@ -2834,7 +2834,7 @@ static void __pyx_f_12intervaltree_12IntervalNode__seek_left(struct __pyx_obj_12
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_seek_left", 0);
 
-  /* "intervaltree.pyx":195
+  /* "joshua/intervaltree.pyx":195
  *     cdef void _seek_left(IntervalNode self, int position, list results, int n, int max_dist):
  *         # we know we can bail in these 2 cases.
  *         if self.maxend + max_dist < position:             # <<<<<<<<<<<<<<
@@ -2844,7 +2844,7 @@ static void __pyx_f_12intervaltree_12IntervalNode__seek_left(struct __pyx_obj_12
   __pyx_t_1 = (((__pyx_v_self->maxend + __pyx_v_max_dist) < __pyx_v_position) != 0);
   if (__pyx_t_1) {
 
-    /* "intervaltree.pyx":196
+    /* "joshua/intervaltree.pyx":196
  *         # we know we can bail in these 2 cases.
  *         if self.maxend + max_dist < position:
  *             return             # <<<<<<<<<<<<<<
@@ -2854,7 +2854,7 @@ static void __pyx_f_12intervaltree_12IntervalNode__seek_left(struct __pyx_obj_12
     goto __pyx_L0;
   }
 
-  /* "intervaltree.pyx":197
+  /* "joshua/intervaltree.pyx":197
  *         if self.maxend + max_dist < position:
  *             return
  *         if self.minstart > position:             # <<<<<<<<<<<<<<
@@ -2864,7 +2864,7 @@ static void __pyx_f_12intervaltree_12IntervalNode__seek_left(struct __pyx_obj_12
   __pyx_t_1 = ((__pyx_v_self->minstart > __pyx_v_position) != 0);
   if (__pyx_t_1) {
 
-    /* "intervaltree.pyx":198
+    /* "joshua/intervaltree.pyx":198
  *             return
  *         if self.minstart > position:
  *             return             # <<<<<<<<<<<<<<
@@ -2874,30 +2874,30 @@ static void __pyx_f_12intervaltree_12IntervalNode__seek_left(struct __pyx_obj_12
     goto __pyx_L0;
   }
 
-  /* "intervaltree.pyx":202
+  /* "joshua/intervaltree.pyx":202
  *         # the ordering of these 3 blocks makes it so the results are
  *         # ordered nearest to farest from the query position
  *         if self.cright is not EmptyNode:             # <<<<<<<<<<<<<<
  *             self.cright._seek_left(position, results, n, max_dist)
  * 
  */
-  __pyx_t_1 = (__pyx_v_self->cright != __pyx_v_12intervaltree_EmptyNode);
+  __pyx_t_1 = (__pyx_v_self->cright != __pyx_v_6joshua_12intervaltree_EmptyNode);
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "intervaltree.pyx":203
+    /* "joshua/intervaltree.pyx":203
  *         # ordered nearest to farest from the query position
  *         if self.cright is not EmptyNode:
  *             self.cright._seek_left(position, results, n, max_dist)             # <<<<<<<<<<<<<<
  * 
  *         if -1 < position - self.end < max_dist:
  */
-    ((struct __pyx_vtabstruct_12intervaltree_IntervalNode *)__pyx_v_self->cright->__pyx_vtab)->_seek_left(__pyx_v_self->cright, __pyx_v_position, __pyx_v_results, __pyx_v_n, __pyx_v_max_dist);
+    ((struct __pyx_vtabstruct_6joshua_12intervaltree_IntervalNode *)__pyx_v_self->cright->__pyx_vtab)->_seek_left(__pyx_v_self->cright, __pyx_v_position, __pyx_v_results, __pyx_v_n, __pyx_v_max_dist);
     goto __pyx_L5;
   }
   __pyx_L5:;
 
-  /* "intervaltree.pyx":205
+  /* "joshua/intervaltree.pyx":205
  *             self.cright._seek_left(position, results, n, max_dist)
  * 
  *         if -1 < position - self.end < max_dist:             # <<<<<<<<<<<<<<
@@ -2912,7 +2912,7 @@ static void __pyx_f_12intervaltree_12IntervalNode__seek_left(struct __pyx_obj_12
   __pyx_t_1 = (__pyx_t_2 != 0);
   if (__pyx_t_1) {
 
-    /* "intervaltree.pyx":206
+    /* "joshua/intervaltree.pyx":206
  * 
  *         if -1 < position - self.end < max_dist:
  *             results.append(self.interval)             # <<<<<<<<<<<<<<
@@ -2931,30 +2931,30 @@ static void __pyx_f_12intervaltree_12IntervalNode__seek_left(struct __pyx_obj_12
   }
   __pyx_L6:;
 
-  /* "intervaltree.pyx":209
+  /* "joshua/intervaltree.pyx":209
  * 
  *         # TODO: can these conditionals be more stringent?
  *         if self.cleft is not EmptyNode:             # <<<<<<<<<<<<<<
  *                 self.cleft._seek_left(position, results, n, max_dist)
  * 
  */
-  __pyx_t_1 = (__pyx_v_self->cleft != __pyx_v_12intervaltree_EmptyNode);
+  __pyx_t_1 = (__pyx_v_self->cleft != __pyx_v_6joshua_12intervaltree_EmptyNode);
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "intervaltree.pyx":210
+    /* "joshua/intervaltree.pyx":210
  *         # TODO: can these conditionals be more stringent?
  *         if self.cleft is not EmptyNode:
  *                 self.cleft._seek_left(position, results, n, max_dist)             # <<<<<<<<<<<<<<
  * 
  * 
  */
-    ((struct __pyx_vtabstruct_12intervaltree_IntervalNode *)__pyx_v_self->cleft->__pyx_vtab)->_seek_left(__pyx_v_self->cleft, __pyx_v_position, __pyx_v_results, __pyx_v_n, __pyx_v_max_dist);
+    ((struct __pyx_vtabstruct_6joshua_12intervaltree_IntervalNode *)__pyx_v_self->cleft->__pyx_vtab)->_seek_left(__pyx_v_self->cleft, __pyx_v_position, __pyx_v_results, __pyx_v_n, __pyx_v_max_dist);
     goto __pyx_L7;
   }
   __pyx_L7:;
 
-  /* "intervaltree.pyx":193
+  /* "joshua/intervaltree.pyx":193
  * 
  * 
  *     cdef void _seek_left(IntervalNode self, int position, list results, int n, int max_dist):             # <<<<<<<<<<<<<<
@@ -2966,12 +2966,12 @@ static void __pyx_f_12intervaltree_12IntervalNode__seek_left(struct __pyx_obj_12
   goto __pyx_L0;
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_WriteUnraisable("intervaltree.IntervalNode._seek_left", __pyx_clineno, __pyx_lineno, __pyx_filename, 0);
+  __Pyx_WriteUnraisable("joshua.intervaltree.IntervalNode._seek_left", __pyx_clineno, __pyx_lineno, __pyx_filename, 0);
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
 }
 
-/* "intervaltree.pyx":213
+/* "joshua/intervaltree.pyx":213
  * 
  * 
  *     cdef void _seek_right(IntervalNode self, int position, list results, int n, int max_dist):             # <<<<<<<<<<<<<<
@@ -2979,7 +2979,7 @@ static void __pyx_f_12intervaltree_12IntervalNode__seek_left(struct __pyx_obj_12
  *         if self.maxend < position: return
  */
 
-static void __pyx_f_12intervaltree_12IntervalNode__seek_right(struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_self, int __pyx_v_position, PyObject *__pyx_v_results, int __pyx_v_n, int __pyx_v_max_dist) {
+static void __pyx_f_6joshua_12intervaltree_12IntervalNode__seek_right(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self, int __pyx_v_position, PyObject *__pyx_v_results, int __pyx_v_n, int __pyx_v_max_dist) {
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
   int __pyx_t_2;
@@ -2991,7 +2991,7 @@ static void __pyx_f_12intervaltree_12IntervalNode__seek_right(struct __pyx_obj_1
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_seek_right", 0);
 
-  /* "intervaltree.pyx":215
+  /* "joshua/intervaltree.pyx":215
  *     cdef void _seek_right(IntervalNode self, int position, list results, int n, int max_dist):
  *         # we know we can bail in these 2 cases.
  *         if self.maxend < position: return             # <<<<<<<<<<<<<<
@@ -3003,7 +3003,7 @@ static void __pyx_f_12intervaltree_12IntervalNode__seek_right(struct __pyx_obj_1
     goto __pyx_L0;
   }
 
-  /* "intervaltree.pyx":216
+  /* "joshua/intervaltree.pyx":216
  *         # we know we can bail in these 2 cases.
  *         if self.maxend < position: return
  *         if self.minstart - max_dist > position: return             # <<<<<<<<<<<<<<
@@ -3015,30 +3015,30 @@ static void __pyx_f_12intervaltree_12IntervalNode__seek_right(struct __pyx_obj_1
     goto __pyx_L0;
   }
 
-  /* "intervaltree.pyx":222
+  /* "joshua/intervaltree.pyx":222
  *         # the ordering of these 3 blocks makes it so the results are
  *         # ordered nearest to farest from the query position
  *         if self.cleft is not EmptyNode:             # <<<<<<<<<<<<<<
  *                 self.cleft._seek_right(position, results, n, max_dist)
  * 
  */
-  __pyx_t_1 = (__pyx_v_self->cleft != __pyx_v_12intervaltree_EmptyNode);
+  __pyx_t_1 = (__pyx_v_self->cleft != __pyx_v_6joshua_12intervaltree_EmptyNode);
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "intervaltree.pyx":223
+    /* "joshua/intervaltree.pyx":223
  *         # ordered nearest to farest from the query position
  *         if self.cleft is not EmptyNode:
  *                 self.cleft._seek_right(position, results, n, max_dist)             # <<<<<<<<<<<<<<
  * 
  *         if -1 < self.start - position < max_dist:
  */
-    ((struct __pyx_vtabstruct_12intervaltree_IntervalNode *)__pyx_v_self->cleft->__pyx_vtab)->_seek_right(__pyx_v_self->cleft, __pyx_v_position, __pyx_v_results, __pyx_v_n, __pyx_v_max_dist);
+    ((struct __pyx_vtabstruct_6joshua_12intervaltree_IntervalNode *)__pyx_v_self->cleft->__pyx_vtab)->_seek_right(__pyx_v_self->cleft, __pyx_v_position, __pyx_v_results, __pyx_v_n, __pyx_v_max_dist);
     goto __pyx_L5;
   }
   __pyx_L5:;
 
-  /* "intervaltree.pyx":225
+  /* "joshua/intervaltree.pyx":225
  *                 self.cleft._seek_right(position, results, n, max_dist)
  * 
  *         if -1 < self.start - position < max_dist:             # <<<<<<<<<<<<<<
@@ -3053,7 +3053,7 @@ static void __pyx_f_12intervaltree_12IntervalNode__seek_right(struct __pyx_obj_1
   __pyx_t_1 = (__pyx_t_2 != 0);
   if (__pyx_t_1) {
 
-    /* "intervaltree.pyx":226
+    /* "joshua/intervaltree.pyx":226
  * 
  *         if -1 < self.start - position < max_dist:
  *             results.append(self.interval)             # <<<<<<<<<<<<<<
@@ -3072,30 +3072,30 @@ static void __pyx_f_12intervaltree_12IntervalNode__seek_right(struct __pyx_obj_1
   }
   __pyx_L6:;
 
-  /* "intervaltree.pyx":228
+  /* "joshua/intervaltree.pyx":228
  *             results.append(self.interval)
  * 
  *         if self.cright is not EmptyNode:             # <<<<<<<<<<<<<<
  *                 self.cright._seek_right(position, results, n, max_dist)
  * 
  */
-  __pyx_t_1 = (__pyx_v_self->cright != __pyx_v_12intervaltree_EmptyNode);
+  __pyx_t_1 = (__pyx_v_self->cright != __pyx_v_6joshua_12intervaltree_EmptyNode);
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "intervaltree.pyx":229
+    /* "joshua/intervaltree.pyx":229
  * 
  *         if self.cright is not EmptyNode:
  *                 self.cright._seek_right(position, results, n, max_dist)             # <<<<<<<<<<<<<<
  * 
  * 
  */
-    ((struct __pyx_vtabstruct_12intervaltree_IntervalNode *)__pyx_v_self->cright->__pyx_vtab)->_seek_right(__pyx_v_self->cright, __pyx_v_position, __pyx_v_results, __pyx_v_n, __pyx_v_max_dist);
+    ((struct __pyx_vtabstruct_6joshua_12intervaltree_IntervalNode *)__pyx_v_self->cright->__pyx_vtab)->_seek_right(__pyx_v_self->cright, __pyx_v_position, __pyx_v_results, __pyx_v_n, __pyx_v_max_dist);
     goto __pyx_L7;
   }
   __pyx_L7:;
 
-  /* "intervaltree.pyx":213
+  /* "joshua/intervaltree.pyx":213
  * 
  * 
  *     cdef void _seek_right(IntervalNode self, int position, list results, int n, int max_dist):             # <<<<<<<<<<<<<<
@@ -3107,12 +3107,12 @@ static void __pyx_f_12intervaltree_12IntervalNode__seek_right(struct __pyx_obj_1
   goto __pyx_L0;
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_WriteUnraisable("intervaltree.IntervalNode._seek_right", __pyx_clineno, __pyx_lineno, __pyx_filename, 0);
+  __Pyx_WriteUnraisable("joshua.intervaltree.IntervalNode._seek_right", __pyx_clineno, __pyx_lineno, __pyx_filename, 0);
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
 }
 
-/* "intervaltree.pyx":232
+/* "joshua/intervaltree.pyx":232
  * 
  * 
  *     cpdef left(self, position, int n=1, int max_dist=2500):             # <<<<<<<<<<<<<<
@@ -3120,8 +3120,8 @@ static void __pyx_f_12intervaltree_12IntervalNode__seek_right(struct __pyx_obj_1
  *         find n features with a start > than `position`
  */
 
-static PyObject *__pyx_pw_12intervaltree_12IntervalNode_9left(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_f_12intervaltree_12IntervalNode_left(struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_self, PyObject *__pyx_v_position, int __pyx_skip_dispatch, struct __pyx_opt_args_12intervaltree_12IntervalNode_left *__pyx_optional_args) {
+static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalNode_9left(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_f_6joshua_12intervaltree_12IntervalNode_left(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self, PyObject *__pyx_v_position, int __pyx_skip_dispatch, struct __pyx_opt_args_6joshua_12intervaltree_12IntervalNode_left *__pyx_optional_args) {
   int __pyx_v_n = ((int)1);
   int __pyx_v_max_dist = ((int)2500);
   PyObject *__pyx_v_results = 0;
@@ -3156,7 +3156,7 @@ static PyObject *__pyx_f_12intervaltree_12IntervalNode_left(struct __pyx_obj_12i
   else if (unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0)) {
     __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_left); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 232; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
-    if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)__pyx_pw_12intervaltree_12IntervalNode_9left)) {
+    if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)__pyx_pw_6joshua_12intervaltree_12IntervalNode_9left)) {
       __Pyx_XDECREF(__pyx_r);
       __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_n); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 232; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_3);
@@ -3201,7 +3201,7 @@ static PyObject *__pyx_f_12intervaltree_12IntervalNode_left(struct __pyx_obj_12i
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
 
-  /* "intervaltree.pyx":239
+  /* "joshua/intervaltree.pyx":239
  *         max_dist: the maximum distance to look before giving up.
  *         """
  *         cdef list results = []             # <<<<<<<<<<<<<<
@@ -3213,7 +3213,7 @@ static PyObject *__pyx_f_12intervaltree_12IntervalNode_left(struct __pyx_obj_12i
   __pyx_v_results = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "intervaltree.pyx":241
+  /* "joshua/intervaltree.pyx":241
  *         cdef list results = []
  *         # use start - 1 becuase .left() assumes strictly left-of
  *         self._seek_left( position - 1, results, n, max_dist )             # <<<<<<<<<<<<<<
@@ -3224,9 +3224,9 @@ static PyObject *__pyx_f_12intervaltree_12IntervalNode_left(struct __pyx_obj_12i
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_9 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_9 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 241; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  ((struct __pyx_vtabstruct_12intervaltree_IntervalNode *)__pyx_v_self->__pyx_vtab)->_seek_left(__pyx_v_self, __pyx_t_9, __pyx_v_results, __pyx_v_n, __pyx_v_max_dist);
+  ((struct __pyx_vtabstruct_6joshua_12intervaltree_IntervalNode *)__pyx_v_self->__pyx_vtab)->_seek_left(__pyx_v_self, __pyx_t_9, __pyx_v_results, __pyx_v_n, __pyx_v_max_dist);
 
-  /* "intervaltree.pyx":242
+  /* "joshua/intervaltree.pyx":242
  *         # use start - 1 becuase .left() assumes strictly left-of
  *         self._seek_left( position - 1, results, n, max_dist )
  *         if len(results) == n: return results             # <<<<<<<<<<<<<<
@@ -3242,7 +3242,7 @@ static PyObject *__pyx_f_12intervaltree_12IntervalNode_left(struct __pyx_obj_12i
     goto __pyx_L0;
   }
 
-  /* "intervaltree.pyx":243
+  /* "joshua/intervaltree.pyx":243
  *         self._seek_left( position - 1, results, n, max_dist )
  *         if len(results) == n: return results
  *         r = results             # <<<<<<<<<<<<<<
@@ -3252,7 +3252,7 @@ static PyObject *__pyx_f_12intervaltree_12IntervalNode_left(struct __pyx_obj_12i
   __Pyx_INCREF(__pyx_v_results);
   __pyx_v_r = __pyx_v_results;
 
-  /* "intervaltree.pyx":244
+  /* "joshua/intervaltree.pyx":244
  *         if len(results) == n: return results
  *         r = results
  *         r.sort(key=operator.attrgetter('end'), reverse=True)             # <<<<<<<<<<<<<<
@@ -3280,7 +3280,7 @@ static PyObject *__pyx_f_12intervaltree_12IntervalNode_left(struct __pyx_obj_12i
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "intervaltree.pyx":245
+  /* "joshua/intervaltree.pyx":245
  *         r = results
  *         r.sort(key=operator.attrgetter('end'), reverse=True)
  *         return r[:n]             # <<<<<<<<<<<<<<
@@ -3294,7 +3294,7 @@ static PyObject *__pyx_f_12intervaltree_12IntervalNode_left(struct __pyx_obj_12i
   __pyx_t_5 = 0;
   goto __pyx_L0;
 
-  /* "intervaltree.pyx":232
+  /* "joshua/intervaltree.pyx":232
  * 
  * 
  *     cpdef left(self, position, int n=1, int max_dist=2500):             # <<<<<<<<<<<<<<
@@ -3311,7 +3311,7 @@ static PyObject *__pyx_f_12intervaltree_12IntervalNode_left(struct __pyx_obj_12i
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_6);
   __Pyx_XDECREF(__pyx_t_8);
-  __Pyx_AddTraceback("intervaltree.IntervalNode.left", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("joshua.intervaltree.IntervalNode.left", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_results);
@@ -3322,9 +3322,9 @@ static PyObject *__pyx_f_12intervaltree_12IntervalNode_left(struct __pyx_obj_12i
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_12intervaltree_12IntervalNode_9left(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_12intervaltree_12IntervalNode_8left[] = "\n        find n features with a start > than `position`\n        f: a Interval object (or anything with an `end` attribute)\n        n: the number of features to return\n        max_dist: the maximum distance to look before giving up.\n        ";
-static PyObject *__pyx_pw_12intervaltree_12IntervalNode_9left(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalNode_9left(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_6joshua_12intervaltree_12IntervalNode_8left[] = "\n        find n features with a start > than `position`\n        f: a Interval object (or anything with an `end` attribute)\n        n: the number of features to return\n        max_dist: the maximum distance to look before giving up.\n        ";
+static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalNode_9left(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_position = 0;
   int __pyx_v_n;
   int __pyx_v_max_dist;
@@ -3391,22 +3391,22 @@ static PyObject *__pyx_pw_12intervaltree_12IntervalNode_9left(PyObject *__pyx_v_
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("left", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 232; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
-  __Pyx_AddTraceback("intervaltree.IntervalNode.left", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("joshua.intervaltree.IntervalNode.left", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_12intervaltree_12IntervalNode_8left(((struct __pyx_obj_12intervaltree_IntervalNode *)__pyx_v_self), __pyx_v_position, __pyx_v_n, __pyx_v_max_dist);
+  __pyx_r = __pyx_pf_6joshua_12intervaltree_12IntervalNode_8left(((struct __pyx_obj_6joshua_12intervaltree_IntervalNode *)__pyx_v_self), __pyx_v_position, __pyx_v_n, __pyx_v_max_dist);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_12intervaltree_12IntervalNode_8left(struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_self, PyObject *__pyx_v_position, int __pyx_v_n, int __pyx_v_max_dist) {
+static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalNode_8left(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self, PyObject *__pyx_v_position, int __pyx_v_n, int __pyx_v_max_dist) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
-  struct __pyx_opt_args_12intervaltree_12IntervalNode_left __pyx_t_2;
+  struct __pyx_opt_args_6joshua_12intervaltree_12IntervalNode_left __pyx_t_2;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -3415,7 +3415,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalNode_8left(struct __pyx_obj_1
   __pyx_t_2.__pyx_n = 2;
   __pyx_t_2.n = __pyx_v_n;
   __pyx_t_2.max_dist = __pyx_v_max_dist;
-  __pyx_t_1 = __pyx_vtabptr_12intervaltree_IntervalNode->left(__pyx_v_self, __pyx_v_position, 1, &__pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 232; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __pyx_vtabptr_6joshua_12intervaltree_IntervalNode->left(__pyx_v_self, __pyx_v_position, 1, &__pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 232; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -3424,7 +3424,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalNode_8left(struct __pyx_obj_1
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("intervaltree.IntervalNode.left", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("joshua.intervaltree.IntervalNode.left", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -3432,7 +3432,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalNode_8left(struct __pyx_obj_1
   return __pyx_r;
 }
 
-/* "intervaltree.pyx":247
+/* "joshua/intervaltree.pyx":247
  *         return r[:n]
  * 
  *     cpdef right(self, position, int n=1, int max_dist=2500):             # <<<<<<<<<<<<<<
@@ -3440,8 +3440,8 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalNode_8left(struct __pyx_obj_1
  *         find n features with a end < than position
  */
 
-static PyObject *__pyx_pw_12intervaltree_12IntervalNode_11right(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_f_12intervaltree_12IntervalNode_right(struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_self, PyObject *__pyx_v_position, int __pyx_skip_dispatch, struct __pyx_opt_args_12intervaltree_12IntervalNode_right *__pyx_optional_args) {
+static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalNode_11right(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_f_6joshua_12intervaltree_12IntervalNode_right(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self, PyObject *__pyx_v_position, int __pyx_skip_dispatch, struct __pyx_opt_args_6joshua_12intervaltree_12IntervalNode_right *__pyx_optional_args) {
   int __pyx_v_n = ((int)1);
   int __pyx_v_max_dist = ((int)2500);
   PyObject *__pyx_v_results = 0;
@@ -3476,7 +3476,7 @@ static PyObject *__pyx_f_12intervaltree_12IntervalNode_right(struct __pyx_obj_12
   else if (unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0)) {
     __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_right); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 247; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
-    if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)__pyx_pw_12intervaltree_12IntervalNode_11right)) {
+    if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)__pyx_pw_6joshua_12intervaltree_12IntervalNode_11right)) {
       __Pyx_XDECREF(__pyx_r);
       __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_n); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 247; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_3);
@@ -3521,7 +3521,7 @@ static PyObject *__pyx_f_12intervaltree_12IntervalNode_right(struct __pyx_obj_12
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
 
-  /* "intervaltree.pyx":254
+  /* "joshua/intervaltree.pyx":254
  *         max_dist: the maximum distance to look before giving up.
  *         """
  *         cdef list results = []             # <<<<<<<<<<<<<<
@@ -3533,7 +3533,7 @@ static PyObject *__pyx_f_12intervaltree_12IntervalNode_right(struct __pyx_obj_12
   __pyx_v_results = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "intervaltree.pyx":256
+  /* "joshua/intervaltree.pyx":256
  *         cdef list results = []
  *         # use end + 1 becuase .right() assumes strictly right-of
  *         self._seek_right(position + 1, results, n, max_dist)             # <<<<<<<<<<<<<<
@@ -3544,9 +3544,9 @@ static PyObject *__pyx_f_12intervaltree_12IntervalNode_right(struct __pyx_obj_12
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_9 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_9 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 256; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  ((struct __pyx_vtabstruct_12intervaltree_IntervalNode *)__pyx_v_self->__pyx_vtab)->_seek_right(__pyx_v_self, __pyx_t_9, __pyx_v_results, __pyx_v_n, __pyx_v_max_dist);
+  ((struct __pyx_vtabstruct_6joshua_12intervaltree_IntervalNode *)__pyx_v_self->__pyx_vtab)->_seek_right(__pyx_v_self, __pyx_t_9, __pyx_v_results, __pyx_v_n, __pyx_v_max_dist);
 
-  /* "intervaltree.pyx":257
+  /* "joshua/intervaltree.pyx":257
  *         # use end + 1 becuase .right() assumes strictly right-of
  *         self._seek_right(position + 1, results, n, max_dist)
  *         if len(results) == n: return results             # <<<<<<<<<<<<<<
@@ -3562,7 +3562,7 @@ static PyObject *__pyx_f_12intervaltree_12IntervalNode_right(struct __pyx_obj_12
     goto __pyx_L0;
   }
 
-  /* "intervaltree.pyx":258
+  /* "joshua/intervaltree.pyx":258
  *         self._seek_right(position + 1, results, n, max_dist)
  *         if len(results) == n: return results
  *         r = results             # <<<<<<<<<<<<<<
@@ -3572,7 +3572,7 @@ static PyObject *__pyx_f_12intervaltree_12IntervalNode_right(struct __pyx_obj_12
   __Pyx_INCREF(__pyx_v_results);
   __pyx_v_r = __pyx_v_results;
 
-  /* "intervaltree.pyx":259
+  /* "joshua/intervaltree.pyx":259
  *         if len(results) == n: return results
  *         r = results
  *         r.sort(key=operator.attrgetter('start'))             # <<<<<<<<<<<<<<
@@ -3599,7 +3599,7 @@ static PyObject *__pyx_f_12intervaltree_12IntervalNode_right(struct __pyx_obj_12
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "intervaltree.pyx":260
+  /* "joshua/intervaltree.pyx":260
  *         r = results
  *         r.sort(key=operator.attrgetter('start'))
  *         return r[:n]             # <<<<<<<<<<<<<<
@@ -3613,7 +3613,7 @@ static PyObject *__pyx_f_12intervaltree_12IntervalNode_right(struct __pyx_obj_12
   __pyx_t_5 = 0;
   goto __pyx_L0;
 
-  /* "intervaltree.pyx":247
+  /* "joshua/intervaltree.pyx":247
  *         return r[:n]
  * 
  *     cpdef right(self, position, int n=1, int max_dist=2500):             # <<<<<<<<<<<<<<
@@ -3630,7 +3630,7 @@ static PyObject *__pyx_f_12intervaltree_12IntervalNode_right(struct __pyx_obj_12
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_6);
   __Pyx_XDECREF(__pyx_t_8);
-  __Pyx_AddTraceback("intervaltree.IntervalNode.right", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("joshua.intervaltree.IntervalNode.right", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_results);
@@ -3641,9 +3641,9 @@ static PyObject *__pyx_f_12intervaltree_12IntervalNode_right(struct __pyx_obj_12
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_12intervaltree_12IntervalNode_11right(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_12intervaltree_12IntervalNode_10right[] = "\n        find n features with a end < than position\n        f: a Interval object (or anything with a `start` attribute)\n        n: the number of features to return\n        max_dist: the maximum distance to look before giving up.\n        ";
-static PyObject *__pyx_pw_12intervaltree_12IntervalNode_11right(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalNode_11right(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_6joshua_12intervaltree_12IntervalNode_10right[] = "\n        find n features with a end < than position\n        f: a Interval object (or anything with a `start` attribute)\n        n: the number of features to return\n        max_dist: the maximum distance to look before giving up.\n        ";
+static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalNode_11right(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_position = 0;
   int __pyx_v_n;
   int __pyx_v_max_dist;
@@ -3710,22 +3710,22 @@ static PyObject *__pyx_pw_12intervaltree_12IntervalNode_11right(PyObject *__pyx_
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("right", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 247; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
-  __Pyx_AddTraceback("intervaltree.IntervalNode.right", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("joshua.intervaltree.IntervalNode.right", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_12intervaltree_12IntervalNode_10right(((struct __pyx_obj_12intervaltree_IntervalNode *)__pyx_v_self), __pyx_v_position, __pyx_v_n, __pyx_v_max_dist);
+  __pyx_r = __pyx_pf_6joshua_12intervaltree_12IntervalNode_10right(((struct __pyx_obj_6joshua_12intervaltree_IntervalNode *)__pyx_v_self), __pyx_v_position, __pyx_v_n, __pyx_v_max_dist);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_12intervaltree_12IntervalNode_10right(struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_self, PyObject *__pyx_v_position, int __pyx_v_n, int __pyx_v_max_dist) {
+static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalNode_10right(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self, PyObject *__pyx_v_position, int __pyx_v_n, int __pyx_v_max_dist) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
-  struct __pyx_opt_args_12intervaltree_12IntervalNode_right __pyx_t_2;
+  struct __pyx_opt_args_6joshua_12intervaltree_12IntervalNode_right __pyx_t_2;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -3734,7 +3734,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalNode_10right(struct __pyx_obj
   __pyx_t_2.__pyx_n = 2;
   __pyx_t_2.n = __pyx_v_n;
   __pyx_t_2.max_dist = __pyx_v_max_dist;
-  __pyx_t_1 = __pyx_vtabptr_12intervaltree_IntervalNode->right(__pyx_v_self, __pyx_v_position, 1, &__pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 247; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __pyx_vtabptr_6joshua_12intervaltree_IntervalNode->right(__pyx_v_self, __pyx_v_position, 1, &__pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 247; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -3743,7 +3743,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalNode_10right(struct __pyx_obj
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("intervaltree.IntervalNode.right", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("joshua.intervaltree.IntervalNode.right", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -3751,7 +3751,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalNode_10right(struct __pyx_obj
   return __pyx_r;
 }
 
-/* "intervaltree.pyx":262
+/* "joshua/intervaltree.pyx":262
  *         return r[:n]
  * 
  *     def traverse(self, func):             # <<<<<<<<<<<<<<
@@ -3760,19 +3760,19 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalNode_10right(struct __pyx_obj
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_12intervaltree_12IntervalNode_13traverse(PyObject *__pyx_v_self, PyObject *__pyx_v_func); /*proto*/
-static PyObject *__pyx_pw_12intervaltree_12IntervalNode_13traverse(PyObject *__pyx_v_self, PyObject *__pyx_v_func) {
+static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalNode_13traverse(PyObject *__pyx_v_self, PyObject *__pyx_v_func); /*proto*/
+static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalNode_13traverse(PyObject *__pyx_v_self, PyObject *__pyx_v_func) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("traverse (wrapper)", 0);
-  __pyx_r = __pyx_pf_12intervaltree_12IntervalNode_12traverse(((struct __pyx_obj_12intervaltree_IntervalNode *)__pyx_v_self), ((PyObject *)__pyx_v_func));
+  __pyx_r = __pyx_pf_6joshua_12intervaltree_12IntervalNode_12traverse(((struct __pyx_obj_6joshua_12intervaltree_IntervalNode *)__pyx_v_self), ((PyObject *)__pyx_v_func));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_12intervaltree_12IntervalNode_12traverse(struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_self, PyObject *__pyx_v_func) {
+static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalNode_12traverse(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self, PyObject *__pyx_v_func) {
   PyObject *__pyx_v_results = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -3782,7 +3782,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalNode_12traverse(struct __pyx_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("traverse", 0);
 
-  /* "intervaltree.pyx":263
+  /* "joshua/intervaltree.pyx":263
  * 
  *     def traverse(self, func):
  *         results = []             # <<<<<<<<<<<<<<
@@ -3794,16 +3794,16 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalNode_12traverse(struct __pyx_
   __pyx_v_results = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "intervaltree.pyx":264
+  /* "joshua/intervaltree.pyx":264
  *     def traverse(self, func):
  *         results = []
  *         self._traverse(func, results)             # <<<<<<<<<<<<<<
  *         return results
  * 
  */
-  ((struct __pyx_vtabstruct_12intervaltree_IntervalNode *)__pyx_v_self->__pyx_vtab)->_traverse(__pyx_v_self, __pyx_v_func, __pyx_v_results);
+  ((struct __pyx_vtabstruct_6joshua_12intervaltree_IntervalNode *)__pyx_v_self->__pyx_vtab)->_traverse(__pyx_v_self, __pyx_v_func, __pyx_v_results);
 
-  /* "intervaltree.pyx":265
+  /* "joshua/intervaltree.pyx":265
  *         results = []
  *         self._traverse(func, results)
  *         return results             # <<<<<<<<<<<<<<
@@ -3815,7 +3815,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalNode_12traverse(struct __pyx_
   __pyx_r = __pyx_v_results;
   goto __pyx_L0;
 
-  /* "intervaltree.pyx":262
+  /* "joshua/intervaltree.pyx":262
  *         return r[:n]
  * 
  *     def traverse(self, func):             # <<<<<<<<<<<<<<
@@ -3826,7 +3826,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalNode_12traverse(struct __pyx_
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("intervaltree.IntervalNode.traverse", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("joshua.intervaltree.IntervalNode.traverse", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_results);
@@ -3835,7 +3835,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalNode_12traverse(struct __pyx_
   return __pyx_r;
 }
 
-/* "intervaltree.pyx":267
+/* "joshua/intervaltree.pyx":267
  *         return results
  * 
  *     cdef void _traverse(IntervalNode self, object func, list results):             # <<<<<<<<<<<<<<
@@ -3843,7 +3843,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalNode_12traverse(struct __pyx_
  *         results.append(func(self))
  */
 
-static void __pyx_f_12intervaltree_12IntervalNode__traverse(struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_self, PyObject *__pyx_v_func, PyObject *__pyx_v_results) {
+static void __pyx_f_6joshua_12intervaltree_12IntervalNode__traverse(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self, PyObject *__pyx_v_func, PyObject *__pyx_v_results) {
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
   int __pyx_t_2;
@@ -3857,22 +3857,22 @@ static void __pyx_f_12intervaltree_12IntervalNode__traverse(struct __pyx_obj_12i
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_traverse", 0);
 
-  /* "intervaltree.pyx":268
+  /* "joshua/intervaltree.pyx":268
  * 
  *     cdef void _traverse(IntervalNode self, object func, list results):
  *         if self.cleft is not EmptyNode: self.cleft._traverse(func, results)             # <<<<<<<<<<<<<<
  *         results.append(func(self))
  *         if self.cright is not EmptyNode: self.cright._traverse(func, results)
  */
-  __pyx_t_1 = (__pyx_v_self->cleft != __pyx_v_12intervaltree_EmptyNode);
+  __pyx_t_1 = (__pyx_v_self->cleft != __pyx_v_6joshua_12intervaltree_EmptyNode);
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
-    ((struct __pyx_vtabstruct_12intervaltree_IntervalNode *)__pyx_v_self->cleft->__pyx_vtab)->_traverse(__pyx_v_self->cleft, __pyx_v_func, __pyx_v_results);
+    ((struct __pyx_vtabstruct_6joshua_12intervaltree_IntervalNode *)__pyx_v_self->cleft->__pyx_vtab)->_traverse(__pyx_v_self->cleft, __pyx_v_func, __pyx_v_results);
     goto __pyx_L3;
   }
   __pyx_L3:;
 
-  /* "intervaltree.pyx":269
+  /* "joshua/intervaltree.pyx":269
  *     cdef void _traverse(IntervalNode self, object func, list results):
  *         if self.cleft is not EmptyNode: self.cleft._traverse(func, results)
  *         results.append(func(self))             # <<<<<<<<<<<<<<
@@ -3912,22 +3912,22 @@ static void __pyx_f_12intervaltree_12IntervalNode__traverse(struct __pyx_obj_12i
   __pyx_t_7 = __Pyx_PyList_Append(__pyx_v_results, __pyx_t_3); if (unlikely(__pyx_t_7 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 269; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "intervaltree.pyx":270
+  /* "joshua/intervaltree.pyx":270
  *         if self.cleft is not EmptyNode: self.cleft._traverse(func, results)
  *         results.append(func(self))
  *         if self.cright is not EmptyNode: self.cright._traverse(func, results)             # <<<<<<<<<<<<<<
  * 
  * cdef IntervalNode EmptyNode = IntervalNode( 0, 0, Interval(0, 0))
  */
-  __pyx_t_2 = (__pyx_v_self->cright != __pyx_v_12intervaltree_EmptyNode);
+  __pyx_t_2 = (__pyx_v_self->cright != __pyx_v_6joshua_12intervaltree_EmptyNode);
   __pyx_t_1 = (__pyx_t_2 != 0);
   if (__pyx_t_1) {
-    ((struct __pyx_vtabstruct_12intervaltree_IntervalNode *)__pyx_v_self->cright->__pyx_vtab)->_traverse(__pyx_v_self->cright, __pyx_v_func, __pyx_v_results);
+    ((struct __pyx_vtabstruct_6joshua_12intervaltree_IntervalNode *)__pyx_v_self->cright->__pyx_vtab)->_traverse(__pyx_v_self->cright, __pyx_v_func, __pyx_v_results);
     goto __pyx_L4;
   }
   __pyx_L4:;
 
-  /* "intervaltree.pyx":267
+  /* "joshua/intervaltree.pyx":267
  *         return results
  * 
  *     cdef void _traverse(IntervalNode self, object func, list results):             # <<<<<<<<<<<<<<
@@ -3942,12 +3942,12 @@ static void __pyx_f_12intervaltree_12IntervalNode__traverse(struct __pyx_obj_12i
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_6);
-  __Pyx_WriteUnraisable("intervaltree.IntervalNode._traverse", __pyx_clineno, __pyx_lineno, __pyx_filename, 0);
+  __Pyx_WriteUnraisable("joshua.intervaltree.IntervalNode._traverse", __pyx_clineno, __pyx_lineno, __pyx_filename, 0);
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
 }
 
-/* "intervaltree.pyx":69
+/* "joshua/intervaltree.pyx":69
  *     """
  *     cdef float priority
  *     cdef public object interval             # <<<<<<<<<<<<<<
@@ -3956,19 +3956,19 @@ static void __pyx_f_12intervaltree_12IntervalNode__traverse(struct __pyx_obj_12i
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_12intervaltree_12IntervalNode_8interval_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_12intervaltree_12IntervalNode_8interval_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalNode_8interval_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalNode_8interval_1__get__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_12intervaltree_12IntervalNode_8interval___get__(((struct __pyx_obj_12intervaltree_IntervalNode *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6joshua_12intervaltree_12IntervalNode_8interval___get__(((struct __pyx_obj_6joshua_12intervaltree_IntervalNode *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_12intervaltree_12IntervalNode_8interval___get__(struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_self) {
+static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalNode_8interval___get__(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__", 0);
@@ -3985,19 +3985,19 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalNode_8interval___get__(struct
 }
 
 /* Python wrapper */
-static int __pyx_pw_12intervaltree_12IntervalNode_8interval_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
-static int __pyx_pw_12intervaltree_12IntervalNode_8interval_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pw_6joshua_12intervaltree_12IntervalNode_8interval_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
+static int __pyx_pw_6joshua_12intervaltree_12IntervalNode_8interval_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_12intervaltree_12IntervalNode_8interval_2__set__(((struct __pyx_obj_12intervaltree_IntervalNode *)__pyx_v_self), ((PyObject *)__pyx_v_value));
+  __pyx_r = __pyx_pf_6joshua_12intervaltree_12IntervalNode_8interval_2__set__(((struct __pyx_obj_6joshua_12intervaltree_IntervalNode *)__pyx_v_self), ((PyObject *)__pyx_v_value));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_12intervaltree_12IntervalNode_8interval_2__set__(struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pf_6joshua_12intervaltree_12IntervalNode_8interval_2__set__(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__", 0);
@@ -4014,19 +4014,19 @@ static int __pyx_pf_12intervaltree_12IntervalNode_8interval_2__set__(struct __py
 }
 
 /* Python wrapper */
-static int __pyx_pw_12intervaltree_12IntervalNode_8interval_5__del__(PyObject *__pyx_v_self); /*proto*/
-static int __pyx_pw_12intervaltree_12IntervalNode_8interval_5__del__(PyObject *__pyx_v_self) {
+static int __pyx_pw_6joshua_12intervaltree_12IntervalNode_8interval_5__del__(PyObject *__pyx_v_self); /*proto*/
+static int __pyx_pw_6joshua_12intervaltree_12IntervalNode_8interval_5__del__(PyObject *__pyx_v_self) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__del__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_12intervaltree_12IntervalNode_8interval_4__del__(((struct __pyx_obj_12intervaltree_IntervalNode *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6joshua_12intervaltree_12IntervalNode_8interval_4__del__(((struct __pyx_obj_6joshua_12intervaltree_IntervalNode *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_12intervaltree_12IntervalNode_8interval_4__del__(struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_self) {
+static int __pyx_pf_6joshua_12intervaltree_12IntervalNode_8interval_4__del__(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__del__", 0);
@@ -4042,7 +4042,7 @@ static int __pyx_pf_12intervaltree_12IntervalNode_8interval_4__del__(struct __py
   return __pyx_r;
 }
 
-/* "intervaltree.pyx":70
+/* "joshua/intervaltree.pyx":70
  *     cdef float priority
  *     cdef public object interval
  *     cdef public int start, end, length             # <<<<<<<<<<<<<<
@@ -4051,19 +4051,19 @@ static int __pyx_pf_12intervaltree_12IntervalNode_8interval_4__del__(struct __py
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_12intervaltree_12IntervalNode_5start_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_12intervaltree_12IntervalNode_5start_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalNode_5start_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalNode_5start_1__get__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_12intervaltree_12IntervalNode_5start___get__(((struct __pyx_obj_12intervaltree_IntervalNode *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6joshua_12intervaltree_12IntervalNode_5start___get__(((struct __pyx_obj_6joshua_12intervaltree_IntervalNode *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_12intervaltree_12IntervalNode_5start___get__(struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_self) {
+static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalNode_5start___get__(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -4081,7 +4081,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalNode_5start___get__(struct __
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("intervaltree.IntervalNode.start.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("joshua.intervaltree.IntervalNode.start.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -4090,19 +4090,19 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalNode_5start___get__(struct __
 }
 
 /* Python wrapper */
-static int __pyx_pw_12intervaltree_12IntervalNode_5start_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
-static int __pyx_pw_12intervaltree_12IntervalNode_5start_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pw_6joshua_12intervaltree_12IntervalNode_5start_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
+static int __pyx_pw_6joshua_12intervaltree_12IntervalNode_5start_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_12intervaltree_12IntervalNode_5start_2__set__(((struct __pyx_obj_12intervaltree_IntervalNode *)__pyx_v_self), ((PyObject *)__pyx_v_value));
+  __pyx_r = __pyx_pf_6joshua_12intervaltree_12IntervalNode_5start_2__set__(((struct __pyx_obj_6joshua_12intervaltree_IntervalNode *)__pyx_v_self), ((PyObject *)__pyx_v_value));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_12intervaltree_12IntervalNode_5start_2__set__(struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pf_6joshua_12intervaltree_12IntervalNode_5start_2__set__(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
@@ -4117,7 +4117,7 @@ static int __pyx_pf_12intervaltree_12IntervalNode_5start_2__set__(struct __pyx_o
   __pyx_r = 0;
   goto __pyx_L0;
   __pyx_L1_error:;
-  __Pyx_AddTraceback("intervaltree.IntervalNode.start.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("joshua.intervaltree.IntervalNode.start.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -4125,19 +4125,19 @@ static int __pyx_pf_12intervaltree_12IntervalNode_5start_2__set__(struct __pyx_o
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_12intervaltree_12IntervalNode_3end_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_12intervaltree_12IntervalNode_3end_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalNode_3end_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalNode_3end_1__get__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_12intervaltree_12IntervalNode_3end___get__(((struct __pyx_obj_12intervaltree_IntervalNode *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6joshua_12intervaltree_12IntervalNode_3end___get__(((struct __pyx_obj_6joshua_12intervaltree_IntervalNode *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_12intervaltree_12IntervalNode_3end___get__(struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_self) {
+static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalNode_3end___get__(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -4155,7 +4155,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalNode_3end___get__(struct __py
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("intervaltree.IntervalNode.end.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("joshua.intervaltree.IntervalNode.end.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -4164,19 +4164,19 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalNode_3end___get__(struct __py
 }
 
 /* Python wrapper */
-static int __pyx_pw_12intervaltree_12IntervalNode_3end_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
-static int __pyx_pw_12intervaltree_12IntervalNode_3end_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pw_6joshua_12intervaltree_12IntervalNode_3end_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
+static int __pyx_pw_6joshua_12intervaltree_12IntervalNode_3end_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_12intervaltree_12IntervalNode_3end_2__set__(((struct __pyx_obj_12intervaltree_IntervalNode *)__pyx_v_self), ((PyObject *)__pyx_v_value));
+  __pyx_r = __pyx_pf_6joshua_12intervaltree_12IntervalNode_3end_2__set__(((struct __pyx_obj_6joshua_12intervaltree_IntervalNode *)__pyx_v_self), ((PyObject *)__pyx_v_value));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_12intervaltree_12IntervalNode_3end_2__set__(struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pf_6joshua_12intervaltree_12IntervalNode_3end_2__set__(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
@@ -4191,7 +4191,7 @@ static int __pyx_pf_12intervaltree_12IntervalNode_3end_2__set__(struct __pyx_obj
   __pyx_r = 0;
   goto __pyx_L0;
   __pyx_L1_error:;
-  __Pyx_AddTraceback("intervaltree.IntervalNode.end.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("joshua.intervaltree.IntervalNode.end.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -4199,19 +4199,19 @@ static int __pyx_pf_12intervaltree_12IntervalNode_3end_2__set__(struct __pyx_obj
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_12intervaltree_12IntervalNode_6length_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_12intervaltree_12IntervalNode_6length_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalNode_6length_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalNode_6length_1__get__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_12intervaltree_12IntervalNode_6length___get__(((struct __pyx_obj_12intervaltree_IntervalNode *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6joshua_12intervaltree_12IntervalNode_6length___get__(((struct __pyx_obj_6joshua_12intervaltree_IntervalNode *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_12intervaltree_12IntervalNode_6length___get__(struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_self) {
+static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalNode_6length___get__(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -4229,7 +4229,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalNode_6length___get__(struct _
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("intervaltree.IntervalNode.length.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("joshua.intervaltree.IntervalNode.length.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -4238,19 +4238,19 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalNode_6length___get__(struct _
 }
 
 /* Python wrapper */
-static int __pyx_pw_12intervaltree_12IntervalNode_6length_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
-static int __pyx_pw_12intervaltree_12IntervalNode_6length_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pw_6joshua_12intervaltree_12IntervalNode_6length_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
+static int __pyx_pw_6joshua_12intervaltree_12IntervalNode_6length_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_12intervaltree_12IntervalNode_6length_2__set__(((struct __pyx_obj_12intervaltree_IntervalNode *)__pyx_v_self), ((PyObject *)__pyx_v_value));
+  __pyx_r = __pyx_pf_6joshua_12intervaltree_12IntervalNode_6length_2__set__(((struct __pyx_obj_6joshua_12intervaltree_IntervalNode *)__pyx_v_self), ((PyObject *)__pyx_v_value));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_12intervaltree_12IntervalNode_6length_2__set__(struct __pyx_obj_12intervaltree_IntervalNode *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pf_6joshua_12intervaltree_12IntervalNode_6length_2__set__(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
@@ -4265,14 +4265,14 @@ static int __pyx_pf_12intervaltree_12IntervalNode_6length_2__set__(struct __pyx_
   __pyx_r = 0;
   goto __pyx_L0;
   __pyx_L1_error:;
-  __Pyx_AddTraceback("intervaltree.IntervalNode.length.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("joshua.intervaltree.IntervalNode.length.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "intervaltree.pyx":293
+/* "joshua/intervaltree.pyx":293
  *     cdef public object value, chrom, strand
  * 
  *     def __init__(self, int start, int end, object value=None, object chrom=None, object strand=None ):             # <<<<<<<<<<<<<<
@@ -4281,8 +4281,8 @@ static int __pyx_pf_12intervaltree_12IntervalNode_6length_2__set__(struct __pyx_
  */
 
 /* Python wrapper */
-static int __pyx_pw_12intervaltree_8Interval_1__init__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static int __pyx_pw_12intervaltree_8Interval_1__init__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static int __pyx_pw_6joshua_12intervaltree_8Interval_1__init__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static int __pyx_pw_6joshua_12intervaltree_8Interval_1__init__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   int __pyx_v_start;
   int __pyx_v_end;
   PyObject *__pyx_v_value = 0;
@@ -4362,18 +4362,18 @@ static int __pyx_pw_12intervaltree_8Interval_1__init__(PyObject *__pyx_v_self, P
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("__init__", 0, 2, 5, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 293; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
-  __Pyx_AddTraceback("intervaltree.Interval.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("joshua.intervaltree.Interval.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_12intervaltree_8Interval___init__(((struct __pyx_obj_12intervaltree_Interval *)__pyx_v_self), __pyx_v_start, __pyx_v_end, __pyx_v_value, __pyx_v_chrom, __pyx_v_strand);
+  __pyx_r = __pyx_pf_6joshua_12intervaltree_8Interval___init__(((struct __pyx_obj_6joshua_12intervaltree_Interval *)__pyx_v_self), __pyx_v_start, __pyx_v_end, __pyx_v_value, __pyx_v_chrom, __pyx_v_strand);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_12intervaltree_8Interval___init__(struct __pyx_obj_12intervaltree_Interval *__pyx_v_self, int __pyx_v_start, int __pyx_v_end, PyObject *__pyx_v_value, PyObject *__pyx_v_chrom, PyObject *__pyx_v_strand) {
+static int __pyx_pf_6joshua_12intervaltree_8Interval___init__(struct __pyx_obj_6joshua_12intervaltree_Interval *__pyx_v_self, int __pyx_v_start, int __pyx_v_end, PyObject *__pyx_v_value, PyObject *__pyx_v_chrom, PyObject *__pyx_v_strand) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   int __pyx_lineno = 0;
@@ -4381,7 +4381,7 @@ static int __pyx_pf_12intervaltree_8Interval___init__(struct __pyx_obj_12interva
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "intervaltree.pyx":294
+  /* "joshua/intervaltree.pyx":294
  * 
  *     def __init__(self, int start, int end, object value=None, object chrom=None, object strand=None ):
  *         assert start <= end, "start must be less than end"             # <<<<<<<<<<<<<<
@@ -4397,7 +4397,7 @@ static int __pyx_pf_12intervaltree_8Interval___init__(struct __pyx_obj_12interva
   }
   #endif
 
-  /* "intervaltree.pyx":295
+  /* "joshua/intervaltree.pyx":295
  *     def __init__(self, int start, int end, object value=None, object chrom=None, object strand=None ):
  *         assert start <= end, "start must be less than end"
  *         self.start  = start             # <<<<<<<<<<<<<<
@@ -4406,7 +4406,7 @@ static int __pyx_pf_12intervaltree_8Interval___init__(struct __pyx_obj_12interva
  */
   __pyx_v_self->start = __pyx_v_start;
 
-  /* "intervaltree.pyx":296
+  /* "joshua/intervaltree.pyx":296
  *         assert start <= end, "start must be less than end"
  *         self.start  = start
  *         self.end   = end             # <<<<<<<<<<<<<<
@@ -4415,7 +4415,7 @@ static int __pyx_pf_12intervaltree_8Interval___init__(struct __pyx_obj_12interva
  */
   __pyx_v_self->end = __pyx_v_end;
 
-  /* "intervaltree.pyx":297
+  /* "joshua/intervaltree.pyx":297
  *         self.start  = start
  *         self.end   = end
  *         self.value = value             # <<<<<<<<<<<<<<
@@ -4428,7 +4428,7 @@ static int __pyx_pf_12intervaltree_8Interval___init__(struct __pyx_obj_12interva
   __Pyx_DECREF(__pyx_v_self->value);
   __pyx_v_self->value = __pyx_v_value;
 
-  /* "intervaltree.pyx":298
+  /* "joshua/intervaltree.pyx":298
  *         self.end   = end
  *         self.value = value
  *         self.chrom = chrom             # <<<<<<<<<<<<<<
@@ -4441,7 +4441,7 @@ static int __pyx_pf_12intervaltree_8Interval___init__(struct __pyx_obj_12interva
   __Pyx_DECREF(__pyx_v_self->chrom);
   __pyx_v_self->chrom = __pyx_v_chrom;
 
-  /* "intervaltree.pyx":299
+  /* "joshua/intervaltree.pyx":299
  *         self.value = value
  *         self.chrom = chrom
  *         self.strand = strand             # <<<<<<<<<<<<<<
@@ -4454,7 +4454,7 @@ static int __pyx_pf_12intervaltree_8Interval___init__(struct __pyx_obj_12interva
   __Pyx_DECREF(__pyx_v_self->strand);
   __pyx_v_self->strand = __pyx_v_strand;
 
-  /* "intervaltree.pyx":300
+  /* "joshua/intervaltree.pyx":300
  *         self.chrom = chrom
  *         self.strand = strand
  *         self.length = end - start             # <<<<<<<<<<<<<<
@@ -4463,7 +4463,7 @@ static int __pyx_pf_12intervaltree_8Interval___init__(struct __pyx_obj_12interva
  */
   __pyx_v_self->length = (__pyx_v_end - __pyx_v_start);
 
-  /* "intervaltree.pyx":293
+  /* "joshua/intervaltree.pyx":293
  *     cdef public object value, chrom, strand
  * 
  *     def __init__(self, int start, int end, object value=None, object chrom=None, object strand=None ):             # <<<<<<<<<<<<<<
@@ -4475,14 +4475,14 @@ static int __pyx_pf_12intervaltree_8Interval___init__(struct __pyx_obj_12interva
   __pyx_r = 0;
   goto __pyx_L0;
   __pyx_L1_error:;
-  __Pyx_AddTraceback("intervaltree.Interval.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("joshua.intervaltree.Interval.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "intervaltree.pyx":302
+/* "joshua/intervaltree.pyx":302
  *         self.length = end - start
  * 
  *     def __repr__(self):             # <<<<<<<<<<<<<<
@@ -4491,19 +4491,19 @@ static int __pyx_pf_12intervaltree_8Interval___init__(struct __pyx_obj_12interva
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_12intervaltree_8Interval_3__repr__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_12intervaltree_8Interval_3__repr__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_6joshua_12intervaltree_8Interval_3__repr__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_6joshua_12intervaltree_8Interval_3__repr__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__repr__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_12intervaltree_8Interval_2__repr__(((struct __pyx_obj_12intervaltree_Interval *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6joshua_12intervaltree_8Interval_2__repr__(((struct __pyx_obj_6joshua_12intervaltree_Interval *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_12intervaltree_8Interval_2__repr__(struct __pyx_obj_12intervaltree_Interval *__pyx_v_self) {
+static PyObject *__pyx_pf_6joshua_12intervaltree_8Interval_2__repr__(struct __pyx_obj_6joshua_12intervaltree_Interval *__pyx_v_self) {
   PyObject *__pyx_v_fstr = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -4517,7 +4517,7 @@ static PyObject *__pyx_pf_12intervaltree_8Interval_2__repr__(struct __pyx_obj_12
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__repr__", 0);
 
-  /* "intervaltree.pyx":303
+  /* "joshua/intervaltree.pyx":303
  * 
  *     def __repr__(self):
  *         fstr = "Interval(%d, %d" % (self.start, self.end)             # <<<<<<<<<<<<<<
@@ -4542,7 +4542,7 @@ static PyObject *__pyx_pf_12intervaltree_8Interval_2__repr__(struct __pyx_obj_12
   __pyx_v_fstr = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "intervaltree.pyx":304
+  /* "joshua/intervaltree.pyx":304
  *     def __repr__(self):
  *         fstr = "Interval(%d, %d" % (self.start, self.end)
  *         if not self.value is None:             # <<<<<<<<<<<<<<
@@ -4553,7 +4553,7 @@ static PyObject *__pyx_pf_12intervaltree_8Interval_2__repr__(struct __pyx_obj_12
   __pyx_t_5 = (__pyx_t_4 != 0);
   if (__pyx_t_5) {
 
-    /* "intervaltree.pyx":305
+    /* "joshua/intervaltree.pyx":305
  *         fstr = "Interval(%d, %d" % (self.start, self.end)
  *         if not self.value is None:
  *             fstr += ", value=" + str(self.value)             # <<<<<<<<<<<<<<
@@ -4580,7 +4580,7 @@ static PyObject *__pyx_pf_12intervaltree_8Interval_2__repr__(struct __pyx_obj_12
   }
   __pyx_L3:;
 
-  /* "intervaltree.pyx":306
+  /* "joshua/intervaltree.pyx":306
  *         if not self.value is None:
  *             fstr += ", value=" + str(self.value)
  *         fstr += ")"             # <<<<<<<<<<<<<<
@@ -4592,7 +4592,7 @@ static PyObject *__pyx_pf_12intervaltree_8Interval_2__repr__(struct __pyx_obj_12
   __Pyx_DECREF_SET(__pyx_v_fstr, __pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "intervaltree.pyx":307
+  /* "joshua/intervaltree.pyx":307
  *             fstr += ", value=" + str(self.value)
  *         fstr += ")"
  *         return fstr             # <<<<<<<<<<<<<<
@@ -4604,7 +4604,7 @@ static PyObject *__pyx_pf_12intervaltree_8Interval_2__repr__(struct __pyx_obj_12
   __pyx_r = __pyx_v_fstr;
   goto __pyx_L0;
 
-  /* "intervaltree.pyx":302
+  /* "joshua/intervaltree.pyx":302
  *         self.length = end - start
  * 
  *     def __repr__(self):             # <<<<<<<<<<<<<<
@@ -4617,7 +4617,7 @@ static PyObject *__pyx_pf_12intervaltree_8Interval_2__repr__(struct __pyx_obj_12
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_AddTraceback("intervaltree.Interval.__repr__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("joshua.intervaltree.Interval.__repr__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_fstr);
@@ -4626,7 +4626,7 @@ static PyObject *__pyx_pf_12intervaltree_8Interval_2__repr__(struct __pyx_obj_12
   return __pyx_r;
 }
 
-/* "intervaltree.pyx":309
+/* "joshua/intervaltree.pyx":309
  *         return fstr
  * 
  *     def __richcmp__(self, other, op):             # <<<<<<<<<<<<<<
@@ -4635,8 +4635,8 @@ static PyObject *__pyx_pf_12intervaltree_8Interval_2__repr__(struct __pyx_obj_12
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_12intervaltree_8Interval_5__richcmp__(PyObject *__pyx_v_self, PyObject *__pyx_v_other, int __pyx_arg_op); /*proto*/
-static PyObject *__pyx_pw_12intervaltree_8Interval_5__richcmp__(PyObject *__pyx_v_self, PyObject *__pyx_v_other, int __pyx_arg_op) {
+static PyObject *__pyx_pw_6joshua_12intervaltree_8Interval_5__richcmp__(PyObject *__pyx_v_self, PyObject *__pyx_v_other, int __pyx_arg_op); /*proto*/
+static PyObject *__pyx_pw_6joshua_12intervaltree_8Interval_5__richcmp__(PyObject *__pyx_v_self, PyObject *__pyx_v_other, int __pyx_arg_op) {
   PyObject *__pyx_v_op = 0;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
@@ -4648,11 +4648,11 @@ static PyObject *__pyx_pw_12intervaltree_8Interval_5__richcmp__(PyObject *__pyx_
   __Pyx_GOTREF(__pyx_v_op);
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
-  __Pyx_AddTraceback("intervaltree.Interval.__richcmp__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("joshua.intervaltree.Interval.__richcmp__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_12intervaltree_8Interval_4__richcmp__(((PyObject *)__pyx_v_self), ((PyObject *)__pyx_v_other), ((PyObject *)__pyx_v_op));
+  __pyx_r = __pyx_pf_6joshua_12intervaltree_8Interval_4__richcmp__(((PyObject *)__pyx_v_self), ((PyObject *)__pyx_v_other), ((PyObject *)__pyx_v_op));
 
   /* function exit code */
   __Pyx_XDECREF(__pyx_v_op);
@@ -4660,7 +4660,7 @@ static PyObject *__pyx_pw_12intervaltree_8Interval_5__richcmp__(PyObject *__pyx_
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_12intervaltree_8Interval_4__richcmp__(PyObject *__pyx_v_self, PyObject *__pyx_v_other, PyObject *__pyx_v_op) {
+static PyObject *__pyx_pf_6joshua_12intervaltree_8Interval_4__richcmp__(PyObject *__pyx_v_self, PyObject *__pyx_v_other, PyObject *__pyx_v_op) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -4673,7 +4673,7 @@ static PyObject *__pyx_pf_12intervaltree_8Interval_4__richcmp__(PyObject *__pyx_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__richcmp__", 0);
 
-  /* "intervaltree.pyx":310
+  /* "joshua/intervaltree.pyx":310
  * 
  *     def __richcmp__(self, other, op):
  *         if op == 0:             # <<<<<<<<<<<<<<
@@ -4685,7 +4685,7 @@ static PyObject *__pyx_pf_12intervaltree_8Interval_4__richcmp__(PyObject *__pyx_
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (__pyx_t_2) {
 
-    /* "intervaltree.pyx":312
+    /* "joshua/intervaltree.pyx":312
  *         if op == 0:
  *             # <
  *             return self.start < other.start or self.end < other.end             # <<<<<<<<<<<<<<
@@ -4725,7 +4725,7 @@ static PyObject *__pyx_pf_12intervaltree_8Interval_4__richcmp__(PyObject *__pyx_
     goto __pyx_L0;
   }
 
-  /* "intervaltree.pyx":313
+  /* "joshua/intervaltree.pyx":313
  *             # <
  *             return self.start < other.start or self.end < other.end
  *         elif op == 1:             # <<<<<<<<<<<<<<
@@ -4737,7 +4737,7 @@ static PyObject *__pyx_pf_12intervaltree_8Interval_4__richcmp__(PyObject *__pyx_
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (__pyx_t_2) {
 
-    /* "intervaltree.pyx":315
+    /* "joshua/intervaltree.pyx":315
  *         elif op == 1:
  *             # <=
  *             return self == other or self < other             # <<<<<<<<<<<<<<
@@ -4765,7 +4765,7 @@ static PyObject *__pyx_pf_12intervaltree_8Interval_4__richcmp__(PyObject *__pyx_
     goto __pyx_L0;
   }
 
-  /* "intervaltree.pyx":316
+  /* "joshua/intervaltree.pyx":316
  *             # <=
  *             return self == other or self < other
  *         elif op == 2:             # <<<<<<<<<<<<<<
@@ -4777,7 +4777,7 @@ static PyObject *__pyx_pf_12intervaltree_8Interval_4__richcmp__(PyObject *__pyx_
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (__pyx_t_2) {
 
-    /* "intervaltree.pyx":318
+    /* "joshua/intervaltree.pyx":318
  *         elif op == 2:
  *             # ==
  *             return self.start == other.start and self.end == other.end             # <<<<<<<<<<<<<<
@@ -4817,7 +4817,7 @@ static PyObject *__pyx_pf_12intervaltree_8Interval_4__richcmp__(PyObject *__pyx_
     goto __pyx_L0;
   }
 
-  /* "intervaltree.pyx":319
+  /* "joshua/intervaltree.pyx":319
  *             # ==
  *             return self.start == other.start and self.end == other.end
  *         elif op == 3:             # <<<<<<<<<<<<<<
@@ -4829,7 +4829,7 @@ static PyObject *__pyx_pf_12intervaltree_8Interval_4__richcmp__(PyObject *__pyx_
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (__pyx_t_2) {
 
-    /* "intervaltree.pyx":321
+    /* "joshua/intervaltree.pyx":321
  *         elif op == 3:
  *             # !=
  *             return self.start != other.start or self.end != other.end             # <<<<<<<<<<<<<<
@@ -4869,7 +4869,7 @@ static PyObject *__pyx_pf_12intervaltree_8Interval_4__richcmp__(PyObject *__pyx_
     goto __pyx_L0;
   }
 
-  /* "intervaltree.pyx":322
+  /* "joshua/intervaltree.pyx":322
  *             # !=
  *             return self.start != other.start or self.end != other.end
  *         elif op == 4:             # <<<<<<<<<<<<<<
@@ -4881,7 +4881,7 @@ static PyObject *__pyx_pf_12intervaltree_8Interval_4__richcmp__(PyObject *__pyx_
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (__pyx_t_2) {
 
-    /* "intervaltree.pyx":324
+    /* "joshua/intervaltree.pyx":324
  *         elif op == 4:
  *             # >
  *             return self.start > other.start or self.end > other.end             # <<<<<<<<<<<<<<
@@ -4921,7 +4921,7 @@ static PyObject *__pyx_pf_12intervaltree_8Interval_4__richcmp__(PyObject *__pyx_
     goto __pyx_L0;
   }
 
-  /* "intervaltree.pyx":325
+  /* "joshua/intervaltree.pyx":325
  *             # >
  *             return self.start > other.start or self.end > other.end
  *         elif op == 5:             # <<<<<<<<<<<<<<
@@ -4933,7 +4933,7 @@ static PyObject *__pyx_pf_12intervaltree_8Interval_4__richcmp__(PyObject *__pyx_
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (__pyx_t_2) {
 
-    /* "intervaltree.pyx":327
+    /* "joshua/intervaltree.pyx":327
  *         elif op == 5:
  *             # >=
  *             return self == other or self > other             # <<<<<<<<<<<<<<
@@ -4961,7 +4961,7 @@ static PyObject *__pyx_pf_12intervaltree_8Interval_4__richcmp__(PyObject *__pyx_
     goto __pyx_L0;
   }
 
-  /* "intervaltree.pyx":309
+  /* "joshua/intervaltree.pyx":309
  *         return fstr
  * 
  *     def __richcmp__(self, other, op):             # <<<<<<<<<<<<<<
@@ -4977,7 +4977,7 @@ static PyObject *__pyx_pf_12intervaltree_8Interval_4__richcmp__(PyObject *__pyx_
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_AddTraceback("intervaltree.Interval.__richcmp__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("joshua.intervaltree.Interval.__richcmp__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -4985,7 +4985,7 @@ static PyObject *__pyx_pf_12intervaltree_8Interval_4__richcmp__(PyObject *__pyx_
   return __pyx_r;
 }
 
-/* "intervaltree.pyx":329
+/* "joshua/intervaltree.pyx":329
  *             return self == other or self > other
  * 
  *     def __len__(self):             # <<<<<<<<<<<<<<
@@ -4994,24 +4994,24 @@ static PyObject *__pyx_pf_12intervaltree_8Interval_4__richcmp__(PyObject *__pyx_
  */
 
 /* Python wrapper */
-static Py_ssize_t __pyx_pw_12intervaltree_8Interval_7__len__(PyObject *__pyx_v_self); /*proto*/
-static Py_ssize_t __pyx_pw_12intervaltree_8Interval_7__len__(PyObject *__pyx_v_self) {
+static Py_ssize_t __pyx_pw_6joshua_12intervaltree_8Interval_7__len__(PyObject *__pyx_v_self); /*proto*/
+static Py_ssize_t __pyx_pw_6joshua_12intervaltree_8Interval_7__len__(PyObject *__pyx_v_self) {
   Py_ssize_t __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__len__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_12intervaltree_8Interval_6__len__(((struct __pyx_obj_12intervaltree_Interval *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6joshua_12intervaltree_8Interval_6__len__(((struct __pyx_obj_6joshua_12intervaltree_Interval *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static Py_ssize_t __pyx_pf_12intervaltree_8Interval_6__len__(struct __pyx_obj_12intervaltree_Interval *__pyx_v_self) {
+static Py_ssize_t __pyx_pf_6joshua_12intervaltree_8Interval_6__len__(struct __pyx_obj_6joshua_12intervaltree_Interval *__pyx_v_self) {
   Py_ssize_t __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__len__", 0);
 
-  /* "intervaltree.pyx":330
+  /* "joshua/intervaltree.pyx":330
  * 
  *     def __len__(self):
  *         return self.length             # <<<<<<<<<<<<<<
@@ -5021,7 +5021,7 @@ static Py_ssize_t __pyx_pf_12intervaltree_8Interval_6__len__(struct __pyx_obj_12
   __pyx_r = __pyx_v_self->length;
   goto __pyx_L0;
 
-  /* "intervaltree.pyx":329
+  /* "joshua/intervaltree.pyx":329
  *             return self == other or self > other
  * 
  *     def __len__(self):             # <<<<<<<<<<<<<<
@@ -5035,7 +5035,7 @@ static Py_ssize_t __pyx_pf_12intervaltree_8Interval_6__len__(struct __pyx_obj_12
   return __pyx_r;
 }
 
-/* "intervaltree.pyx":290
+/* "joshua/intervaltree.pyx":290
  * 
  *     """
  *     cdef public int start, end, length             # <<<<<<<<<<<<<<
@@ -5044,19 +5044,19 @@ static Py_ssize_t __pyx_pf_12intervaltree_8Interval_6__len__(struct __pyx_obj_12
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_12intervaltree_8Interval_5start_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_12intervaltree_8Interval_5start_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_6joshua_12intervaltree_8Interval_5start_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_6joshua_12intervaltree_8Interval_5start_1__get__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_12intervaltree_8Interval_5start___get__(((struct __pyx_obj_12intervaltree_Interval *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6joshua_12intervaltree_8Interval_5start___get__(((struct __pyx_obj_6joshua_12intervaltree_Interval *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_12intervaltree_8Interval_5start___get__(struct __pyx_obj_12intervaltree_Interval *__pyx_v_self) {
+static PyObject *__pyx_pf_6joshua_12intervaltree_8Interval_5start___get__(struct __pyx_obj_6joshua_12intervaltree_Interval *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -5074,7 +5074,7 @@ static PyObject *__pyx_pf_12intervaltree_8Interval_5start___get__(struct __pyx_o
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("intervaltree.Interval.start.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("joshua.intervaltree.Interval.start.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -5083,19 +5083,19 @@ static PyObject *__pyx_pf_12intervaltree_8Interval_5start___get__(struct __pyx_o
 }
 
 /* Python wrapper */
-static int __pyx_pw_12intervaltree_8Interval_5start_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
-static int __pyx_pw_12intervaltree_8Interval_5start_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pw_6joshua_12intervaltree_8Interval_5start_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
+static int __pyx_pw_6joshua_12intervaltree_8Interval_5start_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_12intervaltree_8Interval_5start_2__set__(((struct __pyx_obj_12intervaltree_Interval *)__pyx_v_self), ((PyObject *)__pyx_v_value));
+  __pyx_r = __pyx_pf_6joshua_12intervaltree_8Interval_5start_2__set__(((struct __pyx_obj_6joshua_12intervaltree_Interval *)__pyx_v_self), ((PyObject *)__pyx_v_value));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_12intervaltree_8Interval_5start_2__set__(struct __pyx_obj_12intervaltree_Interval *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pf_6joshua_12intervaltree_8Interval_5start_2__set__(struct __pyx_obj_6joshua_12intervaltree_Interval *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
@@ -5110,7 +5110,7 @@ static int __pyx_pf_12intervaltree_8Interval_5start_2__set__(struct __pyx_obj_12
   __pyx_r = 0;
   goto __pyx_L0;
   __pyx_L1_error:;
-  __Pyx_AddTraceback("intervaltree.Interval.start.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("joshua.intervaltree.Interval.start.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -5118,19 +5118,19 @@ static int __pyx_pf_12intervaltree_8Interval_5start_2__set__(struct __pyx_obj_12
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_12intervaltree_8Interval_3end_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_12intervaltree_8Interval_3end_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_6joshua_12intervaltree_8Interval_3end_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_6joshua_12intervaltree_8Interval_3end_1__get__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_12intervaltree_8Interval_3end___get__(((struct __pyx_obj_12intervaltree_Interval *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6joshua_12intervaltree_8Interval_3end___get__(((struct __pyx_obj_6joshua_12intervaltree_Interval *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_12intervaltree_8Interval_3end___get__(struct __pyx_obj_12intervaltree_Interval *__pyx_v_self) {
+static PyObject *__pyx_pf_6joshua_12intervaltree_8Interval_3end___get__(struct __pyx_obj_6joshua_12intervaltree_Interval *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -5148,7 +5148,7 @@ static PyObject *__pyx_pf_12intervaltree_8Interval_3end___get__(struct __pyx_obj
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("intervaltree.Interval.end.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("joshua.intervaltree.Interval.end.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -5157,19 +5157,19 @@ static PyObject *__pyx_pf_12intervaltree_8Interval_3end___get__(struct __pyx_obj
 }
 
 /* Python wrapper */
-static int __pyx_pw_12intervaltree_8Interval_3end_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
-static int __pyx_pw_12intervaltree_8Interval_3end_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pw_6joshua_12intervaltree_8Interval_3end_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
+static int __pyx_pw_6joshua_12intervaltree_8Interval_3end_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_12intervaltree_8Interval_3end_2__set__(((struct __pyx_obj_12intervaltree_Interval *)__pyx_v_self), ((PyObject *)__pyx_v_value));
+  __pyx_r = __pyx_pf_6joshua_12intervaltree_8Interval_3end_2__set__(((struct __pyx_obj_6joshua_12intervaltree_Interval *)__pyx_v_self), ((PyObject *)__pyx_v_value));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_12intervaltree_8Interval_3end_2__set__(struct __pyx_obj_12intervaltree_Interval *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pf_6joshua_12intervaltree_8Interval_3end_2__set__(struct __pyx_obj_6joshua_12intervaltree_Interval *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
@@ -5184,7 +5184,7 @@ static int __pyx_pf_12intervaltree_8Interval_3end_2__set__(struct __pyx_obj_12in
   __pyx_r = 0;
   goto __pyx_L0;
   __pyx_L1_error:;
-  __Pyx_AddTraceback("intervaltree.Interval.end.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("joshua.intervaltree.Interval.end.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -5192,19 +5192,19 @@ static int __pyx_pf_12intervaltree_8Interval_3end_2__set__(struct __pyx_obj_12in
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_12intervaltree_8Interval_6length_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_12intervaltree_8Interval_6length_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_6joshua_12intervaltree_8Interval_6length_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_6joshua_12intervaltree_8Interval_6length_1__get__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_12intervaltree_8Interval_6length___get__(((struct __pyx_obj_12intervaltree_Interval *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6joshua_12intervaltree_8Interval_6length___get__(((struct __pyx_obj_6joshua_12intervaltree_Interval *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_12intervaltree_8Interval_6length___get__(struct __pyx_obj_12intervaltree_Interval *__pyx_v_self) {
+static PyObject *__pyx_pf_6joshua_12intervaltree_8Interval_6length___get__(struct __pyx_obj_6joshua_12intervaltree_Interval *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -5222,7 +5222,7 @@ static PyObject *__pyx_pf_12intervaltree_8Interval_6length___get__(struct __pyx_
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("intervaltree.Interval.length.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("joshua.intervaltree.Interval.length.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -5231,19 +5231,19 @@ static PyObject *__pyx_pf_12intervaltree_8Interval_6length___get__(struct __pyx_
 }
 
 /* Python wrapper */
-static int __pyx_pw_12intervaltree_8Interval_6length_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
-static int __pyx_pw_12intervaltree_8Interval_6length_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pw_6joshua_12intervaltree_8Interval_6length_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
+static int __pyx_pw_6joshua_12intervaltree_8Interval_6length_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_12intervaltree_8Interval_6length_2__set__(((struct __pyx_obj_12intervaltree_Interval *)__pyx_v_self), ((PyObject *)__pyx_v_value));
+  __pyx_r = __pyx_pf_6joshua_12intervaltree_8Interval_6length_2__set__(((struct __pyx_obj_6joshua_12intervaltree_Interval *)__pyx_v_self), ((PyObject *)__pyx_v_value));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_12intervaltree_8Interval_6length_2__set__(struct __pyx_obj_12intervaltree_Interval *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pf_6joshua_12intervaltree_8Interval_6length_2__set__(struct __pyx_obj_6joshua_12intervaltree_Interval *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
@@ -5258,14 +5258,14 @@ static int __pyx_pf_12intervaltree_8Interval_6length_2__set__(struct __pyx_obj_1
   __pyx_r = 0;
   goto __pyx_L0;
   __pyx_L1_error:;
-  __Pyx_AddTraceback("intervaltree.Interval.length.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("joshua.intervaltree.Interval.length.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "intervaltree.pyx":291
+/* "joshua/intervaltree.pyx":291
  *     """
  *     cdef public int start, end, length
  *     cdef public object value, chrom, strand             # <<<<<<<<<<<<<<
@@ -5274,19 +5274,19 @@ static int __pyx_pf_12intervaltree_8Interval_6length_2__set__(struct __pyx_obj_1
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_12intervaltree_8Interval_5value_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_12intervaltree_8Interval_5value_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_6joshua_12intervaltree_8Interval_5value_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_6joshua_12intervaltree_8Interval_5value_1__get__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_12intervaltree_8Interval_5value___get__(((struct __pyx_obj_12intervaltree_Interval *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6joshua_12intervaltree_8Interval_5value___get__(((struct __pyx_obj_6joshua_12intervaltree_Interval *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_12intervaltree_8Interval_5value___get__(struct __pyx_obj_12intervaltree_Interval *__pyx_v_self) {
+static PyObject *__pyx_pf_6joshua_12intervaltree_8Interval_5value___get__(struct __pyx_obj_6joshua_12intervaltree_Interval *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__", 0);
@@ -5303,19 +5303,19 @@ static PyObject *__pyx_pf_12intervaltree_8Interval_5value___get__(struct __pyx_o
 }
 
 /* Python wrapper */
-static int __pyx_pw_12intervaltree_8Interval_5value_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
-static int __pyx_pw_12intervaltree_8Interval_5value_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pw_6joshua_12intervaltree_8Interval_5value_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
+static int __pyx_pw_6joshua_12intervaltree_8Interval_5value_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_12intervaltree_8Interval_5value_2__set__(((struct __pyx_obj_12intervaltree_Interval *)__pyx_v_self), ((PyObject *)__pyx_v_value));
+  __pyx_r = __pyx_pf_6joshua_12intervaltree_8Interval_5value_2__set__(((struct __pyx_obj_6joshua_12intervaltree_Interval *)__pyx_v_self), ((PyObject *)__pyx_v_value));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_12intervaltree_8Interval_5value_2__set__(struct __pyx_obj_12intervaltree_Interval *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pf_6joshua_12intervaltree_8Interval_5value_2__set__(struct __pyx_obj_6joshua_12intervaltree_Interval *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__", 0);
@@ -5332,19 +5332,19 @@ static int __pyx_pf_12intervaltree_8Interval_5value_2__set__(struct __pyx_obj_12
 }
 
 /* Python wrapper */
-static int __pyx_pw_12intervaltree_8Interval_5value_5__del__(PyObject *__pyx_v_self); /*proto*/
-static int __pyx_pw_12intervaltree_8Interval_5value_5__del__(PyObject *__pyx_v_self) {
+static int __pyx_pw_6joshua_12intervaltree_8Interval_5value_5__del__(PyObject *__pyx_v_self); /*proto*/
+static int __pyx_pw_6joshua_12intervaltree_8Interval_5value_5__del__(PyObject *__pyx_v_self) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__del__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_12intervaltree_8Interval_5value_4__del__(((struct __pyx_obj_12intervaltree_Interval *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6joshua_12intervaltree_8Interval_5value_4__del__(((struct __pyx_obj_6joshua_12intervaltree_Interval *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_12intervaltree_8Interval_5value_4__del__(struct __pyx_obj_12intervaltree_Interval *__pyx_v_self) {
+static int __pyx_pf_6joshua_12intervaltree_8Interval_5value_4__del__(struct __pyx_obj_6joshua_12intervaltree_Interval *__pyx_v_self) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__del__", 0);
@@ -5361,19 +5361,19 @@ static int __pyx_pf_12intervaltree_8Interval_5value_4__del__(struct __pyx_obj_12
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_12intervaltree_8Interval_5chrom_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_12intervaltree_8Interval_5chrom_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_6joshua_12intervaltree_8Interval_5chrom_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_6joshua_12intervaltree_8Interval_5chrom_1__get__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_12intervaltree_8Interval_5chrom___get__(((struct __pyx_obj_12intervaltree_Interval *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6joshua_12intervaltree_8Interval_5chrom___get__(((struct __pyx_obj_6joshua_12intervaltree_Interval *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_12intervaltree_8Interval_5chrom___get__(struct __pyx_obj_12intervaltree_Interval *__pyx_v_self) {
+static PyObject *__pyx_pf_6joshua_12intervaltree_8Interval_5chrom___get__(struct __pyx_obj_6joshua_12intervaltree_Interval *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__", 0);
@@ -5390,19 +5390,19 @@ static PyObject *__pyx_pf_12intervaltree_8Interval_5chrom___get__(struct __pyx_o
 }
 
 /* Python wrapper */
-static int __pyx_pw_12intervaltree_8Interval_5chrom_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
-static int __pyx_pw_12intervaltree_8Interval_5chrom_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pw_6joshua_12intervaltree_8Interval_5chrom_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
+static int __pyx_pw_6joshua_12intervaltree_8Interval_5chrom_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_12intervaltree_8Interval_5chrom_2__set__(((struct __pyx_obj_12intervaltree_Interval *)__pyx_v_self), ((PyObject *)__pyx_v_value));
+  __pyx_r = __pyx_pf_6joshua_12intervaltree_8Interval_5chrom_2__set__(((struct __pyx_obj_6joshua_12intervaltree_Interval *)__pyx_v_self), ((PyObject *)__pyx_v_value));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_12intervaltree_8Interval_5chrom_2__set__(struct __pyx_obj_12intervaltree_Interval *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pf_6joshua_12intervaltree_8Interval_5chrom_2__set__(struct __pyx_obj_6joshua_12intervaltree_Interval *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__", 0);
@@ -5419,19 +5419,19 @@ static int __pyx_pf_12intervaltree_8Interval_5chrom_2__set__(struct __pyx_obj_12
 }
 
 /* Python wrapper */
-static int __pyx_pw_12intervaltree_8Interval_5chrom_5__del__(PyObject *__pyx_v_self); /*proto*/
-static int __pyx_pw_12intervaltree_8Interval_5chrom_5__del__(PyObject *__pyx_v_self) {
+static int __pyx_pw_6joshua_12intervaltree_8Interval_5chrom_5__del__(PyObject *__pyx_v_self); /*proto*/
+static int __pyx_pw_6joshua_12intervaltree_8Interval_5chrom_5__del__(PyObject *__pyx_v_self) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__del__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_12intervaltree_8Interval_5chrom_4__del__(((struct __pyx_obj_12intervaltree_Interval *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6joshua_12intervaltree_8Interval_5chrom_4__del__(((struct __pyx_obj_6joshua_12intervaltree_Interval *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_12intervaltree_8Interval_5chrom_4__del__(struct __pyx_obj_12intervaltree_Interval *__pyx_v_self) {
+static int __pyx_pf_6joshua_12intervaltree_8Interval_5chrom_4__del__(struct __pyx_obj_6joshua_12intervaltree_Interval *__pyx_v_self) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__del__", 0);
@@ -5448,19 +5448,19 @@ static int __pyx_pf_12intervaltree_8Interval_5chrom_4__del__(struct __pyx_obj_12
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_12intervaltree_8Interval_6strand_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_12intervaltree_8Interval_6strand_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_6joshua_12intervaltree_8Interval_6strand_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_6joshua_12intervaltree_8Interval_6strand_1__get__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_12intervaltree_8Interval_6strand___get__(((struct __pyx_obj_12intervaltree_Interval *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6joshua_12intervaltree_8Interval_6strand___get__(((struct __pyx_obj_6joshua_12intervaltree_Interval *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_12intervaltree_8Interval_6strand___get__(struct __pyx_obj_12intervaltree_Interval *__pyx_v_self) {
+static PyObject *__pyx_pf_6joshua_12intervaltree_8Interval_6strand___get__(struct __pyx_obj_6joshua_12intervaltree_Interval *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__", 0);
@@ -5477,19 +5477,19 @@ static PyObject *__pyx_pf_12intervaltree_8Interval_6strand___get__(struct __pyx_
 }
 
 /* Python wrapper */
-static int __pyx_pw_12intervaltree_8Interval_6strand_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
-static int __pyx_pw_12intervaltree_8Interval_6strand_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pw_6joshua_12intervaltree_8Interval_6strand_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
+static int __pyx_pw_6joshua_12intervaltree_8Interval_6strand_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_12intervaltree_8Interval_6strand_2__set__(((struct __pyx_obj_12intervaltree_Interval *)__pyx_v_self), ((PyObject *)__pyx_v_value));
+  __pyx_r = __pyx_pf_6joshua_12intervaltree_8Interval_6strand_2__set__(((struct __pyx_obj_6joshua_12intervaltree_Interval *)__pyx_v_self), ((PyObject *)__pyx_v_value));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_12intervaltree_8Interval_6strand_2__set__(struct __pyx_obj_12intervaltree_Interval *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pf_6joshua_12intervaltree_8Interval_6strand_2__set__(struct __pyx_obj_6joshua_12intervaltree_Interval *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__", 0);
@@ -5506,19 +5506,19 @@ static int __pyx_pf_12intervaltree_8Interval_6strand_2__set__(struct __pyx_obj_1
 }
 
 /* Python wrapper */
-static int __pyx_pw_12intervaltree_8Interval_6strand_5__del__(PyObject *__pyx_v_self); /*proto*/
-static int __pyx_pw_12intervaltree_8Interval_6strand_5__del__(PyObject *__pyx_v_self) {
+static int __pyx_pw_6joshua_12intervaltree_8Interval_6strand_5__del__(PyObject *__pyx_v_self); /*proto*/
+static int __pyx_pw_6joshua_12intervaltree_8Interval_6strand_5__del__(PyObject *__pyx_v_self) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__del__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_12intervaltree_8Interval_6strand_4__del__(((struct __pyx_obj_12intervaltree_Interval *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6joshua_12intervaltree_8Interval_6strand_4__del__(((struct __pyx_obj_6joshua_12intervaltree_Interval *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_12intervaltree_8Interval_6strand_4__del__(struct __pyx_obj_12intervaltree_Interval *__pyx_v_self) {
+static int __pyx_pf_6joshua_12intervaltree_8Interval_6strand_4__del__(struct __pyx_obj_6joshua_12intervaltree_Interval *__pyx_v_self) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__del__", 0);
@@ -5534,7 +5534,7 @@ static int __pyx_pf_12intervaltree_8Interval_6strand_4__del__(struct __pyx_obj_1
   return __pyx_r;
 }
 
-/* "intervaltree.pyx":391
+/* "joshua/intervaltree.pyx":391
  *     cdef public int size
  * 
  *     def __cinit__( self ):             # <<<<<<<<<<<<<<
@@ -5543,28 +5543,28 @@ static int __pyx_pf_12intervaltree_8Interval_6strand_4__del__(struct __pyx_obj_1
  */
 
 /* Python wrapper */
-static int __pyx_pw_12intervaltree_12IntervalTree_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static int __pyx_pw_12intervaltree_12IntervalTree_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static int __pyx_pw_6joshua_12intervaltree_12IntervalTree_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static int __pyx_pw_6joshua_12intervaltree_12IntervalTree_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__cinit__ (wrapper)", 0);
   if (unlikely(PyTuple_GET_SIZE(__pyx_args) > 0)) {
     __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 0, 0, PyTuple_GET_SIZE(__pyx_args)); return -1;}
   if (unlikely(__pyx_kwds) && unlikely(PyDict_Size(__pyx_kwds) > 0) && unlikely(!__Pyx_CheckKeywordStrings(__pyx_kwds, "__cinit__", 0))) return -1;
-  __pyx_r = __pyx_pf_12intervaltree_12IntervalTree___cinit__(((struct __pyx_obj_12intervaltree_IntervalTree *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6joshua_12intervaltree_12IntervalTree___cinit__(((struct __pyx_obj_6joshua_12intervaltree_IntervalTree *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_12intervaltree_12IntervalTree___cinit__(struct __pyx_obj_12intervaltree_IntervalTree *__pyx_v_self) {
+static int __pyx_pf_6joshua_12intervaltree_12IntervalTree___cinit__(struct __pyx_obj_6joshua_12intervaltree_IntervalTree *__pyx_v_self) {
   CYTHON_UNUSED PyObject *__pyx_v_root = NULL;
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__cinit__", 0);
 
-  /* "intervaltree.pyx":392
+  /* "joshua/intervaltree.pyx":392
  * 
  *     def __cinit__( self ):
  *         root = None             # <<<<<<<<<<<<<<
@@ -5574,7 +5574,7 @@ static int __pyx_pf_12intervaltree_12IntervalTree___cinit__(struct __pyx_obj_12i
   __Pyx_INCREF(Py_None);
   __pyx_v_root = Py_None;
 
-  /* "intervaltree.pyx":393
+  /* "joshua/intervaltree.pyx":393
  *     def __cinit__( self ):
  *         root = None
  *         self.size = 0             # <<<<<<<<<<<<<<
@@ -5583,7 +5583,7 @@ static int __pyx_pf_12intervaltree_12IntervalTree___cinit__(struct __pyx_obj_12i
  */
   __pyx_v_self->size = 0;
 
-  /* "intervaltree.pyx":391
+  /* "joshua/intervaltree.pyx":391
  *     cdef public int size
  * 
  *     def __cinit__( self ):             # <<<<<<<<<<<<<<
@@ -5598,7 +5598,7 @@ static int __pyx_pf_12intervaltree_12IntervalTree___cinit__(struct __pyx_obj_12i
   return __pyx_r;
 }
 
-/* "intervaltree.pyx":397
+/* "joshua/intervaltree.pyx":397
  *     # ---- Position based interfaces -----------------------------------------
  * 
  *     def insert( self, int start, int end, object value=None ):             # <<<<<<<<<<<<<<
@@ -5607,9 +5607,9 @@ static int __pyx_pf_12intervaltree_12IntervalTree___cinit__(struct __pyx_obj_12i
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_12intervaltree_12IntervalTree_3insert(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_12intervaltree_12IntervalTree_2insert[] = "\n        Insert the interval [start,end) associated with value `value`.\n        ";
-static PyObject *__pyx_pw_12intervaltree_12IntervalTree_3insert(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalTree_3insert(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_6joshua_12intervaltree_12IntervalTree_2insert[] = "\n        Insert the interval [start,end) associated with value `value`.\n        ";
+static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalTree_3insert(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   int __pyx_v_start;
   int __pyx_v_end;
   PyObject *__pyx_v_value = 0;
@@ -5669,18 +5669,18 @@ static PyObject *__pyx_pw_12intervaltree_12IntervalTree_3insert(PyObject *__pyx_
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("insert", 0, 2, 3, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 397; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
-  __Pyx_AddTraceback("intervaltree.IntervalTree.insert", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("joshua.intervaltree.IntervalTree.insert", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_12intervaltree_12IntervalTree_2insert(((struct __pyx_obj_12intervaltree_IntervalTree *)__pyx_v_self), __pyx_v_start, __pyx_v_end, __pyx_v_value);
+  __pyx_r = __pyx_pf_6joshua_12intervaltree_12IntervalTree_2insert(((struct __pyx_obj_6joshua_12intervaltree_IntervalTree *)__pyx_v_self), __pyx_v_start, __pyx_v_end, __pyx_v_value);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_12intervaltree_12IntervalTree_2insert(struct __pyx_obj_12intervaltree_IntervalTree *__pyx_v_self, int __pyx_v_start, int __pyx_v_end, PyObject *__pyx_v_value) {
+static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_2insert(struct __pyx_obj_6joshua_12intervaltree_IntervalTree *__pyx_v_self, int __pyx_v_start, int __pyx_v_end, PyObject *__pyx_v_value) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
@@ -5693,7 +5693,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_2insert(struct __pyx_obj
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("insert", 0);
 
-  /* "intervaltree.pyx":401
+  /* "joshua/intervaltree.pyx":401
  *         Insert the interval [start,end) associated with value `value`.
  *         """
  *         if self.root is None:             # <<<<<<<<<<<<<<
@@ -5704,7 +5704,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_2insert(struct __pyx_obj
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "intervaltree.pyx":402
+    /* "joshua/intervaltree.pyx":402
  *         """
  *         if self.root is None:
  *             self.root = IntervalNode( start, end, value )             # <<<<<<<<<<<<<<
@@ -5726,36 +5726,36 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_2insert(struct __pyx_obj
     __Pyx_GIVEREF(__pyx_v_value);
     __pyx_t_3 = 0;
     __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_12intervaltree_IntervalNode)), __pyx_t_5, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 402; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_6joshua_12intervaltree_IntervalNode)), __pyx_t_5, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 402; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_GIVEREF(__pyx_t_4);
     __Pyx_GOTREF(__pyx_v_self->root);
     __Pyx_DECREF(((PyObject *)__pyx_v_self->root));
-    __pyx_v_self->root = ((struct __pyx_obj_12intervaltree_IntervalNode *)__pyx_t_4);
+    __pyx_v_self->root = ((struct __pyx_obj_6joshua_12intervaltree_IntervalNode *)__pyx_t_4);
     __pyx_t_4 = 0;
     goto __pyx_L3;
   }
   /*else*/ {
 
-    /* "intervaltree.pyx":404
+    /* "joshua/intervaltree.pyx":404
  *             self.root = IntervalNode( start, end, value )
  *         else:
  *             self.root = self.root.insert( start, end, value )             # <<<<<<<<<<<<<<
  *         self.size += 1
  * 
  */
-    __pyx_t_4 = ((PyObject *)((struct __pyx_vtabstruct_12intervaltree_IntervalNode *)__pyx_v_self->root->__pyx_vtab)->insert(__pyx_v_self->root, __pyx_v_start, __pyx_v_end, __pyx_v_value, 0)); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 404; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = ((PyObject *)((struct __pyx_vtabstruct_6joshua_12intervaltree_IntervalNode *)__pyx_v_self->root->__pyx_vtab)->insert(__pyx_v_self->root, __pyx_v_start, __pyx_v_end, __pyx_v_value, 0)); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 404; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_GIVEREF(__pyx_t_4);
     __Pyx_GOTREF(__pyx_v_self->root);
     __Pyx_DECREF(((PyObject *)__pyx_v_self->root));
-    __pyx_v_self->root = ((struct __pyx_obj_12intervaltree_IntervalNode *)__pyx_t_4);
+    __pyx_v_self->root = ((struct __pyx_obj_6joshua_12intervaltree_IntervalNode *)__pyx_t_4);
     __pyx_t_4 = 0;
   }
   __pyx_L3:;
 
-  /* "intervaltree.pyx":405
+  /* "joshua/intervaltree.pyx":405
  *         else:
  *             self.root = self.root.insert( start, end, value )
  *         self.size += 1             # <<<<<<<<<<<<<<
@@ -5764,7 +5764,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_2insert(struct __pyx_obj
  */
   __pyx_v_self->size = (__pyx_v_self->size + 1);
 
-  /* "intervaltree.pyx":397
+  /* "joshua/intervaltree.pyx":397
  *     # ---- Position based interfaces -----------------------------------------
  * 
  *     def insert( self, int start, int end, object value=None ):             # <<<<<<<<<<<<<<
@@ -5779,7 +5779,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_2insert(struct __pyx_obj
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_AddTraceback("intervaltree.IntervalTree.insert", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("joshua.intervaltree.IntervalTree.insert", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -5787,7 +5787,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_2insert(struct __pyx_obj
   return __pyx_r;
 }
 
-/* "intervaltree.pyx":409
+/* "joshua/intervaltree.pyx":409
  *     add = insert
  * 
  *     def find( self, start, end ):             # <<<<<<<<<<<<<<
@@ -5796,9 +5796,9 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_2insert(struct __pyx_obj
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_12intervaltree_12IntervalTree_5find(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_12intervaltree_12IntervalTree_4find[] = "\n        Return a sorted list of all intervals overlapping [start,end).\n        ";
-static PyObject *__pyx_pw_12intervaltree_12IntervalTree_5find(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalTree_5find(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_6joshua_12intervaltree_12IntervalTree_4find[] = "\n        Return a sorted list of all intervals overlapping [start,end).\n        ";
+static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalTree_5find(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_start = 0;
   PyObject *__pyx_v_end = 0;
   int __pyx_lineno = 0;
@@ -5846,18 +5846,18 @@ static PyObject *__pyx_pw_12intervaltree_12IntervalTree_5find(PyObject *__pyx_v_
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("find", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 409; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
-  __Pyx_AddTraceback("intervaltree.IntervalTree.find", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("joshua.intervaltree.IntervalTree.find", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_12intervaltree_12IntervalTree_4find(((struct __pyx_obj_12intervaltree_IntervalTree *)__pyx_v_self), __pyx_v_start, __pyx_v_end);
+  __pyx_r = __pyx_pf_6joshua_12intervaltree_12IntervalTree_4find(((struct __pyx_obj_6joshua_12intervaltree_IntervalTree *)__pyx_v_self), __pyx_v_start, __pyx_v_end);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_12intervaltree_12IntervalTree_4find(struct __pyx_obj_12intervaltree_IntervalTree *__pyx_v_self, PyObject *__pyx_v_start, PyObject *__pyx_v_end) {
+static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_4find(struct __pyx_obj_6joshua_12intervaltree_IntervalTree *__pyx_v_self, PyObject *__pyx_v_start, PyObject *__pyx_v_end) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
@@ -5872,7 +5872,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_4find(struct __pyx_obj_1
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("find", 0);
 
-  /* "intervaltree.pyx":413
+  /* "joshua/intervaltree.pyx":413
  *         Return a sorted list of all intervals overlapping [start,end).
  *         """
  *         if self.root is None:             # <<<<<<<<<<<<<<
@@ -5883,7 +5883,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_4find(struct __pyx_obj_1
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "intervaltree.pyx":414
+    /* "joshua/intervaltree.pyx":414
  *         """
  *         if self.root is None:
  *             return []             # <<<<<<<<<<<<<<
@@ -5898,7 +5898,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_4find(struct __pyx_obj_1
     goto __pyx_L0;
   }
 
-  /* "intervaltree.pyx":415
+  /* "joshua/intervaltree.pyx":415
  *         if self.root is None:
  *             return []
  *         return self.root.find( start, end )             # <<<<<<<<<<<<<<
@@ -5939,7 +5939,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_4find(struct __pyx_obj_1
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "intervaltree.pyx":409
+  /* "joshua/intervaltree.pyx":409
  *     add = insert
  * 
  *     def find( self, start, end ):             # <<<<<<<<<<<<<<
@@ -5953,7 +5953,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_4find(struct __pyx_obj_1
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_7);
-  __Pyx_AddTraceback("intervaltree.IntervalTree.find", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("joshua.intervaltree.IntervalTree.find", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -5961,7 +5961,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_4find(struct __pyx_obj_1
   return __pyx_r;
 }
 
-/* "intervaltree.pyx":417
+/* "joshua/intervaltree.pyx":417
  *         return self.root.find( start, end )
  * 
  *     def before( self, position, num_intervals=1, max_dist=2500 ):             # <<<<<<<<<<<<<<
@@ -5970,9 +5970,9 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_4find(struct __pyx_obj_1
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_12intervaltree_12IntervalTree_7before(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_12intervaltree_12IntervalTree_6before[] = "\n        Find `num_intervals` intervals that lie before `position` and are no\n        further than `max_dist` positions away\n        ";
-static PyObject *__pyx_pw_12intervaltree_12IntervalTree_7before(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalTree_7before(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_6joshua_12intervaltree_12IntervalTree_6before[] = "\n        Find `num_intervals` intervals that lie before `position` and are no\n        further than `max_dist` positions away\n        ";
+static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalTree_7before(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_position = 0;
   PyObject *__pyx_v_num_intervals = 0;
   PyObject *__pyx_v_max_dist = 0;
@@ -6033,18 +6033,18 @@ static PyObject *__pyx_pw_12intervaltree_12IntervalTree_7before(PyObject *__pyx_
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("before", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 417; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
-  __Pyx_AddTraceback("intervaltree.IntervalTree.before", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("joshua.intervaltree.IntervalTree.before", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_12intervaltree_12IntervalTree_6before(((struct __pyx_obj_12intervaltree_IntervalTree *)__pyx_v_self), __pyx_v_position, __pyx_v_num_intervals, __pyx_v_max_dist);
+  __pyx_r = __pyx_pf_6joshua_12intervaltree_12IntervalTree_6before(((struct __pyx_obj_6joshua_12intervaltree_IntervalTree *)__pyx_v_self), __pyx_v_position, __pyx_v_num_intervals, __pyx_v_max_dist);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_12intervaltree_12IntervalTree_6before(struct __pyx_obj_12intervaltree_IntervalTree *__pyx_v_self, PyObject *__pyx_v_position, PyObject *__pyx_v_num_intervals, PyObject *__pyx_v_max_dist) {
+static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_6before(struct __pyx_obj_6joshua_12intervaltree_IntervalTree *__pyx_v_self, PyObject *__pyx_v_position, PyObject *__pyx_v_num_intervals, PyObject *__pyx_v_max_dist) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
@@ -6052,13 +6052,13 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_6before(struct __pyx_obj
   PyObject *__pyx_t_3 = NULL;
   int __pyx_t_4;
   int __pyx_t_5;
-  struct __pyx_opt_args_12intervaltree_12IntervalNode_left __pyx_t_6;
+  struct __pyx_opt_args_6joshua_12intervaltree_12IntervalNode_left __pyx_t_6;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("before", 0);
 
-  /* "intervaltree.pyx":422
+  /* "joshua/intervaltree.pyx":422
  *         further than `max_dist` positions away
  *         """
  *         if self.root is None:             # <<<<<<<<<<<<<<
@@ -6069,7 +6069,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_6before(struct __pyx_obj
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "intervaltree.pyx":423
+    /* "joshua/intervaltree.pyx":423
  *         """
  *         if self.root is None:
  *             return []             # <<<<<<<<<<<<<<
@@ -6084,7 +6084,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_6before(struct __pyx_obj
     goto __pyx_L0;
   }
 
-  /* "intervaltree.pyx":424
+  /* "joshua/intervaltree.pyx":424
  *         if self.root is None:
  *             return []
  *         return self.root.left( position, num_intervals, max_dist )             # <<<<<<<<<<<<<<
@@ -6097,13 +6097,13 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_6before(struct __pyx_obj
   __pyx_t_6.__pyx_n = 2;
   __pyx_t_6.n = __pyx_t_4;
   __pyx_t_6.max_dist = __pyx_t_5;
-  __pyx_t_3 = ((struct __pyx_vtabstruct_12intervaltree_IntervalNode *)__pyx_v_self->root->__pyx_vtab)->left(__pyx_v_self->root, __pyx_v_position, 0, &__pyx_t_6); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 424; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = ((struct __pyx_vtabstruct_6joshua_12intervaltree_IntervalNode *)__pyx_v_self->root->__pyx_vtab)->left(__pyx_v_self->root, __pyx_v_position, 0, &__pyx_t_6); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 424; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_r = __pyx_t_3;
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "intervaltree.pyx":417
+  /* "joshua/intervaltree.pyx":417
  *         return self.root.find( start, end )
  * 
  *     def before( self, position, num_intervals=1, max_dist=2500 ):             # <<<<<<<<<<<<<<
@@ -6114,7 +6114,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_6before(struct __pyx_obj
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_AddTraceback("intervaltree.IntervalTree.before", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("joshua.intervaltree.IntervalTree.before", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -6122,7 +6122,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_6before(struct __pyx_obj
   return __pyx_r;
 }
 
-/* "intervaltree.pyx":426
+/* "joshua/intervaltree.pyx":426
  *         return self.root.left( position, num_intervals, max_dist )
  * 
  *     def after( self, position, num_intervals=1, max_dist=2500 ):             # <<<<<<<<<<<<<<
@@ -6131,9 +6131,9 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_6before(struct __pyx_obj
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_12intervaltree_12IntervalTree_9after(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_12intervaltree_12IntervalTree_8after[] = "\n        Find `num_intervals` intervals that lie after `position` and are no\n        further than `max_dist` positions away\n        ";
-static PyObject *__pyx_pw_12intervaltree_12IntervalTree_9after(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalTree_9after(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_6joshua_12intervaltree_12IntervalTree_8after[] = "\n        Find `num_intervals` intervals that lie after `position` and are no\n        further than `max_dist` positions away\n        ";
+static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalTree_9after(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_position = 0;
   PyObject *__pyx_v_num_intervals = 0;
   PyObject *__pyx_v_max_dist = 0;
@@ -6194,18 +6194,18 @@ static PyObject *__pyx_pw_12intervaltree_12IntervalTree_9after(PyObject *__pyx_v
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("after", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 426; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
-  __Pyx_AddTraceback("intervaltree.IntervalTree.after", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("joshua.intervaltree.IntervalTree.after", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_12intervaltree_12IntervalTree_8after(((struct __pyx_obj_12intervaltree_IntervalTree *)__pyx_v_self), __pyx_v_position, __pyx_v_num_intervals, __pyx_v_max_dist);
+  __pyx_r = __pyx_pf_6joshua_12intervaltree_12IntervalTree_8after(((struct __pyx_obj_6joshua_12intervaltree_IntervalTree *)__pyx_v_self), __pyx_v_position, __pyx_v_num_intervals, __pyx_v_max_dist);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_12intervaltree_12IntervalTree_8after(struct __pyx_obj_12intervaltree_IntervalTree *__pyx_v_self, PyObject *__pyx_v_position, PyObject *__pyx_v_num_intervals, PyObject *__pyx_v_max_dist) {
+static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_8after(struct __pyx_obj_6joshua_12intervaltree_IntervalTree *__pyx_v_self, PyObject *__pyx_v_position, PyObject *__pyx_v_num_intervals, PyObject *__pyx_v_max_dist) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
@@ -6213,13 +6213,13 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_8after(struct __pyx_obj_
   PyObject *__pyx_t_3 = NULL;
   int __pyx_t_4;
   int __pyx_t_5;
-  struct __pyx_opt_args_12intervaltree_12IntervalNode_right __pyx_t_6;
+  struct __pyx_opt_args_6joshua_12intervaltree_12IntervalNode_right __pyx_t_6;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("after", 0);
 
-  /* "intervaltree.pyx":431
+  /* "joshua/intervaltree.pyx":431
  *         further than `max_dist` positions away
  *         """
  *         if self.root is None:             # <<<<<<<<<<<<<<
@@ -6230,7 +6230,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_8after(struct __pyx_obj_
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "intervaltree.pyx":432
+    /* "joshua/intervaltree.pyx":432
  *         """
  *         if self.root is None:
  *             return []             # <<<<<<<<<<<<<<
@@ -6245,7 +6245,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_8after(struct __pyx_obj_
     goto __pyx_L0;
   }
 
-  /* "intervaltree.pyx":433
+  /* "joshua/intervaltree.pyx":433
  *         if self.root is None:
  *             return []
  *         return self.root.right( position, num_intervals, max_dist )             # <<<<<<<<<<<<<<
@@ -6258,13 +6258,13 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_8after(struct __pyx_obj_
   __pyx_t_6.__pyx_n = 2;
   __pyx_t_6.n = __pyx_t_4;
   __pyx_t_6.max_dist = __pyx_t_5;
-  __pyx_t_3 = ((struct __pyx_vtabstruct_12intervaltree_IntervalNode *)__pyx_v_self->root->__pyx_vtab)->right(__pyx_v_self->root, __pyx_v_position, 0, &__pyx_t_6); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 433; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = ((struct __pyx_vtabstruct_6joshua_12intervaltree_IntervalNode *)__pyx_v_self->root->__pyx_vtab)->right(__pyx_v_self->root, __pyx_v_position, 0, &__pyx_t_6); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 433; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_r = __pyx_t_3;
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "intervaltree.pyx":426
+  /* "joshua/intervaltree.pyx":426
  *         return self.root.left( position, num_intervals, max_dist )
  * 
  *     def after( self, position, num_intervals=1, max_dist=2500 ):             # <<<<<<<<<<<<<<
@@ -6275,7 +6275,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_8after(struct __pyx_obj_
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_AddTraceback("intervaltree.IntervalTree.after", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("joshua.intervaltree.IntervalTree.after", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -6283,7 +6283,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_8after(struct __pyx_obj_
   return __pyx_r;
 }
 
-/* "intervaltree.pyx":437
+/* "joshua/intervaltree.pyx":437
  *     # ---- Interval-like object based interfaces -----------------------------
  * 
  *     def insert_interval( self, interval ):             # <<<<<<<<<<<<<<
@@ -6292,20 +6292,20 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_8after(struct __pyx_obj_
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_12intervaltree_12IntervalTree_11insert_interval(PyObject *__pyx_v_self, PyObject *__pyx_v_interval); /*proto*/
-static char __pyx_doc_12intervaltree_12IntervalTree_10insert_interval[] = "\n        Insert an \"interval\" like object (one with at least start and end\n        attributes)\n        ";
-static PyObject *__pyx_pw_12intervaltree_12IntervalTree_11insert_interval(PyObject *__pyx_v_self, PyObject *__pyx_v_interval) {
+static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalTree_11insert_interval(PyObject *__pyx_v_self, PyObject *__pyx_v_interval); /*proto*/
+static char __pyx_doc_6joshua_12intervaltree_12IntervalTree_10insert_interval[] = "\n        Insert an \"interval\" like object (one with at least start and end\n        attributes)\n        ";
+static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalTree_11insert_interval(PyObject *__pyx_v_self, PyObject *__pyx_v_interval) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("insert_interval (wrapper)", 0);
-  __pyx_r = __pyx_pf_12intervaltree_12IntervalTree_10insert_interval(((struct __pyx_obj_12intervaltree_IntervalTree *)__pyx_v_self), ((PyObject *)__pyx_v_interval));
+  __pyx_r = __pyx_pf_6joshua_12intervaltree_12IntervalTree_10insert_interval(((struct __pyx_obj_6joshua_12intervaltree_IntervalTree *)__pyx_v_self), ((PyObject *)__pyx_v_interval));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_12intervaltree_12IntervalTree_10insert_interval(struct __pyx_obj_12intervaltree_IntervalTree *__pyx_v_self, PyObject *__pyx_v_interval) {
+static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_10insert_interval(struct __pyx_obj_6joshua_12intervaltree_IntervalTree *__pyx_v_self, PyObject *__pyx_v_interval) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -6320,7 +6320,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_10insert_interval(struct
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("insert_interval", 0);
 
-  /* "intervaltree.pyx":442
+  /* "joshua/intervaltree.pyx":442
  *         attributes)
  *         """
  *         self.insert( interval.start, interval.end, interval )             # <<<<<<<<<<<<<<
@@ -6365,7 +6365,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_10insert_interval(struct
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "intervaltree.pyx":437
+  /* "joshua/intervaltree.pyx":437
  *     # ---- Interval-like object based interfaces -----------------------------
  * 
  *     def insert_interval( self, interval ):             # <<<<<<<<<<<<<<
@@ -6383,7 +6383,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_10insert_interval(struct
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_7);
-  __Pyx_AddTraceback("intervaltree.IntervalTree.insert_interval", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("joshua.intervaltree.IntervalTree.insert_interval", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -6391,7 +6391,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_10insert_interval(struct
   return __pyx_r;
 }
 
-/* "intervaltree.pyx":446
+/* "joshua/intervaltree.pyx":446
  *     add_interval = insert_interval
  * 
  *     def before_interval( self, interval, num_intervals=1, max_dist=2500 ):             # <<<<<<<<<<<<<<
@@ -6400,9 +6400,9 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_10insert_interval(struct
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_12intervaltree_12IntervalTree_13before_interval(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_12intervaltree_12IntervalTree_12before_interval[] = "\n        Find `num_intervals` intervals that lie completely before `interval`\n        and are no further than `max_dist` positions away\n        ";
-static PyObject *__pyx_pw_12intervaltree_12IntervalTree_13before_interval(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalTree_13before_interval(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_6joshua_12intervaltree_12IntervalTree_12before_interval[] = "\n        Find `num_intervals` intervals that lie completely before `interval`\n        and are no further than `max_dist` positions away\n        ";
+static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalTree_13before_interval(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_interval = 0;
   PyObject *__pyx_v_num_intervals = 0;
   PyObject *__pyx_v_max_dist = 0;
@@ -6463,18 +6463,18 @@ static PyObject *__pyx_pw_12intervaltree_12IntervalTree_13before_interval(PyObje
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("before_interval", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 446; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
-  __Pyx_AddTraceback("intervaltree.IntervalTree.before_interval", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("joshua.intervaltree.IntervalTree.before_interval", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_12intervaltree_12IntervalTree_12before_interval(((struct __pyx_obj_12intervaltree_IntervalTree *)__pyx_v_self), __pyx_v_interval, __pyx_v_num_intervals, __pyx_v_max_dist);
+  __pyx_r = __pyx_pf_6joshua_12intervaltree_12IntervalTree_12before_interval(((struct __pyx_obj_6joshua_12intervaltree_IntervalTree *)__pyx_v_self), __pyx_v_interval, __pyx_v_num_intervals, __pyx_v_max_dist);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_12intervaltree_12IntervalTree_12before_interval(struct __pyx_obj_12intervaltree_IntervalTree *__pyx_v_self, PyObject *__pyx_v_interval, PyObject *__pyx_v_num_intervals, PyObject *__pyx_v_max_dist) {
+static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_12before_interval(struct __pyx_obj_6joshua_12intervaltree_IntervalTree *__pyx_v_self, PyObject *__pyx_v_interval, PyObject *__pyx_v_num_intervals, PyObject *__pyx_v_max_dist) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
@@ -6483,13 +6483,13 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_12before_interval(struct
   int __pyx_t_4;
   int __pyx_t_5;
   PyObject *__pyx_t_6 = NULL;
-  struct __pyx_opt_args_12intervaltree_12IntervalNode_left __pyx_t_7;
+  struct __pyx_opt_args_6joshua_12intervaltree_12IntervalNode_left __pyx_t_7;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("before_interval", 0);
 
-  /* "intervaltree.pyx":451
+  /* "joshua/intervaltree.pyx":451
  *         and are no further than `max_dist` positions away
  *         """
  *         if self.root is None:             # <<<<<<<<<<<<<<
@@ -6500,7 +6500,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_12before_interval(struct
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "intervaltree.pyx":452
+    /* "joshua/intervaltree.pyx":452
  *         """
  *         if self.root is None:
  *             return []             # <<<<<<<<<<<<<<
@@ -6515,7 +6515,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_12before_interval(struct
     goto __pyx_L0;
   }
 
-  /* "intervaltree.pyx":453
+  /* "joshua/intervaltree.pyx":453
  *         if self.root is None:
  *             return []
  *         return self.root.left( interval.start, num_intervals, max_dist )             # <<<<<<<<<<<<<<
@@ -6530,14 +6530,14 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_12before_interval(struct
   __pyx_t_7.__pyx_n = 2;
   __pyx_t_7.n = __pyx_t_4;
   __pyx_t_7.max_dist = __pyx_t_5;
-  __pyx_t_6 = ((struct __pyx_vtabstruct_12intervaltree_IntervalNode *)__pyx_v_self->root->__pyx_vtab)->left(__pyx_v_self->root, __pyx_t_3, 0, &__pyx_t_7); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 453; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_6 = ((struct __pyx_vtabstruct_6joshua_12intervaltree_IntervalNode *)__pyx_v_self->root->__pyx_vtab)->left(__pyx_v_self->root, __pyx_t_3, 0, &__pyx_t_7); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 453; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_r = __pyx_t_6;
   __pyx_t_6 = 0;
   goto __pyx_L0;
 
-  /* "intervaltree.pyx":446
+  /* "joshua/intervaltree.pyx":446
  *     add_interval = insert_interval
  * 
  *     def before_interval( self, interval, num_intervals=1, max_dist=2500 ):             # <<<<<<<<<<<<<<
@@ -6549,7 +6549,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_12before_interval(struct
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_6);
-  __Pyx_AddTraceback("intervaltree.IntervalTree.before_interval", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("joshua.intervaltree.IntervalTree.before_interval", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -6557,7 +6557,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_12before_interval(struct
   return __pyx_r;
 }
 
-/* "intervaltree.pyx":455
+/* "joshua/intervaltree.pyx":455
  *         return self.root.left( interval.start, num_intervals, max_dist )
  * 
  *     def after_interval( self, interval, num_intervals=1, max_dist=2500 ):             # <<<<<<<<<<<<<<
@@ -6566,9 +6566,9 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_12before_interval(struct
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_12intervaltree_12IntervalTree_15after_interval(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_12intervaltree_12IntervalTree_14after_interval[] = "\n        Find `num_intervals` intervals that lie completely after `interval` and\n        are no further than `max_dist` positions away\n        ";
-static PyObject *__pyx_pw_12intervaltree_12IntervalTree_15after_interval(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalTree_15after_interval(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_6joshua_12intervaltree_12IntervalTree_14after_interval[] = "\n        Find `num_intervals` intervals that lie completely after `interval` and\n        are no further than `max_dist` positions away\n        ";
+static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalTree_15after_interval(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_interval = 0;
   PyObject *__pyx_v_num_intervals = 0;
   PyObject *__pyx_v_max_dist = 0;
@@ -6629,18 +6629,18 @@ static PyObject *__pyx_pw_12intervaltree_12IntervalTree_15after_interval(PyObjec
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("after_interval", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 455; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
-  __Pyx_AddTraceback("intervaltree.IntervalTree.after_interval", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("joshua.intervaltree.IntervalTree.after_interval", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_12intervaltree_12IntervalTree_14after_interval(((struct __pyx_obj_12intervaltree_IntervalTree *)__pyx_v_self), __pyx_v_interval, __pyx_v_num_intervals, __pyx_v_max_dist);
+  __pyx_r = __pyx_pf_6joshua_12intervaltree_12IntervalTree_14after_interval(((struct __pyx_obj_6joshua_12intervaltree_IntervalTree *)__pyx_v_self), __pyx_v_interval, __pyx_v_num_intervals, __pyx_v_max_dist);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_12intervaltree_12IntervalTree_14after_interval(struct __pyx_obj_12intervaltree_IntervalTree *__pyx_v_self, PyObject *__pyx_v_interval, PyObject *__pyx_v_num_intervals, PyObject *__pyx_v_max_dist) {
+static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_14after_interval(struct __pyx_obj_6joshua_12intervaltree_IntervalTree *__pyx_v_self, PyObject *__pyx_v_interval, PyObject *__pyx_v_num_intervals, PyObject *__pyx_v_max_dist) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
@@ -6649,13 +6649,13 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_14after_interval(struct 
   int __pyx_t_4;
   int __pyx_t_5;
   PyObject *__pyx_t_6 = NULL;
-  struct __pyx_opt_args_12intervaltree_12IntervalNode_right __pyx_t_7;
+  struct __pyx_opt_args_6joshua_12intervaltree_12IntervalNode_right __pyx_t_7;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("after_interval", 0);
 
-  /* "intervaltree.pyx":460
+  /* "joshua/intervaltree.pyx":460
  *         are no further than `max_dist` positions away
  *         """
  *         if self.root is None:             # <<<<<<<<<<<<<<
@@ -6666,7 +6666,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_14after_interval(struct 
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "intervaltree.pyx":461
+    /* "joshua/intervaltree.pyx":461
  *         """
  *         if self.root is None:
  *             return []             # <<<<<<<<<<<<<<
@@ -6681,7 +6681,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_14after_interval(struct 
     goto __pyx_L0;
   }
 
-  /* "intervaltree.pyx":462
+  /* "joshua/intervaltree.pyx":462
  *         if self.root is None:
  *             return []
  *         return self.root.right( interval.end, num_intervals, max_dist )             # <<<<<<<<<<<<<<
@@ -6696,14 +6696,14 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_14after_interval(struct 
   __pyx_t_7.__pyx_n = 2;
   __pyx_t_7.n = __pyx_t_4;
   __pyx_t_7.max_dist = __pyx_t_5;
-  __pyx_t_6 = ((struct __pyx_vtabstruct_12intervaltree_IntervalNode *)__pyx_v_self->root->__pyx_vtab)->right(__pyx_v_self->root, __pyx_t_3, 0, &__pyx_t_7); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 462; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_6 = ((struct __pyx_vtabstruct_6joshua_12intervaltree_IntervalNode *)__pyx_v_self->root->__pyx_vtab)->right(__pyx_v_self->root, __pyx_t_3, 0, &__pyx_t_7); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 462; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_r = __pyx_t_6;
   __pyx_t_6 = 0;
   goto __pyx_L0;
 
-  /* "intervaltree.pyx":455
+  /* "joshua/intervaltree.pyx":455
  *         return self.root.left( interval.start, num_intervals, max_dist )
  * 
  *     def after_interval( self, interval, num_intervals=1, max_dist=2500 ):             # <<<<<<<<<<<<<<
@@ -6715,7 +6715,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_14after_interval(struct 
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_6);
-  __Pyx_AddTraceback("intervaltree.IntervalTree.after_interval", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("joshua.intervaltree.IntervalTree.after_interval", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -6723,7 +6723,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_14after_interval(struct 
   return __pyx_r;
 }
 
-/* "intervaltree.pyx":464
+/* "joshua/intervaltree.pyx":464
  *         return self.root.right( interval.end, num_intervals, max_dist )
  * 
  *     def upstream_of_interval( self, interval, num_intervals=1, max_dist=2500 ):             # <<<<<<<<<<<<<<
@@ -6732,9 +6732,9 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_14after_interval(struct 
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_12intervaltree_12IntervalTree_17upstream_of_interval(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_12intervaltree_12IntervalTree_16upstream_of_interval[] = "\n        Find `num_intervals` intervals that lie completely upstream of\n        `interval` and are no further than `max_dist` positions away\n        ";
-static PyObject *__pyx_pw_12intervaltree_12IntervalTree_17upstream_of_interval(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalTree_17upstream_of_interval(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_6joshua_12intervaltree_12IntervalTree_16upstream_of_interval[] = "\n        Find `num_intervals` intervals that lie completely upstream of\n        `interval` and are no further than `max_dist` positions away\n        ";
+static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalTree_17upstream_of_interval(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_interval = 0;
   PyObject *__pyx_v_num_intervals = 0;
   PyObject *__pyx_v_max_dist = 0;
@@ -6795,18 +6795,18 @@ static PyObject *__pyx_pw_12intervaltree_12IntervalTree_17upstream_of_interval(P
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("upstream_of_interval", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 464; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
-  __Pyx_AddTraceback("intervaltree.IntervalTree.upstream_of_interval", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("joshua.intervaltree.IntervalTree.upstream_of_interval", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_12intervaltree_12IntervalTree_16upstream_of_interval(((struct __pyx_obj_12intervaltree_IntervalTree *)__pyx_v_self), __pyx_v_interval, __pyx_v_num_intervals, __pyx_v_max_dist);
+  __pyx_r = __pyx_pf_6joshua_12intervaltree_12IntervalTree_16upstream_of_interval(((struct __pyx_obj_6joshua_12intervaltree_IntervalTree *)__pyx_v_self), __pyx_v_interval, __pyx_v_num_intervals, __pyx_v_max_dist);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_12intervaltree_12IntervalTree_16upstream_of_interval(struct __pyx_obj_12intervaltree_IntervalTree *__pyx_v_self, PyObject *__pyx_v_interval, PyObject *__pyx_v_num_intervals, PyObject *__pyx_v_max_dist) {
+static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_16upstream_of_interval(struct __pyx_obj_6joshua_12intervaltree_IntervalTree *__pyx_v_self, PyObject *__pyx_v_interval, PyObject *__pyx_v_num_intervals, PyObject *__pyx_v_max_dist) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
@@ -6815,14 +6815,14 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_16upstream_of_interval(s
   PyObject *__pyx_t_4 = NULL;
   int __pyx_t_5;
   int __pyx_t_6;
-  struct __pyx_opt_args_12intervaltree_12IntervalNode_right __pyx_t_7;
-  struct __pyx_opt_args_12intervaltree_12IntervalNode_left __pyx_t_8;
+  struct __pyx_opt_args_6joshua_12intervaltree_12IntervalNode_right __pyx_t_7;
+  struct __pyx_opt_args_6joshua_12intervaltree_12IntervalNode_left __pyx_t_8;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("upstream_of_interval", 0);
 
-  /* "intervaltree.pyx":469
+  /* "joshua/intervaltree.pyx":469
  *         `interval` and are no further than `max_dist` positions away
  *         """
  *         if self.root is None:             # <<<<<<<<<<<<<<
@@ -6833,7 +6833,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_16upstream_of_interval(s
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "intervaltree.pyx":470
+    /* "joshua/intervaltree.pyx":470
  *         """
  *         if self.root is None:
  *             return []             # <<<<<<<<<<<<<<
@@ -6848,7 +6848,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_16upstream_of_interval(s
     goto __pyx_L0;
   }
 
-  /* "intervaltree.pyx":471
+  /* "joshua/intervaltree.pyx":471
  *         if self.root is None:
  *             return []
  *         if interval.strand == -1 or interval.strand == "-":             # <<<<<<<<<<<<<<
@@ -6874,7 +6874,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_16upstream_of_interval(s
   __pyx_L5_bool_binop_done:;
   if (__pyx_t_2) {
 
-    /* "intervaltree.pyx":472
+    /* "joshua/intervaltree.pyx":472
  *             return []
  *         if interval.strand == -1 or interval.strand == "-":
  *             return self.root.right( interval.end, num_intervals, max_dist )             # <<<<<<<<<<<<<<
@@ -6889,7 +6889,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_16upstream_of_interval(s
     __pyx_t_7.__pyx_n = 2;
     __pyx_t_7.n = __pyx_t_5;
     __pyx_t_7.max_dist = __pyx_t_6;
-    __pyx_t_3 = ((struct __pyx_vtabstruct_12intervaltree_IntervalNode *)__pyx_v_self->root->__pyx_vtab)->right(__pyx_v_self->root, __pyx_t_4, 0, &__pyx_t_7); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 472; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = ((struct __pyx_vtabstruct_6joshua_12intervaltree_IntervalNode *)__pyx_v_self->root->__pyx_vtab)->right(__pyx_v_self->root, __pyx_t_4, 0, &__pyx_t_7); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 472; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_r = __pyx_t_3;
@@ -6898,7 +6898,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_16upstream_of_interval(s
   }
   /*else*/ {
 
-    /* "intervaltree.pyx":474
+    /* "joshua/intervaltree.pyx":474
  *             return self.root.right( interval.end, num_intervals, max_dist )
  *         else:
  *             return self.root.left( interval.start, num_intervals, max_dist )             # <<<<<<<<<<<<<<
@@ -6913,7 +6913,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_16upstream_of_interval(s
     __pyx_t_8.__pyx_n = 2;
     __pyx_t_8.n = __pyx_t_6;
     __pyx_t_8.max_dist = __pyx_t_5;
-    __pyx_t_4 = ((struct __pyx_vtabstruct_12intervaltree_IntervalNode *)__pyx_v_self->root->__pyx_vtab)->left(__pyx_v_self->root, __pyx_t_3, 0, &__pyx_t_8); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 474; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = ((struct __pyx_vtabstruct_6joshua_12intervaltree_IntervalNode *)__pyx_v_self->root->__pyx_vtab)->left(__pyx_v_self->root, __pyx_t_3, 0, &__pyx_t_8); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 474; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_r = __pyx_t_4;
@@ -6921,7 +6921,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_16upstream_of_interval(s
     goto __pyx_L0;
   }
 
-  /* "intervaltree.pyx":464
+  /* "joshua/intervaltree.pyx":464
  *         return self.root.right( interval.end, num_intervals, max_dist )
  * 
  *     def upstream_of_interval( self, interval, num_intervals=1, max_dist=2500 ):             # <<<<<<<<<<<<<<
@@ -6933,7 +6933,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_16upstream_of_interval(s
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_AddTraceback("intervaltree.IntervalTree.upstream_of_interval", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("joshua.intervaltree.IntervalTree.upstream_of_interval", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -6941,7 +6941,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_16upstream_of_interval(s
   return __pyx_r;
 }
 
-/* "intervaltree.pyx":476
+/* "joshua/intervaltree.pyx":476
  *             return self.root.left( interval.start, num_intervals, max_dist )
  * 
  *     def downstream_of_interval( self, interval, num_intervals=1, max_dist=2500 ):             # <<<<<<<<<<<<<<
@@ -6950,9 +6950,9 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_16upstream_of_interval(s
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_12intervaltree_12IntervalTree_19downstream_of_interval(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_12intervaltree_12IntervalTree_18downstream_of_interval[] = "\n        Find `num_intervals` intervals that lie completely downstream of\n        `interval` and are no further than `max_dist` positions away\n        ";
-static PyObject *__pyx_pw_12intervaltree_12IntervalTree_19downstream_of_interval(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalTree_19downstream_of_interval(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_6joshua_12intervaltree_12IntervalTree_18downstream_of_interval[] = "\n        Find `num_intervals` intervals that lie completely downstream of\n        `interval` and are no further than `max_dist` positions away\n        ";
+static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalTree_19downstream_of_interval(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_interval = 0;
   PyObject *__pyx_v_num_intervals = 0;
   PyObject *__pyx_v_max_dist = 0;
@@ -7013,18 +7013,18 @@ static PyObject *__pyx_pw_12intervaltree_12IntervalTree_19downstream_of_interval
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("downstream_of_interval", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 476; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
-  __Pyx_AddTraceback("intervaltree.IntervalTree.downstream_of_interval", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("joshua.intervaltree.IntervalTree.downstream_of_interval", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_12intervaltree_12IntervalTree_18downstream_of_interval(((struct __pyx_obj_12intervaltree_IntervalTree *)__pyx_v_self), __pyx_v_interval, __pyx_v_num_intervals, __pyx_v_max_dist);
+  __pyx_r = __pyx_pf_6joshua_12intervaltree_12IntervalTree_18downstream_of_interval(((struct __pyx_obj_6joshua_12intervaltree_IntervalTree *)__pyx_v_self), __pyx_v_interval, __pyx_v_num_intervals, __pyx_v_max_dist);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_12intervaltree_12IntervalTree_18downstream_of_interval(struct __pyx_obj_12intervaltree_IntervalTree *__pyx_v_self, PyObject *__pyx_v_interval, PyObject *__pyx_v_num_intervals, PyObject *__pyx_v_max_dist) {
+static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_18downstream_of_interval(struct __pyx_obj_6joshua_12intervaltree_IntervalTree *__pyx_v_self, PyObject *__pyx_v_interval, PyObject *__pyx_v_num_intervals, PyObject *__pyx_v_max_dist) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
@@ -7033,14 +7033,14 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_18downstream_of_interval
   PyObject *__pyx_t_4 = NULL;
   int __pyx_t_5;
   int __pyx_t_6;
-  struct __pyx_opt_args_12intervaltree_12IntervalNode_left __pyx_t_7;
-  struct __pyx_opt_args_12intervaltree_12IntervalNode_right __pyx_t_8;
+  struct __pyx_opt_args_6joshua_12intervaltree_12IntervalNode_left __pyx_t_7;
+  struct __pyx_opt_args_6joshua_12intervaltree_12IntervalNode_right __pyx_t_8;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("downstream_of_interval", 0);
 
-  /* "intervaltree.pyx":481
+  /* "joshua/intervaltree.pyx":481
  *         `interval` and are no further than `max_dist` positions away
  *         """
  *         if self.root is None:             # <<<<<<<<<<<<<<
@@ -7051,7 +7051,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_18downstream_of_interval
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "intervaltree.pyx":482
+    /* "joshua/intervaltree.pyx":482
  *         """
  *         if self.root is None:
  *             return []             # <<<<<<<<<<<<<<
@@ -7066,7 +7066,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_18downstream_of_interval
     goto __pyx_L0;
   }
 
-  /* "intervaltree.pyx":483
+  /* "joshua/intervaltree.pyx":483
  *         if self.root is None:
  *             return []
  *         if interval.strand == -1 or interval.strand == "-":             # <<<<<<<<<<<<<<
@@ -7092,7 +7092,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_18downstream_of_interval
   __pyx_L5_bool_binop_done:;
   if (__pyx_t_2) {
 
-    /* "intervaltree.pyx":484
+    /* "joshua/intervaltree.pyx":484
  *             return []
  *         if interval.strand == -1 or interval.strand == "-":
  *             return self.root.left( interval.start, num_intervals, max_dist )             # <<<<<<<<<<<<<<
@@ -7107,7 +7107,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_18downstream_of_interval
     __pyx_t_7.__pyx_n = 2;
     __pyx_t_7.n = __pyx_t_5;
     __pyx_t_7.max_dist = __pyx_t_6;
-    __pyx_t_3 = ((struct __pyx_vtabstruct_12intervaltree_IntervalNode *)__pyx_v_self->root->__pyx_vtab)->left(__pyx_v_self->root, __pyx_t_4, 0, &__pyx_t_7); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 484; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = ((struct __pyx_vtabstruct_6joshua_12intervaltree_IntervalNode *)__pyx_v_self->root->__pyx_vtab)->left(__pyx_v_self->root, __pyx_t_4, 0, &__pyx_t_7); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 484; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_r = __pyx_t_3;
@@ -7116,7 +7116,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_18downstream_of_interval
   }
   /*else*/ {
 
-    /* "intervaltree.pyx":486
+    /* "joshua/intervaltree.pyx":486
  *             return self.root.left( interval.start, num_intervals, max_dist )
  *         else:
  *             return self.root.right( interval.end, num_intervals, max_dist )             # <<<<<<<<<<<<<<
@@ -7131,7 +7131,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_18downstream_of_interval
     __pyx_t_8.__pyx_n = 2;
     __pyx_t_8.n = __pyx_t_6;
     __pyx_t_8.max_dist = __pyx_t_5;
-    __pyx_t_4 = ((struct __pyx_vtabstruct_12intervaltree_IntervalNode *)__pyx_v_self->root->__pyx_vtab)->right(__pyx_v_self->root, __pyx_t_3, 0, &__pyx_t_8); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 486; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = ((struct __pyx_vtabstruct_6joshua_12intervaltree_IntervalNode *)__pyx_v_self->root->__pyx_vtab)->right(__pyx_v_self->root, __pyx_t_3, 0, &__pyx_t_8); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 486; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_r = __pyx_t_4;
@@ -7139,7 +7139,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_18downstream_of_interval
     goto __pyx_L0;
   }
 
-  /* "intervaltree.pyx":476
+  /* "joshua/intervaltree.pyx":476
  *             return self.root.left( interval.start, num_intervals, max_dist )
  * 
  *     def downstream_of_interval( self, interval, num_intervals=1, max_dist=2500 ):             # <<<<<<<<<<<<<<
@@ -7151,7 +7151,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_18downstream_of_interval
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_AddTraceback("intervaltree.IntervalTree.downstream_of_interval", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("joshua.intervaltree.IntervalTree.downstream_of_interval", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -7159,7 +7159,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_18downstream_of_interval
   return __pyx_r;
 }
 
-/* "intervaltree.pyx":488
+/* "joshua/intervaltree.pyx":488
  *             return self.root.right( interval.end, num_intervals, max_dist )
  * 
  *     def traverse(self, fn):             # <<<<<<<<<<<<<<
@@ -7168,20 +7168,20 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_18downstream_of_interval
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_12intervaltree_12IntervalTree_21traverse(PyObject *__pyx_v_self, PyObject *__pyx_v_fn); /*proto*/
-static char __pyx_doc_12intervaltree_12IntervalTree_20traverse[] = "\n        call fn for each element in the tree\n        ";
-static PyObject *__pyx_pw_12intervaltree_12IntervalTree_21traverse(PyObject *__pyx_v_self, PyObject *__pyx_v_fn) {
+static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalTree_21traverse(PyObject *__pyx_v_self, PyObject *__pyx_v_fn); /*proto*/
+static char __pyx_doc_6joshua_12intervaltree_12IntervalTree_20traverse[] = "\n        call fn for each element in the tree\n        ";
+static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalTree_21traverse(PyObject *__pyx_v_self, PyObject *__pyx_v_fn) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("traverse (wrapper)", 0);
-  __pyx_r = __pyx_pf_12intervaltree_12IntervalTree_20traverse(((struct __pyx_obj_12intervaltree_IntervalTree *)__pyx_v_self), ((PyObject *)__pyx_v_fn));
+  __pyx_r = __pyx_pf_6joshua_12intervaltree_12IntervalTree_20traverse(((struct __pyx_obj_6joshua_12intervaltree_IntervalTree *)__pyx_v_self), ((PyObject *)__pyx_v_fn));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_12intervaltree_12IntervalTree_20traverse(struct __pyx_obj_12intervaltree_IntervalTree *__pyx_v_self, PyObject *__pyx_v_fn) {
+static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_20traverse(struct __pyx_obj_6joshua_12intervaltree_IntervalTree *__pyx_v_self, PyObject *__pyx_v_fn) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
@@ -7195,7 +7195,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_20traverse(struct __pyx_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("traverse", 0);
 
-  /* "intervaltree.pyx":492
+  /* "joshua/intervaltree.pyx":492
  *         call fn for each element in the tree
  *         """
  *         if self.root is None:             # <<<<<<<<<<<<<<
@@ -7206,7 +7206,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_20traverse(struct __pyx_
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "intervaltree.pyx":493
+    /* "joshua/intervaltree.pyx":493
  *         """
  *         if self.root is None:
  *             return None             # <<<<<<<<<<<<<<
@@ -7219,7 +7219,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_20traverse(struct __pyx_
     goto __pyx_L0;
   }
 
-  /* "intervaltree.pyx":494
+  /* "joshua/intervaltree.pyx":494
  *         if self.root is None:
  *             return None
  *         return self.root.traverse(fn)             # <<<<<<<<<<<<<<
@@ -7258,7 +7258,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_20traverse(struct __pyx_
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "intervaltree.pyx":488
+  /* "joshua/intervaltree.pyx":488
  *             return self.root.right( interval.end, num_intervals, max_dist )
  * 
  *     def traverse(self, fn):             # <<<<<<<<<<<<<<
@@ -7272,7 +7272,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_20traverse(struct __pyx_
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_6);
-  __Pyx_AddTraceback("intervaltree.IntervalTree.traverse", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("joshua.intervaltree.IntervalTree.traverse", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -7280,7 +7280,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_20traverse(struct __pyx_
   return __pyx_r;
 }
 
-/* "intervaltree.pyx":496
+/* "joshua/intervaltree.pyx":496
  *         return self.root.traverse(fn)
  * 
  *     def __len__(self):             # <<<<<<<<<<<<<<
@@ -7289,24 +7289,24 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_20traverse(struct __pyx_
  */
 
 /* Python wrapper */
-static Py_ssize_t __pyx_pw_12intervaltree_12IntervalTree_23__len__(PyObject *__pyx_v_self); /*proto*/
-static Py_ssize_t __pyx_pw_12intervaltree_12IntervalTree_23__len__(PyObject *__pyx_v_self) {
+static Py_ssize_t __pyx_pw_6joshua_12intervaltree_12IntervalTree_23__len__(PyObject *__pyx_v_self); /*proto*/
+static Py_ssize_t __pyx_pw_6joshua_12intervaltree_12IntervalTree_23__len__(PyObject *__pyx_v_self) {
   Py_ssize_t __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__len__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_12intervaltree_12IntervalTree_22__len__(((struct __pyx_obj_12intervaltree_IntervalTree *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6joshua_12intervaltree_12IntervalTree_22__len__(((struct __pyx_obj_6joshua_12intervaltree_IntervalTree *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static Py_ssize_t __pyx_pf_12intervaltree_12IntervalTree_22__len__(struct __pyx_obj_12intervaltree_IntervalTree *__pyx_v_self) {
+static Py_ssize_t __pyx_pf_6joshua_12intervaltree_12IntervalTree_22__len__(struct __pyx_obj_6joshua_12intervaltree_IntervalTree *__pyx_v_self) {
   Py_ssize_t __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__len__", 0);
 
-  /* "intervaltree.pyx":497
+  /* "joshua/intervaltree.pyx":497
  * 
  *     def __len__(self):
  *         return self.size             # <<<<<<<<<<<<<<
@@ -7316,7 +7316,7 @@ static Py_ssize_t __pyx_pf_12intervaltree_12IntervalTree_22__len__(struct __pyx_
   __pyx_r = __pyx_v_self->size;
   goto __pyx_L0;
 
-  /* "intervaltree.pyx":496
+  /* "joshua/intervaltree.pyx":496
  *         return self.root.traverse(fn)
  * 
  *     def __len__(self):             # <<<<<<<<<<<<<<
@@ -7330,7 +7330,7 @@ static Py_ssize_t __pyx_pf_12intervaltree_12IntervalTree_22__len__(struct __pyx_
   return __pyx_r;
 }
 
-/* "intervaltree.pyx":389
+/* "joshua/intervaltree.pyx":389
  * 
  *     cdef IntervalNode root
  *     cdef public int size             # <<<<<<<<<<<<<<
@@ -7339,19 +7339,19 @@ static Py_ssize_t __pyx_pf_12intervaltree_12IntervalTree_22__len__(struct __pyx_
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_12intervaltree_12IntervalTree_4size_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_12intervaltree_12IntervalTree_4size_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalTree_4size_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalTree_4size_1__get__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_12intervaltree_12IntervalTree_4size___get__(((struct __pyx_obj_12intervaltree_IntervalTree *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6joshua_12intervaltree_12IntervalTree_4size___get__(((struct __pyx_obj_6joshua_12intervaltree_IntervalTree *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_12intervaltree_12IntervalTree_4size___get__(struct __pyx_obj_12intervaltree_IntervalTree *__pyx_v_self) {
+static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_4size___get__(struct __pyx_obj_6joshua_12intervaltree_IntervalTree *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -7369,7 +7369,7 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_4size___get__(struct __p
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("intervaltree.IntervalTree.size.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("joshua.intervaltree.IntervalTree.size.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -7378,19 +7378,19 @@ static PyObject *__pyx_pf_12intervaltree_12IntervalTree_4size___get__(struct __p
 }
 
 /* Python wrapper */
-static int __pyx_pw_12intervaltree_12IntervalTree_4size_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
-static int __pyx_pw_12intervaltree_12IntervalTree_4size_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pw_6joshua_12intervaltree_12IntervalTree_4size_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
+static int __pyx_pw_6joshua_12intervaltree_12IntervalTree_4size_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_12intervaltree_12IntervalTree_4size_2__set__(((struct __pyx_obj_12intervaltree_IntervalTree *)__pyx_v_self), ((PyObject *)__pyx_v_value));
+  __pyx_r = __pyx_pf_6joshua_12intervaltree_12IntervalTree_4size_2__set__(((struct __pyx_obj_6joshua_12intervaltree_IntervalTree *)__pyx_v_self), ((PyObject *)__pyx_v_value));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_12intervaltree_12IntervalTree_4size_2__set__(struct __pyx_obj_12intervaltree_IntervalTree *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pf_6joshua_12intervaltree_12IntervalTree_4size_2__set__(struct __pyx_obj_6joshua_12intervaltree_IntervalTree *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
@@ -7405,16 +7405,16 @@ static int __pyx_pf_12intervaltree_12IntervalTree_4size_2__set__(struct __pyx_ob
   __pyx_r = 0;
   goto __pyx_L0;
   __pyx_L1_error:;
-  __Pyx_AddTraceback("intervaltree.IntervalTree.size.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("joshua.intervaltree.IntervalTree.size.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
-static struct __pyx_vtabstruct_12intervaltree_IntervalNode __pyx_vtable_12intervaltree_IntervalNode;
+static struct __pyx_vtabstruct_6joshua_12intervaltree_IntervalNode __pyx_vtable_6joshua_12intervaltree_IntervalNode;
 
-static PyObject *__pyx_tp_new_12intervaltree_IntervalNode(PyTypeObject *t, PyObject *a, PyObject *k) {
-  struct __pyx_obj_12intervaltree_IntervalNode *p;
+static PyObject *__pyx_tp_new_6joshua_12intervaltree_IntervalNode(PyTypeObject *t, PyObject *a, PyObject *k) {
+  struct __pyx_obj_6joshua_12intervaltree_IntervalNode *p;
   PyObject *o;
   if (likely((t->tp_flags & Py_TPFLAGS_IS_ABSTRACT) == 0)) {
     o = (*t->tp_alloc)(t, 0);
@@ -7422,20 +7422,20 @@ static PyObject *__pyx_tp_new_12intervaltree_IntervalNode(PyTypeObject *t, PyObj
     o = (PyObject *) PyBaseObject_Type.tp_new(t, __pyx_empty_tuple, 0);
   }
   if (unlikely(!o)) return 0;
-  p = ((struct __pyx_obj_12intervaltree_IntervalNode *)o);
-  p->__pyx_vtab = __pyx_vtabptr_12intervaltree_IntervalNode;
+  p = ((struct __pyx_obj_6joshua_12intervaltree_IntervalNode *)o);
+  p->__pyx_vtab = __pyx_vtabptr_6joshua_12intervaltree_IntervalNode;
   p->interval = Py_None; Py_INCREF(Py_None);
-  p->cleft = ((struct __pyx_obj_12intervaltree_IntervalNode *)Py_None); Py_INCREF(Py_None);
-  p->cright = ((struct __pyx_obj_12intervaltree_IntervalNode *)Py_None); Py_INCREF(Py_None);
-  p->croot = ((struct __pyx_obj_12intervaltree_IntervalNode *)Py_None); Py_INCREF(Py_None);
-  if (unlikely(__pyx_pw_12intervaltree_12IntervalNode_3__cinit__(o, a, k) < 0)) {
+  p->cleft = ((struct __pyx_obj_6joshua_12intervaltree_IntervalNode *)Py_None); Py_INCREF(Py_None);
+  p->cright = ((struct __pyx_obj_6joshua_12intervaltree_IntervalNode *)Py_None); Py_INCREF(Py_None);
+  p->croot = ((struct __pyx_obj_6joshua_12intervaltree_IntervalNode *)Py_None); Py_INCREF(Py_None);
+  if (unlikely(__pyx_pw_6joshua_12intervaltree_12IntervalNode_3__cinit__(o, a, k) < 0)) {
     Py_DECREF(o); o = 0;
   }
   return o;
 }
 
-static void __pyx_tp_dealloc_12intervaltree_IntervalNode(PyObject *o) {
-  struct __pyx_obj_12intervaltree_IntervalNode *p = (struct __pyx_obj_12intervaltree_IntervalNode *)o;
+static void __pyx_tp_dealloc_6joshua_12intervaltree_IntervalNode(PyObject *o) {
+  struct __pyx_obj_6joshua_12intervaltree_IntervalNode *p = (struct __pyx_obj_6joshua_12intervaltree_IntervalNode *)o;
   #if PY_VERSION_HEX >= 0x030400a1
   if (unlikely(Py_TYPE(o)->tp_finalize) && !_PyGC_FINALIZED(o)) {
     if (PyObject_CallFinalizerFromDealloc(o)) return;
@@ -7449,9 +7449,9 @@ static void __pyx_tp_dealloc_12intervaltree_IntervalNode(PyObject *o) {
   (*Py_TYPE(o)->tp_free)(o);
 }
 
-static int __pyx_tp_traverse_12intervaltree_IntervalNode(PyObject *o, visitproc v, void *a) {
+static int __pyx_tp_traverse_6joshua_12intervaltree_IntervalNode(PyObject *o, visitproc v, void *a) {
   int e;
-  struct __pyx_obj_12intervaltree_IntervalNode *p = (struct __pyx_obj_12intervaltree_IntervalNode *)o;
+  struct __pyx_obj_6joshua_12intervaltree_IntervalNode *p = (struct __pyx_obj_6joshua_12intervaltree_IntervalNode *)o;
   if (p->interval) {
     e = (*v)(p->interval, a); if (e) return e;
   }
@@ -7467,70 +7467,56 @@ static int __pyx_tp_traverse_12intervaltree_IntervalNode(PyObject *o, visitproc 
   return 0;
 }
 
-static int __pyx_tp_clear_12intervaltree_IntervalNode(PyObject *o) {
+static int __pyx_tp_clear_6joshua_12intervaltree_IntervalNode(PyObject *o) {
   PyObject* tmp;
-  struct __pyx_obj_12intervaltree_IntervalNode *p = (struct __pyx_obj_12intervaltree_IntervalNode *)o;
+  struct __pyx_obj_6joshua_12intervaltree_IntervalNode *p = (struct __pyx_obj_6joshua_12intervaltree_IntervalNode *)o;
   tmp = ((PyObject*)p->interval);
   p->interval = Py_None; Py_INCREF(Py_None);
   Py_XDECREF(tmp);
   tmp = ((PyObject*)p->cleft);
-  p->cleft = ((struct __pyx_obj_12intervaltree_IntervalNode *)Py_None); Py_INCREF(Py_None);
+  p->cleft = ((struct __pyx_obj_6joshua_12intervaltree_IntervalNode *)Py_None); Py_INCREF(Py_None);
   Py_XDECREF(tmp);
   tmp = ((PyObject*)p->cright);
-  p->cright = ((struct __pyx_obj_12intervaltree_IntervalNode *)Py_None); Py_INCREF(Py_None);
+  p->cright = ((struct __pyx_obj_6joshua_12intervaltree_IntervalNode *)Py_None); Py_INCREF(Py_None);
   Py_XDECREF(tmp);
   tmp = ((PyObject*)p->croot);
-  p->croot = ((struct __pyx_obj_12intervaltree_IntervalNode *)Py_None); Py_INCREF(Py_None);
+  p->croot = ((struct __pyx_obj_6joshua_12intervaltree_IntervalNode *)Py_None); Py_INCREF(Py_None);
   Py_XDECREF(tmp);
   return 0;
 }
 
-static PyObject *__pyx_getprop_12intervaltree_12IntervalNode_left_node(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_12intervaltree_12IntervalNode_9left_node_1__get__(o);
+static PyObject *__pyx_getprop_6joshua_12intervaltree_12IntervalNode_left_node(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_6joshua_12intervaltree_12IntervalNode_9left_node_1__get__(o);
 }
 
-static PyObject *__pyx_getprop_12intervaltree_12IntervalNode_right_node(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_12intervaltree_12IntervalNode_10right_node_1__get__(o);
+static PyObject *__pyx_getprop_6joshua_12intervaltree_12IntervalNode_right_node(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_6joshua_12intervaltree_12IntervalNode_10right_node_1__get__(o);
 }
 
-static PyObject *__pyx_getprop_12intervaltree_12IntervalNode_root_node(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_12intervaltree_12IntervalNode_9root_node_1__get__(o);
+static PyObject *__pyx_getprop_6joshua_12intervaltree_12IntervalNode_root_node(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_6joshua_12intervaltree_12IntervalNode_9root_node_1__get__(o);
 }
 
-static PyObject *__pyx_getprop_12intervaltree_12IntervalNode_interval(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_12intervaltree_12IntervalNode_8interval_1__get__(o);
+static PyObject *__pyx_getprop_6joshua_12intervaltree_12IntervalNode_interval(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_6joshua_12intervaltree_12IntervalNode_8interval_1__get__(o);
 }
 
-static int __pyx_setprop_12intervaltree_12IntervalNode_interval(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
+static int __pyx_setprop_6joshua_12intervaltree_12IntervalNode_interval(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
   if (v) {
-    return __pyx_pw_12intervaltree_12IntervalNode_8interval_3__set__(o, v);
+    return __pyx_pw_6joshua_12intervaltree_12IntervalNode_8interval_3__set__(o, v);
   }
   else {
-    return __pyx_pw_12intervaltree_12IntervalNode_8interval_5__del__(o);
+    return __pyx_pw_6joshua_12intervaltree_12IntervalNode_8interval_5__del__(o);
   }
 }
 
-static PyObject *__pyx_getprop_12intervaltree_12IntervalNode_start(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_12intervaltree_12IntervalNode_5start_1__get__(o);
+static PyObject *__pyx_getprop_6joshua_12intervaltree_12IntervalNode_start(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_6joshua_12intervaltree_12IntervalNode_5start_1__get__(o);
 }
 
-static int __pyx_setprop_12intervaltree_12IntervalNode_start(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
+static int __pyx_setprop_6joshua_12intervaltree_12IntervalNode_start(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
   if (v) {
-    return __pyx_pw_12intervaltree_12IntervalNode_5start_3__set__(o, v);
-  }
-  else {
-    PyErr_SetString(PyExc_NotImplementedError, "__del__");
-    return -1;
-  }
-}
-
-static PyObject *__pyx_getprop_12intervaltree_12IntervalNode_end(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_12intervaltree_12IntervalNode_3end_1__get__(o);
-}
-
-static int __pyx_setprop_12intervaltree_12IntervalNode_end(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
-  if (v) {
-    return __pyx_pw_12intervaltree_12IntervalNode_3end_3__set__(o, v);
+    return __pyx_pw_6joshua_12intervaltree_12IntervalNode_5start_3__set__(o, v);
   }
   else {
     PyErr_SetString(PyExc_NotImplementedError, "__del__");
@@ -7538,13 +7524,13 @@ static int __pyx_setprop_12intervaltree_12IntervalNode_end(PyObject *o, PyObject
   }
 }
 
-static PyObject *__pyx_getprop_12intervaltree_12IntervalNode_length(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_12intervaltree_12IntervalNode_6length_1__get__(o);
+static PyObject *__pyx_getprop_6joshua_12intervaltree_12IntervalNode_end(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_6joshua_12intervaltree_12IntervalNode_3end_1__get__(o);
 }
 
-static int __pyx_setprop_12intervaltree_12IntervalNode_length(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
+static int __pyx_setprop_6joshua_12intervaltree_12IntervalNode_end(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
   if (v) {
-    return __pyx_pw_12intervaltree_12IntervalNode_6length_3__set__(o, v);
+    return __pyx_pw_6joshua_12intervaltree_12IntervalNode_3end_3__set__(o, v);
   }
   else {
     PyErr_SetString(PyExc_NotImplementedError, "__del__");
@@ -7552,32 +7538,46 @@ static int __pyx_setprop_12intervaltree_12IntervalNode_length(PyObject *o, PyObj
   }
 }
 
-static PyMethodDef __pyx_methods_12intervaltree_IntervalNode[] = {
-  {"insert", (PyCFunction)__pyx_pw_12intervaltree_12IntervalNode_5insert, METH_VARARGS|METH_KEYWORDS, __pyx_doc_12intervaltree_12IntervalNode_4insert},
-  {"intersect", (PyCFunction)__pyx_pw_12intervaltree_12IntervalNode_7intersect, METH_VARARGS|METH_KEYWORDS, __pyx_doc_12intervaltree_12IntervalNode_6intersect},
-  {"left", (PyCFunction)__pyx_pw_12intervaltree_12IntervalNode_9left, METH_VARARGS|METH_KEYWORDS, __pyx_doc_12intervaltree_12IntervalNode_8left},
-  {"right", (PyCFunction)__pyx_pw_12intervaltree_12IntervalNode_11right, METH_VARARGS|METH_KEYWORDS, __pyx_doc_12intervaltree_12IntervalNode_10right},
-  {"traverse", (PyCFunction)__pyx_pw_12intervaltree_12IntervalNode_13traverse, METH_O, 0},
+static PyObject *__pyx_getprop_6joshua_12intervaltree_12IntervalNode_length(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_6joshua_12intervaltree_12IntervalNode_6length_1__get__(o);
+}
+
+static int __pyx_setprop_6joshua_12intervaltree_12IntervalNode_length(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
+  if (v) {
+    return __pyx_pw_6joshua_12intervaltree_12IntervalNode_6length_3__set__(o, v);
+  }
+  else {
+    PyErr_SetString(PyExc_NotImplementedError, "__del__");
+    return -1;
+  }
+}
+
+static PyMethodDef __pyx_methods_6joshua_12intervaltree_IntervalNode[] = {
+  {"insert", (PyCFunction)__pyx_pw_6joshua_12intervaltree_12IntervalNode_5insert, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6joshua_12intervaltree_12IntervalNode_4insert},
+  {"intersect", (PyCFunction)__pyx_pw_6joshua_12intervaltree_12IntervalNode_7intersect, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6joshua_12intervaltree_12IntervalNode_6intersect},
+  {"left", (PyCFunction)__pyx_pw_6joshua_12intervaltree_12IntervalNode_9left, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6joshua_12intervaltree_12IntervalNode_8left},
+  {"right", (PyCFunction)__pyx_pw_6joshua_12intervaltree_12IntervalNode_11right, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6joshua_12intervaltree_12IntervalNode_10right},
+  {"traverse", (PyCFunction)__pyx_pw_6joshua_12intervaltree_12IntervalNode_13traverse, METH_O, 0},
   {0, 0, 0, 0}
 };
 
-static struct PyGetSetDef __pyx_getsets_12intervaltree_IntervalNode[] = {
-  {(char *)"left_node", __pyx_getprop_12intervaltree_12IntervalNode_left_node, 0, 0, 0},
-  {(char *)"right_node", __pyx_getprop_12intervaltree_12IntervalNode_right_node, 0, 0, 0},
-  {(char *)"root_node", __pyx_getprop_12intervaltree_12IntervalNode_root_node, 0, 0, 0},
-  {(char *)"interval", __pyx_getprop_12intervaltree_12IntervalNode_interval, __pyx_setprop_12intervaltree_12IntervalNode_interval, 0, 0},
-  {(char *)"start", __pyx_getprop_12intervaltree_12IntervalNode_start, __pyx_setprop_12intervaltree_12IntervalNode_start, 0, 0},
-  {(char *)"end", __pyx_getprop_12intervaltree_12IntervalNode_end, __pyx_setprop_12intervaltree_12IntervalNode_end, 0, 0},
-  {(char *)"length", __pyx_getprop_12intervaltree_12IntervalNode_length, __pyx_setprop_12intervaltree_12IntervalNode_length, 0, 0},
+static struct PyGetSetDef __pyx_getsets_6joshua_12intervaltree_IntervalNode[] = {
+  {(char *)"left_node", __pyx_getprop_6joshua_12intervaltree_12IntervalNode_left_node, 0, 0, 0},
+  {(char *)"right_node", __pyx_getprop_6joshua_12intervaltree_12IntervalNode_right_node, 0, 0, 0},
+  {(char *)"root_node", __pyx_getprop_6joshua_12intervaltree_12IntervalNode_root_node, 0, 0, 0},
+  {(char *)"interval", __pyx_getprop_6joshua_12intervaltree_12IntervalNode_interval, __pyx_setprop_6joshua_12intervaltree_12IntervalNode_interval, 0, 0},
+  {(char *)"start", __pyx_getprop_6joshua_12intervaltree_12IntervalNode_start, __pyx_setprop_6joshua_12intervaltree_12IntervalNode_start, 0, 0},
+  {(char *)"end", __pyx_getprop_6joshua_12intervaltree_12IntervalNode_end, __pyx_setprop_6joshua_12intervaltree_12IntervalNode_end, 0, 0},
+  {(char *)"length", __pyx_getprop_6joshua_12intervaltree_12IntervalNode_length, __pyx_setprop_6joshua_12intervaltree_12IntervalNode_length, 0, 0},
   {0, 0, 0, 0, 0}
 };
 
-static PyTypeObject __pyx_type_12intervaltree_IntervalNode = {
+static PyTypeObject __pyx_type_6joshua_12intervaltree_IntervalNode = {
   PyVarObject_HEAD_INIT(0, 0)
-  "intervaltree.IntervalNode", /*tp_name*/
-  sizeof(struct __pyx_obj_12intervaltree_IntervalNode), /*tp_basicsize*/
+  "joshua.intervaltree.IntervalNode", /*tp_name*/
+  sizeof(struct __pyx_obj_6joshua_12intervaltree_IntervalNode), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_12intervaltree_IntervalNode, /*tp_dealloc*/
+  __pyx_tp_dealloc_6joshua_12intervaltree_IntervalNode, /*tp_dealloc*/
   0, /*tp_print*/
   0, /*tp_getattr*/
   0, /*tp_setattr*/
@@ -7586,7 +7586,7 @@ static PyTypeObject __pyx_type_12intervaltree_IntervalNode = {
   #else
   0, /*reserved*/
   #endif
-  __pyx_pw_12intervaltree_12IntervalNode_1__repr__, /*tp_repr*/
+  __pyx_pw_6joshua_12intervaltree_12IntervalNode_1__repr__, /*tp_repr*/
   0, /*tp_as_number*/
   0, /*tp_as_sequence*/
   0, /*tp_as_mapping*/
@@ -7598,15 +7598,15 @@ static PyTypeObject __pyx_type_12intervaltree_IntervalNode = {
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
   "\n    A single node of an `IntervalTree`.\n    \n    NOTE: Unless you really know what you are doing, you probably should us\n          `IntervalTree` rather than using this directly. \n    ", /*tp_doc*/
-  __pyx_tp_traverse_12intervaltree_IntervalNode, /*tp_traverse*/
-  __pyx_tp_clear_12intervaltree_IntervalNode, /*tp_clear*/
+  __pyx_tp_traverse_6joshua_12intervaltree_IntervalNode, /*tp_traverse*/
+  __pyx_tp_clear_6joshua_12intervaltree_IntervalNode, /*tp_clear*/
   0, /*tp_richcompare*/
   0, /*tp_weaklistoffset*/
   0, /*tp_iter*/
   0, /*tp_iternext*/
-  __pyx_methods_12intervaltree_IntervalNode, /*tp_methods*/
+  __pyx_methods_6joshua_12intervaltree_IntervalNode, /*tp_methods*/
   0, /*tp_members*/
-  __pyx_getsets_12intervaltree_IntervalNode, /*tp_getset*/
+  __pyx_getsets_6joshua_12intervaltree_IntervalNode, /*tp_getset*/
   0, /*tp_base*/
   0, /*tp_dict*/
   0, /*tp_descr_get*/
@@ -7614,7 +7614,7 @@ static PyTypeObject __pyx_type_12intervaltree_IntervalNode = {
   0, /*tp_dictoffset*/
   0, /*tp_init*/
   0, /*tp_alloc*/
-  __pyx_tp_new_12intervaltree_IntervalNode, /*tp_new*/
+  __pyx_tp_new_6joshua_12intervaltree_IntervalNode, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -7629,8 +7629,8 @@ static PyTypeObject __pyx_type_12intervaltree_IntervalNode = {
   #endif
 };
 
-static PyObject *__pyx_tp_new_12intervaltree_Interval(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
-  struct __pyx_obj_12intervaltree_Interval *p;
+static PyObject *__pyx_tp_new_6joshua_12intervaltree_Interval(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
+  struct __pyx_obj_6joshua_12intervaltree_Interval *p;
   PyObject *o;
   if (likely((t->tp_flags & Py_TPFLAGS_IS_ABSTRACT) == 0)) {
     o = (*t->tp_alloc)(t, 0);
@@ -7638,15 +7638,15 @@ static PyObject *__pyx_tp_new_12intervaltree_Interval(PyTypeObject *t, CYTHON_UN
     o = (PyObject *) PyBaseObject_Type.tp_new(t, __pyx_empty_tuple, 0);
   }
   if (unlikely(!o)) return 0;
-  p = ((struct __pyx_obj_12intervaltree_Interval *)o);
+  p = ((struct __pyx_obj_6joshua_12intervaltree_Interval *)o);
   p->value = Py_None; Py_INCREF(Py_None);
   p->chrom = Py_None; Py_INCREF(Py_None);
   p->strand = Py_None; Py_INCREF(Py_None);
   return o;
 }
 
-static void __pyx_tp_dealloc_12intervaltree_Interval(PyObject *o) {
-  struct __pyx_obj_12intervaltree_Interval *p = (struct __pyx_obj_12intervaltree_Interval *)o;
+static void __pyx_tp_dealloc_6joshua_12intervaltree_Interval(PyObject *o) {
+  struct __pyx_obj_6joshua_12intervaltree_Interval *p = (struct __pyx_obj_6joshua_12intervaltree_Interval *)o;
   #if PY_VERSION_HEX >= 0x030400a1
   if (unlikely(Py_TYPE(o)->tp_finalize) && !_PyGC_FINALIZED(o)) {
     if (PyObject_CallFinalizerFromDealloc(o)) return;
@@ -7659,9 +7659,9 @@ static void __pyx_tp_dealloc_12intervaltree_Interval(PyObject *o) {
   (*Py_TYPE(o)->tp_free)(o);
 }
 
-static int __pyx_tp_traverse_12intervaltree_Interval(PyObject *o, visitproc v, void *a) {
+static int __pyx_tp_traverse_6joshua_12intervaltree_Interval(PyObject *o, visitproc v, void *a) {
   int e;
-  struct __pyx_obj_12intervaltree_Interval *p = (struct __pyx_obj_12intervaltree_Interval *)o;
+  struct __pyx_obj_6joshua_12intervaltree_Interval *p = (struct __pyx_obj_6joshua_12intervaltree_Interval *)o;
   if (p->value) {
     e = (*v)(p->value, a); if (e) return e;
   }
@@ -7674,9 +7674,9 @@ static int __pyx_tp_traverse_12intervaltree_Interval(PyObject *o, visitproc v, v
   return 0;
 }
 
-static int __pyx_tp_clear_12intervaltree_Interval(PyObject *o) {
+static int __pyx_tp_clear_6joshua_12intervaltree_Interval(PyObject *o) {
   PyObject* tmp;
-  struct __pyx_obj_12intervaltree_Interval *p = (struct __pyx_obj_12intervaltree_Interval *)o;
+  struct __pyx_obj_6joshua_12intervaltree_Interval *p = (struct __pyx_obj_6joshua_12intervaltree_Interval *)o;
   tmp = ((PyObject*)p->value);
   p->value = Py_None; Py_INCREF(Py_None);
   Py_XDECREF(tmp);
@@ -7689,13 +7689,13 @@ static int __pyx_tp_clear_12intervaltree_Interval(PyObject *o) {
   return 0;
 }
 
-static PyObject *__pyx_getprop_12intervaltree_8Interval_start(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_12intervaltree_8Interval_5start_1__get__(o);
+static PyObject *__pyx_getprop_6joshua_12intervaltree_8Interval_start(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_6joshua_12intervaltree_8Interval_5start_1__get__(o);
 }
 
-static int __pyx_setprop_12intervaltree_8Interval_start(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
+static int __pyx_setprop_6joshua_12intervaltree_8Interval_start(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
   if (v) {
-    return __pyx_pw_12intervaltree_8Interval_5start_3__set__(o, v);
+    return __pyx_pw_6joshua_12intervaltree_8Interval_5start_3__set__(o, v);
   }
   else {
     PyErr_SetString(PyExc_NotImplementedError, "__del__");
@@ -7703,13 +7703,13 @@ static int __pyx_setprop_12intervaltree_8Interval_start(PyObject *o, PyObject *v
   }
 }
 
-static PyObject *__pyx_getprop_12intervaltree_8Interval_end(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_12intervaltree_8Interval_3end_1__get__(o);
+static PyObject *__pyx_getprop_6joshua_12intervaltree_8Interval_end(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_6joshua_12intervaltree_8Interval_3end_1__get__(o);
 }
 
-static int __pyx_setprop_12intervaltree_8Interval_end(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
+static int __pyx_setprop_6joshua_12intervaltree_8Interval_end(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
   if (v) {
-    return __pyx_pw_12intervaltree_8Interval_3end_3__set__(o, v);
+    return __pyx_pw_6joshua_12intervaltree_8Interval_3end_3__set__(o, v);
   }
   else {
     PyErr_SetString(PyExc_NotImplementedError, "__del__");
@@ -7717,13 +7717,13 @@ static int __pyx_setprop_12intervaltree_8Interval_end(PyObject *o, PyObject *v, 
   }
 }
 
-static PyObject *__pyx_getprop_12intervaltree_8Interval_length(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_12intervaltree_8Interval_6length_1__get__(o);
+static PyObject *__pyx_getprop_6joshua_12intervaltree_8Interval_length(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_6joshua_12intervaltree_8Interval_6length_1__get__(o);
 }
 
-static int __pyx_setprop_12intervaltree_8Interval_length(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
+static int __pyx_setprop_6joshua_12intervaltree_8Interval_length(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
   if (v) {
-    return __pyx_pw_12intervaltree_8Interval_6length_3__set__(o, v);
+    return __pyx_pw_6joshua_12intervaltree_8Interval_6length_3__set__(o, v);
   }
   else {
     PyErr_SetString(PyExc_NotImplementedError, "__del__");
@@ -7731,61 +7731,61 @@ static int __pyx_setprop_12intervaltree_8Interval_length(PyObject *o, PyObject *
   }
 }
 
-static PyObject *__pyx_getprop_12intervaltree_8Interval_value(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_12intervaltree_8Interval_5value_1__get__(o);
+static PyObject *__pyx_getprop_6joshua_12intervaltree_8Interval_value(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_6joshua_12intervaltree_8Interval_5value_1__get__(o);
 }
 
-static int __pyx_setprop_12intervaltree_8Interval_value(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
+static int __pyx_setprop_6joshua_12intervaltree_8Interval_value(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
   if (v) {
-    return __pyx_pw_12intervaltree_8Interval_5value_3__set__(o, v);
+    return __pyx_pw_6joshua_12intervaltree_8Interval_5value_3__set__(o, v);
   }
   else {
-    return __pyx_pw_12intervaltree_8Interval_5value_5__del__(o);
+    return __pyx_pw_6joshua_12intervaltree_8Interval_5value_5__del__(o);
   }
 }
 
-static PyObject *__pyx_getprop_12intervaltree_8Interval_chrom(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_12intervaltree_8Interval_5chrom_1__get__(o);
+static PyObject *__pyx_getprop_6joshua_12intervaltree_8Interval_chrom(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_6joshua_12intervaltree_8Interval_5chrom_1__get__(o);
 }
 
-static int __pyx_setprop_12intervaltree_8Interval_chrom(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
+static int __pyx_setprop_6joshua_12intervaltree_8Interval_chrom(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
   if (v) {
-    return __pyx_pw_12intervaltree_8Interval_5chrom_3__set__(o, v);
+    return __pyx_pw_6joshua_12intervaltree_8Interval_5chrom_3__set__(o, v);
   }
   else {
-    return __pyx_pw_12intervaltree_8Interval_5chrom_5__del__(o);
+    return __pyx_pw_6joshua_12intervaltree_8Interval_5chrom_5__del__(o);
   }
 }
 
-static PyObject *__pyx_getprop_12intervaltree_8Interval_strand(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_12intervaltree_8Interval_6strand_1__get__(o);
+static PyObject *__pyx_getprop_6joshua_12intervaltree_8Interval_strand(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_6joshua_12intervaltree_8Interval_6strand_1__get__(o);
 }
 
-static int __pyx_setprop_12intervaltree_8Interval_strand(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
+static int __pyx_setprop_6joshua_12intervaltree_8Interval_strand(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
   if (v) {
-    return __pyx_pw_12intervaltree_8Interval_6strand_3__set__(o, v);
+    return __pyx_pw_6joshua_12intervaltree_8Interval_6strand_3__set__(o, v);
   }
   else {
-    return __pyx_pw_12intervaltree_8Interval_6strand_5__del__(o);
+    return __pyx_pw_6joshua_12intervaltree_8Interval_6strand_5__del__(o);
   }
 }
 
-static PyMethodDef __pyx_methods_12intervaltree_Interval[] = {
+static PyMethodDef __pyx_methods_6joshua_12intervaltree_Interval[] = {
   {0, 0, 0, 0}
 };
 
-static struct PyGetSetDef __pyx_getsets_12intervaltree_Interval[] = {
-  {(char *)"start", __pyx_getprop_12intervaltree_8Interval_start, __pyx_setprop_12intervaltree_8Interval_start, 0, 0},
-  {(char *)"end", __pyx_getprop_12intervaltree_8Interval_end, __pyx_setprop_12intervaltree_8Interval_end, 0, 0},
-  {(char *)"length", __pyx_getprop_12intervaltree_8Interval_length, __pyx_setprop_12intervaltree_8Interval_length, 0, 0},
-  {(char *)"value", __pyx_getprop_12intervaltree_8Interval_value, __pyx_setprop_12intervaltree_8Interval_value, 0, 0},
-  {(char *)"chrom", __pyx_getprop_12intervaltree_8Interval_chrom, __pyx_setprop_12intervaltree_8Interval_chrom, 0, 0},
-  {(char *)"strand", __pyx_getprop_12intervaltree_8Interval_strand, __pyx_setprop_12intervaltree_8Interval_strand, 0, 0},
+static struct PyGetSetDef __pyx_getsets_6joshua_12intervaltree_Interval[] = {
+  {(char *)"start", __pyx_getprop_6joshua_12intervaltree_8Interval_start, __pyx_setprop_6joshua_12intervaltree_8Interval_start, 0, 0},
+  {(char *)"end", __pyx_getprop_6joshua_12intervaltree_8Interval_end, __pyx_setprop_6joshua_12intervaltree_8Interval_end, 0, 0},
+  {(char *)"length", __pyx_getprop_6joshua_12intervaltree_8Interval_length, __pyx_setprop_6joshua_12intervaltree_8Interval_length, 0, 0},
+  {(char *)"value", __pyx_getprop_6joshua_12intervaltree_8Interval_value, __pyx_setprop_6joshua_12intervaltree_8Interval_value, 0, 0},
+  {(char *)"chrom", __pyx_getprop_6joshua_12intervaltree_8Interval_chrom, __pyx_setprop_6joshua_12intervaltree_8Interval_chrom, 0, 0},
+  {(char *)"strand", __pyx_getprop_6joshua_12intervaltree_8Interval_strand, __pyx_setprop_6joshua_12intervaltree_8Interval_strand, 0, 0},
   {0, 0, 0, 0, 0}
 };
 
 static PySequenceMethods __pyx_tp_as_sequence_Interval = {
-  __pyx_pw_12intervaltree_8Interval_7__len__, /*sq_length*/
+  __pyx_pw_6joshua_12intervaltree_8Interval_7__len__, /*sq_length*/
   0, /*sq_concat*/
   0, /*sq_repeat*/
   0, /*sq_item*/
@@ -7798,17 +7798,17 @@ static PySequenceMethods __pyx_tp_as_sequence_Interval = {
 };
 
 static PyMappingMethods __pyx_tp_as_mapping_Interval = {
-  __pyx_pw_12intervaltree_8Interval_7__len__, /*mp_length*/
+  __pyx_pw_6joshua_12intervaltree_8Interval_7__len__, /*mp_length*/
   0, /*mp_subscript*/
   0, /*mp_ass_subscript*/
 };
 
-static PyTypeObject __pyx_type_12intervaltree_Interval = {
+static PyTypeObject __pyx_type_6joshua_12intervaltree_Interval = {
   PyVarObject_HEAD_INIT(0, 0)
-  "intervaltree.Interval", /*tp_name*/
-  sizeof(struct __pyx_obj_12intervaltree_Interval), /*tp_basicsize*/
+  "joshua.intervaltree.Interval", /*tp_name*/
+  sizeof(struct __pyx_obj_6joshua_12intervaltree_Interval), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_12intervaltree_Interval, /*tp_dealloc*/
+  __pyx_tp_dealloc_6joshua_12intervaltree_Interval, /*tp_dealloc*/
   0, /*tp_print*/
   0, /*tp_getattr*/
   0, /*tp_setattr*/
@@ -7817,7 +7817,7 @@ static PyTypeObject __pyx_type_12intervaltree_Interval = {
   #else
   0, /*reserved*/
   #endif
-  __pyx_pw_12intervaltree_8Interval_3__repr__, /*tp_repr*/
+  __pyx_pw_6joshua_12intervaltree_8Interval_3__repr__, /*tp_repr*/
   0, /*tp_as_number*/
   &__pyx_tp_as_sequence_Interval, /*tp_as_sequence*/
   &__pyx_tp_as_mapping_Interval, /*tp_as_mapping*/
@@ -7829,23 +7829,23 @@ static PyTypeObject __pyx_type_12intervaltree_Interval = {
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
   "\n    Basic feature, with required integer start and end properties.\n    Also accepts optional strand as +1 or -1 (used for up/downstream queries),\n    a name, and any arbitrary data is sent in on the info keyword argument\n\n    >>> from bx.intervals.intersection import Interval\n\n    >>> f1 = Interval(23, 36)\n    >>> f2 = Interval(34, 48, value={'chr':12, 'anno':'transposon'})\n    >>> f2\n    Interval(34, 48, value={'anno': 'transposon', 'chr': 12})\n\n    ", /*tp_doc*/
-  __pyx_tp_traverse_12intervaltree_Interval, /*tp_traverse*/
-  __pyx_tp_clear_12intervaltree_Interval, /*tp_clear*/
-  __pyx_pw_12intervaltree_8Interval_5__richcmp__, /*tp_richcompare*/
+  __pyx_tp_traverse_6joshua_12intervaltree_Interval, /*tp_traverse*/
+  __pyx_tp_clear_6joshua_12intervaltree_Interval, /*tp_clear*/
+  __pyx_pw_6joshua_12intervaltree_8Interval_5__richcmp__, /*tp_richcompare*/
   0, /*tp_weaklistoffset*/
   0, /*tp_iter*/
   0, /*tp_iternext*/
-  __pyx_methods_12intervaltree_Interval, /*tp_methods*/
+  __pyx_methods_6joshua_12intervaltree_Interval, /*tp_methods*/
   0, /*tp_members*/
-  __pyx_getsets_12intervaltree_Interval, /*tp_getset*/
+  __pyx_getsets_6joshua_12intervaltree_Interval, /*tp_getset*/
   0, /*tp_base*/
   0, /*tp_dict*/
   0, /*tp_descr_get*/
   0, /*tp_descr_set*/
   0, /*tp_dictoffset*/
-  __pyx_pw_12intervaltree_8Interval_1__init__, /*tp_init*/
+  __pyx_pw_6joshua_12intervaltree_8Interval_1__init__, /*tp_init*/
   0, /*tp_alloc*/
-  __pyx_tp_new_12intervaltree_Interval, /*tp_new*/
+  __pyx_tp_new_6joshua_12intervaltree_Interval, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -7860,8 +7860,8 @@ static PyTypeObject __pyx_type_12intervaltree_Interval = {
   #endif
 };
 
-static PyObject *__pyx_tp_new_12intervaltree_IntervalTree(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
-  struct __pyx_obj_12intervaltree_IntervalTree *p;
+static PyObject *__pyx_tp_new_6joshua_12intervaltree_IntervalTree(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
+  struct __pyx_obj_6joshua_12intervaltree_IntervalTree *p;
   PyObject *o;
   if (likely((t->tp_flags & Py_TPFLAGS_IS_ABSTRACT) == 0)) {
     o = (*t->tp_alloc)(t, 0);
@@ -7869,16 +7869,16 @@ static PyObject *__pyx_tp_new_12intervaltree_IntervalTree(PyTypeObject *t, CYTHO
     o = (PyObject *) PyBaseObject_Type.tp_new(t, __pyx_empty_tuple, 0);
   }
   if (unlikely(!o)) return 0;
-  p = ((struct __pyx_obj_12intervaltree_IntervalTree *)o);
-  p->root = ((struct __pyx_obj_12intervaltree_IntervalNode *)Py_None); Py_INCREF(Py_None);
-  if (unlikely(__pyx_pw_12intervaltree_12IntervalTree_1__cinit__(o, __pyx_empty_tuple, NULL) < 0)) {
+  p = ((struct __pyx_obj_6joshua_12intervaltree_IntervalTree *)o);
+  p->root = ((struct __pyx_obj_6joshua_12intervaltree_IntervalNode *)Py_None); Py_INCREF(Py_None);
+  if (unlikely(__pyx_pw_6joshua_12intervaltree_12IntervalTree_1__cinit__(o, __pyx_empty_tuple, NULL) < 0)) {
     Py_DECREF(o); o = 0;
   }
   return o;
 }
 
-static void __pyx_tp_dealloc_12intervaltree_IntervalTree(PyObject *o) {
-  struct __pyx_obj_12intervaltree_IntervalTree *p = (struct __pyx_obj_12intervaltree_IntervalTree *)o;
+static void __pyx_tp_dealloc_6joshua_12intervaltree_IntervalTree(PyObject *o) {
+  struct __pyx_obj_6joshua_12intervaltree_IntervalTree *p = (struct __pyx_obj_6joshua_12intervaltree_IntervalTree *)o;
   #if PY_VERSION_HEX >= 0x030400a1
   if (unlikely(Py_TYPE(o)->tp_finalize) && !_PyGC_FINALIZED(o)) {
     if (PyObject_CallFinalizerFromDealloc(o)) return;
@@ -7889,31 +7889,31 @@ static void __pyx_tp_dealloc_12intervaltree_IntervalTree(PyObject *o) {
   (*Py_TYPE(o)->tp_free)(o);
 }
 
-static int __pyx_tp_traverse_12intervaltree_IntervalTree(PyObject *o, visitproc v, void *a) {
+static int __pyx_tp_traverse_6joshua_12intervaltree_IntervalTree(PyObject *o, visitproc v, void *a) {
   int e;
-  struct __pyx_obj_12intervaltree_IntervalTree *p = (struct __pyx_obj_12intervaltree_IntervalTree *)o;
+  struct __pyx_obj_6joshua_12intervaltree_IntervalTree *p = (struct __pyx_obj_6joshua_12intervaltree_IntervalTree *)o;
   if (p->root) {
     e = (*v)(((PyObject*)p->root), a); if (e) return e;
   }
   return 0;
 }
 
-static int __pyx_tp_clear_12intervaltree_IntervalTree(PyObject *o) {
+static int __pyx_tp_clear_6joshua_12intervaltree_IntervalTree(PyObject *o) {
   PyObject* tmp;
-  struct __pyx_obj_12intervaltree_IntervalTree *p = (struct __pyx_obj_12intervaltree_IntervalTree *)o;
+  struct __pyx_obj_6joshua_12intervaltree_IntervalTree *p = (struct __pyx_obj_6joshua_12intervaltree_IntervalTree *)o;
   tmp = ((PyObject*)p->root);
-  p->root = ((struct __pyx_obj_12intervaltree_IntervalNode *)Py_None); Py_INCREF(Py_None);
+  p->root = ((struct __pyx_obj_6joshua_12intervaltree_IntervalNode *)Py_None); Py_INCREF(Py_None);
   Py_XDECREF(tmp);
   return 0;
 }
 
-static PyObject *__pyx_getprop_12intervaltree_12IntervalTree_size(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_12intervaltree_12IntervalTree_4size_1__get__(o);
+static PyObject *__pyx_getprop_6joshua_12intervaltree_12IntervalTree_size(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_6joshua_12intervaltree_12IntervalTree_4size_1__get__(o);
 }
 
-static int __pyx_setprop_12intervaltree_12IntervalTree_size(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
+static int __pyx_setprop_6joshua_12intervaltree_12IntervalTree_size(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
   if (v) {
-    return __pyx_pw_12intervaltree_12IntervalTree_4size_3__set__(o, v);
+    return __pyx_pw_6joshua_12intervaltree_12IntervalTree_4size_3__set__(o, v);
   }
   else {
     PyErr_SetString(PyExc_NotImplementedError, "__del__");
@@ -7921,27 +7921,27 @@ static int __pyx_setprop_12intervaltree_12IntervalTree_size(PyObject *o, PyObjec
   }
 }
 
-static PyMethodDef __pyx_methods_12intervaltree_IntervalTree[] = {
-  {"insert", (PyCFunction)__pyx_pw_12intervaltree_12IntervalTree_3insert, METH_VARARGS|METH_KEYWORDS, __pyx_doc_12intervaltree_12IntervalTree_2insert},
-  {"find", (PyCFunction)__pyx_pw_12intervaltree_12IntervalTree_5find, METH_VARARGS|METH_KEYWORDS, __pyx_doc_12intervaltree_12IntervalTree_4find},
-  {"before", (PyCFunction)__pyx_pw_12intervaltree_12IntervalTree_7before, METH_VARARGS|METH_KEYWORDS, __pyx_doc_12intervaltree_12IntervalTree_6before},
-  {"after", (PyCFunction)__pyx_pw_12intervaltree_12IntervalTree_9after, METH_VARARGS|METH_KEYWORDS, __pyx_doc_12intervaltree_12IntervalTree_8after},
-  {"insert_interval", (PyCFunction)__pyx_pw_12intervaltree_12IntervalTree_11insert_interval, METH_O, __pyx_doc_12intervaltree_12IntervalTree_10insert_interval},
-  {"before_interval", (PyCFunction)__pyx_pw_12intervaltree_12IntervalTree_13before_interval, METH_VARARGS|METH_KEYWORDS, __pyx_doc_12intervaltree_12IntervalTree_12before_interval},
-  {"after_interval", (PyCFunction)__pyx_pw_12intervaltree_12IntervalTree_15after_interval, METH_VARARGS|METH_KEYWORDS, __pyx_doc_12intervaltree_12IntervalTree_14after_interval},
-  {"upstream_of_interval", (PyCFunction)__pyx_pw_12intervaltree_12IntervalTree_17upstream_of_interval, METH_VARARGS|METH_KEYWORDS, __pyx_doc_12intervaltree_12IntervalTree_16upstream_of_interval},
-  {"downstream_of_interval", (PyCFunction)__pyx_pw_12intervaltree_12IntervalTree_19downstream_of_interval, METH_VARARGS|METH_KEYWORDS, __pyx_doc_12intervaltree_12IntervalTree_18downstream_of_interval},
-  {"traverse", (PyCFunction)__pyx_pw_12intervaltree_12IntervalTree_21traverse, METH_O, __pyx_doc_12intervaltree_12IntervalTree_20traverse},
+static PyMethodDef __pyx_methods_6joshua_12intervaltree_IntervalTree[] = {
+  {"insert", (PyCFunction)__pyx_pw_6joshua_12intervaltree_12IntervalTree_3insert, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6joshua_12intervaltree_12IntervalTree_2insert},
+  {"find", (PyCFunction)__pyx_pw_6joshua_12intervaltree_12IntervalTree_5find, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6joshua_12intervaltree_12IntervalTree_4find},
+  {"before", (PyCFunction)__pyx_pw_6joshua_12intervaltree_12IntervalTree_7before, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6joshua_12intervaltree_12IntervalTree_6before},
+  {"after", (PyCFunction)__pyx_pw_6joshua_12intervaltree_12IntervalTree_9after, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6joshua_12intervaltree_12IntervalTree_8after},
+  {"insert_interval", (PyCFunction)__pyx_pw_6joshua_12intervaltree_12IntervalTree_11insert_interval, METH_O, __pyx_doc_6joshua_12intervaltree_12IntervalTree_10insert_interval},
+  {"before_interval", (PyCFunction)__pyx_pw_6joshua_12intervaltree_12IntervalTree_13before_interval, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6joshua_12intervaltree_12IntervalTree_12before_interval},
+  {"after_interval", (PyCFunction)__pyx_pw_6joshua_12intervaltree_12IntervalTree_15after_interval, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6joshua_12intervaltree_12IntervalTree_14after_interval},
+  {"upstream_of_interval", (PyCFunction)__pyx_pw_6joshua_12intervaltree_12IntervalTree_17upstream_of_interval, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6joshua_12intervaltree_12IntervalTree_16upstream_of_interval},
+  {"downstream_of_interval", (PyCFunction)__pyx_pw_6joshua_12intervaltree_12IntervalTree_19downstream_of_interval, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6joshua_12intervaltree_12IntervalTree_18downstream_of_interval},
+  {"traverse", (PyCFunction)__pyx_pw_6joshua_12intervaltree_12IntervalTree_21traverse, METH_O, __pyx_doc_6joshua_12intervaltree_12IntervalTree_20traverse},
   {0, 0, 0, 0}
 };
 
-static struct PyGetSetDef __pyx_getsets_12intervaltree_IntervalTree[] = {
-  {(char *)"size", __pyx_getprop_12intervaltree_12IntervalTree_size, __pyx_setprop_12intervaltree_12IntervalTree_size, 0, 0},
+static struct PyGetSetDef __pyx_getsets_6joshua_12intervaltree_IntervalTree[] = {
+  {(char *)"size", __pyx_getprop_6joshua_12intervaltree_12IntervalTree_size, __pyx_setprop_6joshua_12intervaltree_12IntervalTree_size, 0, 0},
   {0, 0, 0, 0, 0}
 };
 
 static PySequenceMethods __pyx_tp_as_sequence_IntervalTree = {
-  __pyx_pw_12intervaltree_12IntervalTree_23__len__, /*sq_length*/
+  __pyx_pw_6joshua_12intervaltree_12IntervalTree_23__len__, /*sq_length*/
   0, /*sq_concat*/
   0, /*sq_repeat*/
   0, /*sq_item*/
@@ -7954,17 +7954,17 @@ static PySequenceMethods __pyx_tp_as_sequence_IntervalTree = {
 };
 
 static PyMappingMethods __pyx_tp_as_mapping_IntervalTree = {
-  __pyx_pw_12intervaltree_12IntervalTree_23__len__, /*mp_length*/
+  __pyx_pw_6joshua_12intervaltree_12IntervalTree_23__len__, /*mp_length*/
   0, /*mp_subscript*/
   0, /*mp_ass_subscript*/
 };
 
-static PyTypeObject __pyx_type_12intervaltree_IntervalTree = {
+static PyTypeObject __pyx_type_6joshua_12intervaltree_IntervalTree = {
   PyVarObject_HEAD_INIT(0, 0)
-  "intervaltree.IntervalTree", /*tp_name*/
-  sizeof(struct __pyx_obj_12intervaltree_IntervalTree), /*tp_basicsize*/
+  "joshua.intervaltree.IntervalTree", /*tp_name*/
+  sizeof(struct __pyx_obj_6joshua_12intervaltree_IntervalTree), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_12intervaltree_IntervalTree, /*tp_dealloc*/
+  __pyx_tp_dealloc_6joshua_12intervaltree_IntervalTree, /*tp_dealloc*/
   0, /*tp_print*/
   0, /*tp_getattr*/
   0, /*tp_setattr*/
@@ -7985,15 +7985,15 @@ static PyTypeObject __pyx_type_12intervaltree_IntervalTree = {
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
   "\n    Data structure for performing window intersect queries on a set of \n    of possibly overlapping 1d intervals.\n    \n    Usage\n    =====\n    \n    Create an empty IntervalTree\n    \n    >>> from bx.intervals.intersection import Interval, IntervalTree\n    >>> intersecter = IntervalTree()\n    \n    An interval is a start and end position and a value (possibly None).\n    You can add any object as an interval:\n    \n    >>> intersecter.insert( 0, 10, \"food\" )\n    >>> intersecter.insert( 3, 7, dict(foo='bar') )\n    \n    >>> intersecter.find( 2, 5 )\n    ['food', {'foo': 'bar'}]\n    \n    If the object has start and end attributes (like the Interval class) there\n    is are some shortcuts:\n    \n    >>> intersecter = IntervalTree()\n    >>> intersecter.insert_interval( Interval( 0, 10 ) )\n    >>> intersecter.insert_interval( Interval( 3, 7 ) )\n    >>> intersecter.insert_interval( Interval( 3, 40 ) )\n    >>> intersecter.insert_interval( Interval( 13, 50 ) )\n    \n    >>> intersecter.find( 30, 50 )\n    [Interval(3, 40), Interval(13, 50)]\n    >>> intersecter.find( 100, 200 )\n    []\n    \n    Before/after for intervals\n    \n    >>> intersecter.before_interval( Interval( 10, 20 ) )\n    [Interval(3, 7)]\n    >>> intersecter.before_interval( Interval( 5, 20 ) )\n    []\n    \n    Upstream/downstream\n    \n    >>> intersecter.upstream_of_interval(Interval(11, 12))\n    [Interval(0, 10)]\n    >>> intersecter.upstream_of_interval(Interval(11, 12, strand=\"-\"))\n    [Interval(13, 50)]\n\n    >>> intersecter.upstream_of_interval(Interval(1, 2, strand=\"-\"), num_intervals=3)\n    [Interval(3, 7), Interval(3, 40), Interval(13, 50)]\n\n    \n    ", /*tp_doc*/
-  __pyx_tp_traverse_12intervaltree_IntervalTree, /*tp_traverse*/
-  __pyx_tp_clear_12intervaltree_IntervalTree, /*tp_clear*/
+  __pyx_tp_traverse_6joshua_12intervaltree_IntervalTree, /*tp_traverse*/
+  __pyx_tp_clear_6joshua_12intervaltree_IntervalTree, /*tp_clear*/
   0, /*tp_richcompare*/
   0, /*tp_weaklistoffset*/
   0, /*tp_iter*/
   0, /*tp_iternext*/
-  __pyx_methods_12intervaltree_IntervalTree, /*tp_methods*/
+  __pyx_methods_6joshua_12intervaltree_IntervalTree, /*tp_methods*/
   0, /*tp_members*/
-  __pyx_getsets_12intervaltree_IntervalTree, /*tp_getset*/
+  __pyx_getsets_6joshua_12intervaltree_IntervalTree, /*tp_getset*/
   0, /*tp_base*/
   0, /*tp_dict*/
   0, /*tp_descr_get*/
@@ -8001,7 +8001,7 @@ static PyTypeObject __pyx_type_12intervaltree_IntervalTree = {
   0, /*tp_dictoffset*/
   0, /*tp_init*/
   0, /*tp_alloc*/
-  __pyx_tp_new_12intervaltree_IntervalTree, /*tp_new*/
+  __pyx_tp_new_6joshua_12intervaltree_IntervalTree, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -8084,7 +8084,7 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "intervaltree.pyx":244
+  /* "joshua/intervaltree.pyx":244
  *         if len(results) == n: return results
  *         r = results
  *         r.sort(key=operator.attrgetter('end'), reverse=True)             # <<<<<<<<<<<<<<
@@ -8095,7 +8095,7 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
 
-  /* "intervaltree.pyx":259
+  /* "joshua/intervaltree.pyx":259
  *         if len(results) == n: return results
  *         r = results
  *         r.sort(key=operator.attrgetter('start'))             # <<<<<<<<<<<<<<
@@ -8106,7 +8106,7 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__2);
   __Pyx_GIVEREF(__pyx_tuple__2);
 
-  /* "intervaltree.pyx":272
+  /* "joshua/intervaltree.pyx":272
  *         if self.cright is not EmptyNode: self.cright._traverse(func, results)
  * 
  * cdef IntervalNode EmptyNode = IntervalNode( 0, 0, Interval(0, 0))             # <<<<<<<<<<<<<<
@@ -8201,14 +8201,14 @@ PyMODINIT_FUNC PyInit_intervaltree(void)
   #if PY_MAJOR_VERSION < 3 && (__PYX_DEFAULT_STRING_ENCODING_IS_ASCII || __PYX_DEFAULT_STRING_ENCODING_IS_DEFAULT)
   if (__Pyx_init_sys_getdefaultencoding_params() < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   #endif
-  if (__pyx_module_is_main_intervaltree) {
+  if (__pyx_module_is_main_joshua__intervaltree) {
     if (PyObject_SetAttrString(__pyx_m, "__name__", __pyx_n_s_main) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
   }
   #if PY_MAJOR_VERSION >= 3
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    if (!PyDict_GetItemString(modules, "intervaltree")) {
-      if (unlikely(PyDict_SetItemString(modules, "intervaltree", __pyx_m) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (!PyDict_GetItemString(modules, "joshua.intervaltree")) {
+      if (unlikely(PyDict_SetItemString(modules, "joshua.intervaltree", __pyx_m) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
   }
   #endif
@@ -8217,40 +8217,40 @@ PyMODINIT_FUNC PyInit_intervaltree(void)
   /*--- Constants init code ---*/
   if (unlikely(__Pyx_InitCachedConstants() < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   /*--- Global init code ---*/
-  __pyx_v_12intervaltree_EmptyNode = ((struct __pyx_obj_12intervaltree_IntervalNode *)Py_None); Py_INCREF(Py_None);
+  __pyx_v_6joshua_12intervaltree_EmptyNode = ((struct __pyx_obj_6joshua_12intervaltree_IntervalNode *)Py_None); Py_INCREF(Py_None);
   /*--- Variable export code ---*/
   /*--- Function export code ---*/
   /*--- Type init code ---*/
-  __pyx_vtabptr_12intervaltree_IntervalNode = &__pyx_vtable_12intervaltree_IntervalNode;
-  __pyx_vtable_12intervaltree_IntervalNode.insert = (struct __pyx_obj_12intervaltree_IntervalNode *(*)(struct __pyx_obj_12intervaltree_IntervalNode *, int, int, PyObject *, int __pyx_skip_dispatch))__pyx_f_12intervaltree_12IntervalNode_insert;
-  __pyx_vtable_12intervaltree_IntervalNode.rotate_right = (struct __pyx_obj_12intervaltree_IntervalNode *(*)(struct __pyx_obj_12intervaltree_IntervalNode *))__pyx_f_12intervaltree_12IntervalNode_rotate_right;
-  __pyx_vtable_12intervaltree_IntervalNode.rotate_left = (struct __pyx_obj_12intervaltree_IntervalNode *(*)(struct __pyx_obj_12intervaltree_IntervalNode *))__pyx_f_12intervaltree_12IntervalNode_rotate_left;
-  __pyx_vtable_12intervaltree_IntervalNode.set_ends = (void (*)(struct __pyx_obj_12intervaltree_IntervalNode *))__pyx_f_12intervaltree_12IntervalNode_set_ends;
-  __pyx_vtable_12intervaltree_IntervalNode._intersect = (void (*)(struct __pyx_obj_12intervaltree_IntervalNode *, int, int, PyObject *))__pyx_f_12intervaltree_12IntervalNode__intersect;
-  __pyx_vtable_12intervaltree_IntervalNode._seek_left = (void (*)(struct __pyx_obj_12intervaltree_IntervalNode *, int, PyObject *, int, int))__pyx_f_12intervaltree_12IntervalNode__seek_left;
-  __pyx_vtable_12intervaltree_IntervalNode._seek_right = (void (*)(struct __pyx_obj_12intervaltree_IntervalNode *, int, PyObject *, int, int))__pyx_f_12intervaltree_12IntervalNode__seek_right;
-  __pyx_vtable_12intervaltree_IntervalNode.left = (PyObject *(*)(struct __pyx_obj_12intervaltree_IntervalNode *, PyObject *, int __pyx_skip_dispatch, struct __pyx_opt_args_12intervaltree_12IntervalNode_left *__pyx_optional_args))__pyx_f_12intervaltree_12IntervalNode_left;
-  __pyx_vtable_12intervaltree_IntervalNode.right = (PyObject *(*)(struct __pyx_obj_12intervaltree_IntervalNode *, PyObject *, int __pyx_skip_dispatch, struct __pyx_opt_args_12intervaltree_12IntervalNode_right *__pyx_optional_args))__pyx_f_12intervaltree_12IntervalNode_right;
-  __pyx_vtable_12intervaltree_IntervalNode._traverse = (void (*)(struct __pyx_obj_12intervaltree_IntervalNode *, PyObject *, PyObject *))__pyx_f_12intervaltree_12IntervalNode__traverse;
-  if (PyType_Ready(&__pyx_type_12intervaltree_IntervalNode) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 61; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_type_12intervaltree_IntervalNode.tp_print = 0;
-  if (__Pyx_SetVtable(__pyx_type_12intervaltree_IntervalNode.tp_dict, __pyx_vtabptr_12intervaltree_IntervalNode) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 61; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  if (PyObject_SetAttrString(__pyx_m, "IntervalNode", (PyObject *)&__pyx_type_12intervaltree_IntervalNode) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 61; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_ptype_12intervaltree_IntervalNode = &__pyx_type_12intervaltree_IntervalNode;
-  if (PyType_Ready(&__pyx_type_12intervaltree_Interval) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 276; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_type_12intervaltree_Interval.tp_print = 0;
-  if (PyObject_SetAttrString(__pyx_m, "Interval", (PyObject *)&__pyx_type_12intervaltree_Interval) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 276; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_ptype_12intervaltree_Interval = &__pyx_type_12intervaltree_Interval;
-  if (PyType_Ready(&__pyx_type_12intervaltree_IntervalTree) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 332; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_type_12intervaltree_IntervalTree.tp_print = 0;
-  if (PyObject_SetAttrString(__pyx_m, "IntervalTree", (PyObject *)&__pyx_type_12intervaltree_IntervalTree) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 332; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_ptype_12intervaltree_IntervalTree = &__pyx_type_12intervaltree_IntervalTree;
+  __pyx_vtabptr_6joshua_12intervaltree_IntervalNode = &__pyx_vtable_6joshua_12intervaltree_IntervalNode;
+  __pyx_vtable_6joshua_12intervaltree_IntervalNode.insert = (struct __pyx_obj_6joshua_12intervaltree_IntervalNode *(*)(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *, int, int, PyObject *, int __pyx_skip_dispatch))__pyx_f_6joshua_12intervaltree_12IntervalNode_insert;
+  __pyx_vtable_6joshua_12intervaltree_IntervalNode.rotate_right = (struct __pyx_obj_6joshua_12intervaltree_IntervalNode *(*)(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *))__pyx_f_6joshua_12intervaltree_12IntervalNode_rotate_right;
+  __pyx_vtable_6joshua_12intervaltree_IntervalNode.rotate_left = (struct __pyx_obj_6joshua_12intervaltree_IntervalNode *(*)(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *))__pyx_f_6joshua_12intervaltree_12IntervalNode_rotate_left;
+  __pyx_vtable_6joshua_12intervaltree_IntervalNode.set_ends = (void (*)(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *))__pyx_f_6joshua_12intervaltree_12IntervalNode_set_ends;
+  __pyx_vtable_6joshua_12intervaltree_IntervalNode._intersect = (void (*)(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *, int, int, PyObject *))__pyx_f_6joshua_12intervaltree_12IntervalNode__intersect;
+  __pyx_vtable_6joshua_12intervaltree_IntervalNode._seek_left = (void (*)(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *, int, PyObject *, int, int))__pyx_f_6joshua_12intervaltree_12IntervalNode__seek_left;
+  __pyx_vtable_6joshua_12intervaltree_IntervalNode._seek_right = (void (*)(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *, int, PyObject *, int, int))__pyx_f_6joshua_12intervaltree_12IntervalNode__seek_right;
+  __pyx_vtable_6joshua_12intervaltree_IntervalNode.left = (PyObject *(*)(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *, PyObject *, int __pyx_skip_dispatch, struct __pyx_opt_args_6joshua_12intervaltree_12IntervalNode_left *__pyx_optional_args))__pyx_f_6joshua_12intervaltree_12IntervalNode_left;
+  __pyx_vtable_6joshua_12intervaltree_IntervalNode.right = (PyObject *(*)(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *, PyObject *, int __pyx_skip_dispatch, struct __pyx_opt_args_6joshua_12intervaltree_12IntervalNode_right *__pyx_optional_args))__pyx_f_6joshua_12intervaltree_12IntervalNode_right;
+  __pyx_vtable_6joshua_12intervaltree_IntervalNode._traverse = (void (*)(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *, PyObject *, PyObject *))__pyx_f_6joshua_12intervaltree_12IntervalNode__traverse;
+  if (PyType_Ready(&__pyx_type_6joshua_12intervaltree_IntervalNode) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 61; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_type_6joshua_12intervaltree_IntervalNode.tp_print = 0;
+  if (__Pyx_SetVtable(__pyx_type_6joshua_12intervaltree_IntervalNode.tp_dict, __pyx_vtabptr_6joshua_12intervaltree_IntervalNode) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 61; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyObject_SetAttrString(__pyx_m, "IntervalNode", (PyObject *)&__pyx_type_6joshua_12intervaltree_IntervalNode) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 61; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_ptype_6joshua_12intervaltree_IntervalNode = &__pyx_type_6joshua_12intervaltree_IntervalNode;
+  if (PyType_Ready(&__pyx_type_6joshua_12intervaltree_Interval) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 276; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_type_6joshua_12intervaltree_Interval.tp_print = 0;
+  if (PyObject_SetAttrString(__pyx_m, "Interval", (PyObject *)&__pyx_type_6joshua_12intervaltree_Interval) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 276; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_ptype_6joshua_12intervaltree_Interval = &__pyx_type_6joshua_12intervaltree_Interval;
+  if (PyType_Ready(&__pyx_type_6joshua_12intervaltree_IntervalTree) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 332; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_type_6joshua_12intervaltree_IntervalTree.tp_print = 0;
+  if (PyObject_SetAttrString(__pyx_m, "IntervalTree", (PyObject *)&__pyx_type_6joshua_12intervaltree_IntervalTree) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 332; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_ptype_6joshua_12intervaltree_IntervalTree = &__pyx_type_6joshua_12intervaltree_IntervalTree;
   /*--- Type import code ---*/
   /*--- Variable import code ---*/
   /*--- Function import code ---*/
   /*--- Execution code ---*/
 
-  /* "intervaltree.pyx":23
+  /* "joshua/intervaltree.pyx":23
  * #cython: cdivision=True
  * 
  * import operator             # <<<<<<<<<<<<<<
@@ -8262,7 +8262,7 @@ PyMODINIT_FUNC PyInit_intervaltree(void)
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_operator, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 23; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "intervaltree.pyx":59
+  /* "joshua/intervaltree.pyx":59
  *     return a
  * 
  * cdef float nlog = -1.0 / log(0.5)             # <<<<<<<<<<<<<<
@@ -8280,29 +8280,29 @@ PyMODINIT_FUNC PyInit_intervaltree(void)
     #endif
     {__pyx_filename = __pyx_f[0]; __pyx_lineno = 59; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
-  __pyx_v_12intervaltree_nlog = (-1.0 / __pyx_t_2);
+  __pyx_v_6joshua_12intervaltree_nlog = (-1.0 / __pyx_t_2);
 
-  /* "intervaltree.pyx":179
+  /* "joshua/intervaltree.pyx":179
  *         return results
  * 
  *     find = intersect             # <<<<<<<<<<<<<<
  * 
  *     cdef void _intersect( IntervalNode self, int start, int end, list results):
  */
-  __pyx_t_1 = __Pyx_GetNameInClass((PyObject *)__pyx_ptype_12intervaltree_IntervalNode, __pyx_n_s_intersect); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 179; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_GetNameInClass((PyObject *)__pyx_ptype_6joshua_12intervaltree_IntervalNode, __pyx_n_s_intersect); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 179; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_12intervaltree_IntervalNode->tp_dict, __pyx_n_s_find, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 179; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_6joshua_12intervaltree_IntervalNode->tp_dict, __pyx_n_s_find, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 179; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  PyType_Modified(__pyx_ptype_12intervaltree_IntervalNode);
+  PyType_Modified(__pyx_ptype_6joshua_12intervaltree_IntervalNode);
 
-  /* "intervaltree.pyx":272
+  /* "joshua/intervaltree.pyx":272
  *         if self.cright is not EmptyNode: self.cright._traverse(func, results)
  * 
  * cdef IntervalNode EmptyNode = IntervalNode( 0, 0, Interval(0, 0))             # <<<<<<<<<<<<<<
  * 
  * ## ---- Wrappers that retain the old interface -------------------------------
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_12intervaltree_Interval)), __pyx_tuple__5, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 272; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_6joshua_12intervaltree_Interval)), __pyx_tuple__5, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 272; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_3 = PyTuple_New(3); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 272; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
@@ -8315,48 +8315,48 @@ PyMODINIT_FUNC PyInit_intervaltree(void)
   PyTuple_SET_ITEM(__pyx_t_3, 2, __pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
   __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_12intervaltree_IntervalNode)), __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 272; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_6joshua_12intervaltree_IntervalNode)), __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 272; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __Pyx_XGOTREF(((PyObject *)__pyx_v_12intervaltree_EmptyNode));
-  __Pyx_DECREF_SET(__pyx_v_12intervaltree_EmptyNode, ((struct __pyx_obj_12intervaltree_IntervalNode *)__pyx_t_1));
+  __Pyx_XGOTREF(((PyObject *)__pyx_v_6joshua_12intervaltree_EmptyNode));
+  __Pyx_DECREF_SET(__pyx_v_6joshua_12intervaltree_EmptyNode, ((struct __pyx_obj_6joshua_12intervaltree_IntervalNode *)__pyx_t_1));
   __Pyx_GIVEREF(__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "intervaltree.pyx":407
+  /* "joshua/intervaltree.pyx":407
  *         self.size += 1
  * 
  *     add = insert             # <<<<<<<<<<<<<<
  * 
  *     def find( self, start, end ):
  */
-  __pyx_t_1 = __Pyx_GetNameInClass((PyObject *)__pyx_ptype_12intervaltree_IntervalTree, __pyx_n_s_insert); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 407; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_GetNameInClass((PyObject *)__pyx_ptype_6joshua_12intervaltree_IntervalTree, __pyx_n_s_insert); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 407; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_12intervaltree_IntervalTree->tp_dict, __pyx_n_s_add, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 407; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_6joshua_12intervaltree_IntervalTree->tp_dict, __pyx_n_s_add, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 407; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  PyType_Modified(__pyx_ptype_12intervaltree_IntervalTree);
+  PyType_Modified(__pyx_ptype_6joshua_12intervaltree_IntervalTree);
 
-  /* "intervaltree.pyx":444
+  /* "joshua/intervaltree.pyx":444
  *         self.insert( interval.start, interval.end, interval )
  * 
  *     add_interval = insert_interval             # <<<<<<<<<<<<<<
  * 
  *     def before_interval( self, interval, num_intervals=1, max_dist=2500 ):
  */
-  __pyx_t_1 = __Pyx_GetNameInClass((PyObject *)__pyx_ptype_12intervaltree_IntervalTree, __pyx_n_s_insert_interval); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 444; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_GetNameInClass((PyObject *)__pyx_ptype_6joshua_12intervaltree_IntervalTree, __pyx_n_s_insert_interval); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 444; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_12intervaltree_IntervalTree->tp_dict, __pyx_n_s_add_interval, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 444; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_6joshua_12intervaltree_IntervalTree->tp_dict, __pyx_n_s_add_interval, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 444; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  PyType_Modified(__pyx_ptype_12intervaltree_IntervalTree);
+  PyType_Modified(__pyx_ptype_6joshua_12intervaltree_IntervalTree);
 
-  /* "intervaltree.pyx":500
+  /* "joshua/intervaltree.pyx":500
  * 
  * # For backward compatibility
  * Intersecter = IntervalTree             # <<<<<<<<<<<<<<
  */
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_Intersecter, ((PyObject *)((PyObject*)__pyx_ptype_12intervaltree_IntervalTree))) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 500; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_Intersecter, ((PyObject *)((PyObject*)__pyx_ptype_6joshua_12intervaltree_IntervalTree))) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 500; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-  /* "intervaltree.pyx":1
+  /* "joshua/intervaltree.pyx":1
  * """             # <<<<<<<<<<<<<<
  * Data structure for performing intersect queries on a set of intervals which
  * preserves all information about the intervals (unlike bitset projection methods).
@@ -8374,11 +8374,11 @@ PyMODINIT_FUNC PyInit_intervaltree(void)
   __Pyx_XDECREF(__pyx_t_3);
   if (__pyx_m) {
     if (__pyx_d) {
-      __Pyx_AddTraceback("init intervaltree", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init joshua.intervaltree", __pyx_clineno, __pyx_lineno, __pyx_filename);
     }
     Py_DECREF(__pyx_m); __pyx_m = 0;
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init intervaltree");
+    PyErr_SetString(PyExc_ImportError, "init joshua.intervaltree");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();

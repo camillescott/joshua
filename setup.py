@@ -111,7 +111,7 @@ except:
 def get_extension_modules():
     extensions = []
 
-    extensions.append( Extension( "joshua", [ "joshua/intervaltree.pyx" ] ) )
+    extensions.append( Extension( "joshua.intervaltree", [ "joshua/intervaltree.pyx" ] ) )
     
     return extensions     
      
