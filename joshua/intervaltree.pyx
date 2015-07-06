@@ -2,7 +2,7 @@
 Data structure for performing intersect queries on a set of intervals which
 preserves all information about the intervals (unlike bitset projection methods).
 
-:Authors: Camille Scott
+:Authors: Camille Scott (camille.scott.w@gmail.com),
           James Taylor (james@jamestaylor.org),
           Ian Schenk (ian.schenck@gmail.com),
           Brent Pedersen (bpederse@gmail.com)
