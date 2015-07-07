@@ -3,7 +3,6 @@ Utility code
 '''
 
 from intervaltree import IntervalNode, IntervalTree
-from libcpp.stack import stack
 
 #cython cdivision=True
 
@@ -27,14 +26,14 @@ def merge_overlapping(list iv_list):
             merge_stack.append(top)
     return merge_stack
 
-cpdef calc_bases_overlapped_mult(Interval iv, list overlap_ivs):
+cpdef calc_bases_overlapped_mult(object iv, list overlap_ivs):
     '''
     Given a target Interval and a list of *overlapping* Intervals,
     calculate how many bases in the target are overlapped
     '''
     merged = merge_overlapping(overlap_ivs)
 
-    covered = 0
+    cdef int covered = 0
     for overlap_iv in merged:
         if overlap_iv.start <= iv.start:
             if overlap_iv.end <= iv.end:
@@ -51,18 +50,18 @@ cpdef calc_bases_overlapped_mult(Interval iv, list overlap_ivs):
     assert covered <= len(iv)
     return covered
 
-cpdef calc_bases_overlapped_single(Interval iv_a, Interval iv_b):
+cpdef calc_bases_overlapped_single(int start_a, int end_a, int start_b, int end_b):
     '''
     Given two Intervals, calculate their overlap
     '''
 
-    if iv_b <= iv_a:
-        if iv_b.end <= iv_a.end:
-            return iv_b.end - iv_a.start
+    if start_b <= start_a:
+        if end_b <= end_a:
+            return end_b - start_a
         else:
-            return len(iv_a)
+            return end_a - start_a
     else:
-        if iv_b.end <= iv_a.end:
-            return iv_a.end - iv_b.start
+        if end_b <= end_a:
+            return end_b - start_b
         else:
-            return iv_a.end - iv_b.start
+            return end_a - start_b
