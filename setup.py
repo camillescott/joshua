@@ -20,9 +20,10 @@ except:
 def main():
     setup(  name = "joshua",
             version = "0.1",
-            packages = find_packages( 'joshua' ),
-            package_dir = { '': 'joshua' },
-            package_data = { '': ['*.ps'] },
+            #packages = find_packages( 'joshua' ),
+            packages = ['joshua', 'joshua.tests'],
+            package_dir = { 'joshua': 'joshua', 'joshua.tests': 'tests'},
+            #package_data = { '': ['*.ps'] },
             scripts = glob( "scripts/*.py" ),
             ext_modules = get_extension_modules(),
             test_suite = 'nose.collector',
