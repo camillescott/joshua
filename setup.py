@@ -30,8 +30,8 @@ def main():
     setup(  name = "joshua",
             version = "0.1",
             #packages = find_packages( 'joshua' ),
-            packages = ['joshua', 'joshua.tests'],
-            package_dir = { 'joshua': 'joshua', 'joshua.tests': 'tests'},
+            packages = ['joshua'],
+            package_dir = { 'joshua': 'joshua'},
             #package_data = { '': ['*.ps'] },
             scripts = glob( "scripts/*.py" ),
             ext_modules = get_extension_modules(),
@@ -65,8 +65,10 @@ def get_extension_modules():
     else:
         ext = '.c'
 
-    extensions.append( Extension( "joshua.intervaltree", [ "joshua/intervaltree.pyx" ] ) )
-    extensions.append( Extension( "joshua.utils", [ "joshua/utils.pyx" ] ) )
+    extensions.append( Extension( "joshua.intervaltree", [ "joshua/intervaltree.pyx" ],
+                                  include_dirs=['.'] ) )
+    extensions.append( Extension( "joshua.utils", [ "joshua/utils.pyx" ],
+                                  include_dirs=['.'] ) )
 
     return extensions     
 

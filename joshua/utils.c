@@ -736,14 +736,14 @@ static char __pyx_k_Utility_code[] = "\nUtility code\n";
 static char __pyx_k_intervaltree[] = "intervaltree";
 static char __pyx_k_joshua_utils[] = "joshua.utils";
 static char __pyx_k_merge_overlapping[] = "merge_overlapping";
-static char __pyx_k_Users_camille_w_joshua_joshua_u[] = "/Users/camille/w/joshua/joshua/utils.pyx";
+static char __pyx_k_home_camille_joshua_joshua_util[] = "/home/camille/joshua/joshua/utils.pyx";
 static char __pyx_k_merge_overlapping_locals_lambda[] = "merge_overlapping.<locals>.<lambda>";
 static PyObject *__pyx_n_s_IntervalNode;
 static PyObject *__pyx_n_s_IntervalTree;
-static PyObject *__pyx_kp_s_Users_camille_w_joshua_joshua_u;
 static PyObject *__pyx_n_s_end;
 static PyObject *__pyx_n_s_end_a;
 static PyObject *__pyx_n_s_end_b;
+static PyObject *__pyx_kp_s_home_camille_joshua_joshua_util;
 static PyObject *__pyx_n_s_import;
 static PyObject *__pyx_n_s_intervaltree;
 static PyObject *__pyx_n_s_iv;
@@ -1834,10 +1834,10 @@ static struct PyModuleDef __pyx_moduledef = {
 static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_IntervalNode, __pyx_k_IntervalNode, sizeof(__pyx_k_IntervalNode), 0, 0, 1, 1},
   {&__pyx_n_s_IntervalTree, __pyx_k_IntervalTree, sizeof(__pyx_k_IntervalTree), 0, 0, 1, 1},
-  {&__pyx_kp_s_Users_camille_w_joshua_joshua_u, __pyx_k_Users_camille_w_joshua_joshua_u, sizeof(__pyx_k_Users_camille_w_joshua_joshua_u), 0, 0, 1, 0},
   {&__pyx_n_s_end, __pyx_k_end, sizeof(__pyx_k_end), 0, 0, 1, 1},
   {&__pyx_n_s_end_a, __pyx_k_end_a, sizeof(__pyx_k_end_a), 0, 0, 1, 1},
   {&__pyx_n_s_end_b, __pyx_k_end_b, sizeof(__pyx_k_end_b), 0, 0, 1, 1},
+  {&__pyx_kp_s_home_camille_joshua_joshua_util, __pyx_k_home_camille_joshua_joshua_util, sizeof(__pyx_k_home_camille_joshua_joshua_util), 0, 0, 1, 0},
   {&__pyx_n_s_import, __pyx_k_import, sizeof(__pyx_k_import), 0, 0, 1, 1},
   {&__pyx_n_s_intervaltree, __pyx_k_intervaltree, sizeof(__pyx_k_intervaltree), 0, 0, 1, 1},
   {&__pyx_n_s_iv, __pyx_k_iv, sizeof(__pyx_k_iv), 0, 0, 1, 1},
@@ -1879,7 +1879,7 @@ static int __Pyx_InitCachedConstants(void) {
   __pyx_tuple_ = PyTuple_Pack(4, __pyx_n_s_iv_list, __pyx_n_s_merge_stack, __pyx_n_s_iv, __pyx_n_s_top); if (unlikely(!__pyx_tuple_)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 9; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
-  __pyx_codeobj__2 = (PyObject*)__Pyx_PyCode_New(1, 0, 4, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple_, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_Users_camille_w_joshua_joshua_u, __pyx_n_s_merge_overlapping, 9, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 9; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_codeobj__2 = (PyObject*)__Pyx_PyCode_New(1, 0, 4, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple_, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_camille_joshua_joshua_util, __pyx_n_s_merge_overlapping, 9, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 9; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
