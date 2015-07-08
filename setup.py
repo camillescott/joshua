@@ -69,7 +69,8 @@ def get_extension_modules():
                                   include_dirs=['.'] ) )
     extensions.append( Extension( "joshua.utils", [ "joshua/utils.pyx" ],
                                   include_dirs=['.'] ) )
-
+    extensions.append( Extension( "joshua.intervalforest", [ "joshua/intervalforest.pyx" ],
+                                  include_dirs=['.'] ) )
     return extensions     
 
 def monkey_patch_numpy():
