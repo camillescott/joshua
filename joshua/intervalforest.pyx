@@ -33,3 +33,12 @@ cdef class IntervalForest:
 
     def __len__(self):
         return self.size
+
+    def intersect(self, object other, float cutoff=0.9):
+
+        if type(other) is not IntervalTree:
+            raise TypeError('Expected IntervalTree, go {t}'.format(
+                            t=type(other)))
+        
+        cdef list overlaps = []
+        
