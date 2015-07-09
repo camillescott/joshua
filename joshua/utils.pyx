@@ -6,16 +6,13 @@ from intervaltree import IntervalNode, IntervalTree
 
 #cython cdivision=True
 
-def merge_overlapping(list iv_list):
-    '''
-    Merge all overlapping Intervals from the given list, and return a new list
-    with the collapsed Intervals
-    '''
+cpdef merge_overlapping_sorted(list iv_list):
+
     if len(iv_list) == 1:
         return iv_list
 
-    iv_list = sorted(iv_list, key=lambda iv: iv.start)
-    merge_stack = [iv_list[0]]
+    cdef object top
+    cdef list merge_stack = [iv_list[0]]
     for iv in iv_list[1:]:
         top = merge_stack[-1]
         if top.end < iv.start:
@@ -24,7 +21,24 @@ def merge_overlapping(list iv_list):
             top.end = iv.end
             merge_stack.pop()
             merge_stack.append(top)
+
     return merge_stack
+
+
+def merge_overlapping(list iv_list):
+    '''
+    Merge all overlapping Intervals from the given list, and return a new list
+    with the collapsed Intervals
+    '''
+    if len(iv_list) == 1:
+        return iv_list
+
+    def sort_fn(item):
+        return item.start
+
+    iv_list = sorted(iv_list, key=sort_fn)
+
+    return merge_overlapping_sorted(iv_list)
 
 cpdef calc_bases_overlapped_mult(object iv, list overlap_ivs):
     '''
@@ -33,21 +47,17 @@ cpdef calc_bases_overlapped_mult(object iv, list overlap_ivs):
     '''
     merged = merge_overlapping(overlap_ivs)
 
+    cdef int start = iv.start
+    cdef int end = iv.end
+    cdef int iv_length = len(iv)
+
     cdef int covered = 0
     for overlap_iv in merged:
-        if overlap_iv.start <= iv.start:
-            if overlap_iv.end <= iv.end:
-                covered += overlap_iv.end - iv.start
-            else:
-                covered = iv.end - iv.start
-                break
-        else:
-            if overlap_iv.end <= iv.end:
-                covered += overlap_iv.end - overlap_iv.start
-            else:
-                covered = iv.end - overlap_iv.start
-                break
-    assert covered <= len(iv)
+        covered += calc_bases_overlapped_single(start, end, overlap_iv.start, overlap_iv.end)
+        if covered >= iv_length:
+            covered = iv_length
+            break
+
     return covered
 
 cpdef calc_bases_overlapped_single(int start_a, int end_a, int start_b, int end_b):
