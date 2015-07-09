@@ -216,13 +216,33 @@ class IntervalTreeTest(unittest.TestCase):
         fn = lambda ival: self.assert_(ival.interval)
         self.iv.traverse(fn)
 
+
 class IntervalTreeIntersectTest(unittest.TestCase):
 
     def setUp(self):
         self.tree_a = IntervalTree()
-        tree_a.insert_interval(Interval(0, 10))
-        tree_a.insert_interval(Interval(5, 15))
-        tree_a.insert_interval(Interval(20, 25))
+        self.tree_a.insert_interval(Interval(0, 10, 0))
+        self.tree_a.insert_interval(Interval(5, 15, 1))
+        self.tree_a.insert_interval(Interval(20, 25, 2))
+        
+        self.tree_b = IntervalTree()
+        self.tree_b.insert_interval(Interval(0, 10, 0))
+        self.tree_b.insert_interval(Interval(25, 30, 1))
+
+    def test_intersect(self):
+        a_b_overlaps = self.tree_a.intersect(self.tree_b)
+        self.assertTrue((0, 0, 10) in a_b_overlaps)
+        b_a_overlaps = self.tree_b.intersect(self.tree_a)
+        self.assertTrue((0, 0, 10) in b_a_overlaps)
+
+    def test_test_intersect_cutoffs(self):
+        ab_5 = self.tree_a.intersect(self.tree_b, cutoff=0.5)
+        self.assertTrue((1, 0, 5) in ab_5)
+        self.assertEquals(len(ab_5), 2)
+
+        ab_0 = self.tree_a.intersect(self.tree_b, cutoff=0.0)
+        self.assertTrue(len(ab_0), 2)
+
 
 if __name__ == "__main__":
 

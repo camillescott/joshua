@@ -290,8 +290,10 @@ cdef class Interval:
     """
     cdef public int start, end, length
     cdef public object value, chrom, strand
-
-    def __init__(self, int start, int end, object value=None, object chrom=None, object strand=None ):
+    cdef public long long int idx
+    # TODO lookup cython statics
+    def __init__(self, int start, int end, object idx=None, object value=None, object chrom=None, 
+                 object strand=None):
         assert start <= end, "start must be less than end"
         self.start  = start
         self.end   = end
@@ -299,6 +301,10 @@ cdef class Interval:
         self.chrom = chrom
         self.strand = strand
         self.length = end - start
+        if idx is None:
+            self.idx = id(self)
+        else:
+            self.idx = idx
 
     def __repr__(self):
         fstr = "Interval(%d, %d" % (self.start, self.end)
@@ -513,7 +519,7 @@ cdef class IntervalTree:
                                                           ov.start, ov.end)
                     if (float(ov_len) / len(iv)) >= cutoff:
                         overlaps.append((iv.idx, ov.idx, ov_len))
-        self.traverse(other)
+        self.traverse(overlap_fn)
         return overlaps
 
     def __len__(self):
