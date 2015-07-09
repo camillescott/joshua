@@ -21,6 +21,7 @@ preserves all information about the intervals (unlike bitset projection methods)
 #cython: cdivision=True
 
 import operator
+from utils import calc_bases_overlapped_single
 
 cdef extern from "stdlib.h":
     int ceil(float f)
@@ -492,6 +493,28 @@ cdef class IntervalTree:
         if self.root is None:
             return None
         return self.root.traverse(fn)
+    
+    def intersect(self, object other, float cutoff=0.9):
+
+        if type(other) is not IntervalTree:
+            raise TypeError('Expected IntervalTree, go {t}'.format(
+                            t=type(other)))
+
+        cdef list overlaps = []
+        def overlap_fn(IntervalNode node):
+            cdef object iv = node.interval
+            cdef float ov_len
+            cdef int start = iv.start
+            cdef int end = iv.end
+            cdef list results = other.find(start, end)
+            if results:
+                for ov in results:
+                    ov_len = calc_bases_overlapped_single(start, end,
+                                                          ov.start, ov.end)
+                    if (float(ov_len) / len(iv)) >= cutoff:
+                        overlaps.append((iv.idx, ov.idx, ov_len))
+        self.traverse(other)
+        return overlaps
 
     def __len__(self):
         return self.size

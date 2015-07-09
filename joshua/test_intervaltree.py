@@ -216,6 +216,14 @@ class IntervalTreeTest(unittest.TestCase):
         fn = lambda ival: self.assert_(ival.interval)
         self.iv.traverse(fn)
 
+class IntervalTreeIntersectTest(unittest.TestCase):
+
+    def setUp(self):
+        self.tree_a = IntervalTree()
+        tree_a.insert_interval(Interval(0, 10))
+        tree_a.insert_interval(Interval(5, 15))
+        tree_a.insert_interval(Interval(20, 25))
+
 if __name__ == "__main__":
 
     unittest.main()
