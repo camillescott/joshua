@@ -434,7 +434,9 @@ static const char *__pyx_f[] = {
 struct __pyx_obj_6joshua_12intervaltree_IntervalNode;
 struct __pyx_obj_6joshua_12intervaltree_Interval;
 struct __pyx_obj_6joshua_12intervaltree_IntervalTree;
-struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct__intersect;
+struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct____iter__;
+struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct_1_intersect;
+struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct_2___iter__;
 struct __pyx_opt_args_6joshua_12intervaltree_12IntervalNode_left;
 struct __pyx_opt_args_6joshua_12intervaltree_12IntervalNode_right;
 
@@ -488,7 +490,7 @@ struct __pyx_obj_6joshua_12intervaltree_IntervalNode {
 };
 
 
-/* "joshua/intervaltree.pyx":277
+/* "joshua/intervaltree.pyx":286
  * ## ---- Wrappers that retain the old interface -------------------------------
  * 
  * cdef class Interval:             # <<<<<<<<<<<<<<
@@ -507,7 +509,7 @@ struct __pyx_obj_6joshua_12intervaltree_Interval {
 };
 
 
-/* "joshua/intervaltree.pyx":339
+/* "joshua/intervaltree.pyx":348
  *         return self.length
  * 
  * cdef class IntervalTree:             # <<<<<<<<<<<<<<
@@ -521,18 +523,54 @@ struct __pyx_obj_6joshua_12intervaltree_IntervalTree {
 };
 
 
-/* "joshua/intervaltree.pyx":503
+/* "joshua/intervaltree.pyx":263
+ *         return r[:n]
+ * 
+ *     def __iter__(self):             # <<<<<<<<<<<<<<
+ *         if self.cleft is not EmptyNode:
+ *             for s, e, iv in self.cleft:
+ */
+struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct____iter__ {
+  PyObject_HEAD
+  PyObject *__pyx_v_e;
+  PyObject *__pyx_v_iv;
+  PyObject *__pyx_v_s;
+  struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self;
+  PyObject *__pyx_t_0;
+  Py_ssize_t __pyx_t_1;
+  PyObject *(*__pyx_t_2)(PyObject *);
+};
+
+
+/* "joshua/intervaltree.pyx":512
  *         return self.root.traverse(fn)
  * 
  *     def intersect(self, object other, float cutoff=0.9):             # <<<<<<<<<<<<<<
  * 
  *         if type(other) is not IntervalTree:
  */
-struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct__intersect {
+struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct_1_intersect {
   PyObject_HEAD
   float __pyx_v_cutoff;
   PyObject *__pyx_v_other;
   PyObject *__pyx_v_overlaps;
+};
+
+
+/* "joshua/intervaltree.pyx":537
+ *         return self.size
+ * 
+ *     def __iter__(self):             # <<<<<<<<<<<<<<
+ *         if self.root is None:
+ *             return
+ */
+struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct_2___iter__ {
+  PyObject_HEAD
+  PyObject *__pyx_v_iv;
+  struct __pyx_obj_6joshua_12intervaltree_IntervalTree *__pyx_v_self;
+  PyObject *__pyx_t_0;
+  Py_ssize_t __pyx_t_1;
+  PyObject *(*__pyx_t_2)(PyObject *);
 };
 
 
@@ -694,6 +732,14 @@ static CYTHON_INLINE PyObject* __Pyx_PyTuple_GetSlice(PyObject* src, Py_ssize_t 
 #define __Pyx_PyTuple_GetSlice(seq, start, stop)  PySequence_GetSlice(seq, start, stop)
 #endif
 
+static CYTHON_INLINE void __Pyx_RaiseTooManyValuesError(Py_ssize_t expected);
+
+static CYTHON_INLINE void __Pyx_RaiseNeedMoreValuesError(Py_ssize_t index);
+
+static CYTHON_INLINE int __Pyx_IterFinish(void);
+
+static int __Pyx_IternextUnpackEndCheck(PyObject *retval, Py_ssize_t expected);
+
 #if CYTHON_COMPILING_IN_CPYTHON
 static CYTHON_INLINE PyObject* __Pyx_PyObject_CallMethO(PyObject *func, PyObject *arg);
 #endif
@@ -813,6 +859,39 @@ static CYTHON_INLINE PyObject* __Pyx_PyInt_From_long(long value);
 
 static CYTHON_INLINE long __Pyx_PyInt_As_long(PyObject *);
 
+static CYTHON_INLINE void __Pyx_ExceptionSwap(PyObject **type, PyObject **value, PyObject **tb);
+
+static PyObject* __Pyx_PyObject_CallMethod1(PyObject* obj, PyObject* method_name, PyObject* arg);
+
+#define __Pyx_Generator_USED
+#include <structmember.h>
+#include <frameobject.h>
+typedef PyObject *(*__pyx_generator_body_t)(PyObject *, PyObject *);
+typedef struct {
+    PyObject_HEAD
+    __pyx_generator_body_t body;
+    PyObject *closure;
+    PyObject *exc_type;
+    PyObject *exc_value;
+    PyObject *exc_traceback;
+    PyObject *gi_weakreflist;
+    PyObject *classobj;
+    PyObject *yieldfrom;
+    PyObject *gi_name;
+    PyObject *gi_qualname;
+    int resume_label;
+    char is_running;
+} __pyx_GeneratorObject;
+static __pyx_GeneratorObject *__Pyx_Generator_New(__pyx_generator_body_t body,
+                                                  PyObject *closure, PyObject *name, PyObject *qualname);
+static int __pyx_Generator_init(void);
+static int __Pyx_Generator_clear(PyObject* self);
+#if 1 || PY_VERSION_HEX < 0x030300B0
+static int __Pyx_PyGen_FetchStopIterationValue(PyObject **pvalue);
+#else
+#define __Pyx_PyGen_FetchStopIterationValue(pvalue) PyGen_FetchStopIterationValue(pvalue)
+#endif
+
 static int __Pyx_check_binary_version(void);
 
 static int __Pyx_InitStrings(__Pyx_StringTabEntry *t);
@@ -832,7 +911,9 @@ static void __pyx_f_6joshua_12intervaltree_12IntervalNode__traverse(struct __pyx
 static PyTypeObject *__pyx_ptype_6joshua_12intervaltree_IntervalNode = 0;
 static PyTypeObject *__pyx_ptype_6joshua_12intervaltree_Interval = 0;
 static PyTypeObject *__pyx_ptype_6joshua_12intervaltree_IntervalTree = 0;
-static PyTypeObject *__pyx_ptype_6joshua_12intervaltree___pyx_scope_struct__intersect = 0;
+static PyTypeObject *__pyx_ptype_6joshua_12intervaltree___pyx_scope_struct____iter__ = 0;
+static PyTypeObject *__pyx_ptype_6joshua_12intervaltree___pyx_scope_struct_1_intersect = 0;
+static PyTypeObject *__pyx_ptype_6joshua_12intervaltree___pyx_scope_struct_2___iter__ = 0;
 static float __pyx_v_6joshua_12intervaltree_nlog;
 static struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_6joshua_12intervaltree_EmptyNode = 0;
 static CYTHON_INLINE int __pyx_f_6joshua_12intervaltree_imax2(int, int); /*proto*/
@@ -854,7 +935,8 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalNode_4insert(struct _
 static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalNode_6intersect(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self, int __pyx_v_start, int __pyx_v_end, CYTHON_UNUSED PyObject *__pyx_v_sort); /* proto */
 static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalNode_8left(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self, PyObject *__pyx_v_position, int __pyx_v_n, int __pyx_v_max_dist); /* proto */
 static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalNode_10right(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self, PyObject *__pyx_v_position, int __pyx_v_n, int __pyx_v_max_dist); /* proto */
-static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalNode_12traverse(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self, PyObject *__pyx_v_func); /* proto */
+static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalNode_12__iter__(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalNode_15traverse(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self, PyObject *__pyx_v_func); /* proto */
 static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalNode_8interval___get__(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self); /* proto */
 static int __pyx_pf_6joshua_12intervaltree_12IntervalNode_8interval_2__set__(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
 static int __pyx_pf_6joshua_12intervaltree_12IntervalNode_8interval_4__del__(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self); /* proto */
@@ -899,12 +981,15 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_20traverse(struc
 static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_9intersect_overlap_fn(PyObject *__pyx_self, struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_node); /* proto */
 static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_22intersect(struct __pyx_obj_6joshua_12intervaltree_IntervalTree *__pyx_v_self, PyObject *__pyx_v_other, float __pyx_v_cutoff); /* proto */
 static Py_ssize_t __pyx_pf_6joshua_12intervaltree_12IntervalTree_24__len__(struct __pyx_obj_6joshua_12intervaltree_IntervalTree *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_26__iter__(struct __pyx_obj_6joshua_12intervaltree_IntervalTree *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_4size___get__(struct __pyx_obj_6joshua_12intervaltree_IntervalTree *__pyx_v_self); /* proto */
 static int __pyx_pf_6joshua_12intervaltree_12IntervalTree_4size_2__set__(struct __pyx_obj_6joshua_12intervaltree_IntervalTree *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
 static PyObject *__pyx_tp_new_6joshua_12intervaltree_IntervalNode(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_tp_new_6joshua_12intervaltree_Interval(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_tp_new_6joshua_12intervaltree_IntervalTree(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
-static PyObject *__pyx_tp_new_6joshua_12intervaltree___pyx_scope_struct__intersect(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_tp_new_6joshua_12intervaltree___pyx_scope_struct____iter__(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_tp_new_6joshua_12intervaltree___pyx_scope_struct_1_intersect(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_tp_new_6joshua_12intervaltree___pyx_scope_struct_2___iter__(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static char __pyx_k_n[] = "n";
 static char __pyx_k_t[] = "t";
 static char __pyx_k__3[] = ")";
@@ -916,16 +1001,21 @@ static char __pyx_k_add[] = "add";
 static char __pyx_k_end[] = "end";
 static char __pyx_k_idx[] = "idx";
 static char __pyx_k_key[] = "key";
+static char __pyx_k_args[] = "args";
 static char __pyx_k_find[] = "find";
+static char __pyx_k_iter[] = "__iter__";
 static char __pyx_k_left[] = "left";
 static char __pyx_k_main[] = "__main__";
 static char __pyx_k_node[] = "node";
+static char __pyx_k_send[] = "send";
 static char __pyx_k_sort[] = "sort";
 static char __pyx_k_test[] = "__test__";
 static char __pyx_k_chrom[] = "chrom";
+static char __pyx_k_close[] = "close";
 static char __pyx_k_other[] = "other";
 static char __pyx_k_right[] = "right";
 static char __pyx_k_start[] = "start";
+static char __pyx_k_throw[] = "throw";
 static char __pyx_k_utils[] = "utils";
 static char __pyx_k_value[] = "value";
 static char __pyx_k_cutoff[] = "cutoff";
@@ -953,6 +1043,8 @@ static char __pyx_k_add_interval[] = "add_interval";
 static char __pyx_k_num_intervals[] = "num_intervals";
 static char __pyx_k_insert_interval[] = "insert_interval";
 static char __pyx_k_IntervalNode_i_i[] = "IntervalNode(%i, %i)";
+static char __pyx_k_IntervalNode___iter[] = "IntervalNode.__iter__";
+static char __pyx_k_IntervalTree___iter[] = "IntervalTree.__iter__";
 static char __pyx_k_joshua_intervaltree[] = "joshua.intervaltree";
 static char __pyx_k_Expected_IntervalTree_go_t[] = "Expected IntervalTree, go {t}";
 static char __pyx_k_intersect_locals_overlap_fn[] = "intersect.<locals>.overlap_fn";
@@ -962,7 +1054,9 @@ static char __pyx_k_Data_structure_for_performing_i[] = "\nData structure for pe
 static char __pyx_k_Users_camille_w_joshua_joshua_i[] = "/Users/camille/w/joshua/joshua/intervaltree.pyx";
 static PyObject *__pyx_kp_s_Expected_IntervalTree_go_t;
 static PyObject *__pyx_n_s_Intersecter;
+static PyObject *__pyx_n_s_IntervalNode___iter;
 static PyObject *__pyx_kp_s_IntervalNode_i_i;
+static PyObject *__pyx_n_s_IntervalTree___iter;
 static PyObject *__pyx_kp_s_Interval_d_d;
 static PyObject *__pyx_n_s_TypeError;
 static PyObject *__pyx_kp_s_Users_camille_w_joshua_joshua_i;
@@ -970,9 +1064,11 @@ static PyObject *__pyx_kp_s__3;
 static PyObject *__pyx_kp_s__4;
 static PyObject *__pyx_n_s_add;
 static PyObject *__pyx_n_s_add_interval;
+static PyObject *__pyx_n_s_args;
 static PyObject *__pyx_n_s_attrgetter;
 static PyObject *__pyx_n_s_calc_bases_overlapped_single;
 static PyObject *__pyx_n_s_chrom;
+static PyObject *__pyx_n_s_close;
 static PyObject *__pyx_n_s_cutoff;
 static PyObject *__pyx_n_s_end;
 static PyObject *__pyx_n_s_find;
@@ -985,6 +1081,7 @@ static PyObject *__pyx_n_s_insert_interval;
 static PyObject *__pyx_n_s_intersect;
 static PyObject *__pyx_n_s_intersect_locals_overlap_fn;
 static PyObject *__pyx_n_s_interval;
+static PyObject *__pyx_n_s_iter;
 static PyObject *__pyx_n_s_iv;
 static PyObject *__pyx_n_s_joshua_intervaltree;
 static PyObject *__pyx_n_s_key;
@@ -1004,12 +1101,14 @@ static PyObject *__pyx_n_s_pyx_vtable;
 static PyObject *__pyx_n_s_results;
 static PyObject *__pyx_n_s_reverse;
 static PyObject *__pyx_n_s_right;
+static PyObject *__pyx_n_s_send;
 static PyObject *__pyx_n_s_sort;
 static PyObject *__pyx_n_s_start;
 static PyObject *__pyx_kp_s_start_must_be_less_than_end;
 static PyObject *__pyx_n_s_strand;
 static PyObject *__pyx_n_s_t;
 static PyObject *__pyx_n_s_test;
+static PyObject *__pyx_n_s_throw;
 static PyObject *__pyx_n_s_traverse;
 static PyObject *__pyx_n_s_utils;
 static PyObject *__pyx_n_s_value;
@@ -3737,7 +3836,7 @@ static PyObject *__pyx_f_6joshua_12intervaltree_12IntervalNode_right(struct __py
  *         r.sort(key=operator.attrgetter('start'))
  *         return r[:n]             # <<<<<<<<<<<<<<
  * 
- *     def traverse(self, func):
+ *     def __iter__(self):
  */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_5 = __Pyx_PyList_GetSlice(__pyx_v_r, 0, __pyx_v_n); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 261; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
@@ -3883,9 +3982,506 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalNode_10right(struct _
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
+static PyObject *__pyx_gb_6joshua_12intervaltree_12IntervalNode_14generator(__pyx_GeneratorObject *__pyx_generator, PyObject *__pyx_sent_value); /* proto */
 
 /* "joshua/intervaltree.pyx":263
  *         return r[:n]
+ * 
+ *     def __iter__(self):             # <<<<<<<<<<<<<<
+ *         if self.cleft is not EmptyNode:
+ *             for s, e, iv in self.cleft:
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalNode_13__iter__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalNode_13__iter__(PyObject *__pyx_v_self) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__iter__ (wrapper)", 0);
+  __pyx_r = __pyx_pf_6joshua_12intervaltree_12IntervalNode_12__iter__(((struct __pyx_obj_6joshua_12intervaltree_IntervalNode *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalNode_12__iter__(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self) {
+  struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct____iter__ *__pyx_cur_scope;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__iter__", 0);
+  __pyx_cur_scope = (struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct____iter__ *)__pyx_tp_new_6joshua_12intervaltree___pyx_scope_struct____iter__(__pyx_ptype_6joshua_12intervaltree___pyx_scope_struct____iter__, __pyx_empty_tuple, NULL);
+  if (unlikely(!__pyx_cur_scope)) {
+    __Pyx_RefNannyFinishContext();
+    return NULL;
+  }
+  __Pyx_GOTREF(__pyx_cur_scope);
+  __pyx_cur_scope->__pyx_v_self = __pyx_v_self;
+  __Pyx_INCREF((PyObject *)__pyx_cur_scope->__pyx_v_self);
+  __Pyx_GIVEREF((PyObject *)__pyx_cur_scope->__pyx_v_self);
+  {
+    __pyx_GeneratorObject *gen = __Pyx_Generator_New((__pyx_generator_body_t) __pyx_gb_6joshua_12intervaltree_12IntervalNode_14generator, (PyObject *) __pyx_cur_scope, __pyx_n_s_iter, __pyx_n_s_IntervalNode___iter); if (unlikely(!gen)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 263; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __Pyx_DECREF(__pyx_cur_scope);
+    __Pyx_RefNannyFinishContext();
+    return (PyObject *) gen;
+  }
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_AddTraceback("joshua.intervaltree.IntervalNode.__iter__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __Pyx_DECREF(((PyObject *)__pyx_cur_scope));
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_gb_6joshua_12intervaltree_12IntervalNode_14generator(__pyx_GeneratorObject *__pyx_generator, PyObject *__pyx_sent_value) /* generator body */
+{
+  struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct____iter__ *__pyx_cur_scope = ((struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct____iter__ *)__pyx_generator->closure);
+  PyObject *__pyx_r = NULL;
+  int __pyx_t_1;
+  int __pyx_t_2;
+  PyObject *__pyx_t_3 = NULL;
+  Py_ssize_t __pyx_t_4;
+  PyObject *(*__pyx_t_5)(PyObject *);
+  PyObject *__pyx_t_6 = NULL;
+  PyObject *__pyx_t_7 = NULL;
+  PyObject *__pyx_t_8 = NULL;
+  PyObject *__pyx_t_9 = NULL;
+  PyObject *__pyx_t_10 = NULL;
+  PyObject *(*__pyx_t_11)(PyObject *);
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("None", 0);
+  switch (__pyx_generator->resume_label) {
+    case 0: goto __pyx_L3_first_run;
+    case 1: goto __pyx_L9_resume_from_yield;
+    case 2: goto __pyx_L10_resume_from_yield;
+    case 3: goto __pyx_L16_resume_from_yield;
+    default: /* CPython raises the right error here */
+    __Pyx_RefNannyFinishContext();
+    return NULL;
+  }
+  __pyx_L3_first_run:;
+  if (unlikely(!__pyx_sent_value)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 263; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+
+  /* "joshua/intervaltree.pyx":264
+ * 
+ *     def __iter__(self):
+ *         if self.cleft is not EmptyNode:             # <<<<<<<<<<<<<<
+ *             for s, e, iv in self.cleft:
+ *                 yield s, e, iv
+ */
+  __pyx_t_1 = (__pyx_cur_scope->__pyx_v_self->cleft != __pyx_v_6joshua_12intervaltree_EmptyNode);
+  __pyx_t_2 = (__pyx_t_1 != 0);
+  if (__pyx_t_2) {
+
+    /* "joshua/intervaltree.pyx":265
+ *     def __iter__(self):
+ *         if self.cleft is not EmptyNode:
+ *             for s, e, iv in self.cleft:             # <<<<<<<<<<<<<<
+ *                 yield s, e, iv
+ *         yield self.start, self.end, self.interval
+ */
+    if (likely(PyList_CheckExact(((PyObject *)__pyx_cur_scope->__pyx_v_self->cleft))) || PyTuple_CheckExact(((PyObject *)__pyx_cur_scope->__pyx_v_self->cleft))) {
+      __pyx_t_3 = ((PyObject *)__pyx_cur_scope->__pyx_v_self->cleft); __Pyx_INCREF(__pyx_t_3); __pyx_t_4 = 0;
+      __pyx_t_5 = NULL;
+    } else {
+      __pyx_t_4 = -1; __pyx_t_3 = PyObject_GetIter(((PyObject *)__pyx_cur_scope->__pyx_v_self->cleft)); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 265; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __Pyx_GOTREF(__pyx_t_3);
+      __pyx_t_5 = Py_TYPE(__pyx_t_3)->tp_iternext; if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 265; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    }
+    for (;;) {
+      if (likely(!__pyx_t_5)) {
+        if (likely(PyList_CheckExact(__pyx_t_3))) {
+          if (__pyx_t_4 >= PyList_GET_SIZE(__pyx_t_3)) break;
+          #if CYTHON_COMPILING_IN_CPYTHON
+          __pyx_t_6 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_4); __Pyx_INCREF(__pyx_t_6); __pyx_t_4++; if (unlikely(0 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 265; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          #else
+          __pyx_t_6 = PySequence_ITEM(__pyx_t_3, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 265; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          #endif
+        } else {
+          if (__pyx_t_4 >= PyTuple_GET_SIZE(__pyx_t_3)) break;
+          #if CYTHON_COMPILING_IN_CPYTHON
+          __pyx_t_6 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_4); __Pyx_INCREF(__pyx_t_6); __pyx_t_4++; if (unlikely(0 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 265; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          #else
+          __pyx_t_6 = PySequence_ITEM(__pyx_t_3, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 265; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          #endif
+        }
+      } else {
+        __pyx_t_6 = __pyx_t_5(__pyx_t_3);
+        if (unlikely(!__pyx_t_6)) {
+          PyObject* exc_type = PyErr_Occurred();
+          if (exc_type) {
+            if (likely(exc_type == PyExc_StopIteration || PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
+            else {__pyx_filename = __pyx_f[0]; __pyx_lineno = 265; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          }
+          break;
+        }
+        __Pyx_GOTREF(__pyx_t_6);
+      }
+      if ((likely(PyTuple_CheckExact(__pyx_t_6))) || (PyList_CheckExact(__pyx_t_6))) {
+        PyObject* sequence = __pyx_t_6;
+        #if CYTHON_COMPILING_IN_CPYTHON
+        Py_ssize_t size = Py_SIZE(sequence);
+        #else
+        Py_ssize_t size = PySequence_Size(sequence);
+        #endif
+        if (unlikely(size != 3)) {
+          if (size > 3) __Pyx_RaiseTooManyValuesError(3);
+          else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
+          {__pyx_filename = __pyx_f[0]; __pyx_lineno = 265; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        }
+        #if CYTHON_COMPILING_IN_CPYTHON
+        if (likely(PyTuple_CheckExact(sequence))) {
+          __pyx_t_7 = PyTuple_GET_ITEM(sequence, 0); 
+          __pyx_t_8 = PyTuple_GET_ITEM(sequence, 1); 
+          __pyx_t_9 = PyTuple_GET_ITEM(sequence, 2); 
+        } else {
+          __pyx_t_7 = PyList_GET_ITEM(sequence, 0); 
+          __pyx_t_8 = PyList_GET_ITEM(sequence, 1); 
+          __pyx_t_9 = PyList_GET_ITEM(sequence, 2); 
+        }
+        __Pyx_INCREF(__pyx_t_7);
+        __Pyx_INCREF(__pyx_t_8);
+        __Pyx_INCREF(__pyx_t_9);
+        #else
+        __pyx_t_7 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 265; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __Pyx_GOTREF(__pyx_t_7);
+        __pyx_t_8 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 265; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __Pyx_GOTREF(__pyx_t_8);
+        __pyx_t_9 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 265; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __Pyx_GOTREF(__pyx_t_9);
+        #endif
+        __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+      } else {
+        Py_ssize_t index = -1;
+        __pyx_t_10 = PyObject_GetIter(__pyx_t_6); if (unlikely(!__pyx_t_10)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 265; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __Pyx_GOTREF(__pyx_t_10);
+        __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+        __pyx_t_11 = Py_TYPE(__pyx_t_10)->tp_iternext;
+        index = 0; __pyx_t_7 = __pyx_t_11(__pyx_t_10); if (unlikely(!__pyx_t_7)) goto __pyx_L7_unpacking_failed;
+        __Pyx_GOTREF(__pyx_t_7);
+        index = 1; __pyx_t_8 = __pyx_t_11(__pyx_t_10); if (unlikely(!__pyx_t_8)) goto __pyx_L7_unpacking_failed;
+        __Pyx_GOTREF(__pyx_t_8);
+        index = 2; __pyx_t_9 = __pyx_t_11(__pyx_t_10); if (unlikely(!__pyx_t_9)) goto __pyx_L7_unpacking_failed;
+        __Pyx_GOTREF(__pyx_t_9);
+        if (__Pyx_IternextUnpackEndCheck(__pyx_t_11(__pyx_t_10), 3) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 265; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_11 = NULL;
+        __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+        goto __pyx_L8_unpacking_done;
+        __pyx_L7_unpacking_failed:;
+        __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+        __pyx_t_11 = NULL;
+        if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
+        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 265; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_L8_unpacking_done:;
+      }
+      __Pyx_XGOTREF(__pyx_cur_scope->__pyx_v_s);
+      __Pyx_XDECREF_SET(__pyx_cur_scope->__pyx_v_s, __pyx_t_7);
+      __Pyx_GIVEREF(__pyx_t_7);
+      __pyx_t_7 = 0;
+      __Pyx_XGOTREF(__pyx_cur_scope->__pyx_v_e);
+      __Pyx_XDECREF_SET(__pyx_cur_scope->__pyx_v_e, __pyx_t_8);
+      __Pyx_GIVEREF(__pyx_t_8);
+      __pyx_t_8 = 0;
+      __Pyx_XGOTREF(__pyx_cur_scope->__pyx_v_iv);
+      __Pyx_XDECREF_SET(__pyx_cur_scope->__pyx_v_iv, __pyx_t_9);
+      __Pyx_GIVEREF(__pyx_t_9);
+      __pyx_t_9 = 0;
+
+      /* "joshua/intervaltree.pyx":266
+ *         if self.cleft is not EmptyNode:
+ *             for s, e, iv in self.cleft:
+ *                 yield s, e, iv             # <<<<<<<<<<<<<<
+ *         yield self.start, self.end, self.interval
+ *         if self.cright is not EmptyNode:
+ */
+      __pyx_t_6 = PyTuple_New(3); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 266; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __Pyx_GOTREF(__pyx_t_6);
+      __Pyx_INCREF(__pyx_cur_scope->__pyx_v_s);
+      PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_cur_scope->__pyx_v_s);
+      __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_s);
+      __Pyx_INCREF(__pyx_cur_scope->__pyx_v_e);
+      PyTuple_SET_ITEM(__pyx_t_6, 1, __pyx_cur_scope->__pyx_v_e);
+      __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_e);
+      __Pyx_INCREF(__pyx_cur_scope->__pyx_v_iv);
+      PyTuple_SET_ITEM(__pyx_t_6, 2, __pyx_cur_scope->__pyx_v_iv);
+      __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_iv);
+      __pyx_r = __pyx_t_6;
+      __pyx_t_6 = 0;
+      __Pyx_XGIVEREF(__pyx_t_3);
+      __pyx_cur_scope->__pyx_t_0 = __pyx_t_3;
+      __pyx_cur_scope->__pyx_t_1 = __pyx_t_4;
+      __pyx_cur_scope->__pyx_t_2 = __pyx_t_5;
+      __Pyx_XGIVEREF(__pyx_r);
+      __Pyx_RefNannyFinishContext();
+      /* return from generator, yielding value */
+      __pyx_generator->resume_label = 1;
+      return __pyx_r;
+      __pyx_L9_resume_from_yield:;
+      __pyx_t_3 = __pyx_cur_scope->__pyx_t_0;
+      __pyx_cur_scope->__pyx_t_0 = 0;
+      __Pyx_XGOTREF(__pyx_t_3);
+      __pyx_t_4 = __pyx_cur_scope->__pyx_t_1;
+      __pyx_t_5 = __pyx_cur_scope->__pyx_t_2;
+      if (unlikely(!__pyx_sent_value)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 266; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+
+      /* "joshua/intervaltree.pyx":265
+ *     def __iter__(self):
+ *         if self.cleft is not EmptyNode:
+ *             for s, e, iv in self.cleft:             # <<<<<<<<<<<<<<
+ *                 yield s, e, iv
+ *         yield self.start, self.end, self.interval
+ */
+    }
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    goto __pyx_L4;
+  }
+  __pyx_L4:;
+
+  /* "joshua/intervaltree.pyx":267
+ *             for s, e, iv in self.cleft:
+ *                 yield s, e, iv
+ *         yield self.start, self.end, self.interval             # <<<<<<<<<<<<<<
+ *         if self.cright is not EmptyNode:
+ *             for s, e, iv in self.cright:
+ */
+  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_cur_scope->__pyx_v_self->start); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 267; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_cur_scope->__pyx_v_self->end); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 267; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_GOTREF(__pyx_t_6);
+  __pyx_t_9 = PyTuple_New(3); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 267; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_GOTREF(__pyx_t_9);
+  PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_3);
+  __Pyx_GIVEREF(__pyx_t_3);
+  PyTuple_SET_ITEM(__pyx_t_9, 1, __pyx_t_6);
+  __Pyx_GIVEREF(__pyx_t_6);
+  __Pyx_INCREF(__pyx_cur_scope->__pyx_v_self->interval);
+  PyTuple_SET_ITEM(__pyx_t_9, 2, __pyx_cur_scope->__pyx_v_self->interval);
+  __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_self->interval);
+  __pyx_t_3 = 0;
+  __pyx_t_6 = 0;
+  __pyx_r = __pyx_t_9;
+  __pyx_t_9 = 0;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  /* return from generator, yielding value */
+  __pyx_generator->resume_label = 2;
+  return __pyx_r;
+  __pyx_L10_resume_from_yield:;
+  if (unlikely(!__pyx_sent_value)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 267; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+
+  /* "joshua/intervaltree.pyx":268
+ *                 yield s, e, iv
+ *         yield self.start, self.end, self.interval
+ *         if self.cright is not EmptyNode:             # <<<<<<<<<<<<<<
+ *             for s, e, iv in self.cright:
+ *                 yield s, e, iv
+ */
+  __pyx_t_2 = (__pyx_cur_scope->__pyx_v_self->cright != __pyx_v_6joshua_12intervaltree_EmptyNode);
+  __pyx_t_1 = (__pyx_t_2 != 0);
+  if (__pyx_t_1) {
+
+    /* "joshua/intervaltree.pyx":269
+ *         yield self.start, self.end, self.interval
+ *         if self.cright is not EmptyNode:
+ *             for s, e, iv in self.cright:             # <<<<<<<<<<<<<<
+ *                 yield s, e, iv
+ * 
+ */
+    if (likely(PyList_CheckExact(((PyObject *)__pyx_cur_scope->__pyx_v_self->cright))) || PyTuple_CheckExact(((PyObject *)__pyx_cur_scope->__pyx_v_self->cright))) {
+      __pyx_t_9 = ((PyObject *)__pyx_cur_scope->__pyx_v_self->cright); __Pyx_INCREF(__pyx_t_9); __pyx_t_4 = 0;
+      __pyx_t_5 = NULL;
+    } else {
+      __pyx_t_4 = -1; __pyx_t_9 = PyObject_GetIter(((PyObject *)__pyx_cur_scope->__pyx_v_self->cright)); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 269; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __Pyx_GOTREF(__pyx_t_9);
+      __pyx_t_5 = Py_TYPE(__pyx_t_9)->tp_iternext; if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 269; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    }
+    for (;;) {
+      if (likely(!__pyx_t_5)) {
+        if (likely(PyList_CheckExact(__pyx_t_9))) {
+          if (__pyx_t_4 >= PyList_GET_SIZE(__pyx_t_9)) break;
+          #if CYTHON_COMPILING_IN_CPYTHON
+          __pyx_t_6 = PyList_GET_ITEM(__pyx_t_9, __pyx_t_4); __Pyx_INCREF(__pyx_t_6); __pyx_t_4++; if (unlikely(0 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 269; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          #else
+          __pyx_t_6 = PySequence_ITEM(__pyx_t_9, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 269; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          #endif
+        } else {
+          if (__pyx_t_4 >= PyTuple_GET_SIZE(__pyx_t_9)) break;
+          #if CYTHON_COMPILING_IN_CPYTHON
+          __pyx_t_6 = PyTuple_GET_ITEM(__pyx_t_9, __pyx_t_4); __Pyx_INCREF(__pyx_t_6); __pyx_t_4++; if (unlikely(0 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 269; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          #else
+          __pyx_t_6 = PySequence_ITEM(__pyx_t_9, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 269; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          #endif
+        }
+      } else {
+        __pyx_t_6 = __pyx_t_5(__pyx_t_9);
+        if (unlikely(!__pyx_t_6)) {
+          PyObject* exc_type = PyErr_Occurred();
+          if (exc_type) {
+            if (likely(exc_type == PyExc_StopIteration || PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
+            else {__pyx_filename = __pyx_f[0]; __pyx_lineno = 269; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          }
+          break;
+        }
+        __Pyx_GOTREF(__pyx_t_6);
+      }
+      if ((likely(PyTuple_CheckExact(__pyx_t_6))) || (PyList_CheckExact(__pyx_t_6))) {
+        PyObject* sequence = __pyx_t_6;
+        #if CYTHON_COMPILING_IN_CPYTHON
+        Py_ssize_t size = Py_SIZE(sequence);
+        #else
+        Py_ssize_t size = PySequence_Size(sequence);
+        #endif
+        if (unlikely(size != 3)) {
+          if (size > 3) __Pyx_RaiseTooManyValuesError(3);
+          else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
+          {__pyx_filename = __pyx_f[0]; __pyx_lineno = 269; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        }
+        #if CYTHON_COMPILING_IN_CPYTHON
+        if (likely(PyTuple_CheckExact(sequence))) {
+          __pyx_t_3 = PyTuple_GET_ITEM(sequence, 0); 
+          __pyx_t_8 = PyTuple_GET_ITEM(sequence, 1); 
+          __pyx_t_7 = PyTuple_GET_ITEM(sequence, 2); 
+        } else {
+          __pyx_t_3 = PyList_GET_ITEM(sequence, 0); 
+          __pyx_t_8 = PyList_GET_ITEM(sequence, 1); 
+          __pyx_t_7 = PyList_GET_ITEM(sequence, 2); 
+        }
+        __Pyx_INCREF(__pyx_t_3);
+        __Pyx_INCREF(__pyx_t_8);
+        __Pyx_INCREF(__pyx_t_7);
+        #else
+        __pyx_t_3 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 269; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __Pyx_GOTREF(__pyx_t_3);
+        __pyx_t_8 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 269; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __Pyx_GOTREF(__pyx_t_8);
+        __pyx_t_7 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 269; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __Pyx_GOTREF(__pyx_t_7);
+        #endif
+        __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+      } else {
+        Py_ssize_t index = -1;
+        __pyx_t_10 = PyObject_GetIter(__pyx_t_6); if (unlikely(!__pyx_t_10)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 269; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __Pyx_GOTREF(__pyx_t_10);
+        __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+        __pyx_t_11 = Py_TYPE(__pyx_t_10)->tp_iternext;
+        index = 0; __pyx_t_3 = __pyx_t_11(__pyx_t_10); if (unlikely(!__pyx_t_3)) goto __pyx_L14_unpacking_failed;
+        __Pyx_GOTREF(__pyx_t_3);
+        index = 1; __pyx_t_8 = __pyx_t_11(__pyx_t_10); if (unlikely(!__pyx_t_8)) goto __pyx_L14_unpacking_failed;
+        __Pyx_GOTREF(__pyx_t_8);
+        index = 2; __pyx_t_7 = __pyx_t_11(__pyx_t_10); if (unlikely(!__pyx_t_7)) goto __pyx_L14_unpacking_failed;
+        __Pyx_GOTREF(__pyx_t_7);
+        if (__Pyx_IternextUnpackEndCheck(__pyx_t_11(__pyx_t_10), 3) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 269; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_11 = NULL;
+        __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+        goto __pyx_L15_unpacking_done;
+        __pyx_L14_unpacking_failed:;
+        __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+        __pyx_t_11 = NULL;
+        if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
+        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 269; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_L15_unpacking_done:;
+      }
+      __Pyx_XGOTREF(__pyx_cur_scope->__pyx_v_s);
+      __Pyx_XDECREF_SET(__pyx_cur_scope->__pyx_v_s, __pyx_t_3);
+      __Pyx_GIVEREF(__pyx_t_3);
+      __pyx_t_3 = 0;
+      __Pyx_XGOTREF(__pyx_cur_scope->__pyx_v_e);
+      __Pyx_XDECREF_SET(__pyx_cur_scope->__pyx_v_e, __pyx_t_8);
+      __Pyx_GIVEREF(__pyx_t_8);
+      __pyx_t_8 = 0;
+      __Pyx_XGOTREF(__pyx_cur_scope->__pyx_v_iv);
+      __Pyx_XDECREF_SET(__pyx_cur_scope->__pyx_v_iv, __pyx_t_7);
+      __Pyx_GIVEREF(__pyx_t_7);
+      __pyx_t_7 = 0;
+
+      /* "joshua/intervaltree.pyx":270
+ *         if self.cright is not EmptyNode:
+ *             for s, e, iv in self.cright:
+ *                 yield s, e, iv             # <<<<<<<<<<<<<<
+ * 
+ *     def traverse(self, func):
+ */
+      __pyx_t_6 = PyTuple_New(3); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 270; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __Pyx_GOTREF(__pyx_t_6);
+      __Pyx_INCREF(__pyx_cur_scope->__pyx_v_s);
+      PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_cur_scope->__pyx_v_s);
+      __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_s);
+      __Pyx_INCREF(__pyx_cur_scope->__pyx_v_e);
+      PyTuple_SET_ITEM(__pyx_t_6, 1, __pyx_cur_scope->__pyx_v_e);
+      __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_e);
+      __Pyx_INCREF(__pyx_cur_scope->__pyx_v_iv);
+      PyTuple_SET_ITEM(__pyx_t_6, 2, __pyx_cur_scope->__pyx_v_iv);
+      __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_iv);
+      __pyx_r = __pyx_t_6;
+      __pyx_t_6 = 0;
+      __pyx_cur_scope->__pyx_t_1 = __pyx_t_4;
+      __pyx_cur_scope->__pyx_t_2 = __pyx_t_5;
+      __Pyx_XGIVEREF(__pyx_t_9);
+      __pyx_cur_scope->__pyx_t_0 = __pyx_t_9;
+      __Pyx_XGIVEREF(__pyx_r);
+      __Pyx_RefNannyFinishContext();
+      /* return from generator, yielding value */
+      __pyx_generator->resume_label = 3;
+      return __pyx_r;
+      __pyx_L16_resume_from_yield:;
+      __pyx_t_4 = __pyx_cur_scope->__pyx_t_1;
+      __pyx_t_5 = __pyx_cur_scope->__pyx_t_2;
+      __pyx_t_9 = __pyx_cur_scope->__pyx_t_0;
+      __pyx_cur_scope->__pyx_t_0 = 0;
+      __Pyx_XGOTREF(__pyx_t_9);
+      if (unlikely(!__pyx_sent_value)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 270; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+
+      /* "joshua/intervaltree.pyx":269
+ *         yield self.start, self.end, self.interval
+ *         if self.cright is not EmptyNode:
+ *             for s, e, iv in self.cright:             # <<<<<<<<<<<<<<
+ *                 yield s, e, iv
+ * 
+ */
+    }
+    __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+    goto __pyx_L11;
+  }
+  __pyx_L11:;
+
+  /* "joshua/intervaltree.pyx":263
+ *         return r[:n]
+ * 
+ *     def __iter__(self):             # <<<<<<<<<<<<<<
+ *         if self.cleft is not EmptyNode:
+ *             for s, e, iv in self.cleft:
+ */
+
+  /* function exit code */
+  PyErr_SetNone(PyExc_StopIteration);
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_6);
+  __Pyx_XDECREF(__pyx_t_7);
+  __Pyx_XDECREF(__pyx_t_8);
+  __Pyx_XDECREF(__pyx_t_9);
+  __Pyx_XDECREF(__pyx_t_10);
+  __Pyx_AddTraceback("__iter__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_L0:;
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_generator->resume_label = -1;
+  __Pyx_Generator_clear((PyObject*)__pyx_generator);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+}
+
+/* "joshua/intervaltree.pyx":272
+ *                 yield s, e, iv
  * 
  *     def traverse(self, func):             # <<<<<<<<<<<<<<
  *         results = []
@@ -3893,19 +4489,19 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalNode_10right(struct _
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalNode_13traverse(PyObject *__pyx_v_self, PyObject *__pyx_v_func); /*proto*/
-static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalNode_13traverse(PyObject *__pyx_v_self, PyObject *__pyx_v_func) {
+static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalNode_16traverse(PyObject *__pyx_v_self, PyObject *__pyx_v_func); /*proto*/
+static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalNode_16traverse(PyObject *__pyx_v_self, PyObject *__pyx_v_func) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("traverse (wrapper)", 0);
-  __pyx_r = __pyx_pf_6joshua_12intervaltree_12IntervalNode_12traverse(((struct __pyx_obj_6joshua_12intervaltree_IntervalNode *)__pyx_v_self), ((PyObject *)__pyx_v_func));
+  __pyx_r = __pyx_pf_6joshua_12intervaltree_12IntervalNode_15traverse(((struct __pyx_obj_6joshua_12intervaltree_IntervalNode *)__pyx_v_self), ((PyObject *)__pyx_v_func));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalNode_12traverse(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self, PyObject *__pyx_v_func) {
+static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalNode_15traverse(struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_self, PyObject *__pyx_v_func) {
   PyObject *__pyx_v_results = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -3915,19 +4511,19 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalNode_12traverse(struc
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("traverse", 0);
 
-  /* "joshua/intervaltree.pyx":264
+  /* "joshua/intervaltree.pyx":273
  * 
  *     def traverse(self, func):
  *         results = []             # <<<<<<<<<<<<<<
  *         self._traverse(func, results)
  *         return results
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 264; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 273; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_results = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "joshua/intervaltree.pyx":265
+  /* "joshua/intervaltree.pyx":274
  *     def traverse(self, func):
  *         results = []
  *         self._traverse(func, results)             # <<<<<<<<<<<<<<
@@ -3936,7 +4532,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalNode_12traverse(struc
  */
   ((struct __pyx_vtabstruct_6joshua_12intervaltree_IntervalNode *)__pyx_v_self->__pyx_vtab)->_traverse(__pyx_v_self, __pyx_v_func, __pyx_v_results);
 
-  /* "joshua/intervaltree.pyx":266
+  /* "joshua/intervaltree.pyx":275
  *         results = []
  *         self._traverse(func, results)
  *         return results             # <<<<<<<<<<<<<<
@@ -3948,8 +4544,8 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalNode_12traverse(struc
   __pyx_r = __pyx_v_results;
   goto __pyx_L0;
 
-  /* "joshua/intervaltree.pyx":263
- *         return r[:n]
+  /* "joshua/intervaltree.pyx":272
+ *                 yield s, e, iv
  * 
  *     def traverse(self, func):             # <<<<<<<<<<<<<<
  *         results = []
@@ -3968,7 +4564,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalNode_12traverse(struc
   return __pyx_r;
 }
 
-/* "joshua/intervaltree.pyx":268
+/* "joshua/intervaltree.pyx":277
  *         return results
  * 
  *     cdef void _traverse(IntervalNode self, object func, list results):             # <<<<<<<<<<<<<<
@@ -3990,7 +4586,7 @@ static void __pyx_f_6joshua_12intervaltree_12IntervalNode__traverse(struct __pyx
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_traverse", 0);
 
-  /* "joshua/intervaltree.pyx":269
+  /* "joshua/intervaltree.pyx":278
  * 
  *     cdef void _traverse(IntervalNode self, object func, list results):
  *         if self.cleft is not EmptyNode: self.cleft._traverse(func, results)             # <<<<<<<<<<<<<<
@@ -4005,7 +4601,7 @@ static void __pyx_f_6joshua_12intervaltree_12IntervalNode__traverse(struct __pyx
   }
   __pyx_L3:;
 
-  /* "joshua/intervaltree.pyx":270
+  /* "joshua/intervaltree.pyx":279
  *     cdef void _traverse(IntervalNode self, object func, list results):
  *         if self.cleft is not EmptyNode: self.cleft._traverse(func, results)
  *         results.append(func(self))             # <<<<<<<<<<<<<<
@@ -4014,7 +4610,7 @@ static void __pyx_f_6joshua_12intervaltree_12IntervalNode__traverse(struct __pyx
  */
   if (unlikely(__pyx_v_results == Py_None)) {
     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%s'", "append");
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 270; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 279; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __Pyx_INCREF(__pyx_v_func);
   __pyx_t_4 = __pyx_v_func; __pyx_t_5 = NULL;
@@ -4028,24 +4624,24 @@ static void __pyx_f_6joshua_12intervaltree_12IntervalNode__traverse(struct __pyx
     }
   }
   if (!__pyx_t_5) {
-    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_4, ((PyObject *)__pyx_v_self)); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 270; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_4, ((PyObject *)__pyx_v_self)); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 279; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
   } else {
-    __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 270; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 279; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_6);
     PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_5); __Pyx_GIVEREF(__pyx_t_5); __pyx_t_5 = NULL;
     __Pyx_INCREF(((PyObject *)__pyx_v_self));
     PyTuple_SET_ITEM(__pyx_t_6, 0+1, ((PyObject *)__pyx_v_self));
     __Pyx_GIVEREF(((PyObject *)__pyx_v_self));
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 270; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 279; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   }
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_7 = __Pyx_PyList_Append(__pyx_v_results, __pyx_t_3); if (unlikely(__pyx_t_7 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 270; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_7 = __Pyx_PyList_Append(__pyx_v_results, __pyx_t_3); if (unlikely(__pyx_t_7 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 279; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "joshua/intervaltree.pyx":271
+  /* "joshua/intervaltree.pyx":280
  *         if self.cleft is not EmptyNode: self.cleft._traverse(func, results)
  *         results.append(func(self))
  *         if self.cright is not EmptyNode: self.cright._traverse(func, results)             # <<<<<<<<<<<<<<
@@ -4060,7 +4656,7 @@ static void __pyx_f_6joshua_12intervaltree_12IntervalNode__traverse(struct __pyx
   }
   __pyx_L4:;
 
-  /* "joshua/intervaltree.pyx":268
+  /* "joshua/intervaltree.pyx":277
  *         return results
  * 
  *     cdef void _traverse(IntervalNode self, object func, list results):             # <<<<<<<<<<<<<<
@@ -4405,7 +5001,7 @@ static int __pyx_pf_6joshua_12intervaltree_12IntervalNode_6length_2__set__(struc
   return __pyx_r;
 }
 
-/* "joshua/intervaltree.pyx":295
+/* "joshua/intervaltree.pyx":304
  *     cdef public long long int idx
  *     # TODO lookup cython statics
  *     def __init__(self, int start, int end, object idx=None, object value=None, object chrom=None,             # <<<<<<<<<<<<<<
@@ -4435,7 +5031,7 @@ static int __pyx_pw_6joshua_12intervaltree_8Interval_1__init__(PyObject *__pyx_v
     values[3] = ((PyObject *)Py_None);
     values[4] = ((PyObject *)Py_None);
 
-    /* "joshua/intervaltree.pyx":296
+    /* "joshua/intervaltree.pyx":305
  *     # TODO lookup cython statics
  *     def __init__(self, int start, int end, object idx=None, object value=None, object chrom=None,
  *                  object strand=None):             # <<<<<<<<<<<<<<
@@ -4464,7 +5060,7 @@ static int __pyx_pw_6joshua_12intervaltree_8Interval_1__init__(PyObject *__pyx_v
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_end)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__init__", 0, 2, 6, 1); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 295; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+          __Pyx_RaiseArgtupleInvalid("__init__", 0, 2, 6, 1); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 304; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
         }
         case  2:
         if (kw_args > 0) {
@@ -4488,7 +5084,7 @@ static int __pyx_pw_6joshua_12intervaltree_8Interval_1__init__(PyObject *__pyx_v
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 295; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 304; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -4502,8 +5098,8 @@ static int __pyx_pw_6joshua_12intervaltree_8Interval_1__init__(PyObject *__pyx_v
         default: goto __pyx_L5_argtuple_error;
       }
     }
-    __pyx_v_start = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_start == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 295; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
-    __pyx_v_end = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_end == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 295; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_start = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_start == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 304; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_end = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_end == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 304; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
     __pyx_v_idx = values[2];
     __pyx_v_value = values[3];
     __pyx_v_chrom = values[4];
@@ -4511,7 +5107,7 @@ static int __pyx_pw_6joshua_12intervaltree_8Interval_1__init__(PyObject *__pyx_v
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 0, 2, 6, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 295; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  __Pyx_RaiseArgtupleInvalid("__init__", 0, 2, 6, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 304; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
   __Pyx_AddTraceback("joshua.intervaltree.Interval.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -4519,7 +5115,7 @@ static int __pyx_pw_6joshua_12intervaltree_8Interval_1__init__(PyObject *__pyx_v
   __pyx_L4_argument_unpacking_done:;
   __pyx_r = __pyx_pf_6joshua_12intervaltree_8Interval___init__(((struct __pyx_obj_6joshua_12intervaltree_Interval *)__pyx_v_self), __pyx_v_start, __pyx_v_end, __pyx_v_idx, __pyx_v_value, __pyx_v_chrom, __pyx_v_strand);
 
-  /* "joshua/intervaltree.pyx":295
+  /* "joshua/intervaltree.pyx":304
  *     cdef public long long int idx
  *     # TODO lookup cython statics
  *     def __init__(self, int start, int end, object idx=None, object value=None, object chrom=None,             # <<<<<<<<<<<<<<
@@ -4545,7 +5141,7 @@ static int __pyx_pf_6joshua_12intervaltree_8Interval___init__(struct __pyx_obj_6
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "joshua/intervaltree.pyx":297
+  /* "joshua/intervaltree.pyx":306
  *     def __init__(self, int start, int end, object idx=None, object value=None, object chrom=None,
  *                  object strand=None):
  *         assert start <= end, "start must be less than end"             # <<<<<<<<<<<<<<
@@ -4556,12 +5152,12 @@ static int __pyx_pf_6joshua_12intervaltree_8Interval___init__(struct __pyx_obj_6
   if (unlikely(!Py_OptimizeFlag)) {
     if (unlikely(!((__pyx_v_start <= __pyx_v_end) != 0))) {
       PyErr_SetObject(PyExc_AssertionError, __pyx_kp_s_start_must_be_less_than_end);
-      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 297; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 306; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
   }
   #endif
 
-  /* "joshua/intervaltree.pyx":298
+  /* "joshua/intervaltree.pyx":307
  *                  object strand=None):
  *         assert start <= end, "start must be less than end"
  *         self.start  = start             # <<<<<<<<<<<<<<
@@ -4570,7 +5166,7 @@ static int __pyx_pf_6joshua_12intervaltree_8Interval___init__(struct __pyx_obj_6
  */
   __pyx_v_self->start = __pyx_v_start;
 
-  /* "joshua/intervaltree.pyx":299
+  /* "joshua/intervaltree.pyx":308
  *         assert start <= end, "start must be less than end"
  *         self.start  = start
  *         self.end   = end             # <<<<<<<<<<<<<<
@@ -4579,7 +5175,7 @@ static int __pyx_pf_6joshua_12intervaltree_8Interval___init__(struct __pyx_obj_6
  */
   __pyx_v_self->end = __pyx_v_end;
 
-  /* "joshua/intervaltree.pyx":300
+  /* "joshua/intervaltree.pyx":309
  *         self.start  = start
  *         self.end   = end
  *         self.value = value             # <<<<<<<<<<<<<<
@@ -4592,7 +5188,7 @@ static int __pyx_pf_6joshua_12intervaltree_8Interval___init__(struct __pyx_obj_6
   __Pyx_DECREF(__pyx_v_self->value);
   __pyx_v_self->value = __pyx_v_value;
 
-  /* "joshua/intervaltree.pyx":301
+  /* "joshua/intervaltree.pyx":310
  *         self.end   = end
  *         self.value = value
  *         self.chrom = chrom             # <<<<<<<<<<<<<<
@@ -4605,7 +5201,7 @@ static int __pyx_pf_6joshua_12intervaltree_8Interval___init__(struct __pyx_obj_6
   __Pyx_DECREF(__pyx_v_self->chrom);
   __pyx_v_self->chrom = __pyx_v_chrom;
 
-  /* "joshua/intervaltree.pyx":302
+  /* "joshua/intervaltree.pyx":311
  *         self.value = value
  *         self.chrom = chrom
  *         self.strand = strand             # <<<<<<<<<<<<<<
@@ -4618,7 +5214,7 @@ static int __pyx_pf_6joshua_12intervaltree_8Interval___init__(struct __pyx_obj_6
   __Pyx_DECREF(__pyx_v_self->strand);
   __pyx_v_self->strand = __pyx_v_strand;
 
-  /* "joshua/intervaltree.pyx":303
+  /* "joshua/intervaltree.pyx":312
  *         self.chrom = chrom
  *         self.strand = strand
  *         self.length = end - start             # <<<<<<<<<<<<<<
@@ -4627,7 +5223,7 @@ static int __pyx_pf_6joshua_12intervaltree_8Interval___init__(struct __pyx_obj_6
  */
   __pyx_v_self->length = (__pyx_v_end - __pyx_v_start);
 
-  /* "joshua/intervaltree.pyx":304
+  /* "joshua/intervaltree.pyx":313
  *         self.strand = strand
  *         self.length = end - start
  *         if idx is None:             # <<<<<<<<<<<<<<
@@ -4638,41 +5234,41 @@ static int __pyx_pf_6joshua_12intervaltree_8Interval___init__(struct __pyx_obj_6
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "joshua/intervaltree.pyx":305
+    /* "joshua/intervaltree.pyx":314
  *         self.length = end - start
  *         if idx is None:
  *             self.idx = id(self)             # <<<<<<<<<<<<<<
  *         else:
  *             self.idx = idx
  */
-    __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 305; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 314; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_INCREF(((PyObject *)__pyx_v_self));
     PyTuple_SET_ITEM(__pyx_t_3, 0, ((PyObject *)__pyx_v_self));
     __Pyx_GIVEREF(((PyObject *)__pyx_v_self));
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_id, __pyx_t_3, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 305; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_id, __pyx_t_3, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 314; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_5 = __Pyx_PyInt_As_PY_LONG_LONG(__pyx_t_4); if (unlikely((__pyx_t_5 == (PY_LONG_LONG)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 305; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = __Pyx_PyInt_As_PY_LONG_LONG(__pyx_t_4); if (unlikely((__pyx_t_5 == (PY_LONG_LONG)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 314; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_v_self->idx = __pyx_t_5;
     goto __pyx_L3;
   }
   /*else*/ {
 
-    /* "joshua/intervaltree.pyx":307
+    /* "joshua/intervaltree.pyx":316
  *             self.idx = id(self)
  *         else:
  *             self.idx = idx             # <<<<<<<<<<<<<<
  * 
  *     def __repr__(self):
  */
-    __pyx_t_5 = __Pyx_PyInt_As_PY_LONG_LONG(__pyx_v_idx); if (unlikely((__pyx_t_5 == (PY_LONG_LONG)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 307; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = __Pyx_PyInt_As_PY_LONG_LONG(__pyx_v_idx); if (unlikely((__pyx_t_5 == (PY_LONG_LONG)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 316; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __pyx_v_self->idx = __pyx_t_5;
   }
   __pyx_L3:;
 
-  /* "joshua/intervaltree.pyx":295
+  /* "joshua/intervaltree.pyx":304
  *     cdef public long long int idx
  *     # TODO lookup cython statics
  *     def __init__(self, int start, int end, object idx=None, object value=None, object chrom=None,             # <<<<<<<<<<<<<<
@@ -4693,7 +5289,7 @@ static int __pyx_pf_6joshua_12intervaltree_8Interval___init__(struct __pyx_obj_6
   return __pyx_r;
 }
 
-/* "joshua/intervaltree.pyx":309
+/* "joshua/intervaltree.pyx":318
  *             self.idx = idx
  * 
  *     def __repr__(self):             # <<<<<<<<<<<<<<
@@ -4728,18 +5324,18 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_8Interval_2__repr__(struct __py
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__repr__", 0);
 
-  /* "joshua/intervaltree.pyx":310
+  /* "joshua/intervaltree.pyx":319
  * 
  *     def __repr__(self):
  *         fstr = "Interval(%d, %d" % (self.start, self.end)             # <<<<<<<<<<<<<<
  *         if not self.value is None:
  *             fstr += ", value=" + str(self.value)
  */
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->start); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 310; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->start); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 319; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_self->end); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 310; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_self->end); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 319; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 310; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 319; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -4747,13 +5343,13 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_8Interval_2__repr__(struct __py
   __Pyx_GIVEREF(__pyx_t_2);
   __pyx_t_1 = 0;
   __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyString_Format(__pyx_kp_s_Interval_d_d, __pyx_t_3); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 310; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyString_Format(__pyx_kp_s_Interval_d_d, __pyx_t_3); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 319; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_fstr = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "joshua/intervaltree.pyx":311
+  /* "joshua/intervaltree.pyx":320
  *     def __repr__(self):
  *         fstr = "Interval(%d, %d" % (self.start, self.end)
  *         if not self.value is None:             # <<<<<<<<<<<<<<
@@ -4764,25 +5360,25 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_8Interval_2__repr__(struct __py
   __pyx_t_5 = (__pyx_t_4 != 0);
   if (__pyx_t_5) {
 
-    /* "joshua/intervaltree.pyx":312
+    /* "joshua/intervaltree.pyx":321
  *         fstr = "Interval(%d, %d" % (self.start, self.end)
  *         if not self.value is None:
  *             fstr += ", value=" + str(self.value)             # <<<<<<<<<<<<<<
  *         fstr += ")"
  *         return fstr
  */
-    __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 312; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 321; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_INCREF(__pyx_v_self->value);
     PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_v_self->value);
     __Pyx_GIVEREF(__pyx_v_self->value);
-    __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)(&PyString_Type))), __pyx_t_2, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 312; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)(&PyString_Type))), __pyx_t_2, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 321; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = PyNumber_Add(__pyx_kp_s_value_2, __pyx_t_3); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 312; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = PyNumber_Add(__pyx_kp_s_value_2, __pyx_t_3); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 321; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = PyNumber_InPlaceAdd(__pyx_v_fstr, __pyx_t_2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 312; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PyNumber_InPlaceAdd(__pyx_v_fstr, __pyx_t_2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 321; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF_SET(__pyx_v_fstr, __pyx_t_3);
@@ -4791,19 +5387,19 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_8Interval_2__repr__(struct __py
   }
   __pyx_L3:;
 
-  /* "joshua/intervaltree.pyx":313
+  /* "joshua/intervaltree.pyx":322
  *         if not self.value is None:
  *             fstr += ", value=" + str(self.value)
  *         fstr += ")"             # <<<<<<<<<<<<<<
  *         return fstr
  * 
  */
-  __pyx_t_3 = PyNumber_InPlaceAdd(__pyx_v_fstr, __pyx_kp_s__3); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 313; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = PyNumber_InPlaceAdd(__pyx_v_fstr, __pyx_kp_s__3); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 322; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF_SET(__pyx_v_fstr, __pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "joshua/intervaltree.pyx":314
+  /* "joshua/intervaltree.pyx":323
  *             fstr += ", value=" + str(self.value)
  *         fstr += ")"
  *         return fstr             # <<<<<<<<<<<<<<
@@ -4815,7 +5411,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_8Interval_2__repr__(struct __py
   __pyx_r = __pyx_v_fstr;
   goto __pyx_L0;
 
-  /* "joshua/intervaltree.pyx":309
+  /* "joshua/intervaltree.pyx":318
  *             self.idx = idx
  * 
  *     def __repr__(self):             # <<<<<<<<<<<<<<
@@ -4837,7 +5433,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_8Interval_2__repr__(struct __py
   return __pyx_r;
 }
 
-/* "joshua/intervaltree.pyx":316
+/* "joshua/intervaltree.pyx":325
  *         return fstr
  * 
  *     def __richcmp__(self, other, op):             # <<<<<<<<<<<<<<
@@ -4855,7 +5451,7 @@ static PyObject *__pyx_pw_6joshua_12intervaltree_8Interval_5__richcmp__(PyObject
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__richcmp__ (wrapper)", 0);
-  __pyx_v_op = __Pyx_PyInt_From_int(__pyx_arg_op); if (unlikely(!__pyx_v_op)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 316; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  __pyx_v_op = __Pyx_PyInt_From_int(__pyx_arg_op); if (unlikely(!__pyx_v_op)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 325; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __Pyx_GOTREF(__pyx_v_op);
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -4884,19 +5480,19 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_8Interval_4__richcmp__(PyObject
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__richcmp__", 0);
 
-  /* "joshua/intervaltree.pyx":317
+  /* "joshua/intervaltree.pyx":326
  * 
  *     def __richcmp__(self, other, op):
  *         if op == 0:             # <<<<<<<<<<<<<<
  *             # <
  *             return self.start < other.start or self.end < other.end
  */
-  __pyx_t_1 = PyObject_RichCompare(__pyx_v_op, __pyx_int_0, Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 317; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 317; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyObject_RichCompare(__pyx_v_op, __pyx_int_0, Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 326; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 326; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (__pyx_t_2) {
 
-    /* "joshua/intervaltree.pyx":319
+    /* "joshua/intervaltree.pyx":328
  *         if op == 0:
  *             # <
  *             return self.start < other.start or self.end < other.end             # <<<<<<<<<<<<<<
@@ -4904,14 +5500,14 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_8Interval_4__richcmp__(PyObject
  *             # <=
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_start); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 319; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_start); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 328; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_start); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 319; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_start); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 328; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = PyObject_RichCompare(__pyx_t_3, __pyx_t_4, Py_LT); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 319; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = PyObject_RichCompare(__pyx_t_3, __pyx_t_4, Py_LT); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 328; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 319; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 328; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     if (!__pyx_t_2) {
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     } else {
@@ -4920,11 +5516,11 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_8Interval_4__richcmp__(PyObject
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       goto __pyx_L4_bool_binop_done;
     }
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_end); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 319; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_end); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 328; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_end); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 319; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_end); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 328; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_3 = PyObject_RichCompare(__pyx_t_5, __pyx_t_4, Py_LT); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 319; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PyObject_RichCompare(__pyx_t_5, __pyx_t_4, Py_LT); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 328; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_INCREF(__pyx_t_3);
@@ -4936,19 +5532,19 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_8Interval_4__richcmp__(PyObject
     goto __pyx_L0;
   }
 
-  /* "joshua/intervaltree.pyx":320
+  /* "joshua/intervaltree.pyx":329
  *             # <
  *             return self.start < other.start or self.end < other.end
  *         elif op == 1:             # <<<<<<<<<<<<<<
  *             # <=
  *             return self == other or self < other
  */
-  __pyx_t_1 = PyObject_RichCompare(__pyx_v_op, __pyx_int_1, Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 320; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 320; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyObject_RichCompare(__pyx_v_op, __pyx_int_1, Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 329; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 329; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (__pyx_t_2) {
 
-    /* "joshua/intervaltree.pyx":322
+    /* "joshua/intervaltree.pyx":331
  *         elif op == 1:
  *             # <=
  *             return self == other or self < other             # <<<<<<<<<<<<<<
@@ -4956,8 +5552,8 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_8Interval_4__richcmp__(PyObject
  *             # ==
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_3 = PyObject_RichCompare(__pyx_v_self, __pyx_v_other, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 322; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 322; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PyObject_RichCompare(__pyx_v_self, __pyx_v_other, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 331; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 331; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     if (!__pyx_t_2) {
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     } else {
@@ -4966,7 +5562,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_8Interval_4__richcmp__(PyObject
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       goto __pyx_L6_bool_binop_done;
     }
-    __pyx_t_3 = PyObject_RichCompare(__pyx_v_self, __pyx_v_other, Py_LT); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 322; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PyObject_RichCompare(__pyx_v_self, __pyx_v_other, Py_LT); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 331; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_INCREF(__pyx_t_3);
     __pyx_t_1 = __pyx_t_3;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -4976,19 +5572,19 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_8Interval_4__richcmp__(PyObject
     goto __pyx_L0;
   }
 
-  /* "joshua/intervaltree.pyx":323
+  /* "joshua/intervaltree.pyx":332
  *             # <=
  *             return self == other or self < other
  *         elif op == 2:             # <<<<<<<<<<<<<<
  *             # ==
  *             return self.start == other.start and self.end == other.end
  */
-  __pyx_t_1 = PyObject_RichCompare(__pyx_v_op, __pyx_int_2, Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 323; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 323; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyObject_RichCompare(__pyx_v_op, __pyx_int_2, Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 332; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 332; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (__pyx_t_2) {
 
-    /* "joshua/intervaltree.pyx":325
+    /* "joshua/intervaltree.pyx":334
  *         elif op == 2:
  *             # ==
  *             return self.start == other.start and self.end == other.end             # <<<<<<<<<<<<<<
@@ -4996,14 +5592,14 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_8Interval_4__richcmp__(PyObject
  *             # !=
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_start); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 325; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_start); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 334; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_start); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 325; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_start); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 334; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = PyObject_RichCompare(__pyx_t_3, __pyx_t_4, Py_EQ); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 325; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = PyObject_RichCompare(__pyx_t_3, __pyx_t_4, Py_EQ); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 334; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 325; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 334; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     if (__pyx_t_2) {
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     } else {
@@ -5012,11 +5608,11 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_8Interval_4__richcmp__(PyObject
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       goto __pyx_L8_bool_binop_done;
     }
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_end); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 325; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_end); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 334; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_end); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 325; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_end); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 334; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_3 = PyObject_RichCompare(__pyx_t_5, __pyx_t_4, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 325; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PyObject_RichCompare(__pyx_t_5, __pyx_t_4, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 334; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_INCREF(__pyx_t_3);
@@ -5028,19 +5624,19 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_8Interval_4__richcmp__(PyObject
     goto __pyx_L0;
   }
 
-  /* "joshua/intervaltree.pyx":326
+  /* "joshua/intervaltree.pyx":335
  *             # ==
  *             return self.start == other.start and self.end == other.end
  *         elif op == 3:             # <<<<<<<<<<<<<<
  *             # !=
  *             return self.start != other.start or self.end != other.end
  */
-  __pyx_t_1 = PyObject_RichCompare(__pyx_v_op, __pyx_int_3, Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 326; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 326; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyObject_RichCompare(__pyx_v_op, __pyx_int_3, Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 335; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 335; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (__pyx_t_2) {
 
-    /* "joshua/intervaltree.pyx":328
+    /* "joshua/intervaltree.pyx":337
  *         elif op == 3:
  *             # !=
  *             return self.start != other.start or self.end != other.end             # <<<<<<<<<<<<<<
@@ -5048,14 +5644,14 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_8Interval_4__richcmp__(PyObject
  *             # >
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_start); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 328; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_start); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 337; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_start); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 328; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_start); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 337; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = PyObject_RichCompare(__pyx_t_3, __pyx_t_4, Py_NE); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 328; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = PyObject_RichCompare(__pyx_t_3, __pyx_t_4, Py_NE); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 337; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 328; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 337; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     if (!__pyx_t_2) {
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     } else {
@@ -5064,11 +5660,11 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_8Interval_4__richcmp__(PyObject
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       goto __pyx_L10_bool_binop_done;
     }
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_end); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 328; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_end); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 337; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_end); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 328; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_end); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 337; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_3 = PyObject_RichCompare(__pyx_t_5, __pyx_t_4, Py_NE); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 328; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PyObject_RichCompare(__pyx_t_5, __pyx_t_4, Py_NE); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 337; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_INCREF(__pyx_t_3);
@@ -5080,19 +5676,19 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_8Interval_4__richcmp__(PyObject
     goto __pyx_L0;
   }
 
-  /* "joshua/intervaltree.pyx":329
+  /* "joshua/intervaltree.pyx":338
  *             # !=
  *             return self.start != other.start or self.end != other.end
  *         elif op == 4:             # <<<<<<<<<<<<<<
  *             # >
  *             return self.start > other.start or self.end > other.end
  */
-  __pyx_t_1 = PyObject_RichCompare(__pyx_v_op, __pyx_int_4, Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 329; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 329; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyObject_RichCompare(__pyx_v_op, __pyx_int_4, Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 338; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 338; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (__pyx_t_2) {
 
-    /* "joshua/intervaltree.pyx":331
+    /* "joshua/intervaltree.pyx":340
  *         elif op == 4:
  *             # >
  *             return self.start > other.start or self.end > other.end             # <<<<<<<<<<<<<<
@@ -5100,14 +5696,14 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_8Interval_4__richcmp__(PyObject
  *             # >=
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_start); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 331; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_start); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 340; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_start); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 331; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_start); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 340; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = PyObject_RichCompare(__pyx_t_3, __pyx_t_4, Py_GT); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 331; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = PyObject_RichCompare(__pyx_t_3, __pyx_t_4, Py_GT); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 340; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 331; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 340; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     if (!__pyx_t_2) {
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     } else {
@@ -5116,11 +5712,11 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_8Interval_4__richcmp__(PyObject
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       goto __pyx_L12_bool_binop_done;
     }
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_end); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 331; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_end); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 340; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_end); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 331; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_end); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 340; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_3 = PyObject_RichCompare(__pyx_t_5, __pyx_t_4, Py_GT); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 331; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PyObject_RichCompare(__pyx_t_5, __pyx_t_4, Py_GT); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 340; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_INCREF(__pyx_t_3);
@@ -5132,19 +5728,19 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_8Interval_4__richcmp__(PyObject
     goto __pyx_L0;
   }
 
-  /* "joshua/intervaltree.pyx":332
+  /* "joshua/intervaltree.pyx":341
  *             # >
  *             return self.start > other.start or self.end > other.end
  *         elif op == 5:             # <<<<<<<<<<<<<<
  *             # >=
  *             return self == other or self > other
  */
-  __pyx_t_1 = PyObject_RichCompare(__pyx_v_op, __pyx_int_5, Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 332; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 332; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyObject_RichCompare(__pyx_v_op, __pyx_int_5, Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 341; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 341; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (__pyx_t_2) {
 
-    /* "joshua/intervaltree.pyx":334
+    /* "joshua/intervaltree.pyx":343
  *         elif op == 5:
  *             # >=
  *             return self == other or self > other             # <<<<<<<<<<<<<<
@@ -5152,8 +5748,8 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_8Interval_4__richcmp__(PyObject
  *     def __len__(self):
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_3 = PyObject_RichCompare(__pyx_v_self, __pyx_v_other, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 334; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 334; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PyObject_RichCompare(__pyx_v_self, __pyx_v_other, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 343; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 343; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     if (!__pyx_t_2) {
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     } else {
@@ -5162,7 +5758,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_8Interval_4__richcmp__(PyObject
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       goto __pyx_L14_bool_binop_done;
     }
-    __pyx_t_3 = PyObject_RichCompare(__pyx_v_self, __pyx_v_other, Py_GT); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 334; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PyObject_RichCompare(__pyx_v_self, __pyx_v_other, Py_GT); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 343; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_INCREF(__pyx_t_3);
     __pyx_t_1 = __pyx_t_3;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -5172,7 +5768,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_8Interval_4__richcmp__(PyObject
     goto __pyx_L0;
   }
 
-  /* "joshua/intervaltree.pyx":316
+  /* "joshua/intervaltree.pyx":325
  *         return fstr
  * 
  *     def __richcmp__(self, other, op):             # <<<<<<<<<<<<<<
@@ -5196,7 +5792,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_8Interval_4__richcmp__(PyObject
   return __pyx_r;
 }
 
-/* "joshua/intervaltree.pyx":336
+/* "joshua/intervaltree.pyx":345
  *             return self == other or self > other
  * 
  *     def __len__(self):             # <<<<<<<<<<<<<<
@@ -5222,7 +5818,7 @@ static Py_ssize_t __pyx_pf_6joshua_12intervaltree_8Interval_6__len__(struct __py
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__len__", 0);
 
-  /* "joshua/intervaltree.pyx":337
+  /* "joshua/intervaltree.pyx":346
  * 
  *     def __len__(self):
  *         return self.length             # <<<<<<<<<<<<<<
@@ -5232,7 +5828,7 @@ static Py_ssize_t __pyx_pf_6joshua_12intervaltree_8Interval_6__len__(struct __py
   __pyx_r = __pyx_v_self->length;
   goto __pyx_L0;
 
-  /* "joshua/intervaltree.pyx":336
+  /* "joshua/intervaltree.pyx":345
  *             return self == other or self > other
  * 
  *     def __len__(self):             # <<<<<<<<<<<<<<
@@ -5246,7 +5842,7 @@ static Py_ssize_t __pyx_pf_6joshua_12intervaltree_8Interval_6__len__(struct __py
   return __pyx_r;
 }
 
-/* "joshua/intervaltree.pyx":291
+/* "joshua/intervaltree.pyx":300
  * 
  *     """
  *     cdef public int start, end, length             # <<<<<<<<<<<<<<
@@ -5276,7 +5872,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_8Interval_5start___get__(struct
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->start); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 291; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->start); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 300; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -5314,7 +5910,7 @@ static int __pyx_pf_6joshua_12intervaltree_8Interval_5start_2__set__(struct __py
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
-  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_value); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 291; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_value); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 300; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_v_self->start = __pyx_t_1;
 
   /* function exit code */
@@ -5350,7 +5946,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_8Interval_3end___get__(struct _
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->end); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 291; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->end); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 300; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -5388,7 +5984,7 @@ static int __pyx_pf_6joshua_12intervaltree_8Interval_3end_2__set__(struct __pyx_
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
-  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_value); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 291; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_value); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 300; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_v_self->end = __pyx_t_1;
 
   /* function exit code */
@@ -5424,7 +6020,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_8Interval_6length___get__(struc
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->length); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 291; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->length); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 300; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -5462,7 +6058,7 @@ static int __pyx_pf_6joshua_12intervaltree_8Interval_6length_2__set__(struct __p
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
-  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_value); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 291; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_value); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 300; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_v_self->length = __pyx_t_1;
 
   /* function exit code */
@@ -5476,7 +6072,7 @@ static int __pyx_pf_6joshua_12intervaltree_8Interval_6length_2__set__(struct __p
   return __pyx_r;
 }
 
-/* "joshua/intervaltree.pyx":292
+/* "joshua/intervaltree.pyx":301
  *     """
  *     cdef public int start, end, length
  *     cdef public object value, chrom, strand             # <<<<<<<<<<<<<<
@@ -5745,7 +6341,7 @@ static int __pyx_pf_6joshua_12intervaltree_8Interval_6strand_4__del__(struct __p
   return __pyx_r;
 }
 
-/* "joshua/intervaltree.pyx":293
+/* "joshua/intervaltree.pyx":302
  *     cdef public int start, end, length
  *     cdef public object value, chrom, strand
  *     cdef public long long int idx             # <<<<<<<<<<<<<<
@@ -5775,7 +6371,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_8Interval_3idx___get__(struct _
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_PY_LONG_LONG(__pyx_v_self->idx); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 293; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyInt_From_PY_LONG_LONG(__pyx_v_self->idx); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 302; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -5813,7 +6409,7 @@ static int __pyx_pf_6joshua_12intervaltree_8Interval_3idx_2__set__(struct __pyx_
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
-  __pyx_t_1 = __Pyx_PyInt_As_PY_LONG_LONG(__pyx_v_value); if (unlikely((__pyx_t_1 == (PY_LONG_LONG)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 293; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyInt_As_PY_LONG_LONG(__pyx_v_value); if (unlikely((__pyx_t_1 == (PY_LONG_LONG)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 302; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_v_self->idx = __pyx_t_1;
 
   /* function exit code */
@@ -5827,7 +6423,7 @@ static int __pyx_pf_6joshua_12intervaltree_8Interval_3idx_2__set__(struct __pyx_
   return __pyx_r;
 }
 
-/* "joshua/intervaltree.pyx":398
+/* "joshua/intervaltree.pyx":407
  *     cdef public int size
  * 
  *     def __cinit__( self ):             # <<<<<<<<<<<<<<
@@ -5857,7 +6453,7 @@ static int __pyx_pf_6joshua_12intervaltree_12IntervalTree___cinit__(struct __pyx
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__cinit__", 0);
 
-  /* "joshua/intervaltree.pyx":399
+  /* "joshua/intervaltree.pyx":408
  * 
  *     def __cinit__( self ):
  *         root = None             # <<<<<<<<<<<<<<
@@ -5867,7 +6463,7 @@ static int __pyx_pf_6joshua_12intervaltree_12IntervalTree___cinit__(struct __pyx
   __Pyx_INCREF(Py_None);
   __pyx_v_root = Py_None;
 
-  /* "joshua/intervaltree.pyx":400
+  /* "joshua/intervaltree.pyx":409
  *     def __cinit__( self ):
  *         root = None
  *         self.size = 0             # <<<<<<<<<<<<<<
@@ -5876,7 +6472,7 @@ static int __pyx_pf_6joshua_12intervaltree_12IntervalTree___cinit__(struct __pyx
  */
   __pyx_v_self->size = 0;
 
-  /* "joshua/intervaltree.pyx":398
+  /* "joshua/intervaltree.pyx":407
  *     cdef public int size
  * 
  *     def __cinit__( self ):             # <<<<<<<<<<<<<<
@@ -5891,7 +6487,7 @@ static int __pyx_pf_6joshua_12intervaltree_12IntervalTree___cinit__(struct __pyx
   return __pyx_r;
 }
 
-/* "joshua/intervaltree.pyx":404
+/* "joshua/intervaltree.pyx":413
  *     # ---- Position based interfaces -----------------------------------------
  * 
  *     def insert( self, int start, int end, object value=None ):             # <<<<<<<<<<<<<<
@@ -5934,7 +6530,7 @@ static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalTree_3insert(PyObject
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_end)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("insert", 0, 2, 3, 1); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 404; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+          __Pyx_RaiseArgtupleInvalid("insert", 0, 2, 3, 1); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 413; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
         }
         case  2:
         if (kw_args > 0) {
@@ -5943,7 +6539,7 @@ static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalTree_3insert(PyObject
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "insert") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 404; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "insert") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 413; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -5954,13 +6550,13 @@ static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalTree_3insert(PyObject
         default: goto __pyx_L5_argtuple_error;
       }
     }
-    __pyx_v_start = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_start == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 404; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
-    __pyx_v_end = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_end == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 404; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_start = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_start == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 413; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_end = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_end == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 413; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
     __pyx_v_value = values[2];
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("insert", 0, 2, 3, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 404; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  __Pyx_RaiseArgtupleInvalid("insert", 0, 2, 3, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 413; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
   __Pyx_AddTraceback("joshua.intervaltree.IntervalTree.insert", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -5986,7 +6582,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_2insert(struct _
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("insert", 0);
 
-  /* "joshua/intervaltree.pyx":408
+  /* "joshua/intervaltree.pyx":417
  *         Insert the interval [start,end) associated with value `value`.
  *         """
  *         if self.root is None:             # <<<<<<<<<<<<<<
@@ -5997,18 +6593,18 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_2insert(struct _
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "joshua/intervaltree.pyx":409
+    /* "joshua/intervaltree.pyx":418
  *         """
  *         if self.root is None:
  *             self.root = IntervalNode( start, end, value )             # <<<<<<<<<<<<<<
  *         else:
  *             self.root = self.root.insert( start, end, value )
  */
-    __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_start); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 409; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_start); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 418; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_end); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 409; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_end); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 418; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = PyTuple_New(3); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 409; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = PyTuple_New(3); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 418; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_3);
     __Pyx_GIVEREF(__pyx_t_3);
@@ -6019,7 +6615,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_2insert(struct _
     __Pyx_GIVEREF(__pyx_v_value);
     __pyx_t_3 = 0;
     __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_6joshua_12intervaltree_IntervalNode)), __pyx_t_5, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 409; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_6joshua_12intervaltree_IntervalNode)), __pyx_t_5, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 418; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_GIVEREF(__pyx_t_4);
@@ -6031,14 +6627,14 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_2insert(struct _
   }
   /*else*/ {
 
-    /* "joshua/intervaltree.pyx":411
+    /* "joshua/intervaltree.pyx":420
  *             self.root = IntervalNode( start, end, value )
  *         else:
  *             self.root = self.root.insert( start, end, value )             # <<<<<<<<<<<<<<
  *         self.size += 1
  * 
  */
-    __pyx_t_4 = ((PyObject *)((struct __pyx_vtabstruct_6joshua_12intervaltree_IntervalNode *)__pyx_v_self->root->__pyx_vtab)->insert(__pyx_v_self->root, __pyx_v_start, __pyx_v_end, __pyx_v_value, 0)); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 411; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = ((PyObject *)((struct __pyx_vtabstruct_6joshua_12intervaltree_IntervalNode *)__pyx_v_self->root->__pyx_vtab)->insert(__pyx_v_self->root, __pyx_v_start, __pyx_v_end, __pyx_v_value, 0)); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 420; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_GIVEREF(__pyx_t_4);
     __Pyx_GOTREF(__pyx_v_self->root);
@@ -6048,7 +6644,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_2insert(struct _
   }
   __pyx_L3:;
 
-  /* "joshua/intervaltree.pyx":412
+  /* "joshua/intervaltree.pyx":421
  *         else:
  *             self.root = self.root.insert( start, end, value )
  *         self.size += 1             # <<<<<<<<<<<<<<
@@ -6057,7 +6653,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_2insert(struct _
  */
   __pyx_v_self->size = (__pyx_v_self->size + 1);
 
-  /* "joshua/intervaltree.pyx":404
+  /* "joshua/intervaltree.pyx":413
  *     # ---- Position based interfaces -----------------------------------------
  * 
  *     def insert( self, int start, int end, object value=None ):             # <<<<<<<<<<<<<<
@@ -6080,7 +6676,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_2insert(struct _
   return __pyx_r;
 }
 
-/* "joshua/intervaltree.pyx":416
+/* "joshua/intervaltree.pyx":425
  *     add = insert
  * 
  *     def find( self, start, end ):             # <<<<<<<<<<<<<<
@@ -6120,11 +6716,11 @@ static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalTree_5find(PyObject *
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_end)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("find", 1, 2, 2, 1); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 416; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+          __Pyx_RaiseArgtupleInvalid("find", 1, 2, 2, 1); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 425; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "find") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 416; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "find") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 425; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -6137,7 +6733,7 @@ static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalTree_5find(PyObject *
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("find", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 416; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  __Pyx_RaiseArgtupleInvalid("find", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 425; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
   __Pyx_AddTraceback("joshua.intervaltree.IntervalTree.find", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -6165,7 +6761,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_4find(struct __p
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("find", 0);
 
-  /* "joshua/intervaltree.pyx":420
+  /* "joshua/intervaltree.pyx":429
  *         Return a sorted list of all intervals overlapping [start,end).
  *         """
  *         if self.root is None:             # <<<<<<<<<<<<<<
@@ -6176,7 +6772,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_4find(struct __p
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "joshua/intervaltree.pyx":421
+    /* "joshua/intervaltree.pyx":430
  *         """
  *         if self.root is None:
  *             return []             # <<<<<<<<<<<<<<
@@ -6184,14 +6780,14 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_4find(struct __p
  * 
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 421; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 430; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_r = __pyx_t_3;
     __pyx_t_3 = 0;
     goto __pyx_L0;
   }
 
-  /* "joshua/intervaltree.pyx":422
+  /* "joshua/intervaltree.pyx":431
  *         if self.root is None:
  *             return []
  *         return self.root.find( start, end )             # <<<<<<<<<<<<<<
@@ -6199,7 +6795,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_4find(struct __p
  *     def before( self, position, num_intervals=1, max_dist=2500 ):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->root), __pyx_n_s_find); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 422; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->root), __pyx_n_s_find); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 431; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_5 = NULL;
   __pyx_t_6 = 0;
@@ -6213,7 +6809,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_4find(struct __p
       __pyx_t_6 = 1;
     }
   }
-  __pyx_t_7 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 422; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_7 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 431; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_7);
   if (__pyx_t_5) {
     PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_5); __Pyx_GIVEREF(__pyx_t_5); __pyx_t_5 = NULL;
@@ -6224,7 +6820,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_4find(struct __p
   __Pyx_INCREF(__pyx_v_end);
   PyTuple_SET_ITEM(__pyx_t_7, 1+__pyx_t_6, __pyx_v_end);
   __Pyx_GIVEREF(__pyx_v_end);
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_7, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 422; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_7, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 431; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -6232,7 +6828,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_4find(struct __p
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "joshua/intervaltree.pyx":416
+  /* "joshua/intervaltree.pyx":425
  *     add = insert
  * 
  *     def find( self, start, end ):             # <<<<<<<<<<<<<<
@@ -6254,7 +6850,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_4find(struct __p
   return __pyx_r;
 }
 
-/* "joshua/intervaltree.pyx":424
+/* "joshua/intervaltree.pyx":433
  *         return self.root.find( start, end )
  * 
  *     def before( self, position, num_intervals=1, max_dist=2500 ):             # <<<<<<<<<<<<<<
@@ -6307,7 +6903,7 @@ static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalTree_7before(PyObject
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "before") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 424; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "before") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 433; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -6324,7 +6920,7 @@ static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalTree_7before(PyObject
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("before", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 424; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  __Pyx_RaiseArgtupleInvalid("before", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 433; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
   __Pyx_AddTraceback("joshua.intervaltree.IntervalTree.before", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -6351,7 +6947,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_6before(struct _
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("before", 0);
 
-  /* "joshua/intervaltree.pyx":429
+  /* "joshua/intervaltree.pyx":438
  *         further than `max_dist` positions away
  *         """
  *         if self.root is None:             # <<<<<<<<<<<<<<
@@ -6362,7 +6958,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_6before(struct _
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "joshua/intervaltree.pyx":430
+    /* "joshua/intervaltree.pyx":439
  *         """
  *         if self.root is None:
  *             return []             # <<<<<<<<<<<<<<
@@ -6370,14 +6966,14 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_6before(struct _
  * 
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 430; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 439; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_r = __pyx_t_3;
     __pyx_t_3 = 0;
     goto __pyx_L0;
   }
 
-  /* "joshua/intervaltree.pyx":431
+  /* "joshua/intervaltree.pyx":440
  *         if self.root is None:
  *             return []
  *         return self.root.left( position, num_intervals, max_dist )             # <<<<<<<<<<<<<<
@@ -6385,18 +6981,18 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_6before(struct _
  *     def after( self, position, num_intervals=1, max_dist=2500 ):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_4 = __Pyx_PyInt_As_int(__pyx_v_num_intervals); if (unlikely((__pyx_t_4 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 431; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_v_max_dist); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 431; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyInt_As_int(__pyx_v_num_intervals); if (unlikely((__pyx_t_4 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 440; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_v_max_dist); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 440; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_t_6.__pyx_n = 2;
   __pyx_t_6.n = __pyx_t_4;
   __pyx_t_6.max_dist = __pyx_t_5;
-  __pyx_t_3 = ((struct __pyx_vtabstruct_6joshua_12intervaltree_IntervalNode *)__pyx_v_self->root->__pyx_vtab)->left(__pyx_v_self->root, __pyx_v_position, 0, &__pyx_t_6); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 431; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = ((struct __pyx_vtabstruct_6joshua_12intervaltree_IntervalNode *)__pyx_v_self->root->__pyx_vtab)->left(__pyx_v_self->root, __pyx_v_position, 0, &__pyx_t_6); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 440; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_r = __pyx_t_3;
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "joshua/intervaltree.pyx":424
+  /* "joshua/intervaltree.pyx":433
  *         return self.root.find( start, end )
  * 
  *     def before( self, position, num_intervals=1, max_dist=2500 ):             # <<<<<<<<<<<<<<
@@ -6415,7 +7011,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_6before(struct _
   return __pyx_r;
 }
 
-/* "joshua/intervaltree.pyx":433
+/* "joshua/intervaltree.pyx":442
  *         return self.root.left( position, num_intervals, max_dist )
  * 
  *     def after( self, position, num_intervals=1, max_dist=2500 ):             # <<<<<<<<<<<<<<
@@ -6468,7 +7064,7 @@ static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalTree_9after(PyObject 
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "after") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 433; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "after") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 442; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -6485,7 +7081,7 @@ static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalTree_9after(PyObject 
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("after", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 433; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  __Pyx_RaiseArgtupleInvalid("after", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 442; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
   __Pyx_AddTraceback("joshua.intervaltree.IntervalTree.after", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -6512,7 +7108,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_8after(struct __
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("after", 0);
 
-  /* "joshua/intervaltree.pyx":438
+  /* "joshua/intervaltree.pyx":447
  *         further than `max_dist` positions away
  *         """
  *         if self.root is None:             # <<<<<<<<<<<<<<
@@ -6523,7 +7119,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_8after(struct __
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "joshua/intervaltree.pyx":439
+    /* "joshua/intervaltree.pyx":448
  *         """
  *         if self.root is None:
  *             return []             # <<<<<<<<<<<<<<
@@ -6531,14 +7127,14 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_8after(struct __
  * 
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 439; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 448; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_r = __pyx_t_3;
     __pyx_t_3 = 0;
     goto __pyx_L0;
   }
 
-  /* "joshua/intervaltree.pyx":440
+  /* "joshua/intervaltree.pyx":449
  *         if self.root is None:
  *             return []
  *         return self.root.right( position, num_intervals, max_dist )             # <<<<<<<<<<<<<<
@@ -6546,18 +7142,18 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_8after(struct __
  *     # ---- Interval-like object based interfaces -----------------------------
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_4 = __Pyx_PyInt_As_int(__pyx_v_num_intervals); if (unlikely((__pyx_t_4 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 440; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_v_max_dist); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 440; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyInt_As_int(__pyx_v_num_intervals); if (unlikely((__pyx_t_4 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 449; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_v_max_dist); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 449; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_t_6.__pyx_n = 2;
   __pyx_t_6.n = __pyx_t_4;
   __pyx_t_6.max_dist = __pyx_t_5;
-  __pyx_t_3 = ((struct __pyx_vtabstruct_6joshua_12intervaltree_IntervalNode *)__pyx_v_self->root->__pyx_vtab)->right(__pyx_v_self->root, __pyx_v_position, 0, &__pyx_t_6); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 440; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = ((struct __pyx_vtabstruct_6joshua_12intervaltree_IntervalNode *)__pyx_v_self->root->__pyx_vtab)->right(__pyx_v_self->root, __pyx_v_position, 0, &__pyx_t_6); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 449; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_r = __pyx_t_3;
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "joshua/intervaltree.pyx":433
+  /* "joshua/intervaltree.pyx":442
  *         return self.root.left( position, num_intervals, max_dist )
  * 
  *     def after( self, position, num_intervals=1, max_dist=2500 ):             # <<<<<<<<<<<<<<
@@ -6576,7 +7172,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_8after(struct __
   return __pyx_r;
 }
 
-/* "joshua/intervaltree.pyx":444
+/* "joshua/intervaltree.pyx":453
  *     # ---- Interval-like object based interfaces -----------------------------
  * 
  *     def insert_interval( self, interval ):             # <<<<<<<<<<<<<<
@@ -6613,18 +7209,18 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_10insert_interva
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("insert_interval", 0);
 
-  /* "joshua/intervaltree.pyx":449
+  /* "joshua/intervaltree.pyx":458
  *         attributes)
  *         """
  *         self.insert( interval.start, interval.end, interval )             # <<<<<<<<<<<<<<
  * 
  *     add_interval = insert_interval
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_insert); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 449; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_insert); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 458; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_interval, __pyx_n_s_start); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 449; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_interval, __pyx_n_s_start); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 458; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_interval, __pyx_n_s_end); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 449; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_interval, __pyx_n_s_end); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 458; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_5 = NULL;
   __pyx_t_6 = 0;
@@ -6638,7 +7234,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_10insert_interva
       __pyx_t_6 = 1;
     }
   }
-  __pyx_t_7 = PyTuple_New(3+__pyx_t_6); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 449; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_7 = PyTuple_New(3+__pyx_t_6); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 458; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_7);
   if (__pyx_t_5) {
     PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_5); __Pyx_GIVEREF(__pyx_t_5); __pyx_t_5 = NULL;
@@ -6652,13 +7248,13 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_10insert_interva
   __Pyx_GIVEREF(__pyx_v_interval);
   __pyx_t_3 = 0;
   __pyx_t_4 = 0;
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 449; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 458; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "joshua/intervaltree.pyx":444
+  /* "joshua/intervaltree.pyx":453
  *     # ---- Interval-like object based interfaces -----------------------------
  * 
  *     def insert_interval( self, interval ):             # <<<<<<<<<<<<<<
@@ -6684,7 +7280,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_10insert_interva
   return __pyx_r;
 }
 
-/* "joshua/intervaltree.pyx":453
+/* "joshua/intervaltree.pyx":462
  *     add_interval = insert_interval
  * 
  *     def before_interval( self, interval, num_intervals=1, max_dist=2500 ):             # <<<<<<<<<<<<<<
@@ -6737,7 +7333,7 @@ static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalTree_13before_interva
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "before_interval") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 453; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "before_interval") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 462; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -6754,7 +7350,7 @@ static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalTree_13before_interva
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("before_interval", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 453; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  __Pyx_RaiseArgtupleInvalid("before_interval", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 462; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
   __Pyx_AddTraceback("joshua.intervaltree.IntervalTree.before_interval", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -6782,7 +7378,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_12before_interva
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("before_interval", 0);
 
-  /* "joshua/intervaltree.pyx":458
+  /* "joshua/intervaltree.pyx":467
  *         and are no further than `max_dist` positions away
  *         """
  *         if self.root is None:             # <<<<<<<<<<<<<<
@@ -6793,7 +7389,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_12before_interva
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "joshua/intervaltree.pyx":459
+    /* "joshua/intervaltree.pyx":468
  *         """
  *         if self.root is None:
  *             return []             # <<<<<<<<<<<<<<
@@ -6801,14 +7397,14 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_12before_interva
  * 
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 459; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 468; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_r = __pyx_t_3;
     __pyx_t_3 = 0;
     goto __pyx_L0;
   }
 
-  /* "joshua/intervaltree.pyx":460
+  /* "joshua/intervaltree.pyx":469
  *         if self.root is None:
  *             return []
  *         return self.root.left( interval.start, num_intervals, max_dist )             # <<<<<<<<<<<<<<
@@ -6816,21 +7412,21 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_12before_interva
  *     def after_interval( self, interval, num_intervals=1, max_dist=2500 ):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_interval, __pyx_n_s_start); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 460; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_interval, __pyx_n_s_start); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 469; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyInt_As_int(__pyx_v_num_intervals); if (unlikely((__pyx_t_4 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 460; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_v_max_dist); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 460; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyInt_As_int(__pyx_v_num_intervals); if (unlikely((__pyx_t_4 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 469; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_v_max_dist); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 469; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_t_7.__pyx_n = 2;
   __pyx_t_7.n = __pyx_t_4;
   __pyx_t_7.max_dist = __pyx_t_5;
-  __pyx_t_6 = ((struct __pyx_vtabstruct_6joshua_12intervaltree_IntervalNode *)__pyx_v_self->root->__pyx_vtab)->left(__pyx_v_self->root, __pyx_t_3, 0, &__pyx_t_7); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 460; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_6 = ((struct __pyx_vtabstruct_6joshua_12intervaltree_IntervalNode *)__pyx_v_self->root->__pyx_vtab)->left(__pyx_v_self->root, __pyx_t_3, 0, &__pyx_t_7); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 469; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_r = __pyx_t_6;
   __pyx_t_6 = 0;
   goto __pyx_L0;
 
-  /* "joshua/intervaltree.pyx":453
+  /* "joshua/intervaltree.pyx":462
  *     add_interval = insert_interval
  * 
  *     def before_interval( self, interval, num_intervals=1, max_dist=2500 ):             # <<<<<<<<<<<<<<
@@ -6850,7 +7446,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_12before_interva
   return __pyx_r;
 }
 
-/* "joshua/intervaltree.pyx":462
+/* "joshua/intervaltree.pyx":471
  *         return self.root.left( interval.start, num_intervals, max_dist )
  * 
  *     def after_interval( self, interval, num_intervals=1, max_dist=2500 ):             # <<<<<<<<<<<<<<
@@ -6903,7 +7499,7 @@ static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalTree_15after_interval
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "after_interval") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 462; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "after_interval") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 471; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -6920,7 +7516,7 @@ static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalTree_15after_interval
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("after_interval", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 462; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  __Pyx_RaiseArgtupleInvalid("after_interval", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 471; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
   __Pyx_AddTraceback("joshua.intervaltree.IntervalTree.after_interval", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -6948,7 +7544,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_14after_interval
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("after_interval", 0);
 
-  /* "joshua/intervaltree.pyx":467
+  /* "joshua/intervaltree.pyx":476
  *         are no further than `max_dist` positions away
  *         """
  *         if self.root is None:             # <<<<<<<<<<<<<<
@@ -6959,7 +7555,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_14after_interval
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "joshua/intervaltree.pyx":468
+    /* "joshua/intervaltree.pyx":477
  *         """
  *         if self.root is None:
  *             return []             # <<<<<<<<<<<<<<
@@ -6967,14 +7563,14 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_14after_interval
  * 
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 468; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 477; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_r = __pyx_t_3;
     __pyx_t_3 = 0;
     goto __pyx_L0;
   }
 
-  /* "joshua/intervaltree.pyx":469
+  /* "joshua/intervaltree.pyx":478
  *         if self.root is None:
  *             return []
  *         return self.root.right( interval.end, num_intervals, max_dist )             # <<<<<<<<<<<<<<
@@ -6982,21 +7578,21 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_14after_interval
  *     def upstream_of_interval( self, interval, num_intervals=1, max_dist=2500 ):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_interval, __pyx_n_s_end); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 469; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_interval, __pyx_n_s_end); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 478; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyInt_As_int(__pyx_v_num_intervals); if (unlikely((__pyx_t_4 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 469; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_v_max_dist); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 469; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyInt_As_int(__pyx_v_num_intervals); if (unlikely((__pyx_t_4 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 478; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_v_max_dist); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 478; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_t_7.__pyx_n = 2;
   __pyx_t_7.n = __pyx_t_4;
   __pyx_t_7.max_dist = __pyx_t_5;
-  __pyx_t_6 = ((struct __pyx_vtabstruct_6joshua_12intervaltree_IntervalNode *)__pyx_v_self->root->__pyx_vtab)->right(__pyx_v_self->root, __pyx_t_3, 0, &__pyx_t_7); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 469; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_6 = ((struct __pyx_vtabstruct_6joshua_12intervaltree_IntervalNode *)__pyx_v_self->root->__pyx_vtab)->right(__pyx_v_self->root, __pyx_t_3, 0, &__pyx_t_7); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 478; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_r = __pyx_t_6;
   __pyx_t_6 = 0;
   goto __pyx_L0;
 
-  /* "joshua/intervaltree.pyx":462
+  /* "joshua/intervaltree.pyx":471
  *         return self.root.left( interval.start, num_intervals, max_dist )
  * 
  *     def after_interval( self, interval, num_intervals=1, max_dist=2500 ):             # <<<<<<<<<<<<<<
@@ -7016,7 +7612,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_14after_interval
   return __pyx_r;
 }
 
-/* "joshua/intervaltree.pyx":471
+/* "joshua/intervaltree.pyx":480
  *         return self.root.right( interval.end, num_intervals, max_dist )
  * 
  *     def upstream_of_interval( self, interval, num_intervals=1, max_dist=2500 ):             # <<<<<<<<<<<<<<
@@ -7069,7 +7665,7 @@ static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalTree_17upstream_of_in
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "upstream_of_interval") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 471; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "upstream_of_interval") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 480; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -7086,7 +7682,7 @@ static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalTree_17upstream_of_in
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("upstream_of_interval", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 471; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  __Pyx_RaiseArgtupleInvalid("upstream_of_interval", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 480; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
   __Pyx_AddTraceback("joshua.intervaltree.IntervalTree.upstream_of_interval", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -7115,7 +7711,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_16upstream_of_in
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("upstream_of_interval", 0);
 
-  /* "joshua/intervaltree.pyx":476
+  /* "joshua/intervaltree.pyx":485
  *         `interval` and are no further than `max_dist` positions away
  *         """
  *         if self.root is None:             # <<<<<<<<<<<<<<
@@ -7126,7 +7722,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_16upstream_of_in
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "joshua/intervaltree.pyx":477
+    /* "joshua/intervaltree.pyx":486
  *         """
  *         if self.root is None:
  *             return []             # <<<<<<<<<<<<<<
@@ -7134,40 +7730,40 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_16upstream_of_in
  *             return self.root.right( interval.end, num_intervals, max_dist )
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 477; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 486; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_r = __pyx_t_3;
     __pyx_t_3 = 0;
     goto __pyx_L0;
   }
 
-  /* "joshua/intervaltree.pyx":478
+  /* "joshua/intervaltree.pyx":487
  *         if self.root is None:
  *             return []
  *         if interval.strand == -1 or interval.strand == "-":             # <<<<<<<<<<<<<<
  *             return self.root.right( interval.end, num_intervals, max_dist )
  *         else:
  */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_interval, __pyx_n_s_strand); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 478; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_interval, __pyx_n_s_strand); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 487; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyObject_RichCompare(__pyx_t_3, __pyx_int_neg_1, Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 478; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = PyObject_RichCompare(__pyx_t_3, __pyx_int_neg_1, Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 487; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_1 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 478; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_1 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 487; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   if (!__pyx_t_1) {
   } else {
     __pyx_t_2 = __pyx_t_1;
     goto __pyx_L5_bool_binop_done;
   }
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_interval, __pyx_n_s_strand); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 478; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_interval, __pyx_n_s_strand); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 487; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_1 = (__Pyx_PyString_Equals(__pyx_t_4, __pyx_kp_s__4, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 478; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = (__Pyx_PyString_Equals(__pyx_t_4, __pyx_kp_s__4, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 487; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_2 = __pyx_t_1;
   __pyx_L5_bool_binop_done:;
   if (__pyx_t_2) {
 
-    /* "joshua/intervaltree.pyx":479
+    /* "joshua/intervaltree.pyx":488
  *             return []
  *         if interval.strand == -1 or interval.strand == "-":
  *             return self.root.right( interval.end, num_intervals, max_dist )             # <<<<<<<<<<<<<<
@@ -7175,14 +7771,14 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_16upstream_of_in
  *             return self.root.left( interval.start, num_intervals, max_dist )
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_interval, __pyx_n_s_end); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 479; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_interval, __pyx_n_s_end); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 488; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_v_num_intervals); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 479; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __pyx_t_6 = __Pyx_PyInt_As_int(__pyx_v_max_dist); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 479; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_v_num_intervals); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 488; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_6 = __Pyx_PyInt_As_int(__pyx_v_max_dist); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 488; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __pyx_t_7.__pyx_n = 2;
     __pyx_t_7.n = __pyx_t_5;
     __pyx_t_7.max_dist = __pyx_t_6;
-    __pyx_t_3 = ((struct __pyx_vtabstruct_6joshua_12intervaltree_IntervalNode *)__pyx_v_self->root->__pyx_vtab)->right(__pyx_v_self->root, __pyx_t_4, 0, &__pyx_t_7); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 479; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = ((struct __pyx_vtabstruct_6joshua_12intervaltree_IntervalNode *)__pyx_v_self->root->__pyx_vtab)->right(__pyx_v_self->root, __pyx_t_4, 0, &__pyx_t_7); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 488; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_r = __pyx_t_3;
@@ -7191,7 +7787,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_16upstream_of_in
   }
   /*else*/ {
 
-    /* "joshua/intervaltree.pyx":481
+    /* "joshua/intervaltree.pyx":490
  *             return self.root.right( interval.end, num_intervals, max_dist )
  *         else:
  *             return self.root.left( interval.start, num_intervals, max_dist )             # <<<<<<<<<<<<<<
@@ -7199,14 +7795,14 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_16upstream_of_in
  *     def downstream_of_interval( self, interval, num_intervals=1, max_dist=2500 ):
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_interval, __pyx_n_s_start); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 481; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_interval, __pyx_n_s_start); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 490; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_6 = __Pyx_PyInt_As_int(__pyx_v_num_intervals); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 481; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_v_max_dist); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 481; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_6 = __Pyx_PyInt_As_int(__pyx_v_num_intervals); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 490; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_v_max_dist); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 490; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __pyx_t_8.__pyx_n = 2;
     __pyx_t_8.n = __pyx_t_6;
     __pyx_t_8.max_dist = __pyx_t_5;
-    __pyx_t_4 = ((struct __pyx_vtabstruct_6joshua_12intervaltree_IntervalNode *)__pyx_v_self->root->__pyx_vtab)->left(__pyx_v_self->root, __pyx_t_3, 0, &__pyx_t_8); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 481; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = ((struct __pyx_vtabstruct_6joshua_12intervaltree_IntervalNode *)__pyx_v_self->root->__pyx_vtab)->left(__pyx_v_self->root, __pyx_t_3, 0, &__pyx_t_8); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 490; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_r = __pyx_t_4;
@@ -7214,7 +7810,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_16upstream_of_in
     goto __pyx_L0;
   }
 
-  /* "joshua/intervaltree.pyx":471
+  /* "joshua/intervaltree.pyx":480
  *         return self.root.right( interval.end, num_intervals, max_dist )
  * 
  *     def upstream_of_interval( self, interval, num_intervals=1, max_dist=2500 ):             # <<<<<<<<<<<<<<
@@ -7234,7 +7830,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_16upstream_of_in
   return __pyx_r;
 }
 
-/* "joshua/intervaltree.pyx":483
+/* "joshua/intervaltree.pyx":492
  *             return self.root.left( interval.start, num_intervals, max_dist )
  * 
  *     def downstream_of_interval( self, interval, num_intervals=1, max_dist=2500 ):             # <<<<<<<<<<<<<<
@@ -7287,7 +7883,7 @@ static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalTree_19downstream_of_
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "downstream_of_interval") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 483; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "downstream_of_interval") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 492; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -7304,7 +7900,7 @@ static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalTree_19downstream_of_
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("downstream_of_interval", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 483; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  __Pyx_RaiseArgtupleInvalid("downstream_of_interval", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 492; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
   __Pyx_AddTraceback("joshua.intervaltree.IntervalTree.downstream_of_interval", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -7333,7 +7929,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_18downstream_of_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("downstream_of_interval", 0);
 
-  /* "joshua/intervaltree.pyx":488
+  /* "joshua/intervaltree.pyx":497
  *         `interval` and are no further than `max_dist` positions away
  *         """
  *         if self.root is None:             # <<<<<<<<<<<<<<
@@ -7344,7 +7940,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_18downstream_of_
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "joshua/intervaltree.pyx":489
+    /* "joshua/intervaltree.pyx":498
  *         """
  *         if self.root is None:
  *             return []             # <<<<<<<<<<<<<<
@@ -7352,40 +7948,40 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_18downstream_of_
  *             return self.root.left( interval.start, num_intervals, max_dist )
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 489; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 498; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_r = __pyx_t_3;
     __pyx_t_3 = 0;
     goto __pyx_L0;
   }
 
-  /* "joshua/intervaltree.pyx":490
+  /* "joshua/intervaltree.pyx":499
  *         if self.root is None:
  *             return []
  *         if interval.strand == -1 or interval.strand == "-":             # <<<<<<<<<<<<<<
  *             return self.root.left( interval.start, num_intervals, max_dist )
  *         else:
  */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_interval, __pyx_n_s_strand); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 490; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_interval, __pyx_n_s_strand); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 499; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyObject_RichCompare(__pyx_t_3, __pyx_int_neg_1, Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 490; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = PyObject_RichCompare(__pyx_t_3, __pyx_int_neg_1, Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 499; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_1 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 490; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_1 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 499; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   if (!__pyx_t_1) {
   } else {
     __pyx_t_2 = __pyx_t_1;
     goto __pyx_L5_bool_binop_done;
   }
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_interval, __pyx_n_s_strand); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 490; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_interval, __pyx_n_s_strand); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 499; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_1 = (__Pyx_PyString_Equals(__pyx_t_4, __pyx_kp_s__4, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 490; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = (__Pyx_PyString_Equals(__pyx_t_4, __pyx_kp_s__4, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 499; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_2 = __pyx_t_1;
   __pyx_L5_bool_binop_done:;
   if (__pyx_t_2) {
 
-    /* "joshua/intervaltree.pyx":491
+    /* "joshua/intervaltree.pyx":500
  *             return []
  *         if interval.strand == -1 or interval.strand == "-":
  *             return self.root.left( interval.start, num_intervals, max_dist )             # <<<<<<<<<<<<<<
@@ -7393,14 +7989,14 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_18downstream_of_
  *             return self.root.right( interval.end, num_intervals, max_dist )
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_interval, __pyx_n_s_start); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 491; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_interval, __pyx_n_s_start); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 500; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_v_num_intervals); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 491; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __pyx_t_6 = __Pyx_PyInt_As_int(__pyx_v_max_dist); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 491; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_v_num_intervals); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 500; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_6 = __Pyx_PyInt_As_int(__pyx_v_max_dist); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 500; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __pyx_t_7.__pyx_n = 2;
     __pyx_t_7.n = __pyx_t_5;
     __pyx_t_7.max_dist = __pyx_t_6;
-    __pyx_t_3 = ((struct __pyx_vtabstruct_6joshua_12intervaltree_IntervalNode *)__pyx_v_self->root->__pyx_vtab)->left(__pyx_v_self->root, __pyx_t_4, 0, &__pyx_t_7); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 491; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = ((struct __pyx_vtabstruct_6joshua_12intervaltree_IntervalNode *)__pyx_v_self->root->__pyx_vtab)->left(__pyx_v_self->root, __pyx_t_4, 0, &__pyx_t_7); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 500; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_r = __pyx_t_3;
@@ -7409,7 +8005,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_18downstream_of_
   }
   /*else*/ {
 
-    /* "joshua/intervaltree.pyx":493
+    /* "joshua/intervaltree.pyx":502
  *             return self.root.left( interval.start, num_intervals, max_dist )
  *         else:
  *             return self.root.right( interval.end, num_intervals, max_dist )             # <<<<<<<<<<<<<<
@@ -7417,14 +8013,14 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_18downstream_of_
  *     def traverse(self, fn):
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_interval, __pyx_n_s_end); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 493; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_interval, __pyx_n_s_end); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 502; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_6 = __Pyx_PyInt_As_int(__pyx_v_num_intervals); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 493; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_v_max_dist); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 493; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_6 = __Pyx_PyInt_As_int(__pyx_v_num_intervals); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 502; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_v_max_dist); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 502; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __pyx_t_8.__pyx_n = 2;
     __pyx_t_8.n = __pyx_t_6;
     __pyx_t_8.max_dist = __pyx_t_5;
-    __pyx_t_4 = ((struct __pyx_vtabstruct_6joshua_12intervaltree_IntervalNode *)__pyx_v_self->root->__pyx_vtab)->right(__pyx_v_self->root, __pyx_t_3, 0, &__pyx_t_8); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 493; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = ((struct __pyx_vtabstruct_6joshua_12intervaltree_IntervalNode *)__pyx_v_self->root->__pyx_vtab)->right(__pyx_v_self->root, __pyx_t_3, 0, &__pyx_t_8); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 502; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_r = __pyx_t_4;
@@ -7432,7 +8028,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_18downstream_of_
     goto __pyx_L0;
   }
 
-  /* "joshua/intervaltree.pyx":483
+  /* "joshua/intervaltree.pyx":492
  *             return self.root.left( interval.start, num_intervals, max_dist )
  * 
  *     def downstream_of_interval( self, interval, num_intervals=1, max_dist=2500 ):             # <<<<<<<<<<<<<<
@@ -7452,7 +8048,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_18downstream_of_
   return __pyx_r;
 }
 
-/* "joshua/intervaltree.pyx":495
+/* "joshua/intervaltree.pyx":504
  *             return self.root.right( interval.end, num_intervals, max_dist )
  * 
  *     def traverse(self, fn):             # <<<<<<<<<<<<<<
@@ -7488,7 +8084,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_20traverse(struc
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("traverse", 0);
 
-  /* "joshua/intervaltree.pyx":499
+  /* "joshua/intervaltree.pyx":508
  *         call fn for each element in the tree
  *         """
  *         if self.root is None:             # <<<<<<<<<<<<<<
@@ -7499,7 +8095,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_20traverse(struc
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "joshua/intervaltree.pyx":500
+    /* "joshua/intervaltree.pyx":509
  *         """
  *         if self.root is None:
  *             return None             # <<<<<<<<<<<<<<
@@ -7512,7 +8108,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_20traverse(struc
     goto __pyx_L0;
   }
 
-  /* "joshua/intervaltree.pyx":501
+  /* "joshua/intervaltree.pyx":510
  *         if self.root is None:
  *             return None
  *         return self.root.traverse(fn)             # <<<<<<<<<<<<<<
@@ -7520,7 +8116,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_20traverse(struc
  *     def intersect(self, object other, float cutoff=0.9):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->root), __pyx_n_s_traverse); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 501; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->root), __pyx_n_s_traverse); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 510; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_5 = NULL;
   if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_4))) {
@@ -7533,16 +8129,16 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_20traverse(struc
     }
   }
   if (!__pyx_t_5) {
-    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_v_fn); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 501; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_v_fn); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 510; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
   } else {
-    __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 501; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 510; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_6);
     PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_5); __Pyx_GIVEREF(__pyx_t_5); __pyx_t_5 = NULL;
     __Pyx_INCREF(__pyx_v_fn);
     PyTuple_SET_ITEM(__pyx_t_6, 0+1, __pyx_v_fn);
     __Pyx_GIVEREF(__pyx_v_fn);
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 501; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 510; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   }
@@ -7551,7 +8147,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_20traverse(struc
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "joshua/intervaltree.pyx":495
+  /* "joshua/intervaltree.pyx":504
  *             return self.root.right( interval.end, num_intervals, max_dist )
  * 
  *     def traverse(self, fn):             # <<<<<<<<<<<<<<
@@ -7573,7 +8169,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_20traverse(struc
   return __pyx_r;
 }
 
-/* "joshua/intervaltree.pyx":503
+/* "joshua/intervaltree.pyx":512
  *         return self.root.traverse(fn)
  * 
  *     def intersect(self, object other, float cutoff=0.9):             # <<<<<<<<<<<<<<
@@ -7616,7 +8212,7 @@ static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalTree_23intersect(PyOb
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "intersect") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 503; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "intersect") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 512; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -7628,14 +8224,14 @@ static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalTree_23intersect(PyOb
     }
     __pyx_v_other = values[0];
     if (values[1]) {
-      __pyx_v_cutoff = __pyx_PyFloat_AsFloat(values[1]); if (unlikely((__pyx_v_cutoff == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 503; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+      __pyx_v_cutoff = __pyx_PyFloat_AsFloat(values[1]); if (unlikely((__pyx_v_cutoff == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 512; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
     } else {
       __pyx_v_cutoff = ((float)0.9);
     }
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("intersect", 0, 1, 2, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 503; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  __Pyx_RaiseArgtupleInvalid("intersect", 0, 1, 2, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 512; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
   __Pyx_AddTraceback("joshua.intervaltree.IntervalTree.intersect", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -7648,7 +8244,7 @@ static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalTree_23intersect(PyOb
   return __pyx_r;
 }
 
-/* "joshua/intervaltree.pyx":510
+/* "joshua/intervaltree.pyx":519
  * 
  *         cdef list overlaps = []
  *         def overlap_fn(IntervalNode node):             # <<<<<<<<<<<<<<
@@ -7666,7 +8262,7 @@ static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalTree_9intersect_1over
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("overlap_fn (wrapper)", 0);
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_node), __pyx_ptype_6joshua_12intervaltree_IntervalNode, 1, "node", 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 510; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_node), __pyx_ptype_6joshua_12intervaltree_IntervalNode, 1, "node", 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 519; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_r = __pyx_pf_6joshua_12intervaltree_12IntervalTree_9intersect_overlap_fn(__pyx_self, ((struct __pyx_obj_6joshua_12intervaltree_IntervalNode *)__pyx_v_node));
 
   /* function exit code */
@@ -7679,8 +8275,8 @@ static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalTree_9intersect_1over
 }
 
 static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_9intersect_overlap_fn(PyObject *__pyx_self, struct __pyx_obj_6joshua_12intervaltree_IntervalNode *__pyx_v_node) {
-  struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct__intersect *__pyx_cur_scope;
-  struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct__intersect *__pyx_outer_scope;
+  struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct_1_intersect *__pyx_cur_scope;
+  struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct_1_intersect *__pyx_outer_scope;
   PyObject *__pyx_v_iv = 0;
   float __pyx_v_ov_len;
   int __pyx_v_start;
@@ -7708,10 +8304,10 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_9intersect_overl
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("overlap_fn", 0);
-  __pyx_outer_scope = (struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct__intersect *) __Pyx_CyFunction_GetClosure(__pyx_self);
+  __pyx_outer_scope = (struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct_1_intersect *) __Pyx_CyFunction_GetClosure(__pyx_self);
   __pyx_cur_scope = __pyx_outer_scope;
 
-  /* "joshua/intervaltree.pyx":511
+  /* "joshua/intervaltree.pyx":520
  *         cdef list overlaps = []
  *         def overlap_fn(IntervalNode node):
  *             cdef object iv = node.interval             # <<<<<<<<<<<<<<
@@ -7723,45 +8319,45 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_9intersect_overl
   __pyx_v_iv = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "joshua/intervaltree.pyx":513
+  /* "joshua/intervaltree.pyx":522
  *             cdef object iv = node.interval
  *             cdef float ov_len
  *             cdef int start = iv.start             # <<<<<<<<<<<<<<
  *             cdef int end = iv.end
  *             cdef list results = other.find(start, end)
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_iv, __pyx_n_s_start); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 513; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_iv, __pyx_n_s_start); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 522; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 513; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 522; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_start = __pyx_t_2;
 
-  /* "joshua/intervaltree.pyx":514
+  /* "joshua/intervaltree.pyx":523
  *             cdef float ov_len
  *             cdef int start = iv.start
  *             cdef int end = iv.end             # <<<<<<<<<<<<<<
  *             cdef list results = other.find(start, end)
  *             if results:
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_iv, __pyx_n_s_end); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 514; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_iv, __pyx_n_s_end); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 523; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 514; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 523; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_end = __pyx_t_2;
 
-  /* "joshua/intervaltree.pyx":515
+  /* "joshua/intervaltree.pyx":524
  *             cdef int start = iv.start
  *             cdef int end = iv.end
  *             cdef list results = other.find(start, end)             # <<<<<<<<<<<<<<
  *             if results:
  *                 for ov in results:
  */
-  if (unlikely(!__pyx_cur_scope->__pyx_v_other)) { __Pyx_RaiseClosureNameError("other"); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 515; __pyx_clineno = __LINE__; goto __pyx_L1_error;} }
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_other, __pyx_n_s_find); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 515; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__pyx_cur_scope->__pyx_v_other)) { __Pyx_RaiseClosureNameError("other"); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 524; __pyx_clineno = __LINE__; goto __pyx_L1_error;} }
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_other, __pyx_n_s_find); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 524; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_start); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 515; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_start); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 524; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_end); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 515; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_end); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 524; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_t_6 = NULL;
   __pyx_t_7 = 0;
@@ -7775,7 +8371,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_9intersect_overl
       __pyx_t_7 = 1;
     }
   }
-  __pyx_t_8 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 515; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_8 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 524; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_8);
   if (__pyx_t_6) {
     PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_6); __Pyx_GIVEREF(__pyx_t_6); __pyx_t_6 = NULL;
@@ -7786,15 +8382,15 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_9intersect_overl
   __Pyx_GIVEREF(__pyx_t_5);
   __pyx_t_4 = 0;
   __pyx_t_5 = 0;
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_8, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 515; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_8, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 524; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 515; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 524; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_v_results = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "joshua/intervaltree.pyx":516
+  /* "joshua/intervaltree.pyx":525
  *             cdef int end = iv.end
  *             cdef list results = other.find(start, end)
  *             if results:             # <<<<<<<<<<<<<<
@@ -7804,7 +8400,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_9intersect_overl
   __pyx_t_9 = (__pyx_v_results != Py_None) && (PyList_GET_SIZE(__pyx_v_results) != 0);
   if (__pyx_t_9) {
 
-    /* "joshua/intervaltree.pyx":517
+    /* "joshua/intervaltree.pyx":526
  *             cdef list results = other.find(start, end)
  *             if results:
  *                 for ov in results:             # <<<<<<<<<<<<<<
@@ -7813,43 +8409,43 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_9intersect_overl
  */
     if (unlikely(__pyx_v_results == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 517; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 526; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
     __pyx_t_1 = __pyx_v_results; __Pyx_INCREF(__pyx_t_1); __pyx_t_7 = 0;
     for (;;) {
       if (__pyx_t_7 >= PyList_GET_SIZE(__pyx_t_1)) break;
       #if CYTHON_COMPILING_IN_CPYTHON
-      __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_7); __Pyx_INCREF(__pyx_t_3); __pyx_t_7++; if (unlikely(0 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 517; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_7); __Pyx_INCREF(__pyx_t_3); __pyx_t_7++; if (unlikely(0 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 526; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       #else
-      __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 517; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 526; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       #endif
       __Pyx_XDECREF_SET(__pyx_v_ov, __pyx_t_3);
       __pyx_t_3 = 0;
 
-      /* "joshua/intervaltree.pyx":518
+      /* "joshua/intervaltree.pyx":527
  *             if results:
  *                 for ov in results:
  *                     ov_len = calc_bases_overlapped_single(start, end,             # <<<<<<<<<<<<<<
  *                                                           ov.start, ov.end)
  *                     if (float(ov_len) / len(iv)) >= cutoff:
  */
-      __pyx_t_8 = __Pyx_GetModuleGlobalName(__pyx_n_s_calc_bases_overlapped_single); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 518; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_8 = __Pyx_GetModuleGlobalName(__pyx_n_s_calc_bases_overlapped_single); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 527; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_8);
-      __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_start); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 518; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_start); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 527; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_end); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 518; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_end); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 527; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_4);
 
-      /* "joshua/intervaltree.pyx":519
+      /* "joshua/intervaltree.pyx":528
  *                 for ov in results:
  *                     ov_len = calc_bases_overlapped_single(start, end,
  *                                                           ov.start, ov.end)             # <<<<<<<<<<<<<<
  *                     if (float(ov_len) / len(iv)) >= cutoff:
  *                         overlaps.append((iv.idx, ov.idx, ov_len))
  */
-      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_ov, __pyx_n_s_start); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 519; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_ov, __pyx_n_s_start); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 528; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_6);
-      __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_ov, __pyx_n_s_end); if (unlikely(!__pyx_t_10)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 519; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_ov, __pyx_n_s_end); if (unlikely(!__pyx_t_10)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 528; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_10);
       __pyx_t_11 = NULL;
       __pyx_t_12 = 0;
@@ -7863,7 +8459,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_9intersect_overl
           __pyx_t_12 = 1;
         }
       }
-      __pyx_t_13 = PyTuple_New(4+__pyx_t_12); if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 518; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_13 = PyTuple_New(4+__pyx_t_12); if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 527; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_13);
       if (__pyx_t_11) {
         PyTuple_SET_ITEM(__pyx_t_13, 0, __pyx_t_11); __Pyx_GIVEREF(__pyx_t_11); __pyx_t_11 = NULL;
@@ -7880,30 +8476,30 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_9intersect_overl
       __pyx_t_4 = 0;
       __pyx_t_6 = 0;
       __pyx_t_10 = 0;
-      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_13, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 518; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_13, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 527; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-      /* "joshua/intervaltree.pyx":518
+      /* "joshua/intervaltree.pyx":527
  *             if results:
  *                 for ov in results:
  *                     ov_len = calc_bases_overlapped_single(start, end,             # <<<<<<<<<<<<<<
  *                                                           ov.start, ov.end)
  *                     if (float(ov_len) / len(iv)) >= cutoff:
  */
-      __pyx_t_14 = __pyx_PyFloat_AsFloat(__pyx_t_3); if (unlikely((__pyx_t_14 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 518; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_14 = __pyx_PyFloat_AsFloat(__pyx_t_3); if (unlikely((__pyx_t_14 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 527; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __pyx_v_ov_len = __pyx_t_14;
 
-      /* "joshua/intervaltree.pyx":520
+      /* "joshua/intervaltree.pyx":529
  *                     ov_len = calc_bases_overlapped_single(start, end,
  *                                                           ov.start, ov.end)
  *                     if (float(ov_len) / len(iv)) >= cutoff:             # <<<<<<<<<<<<<<
  *                         overlaps.append((iv.idx, ov.idx, ov_len))
  *         self.traverse(overlap_fn)
  */
-      __pyx_t_12 = PyObject_Length(__pyx_v_iv); if (unlikely(__pyx_t_12 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 520; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_12 = PyObject_Length(__pyx_v_iv); if (unlikely(__pyx_t_12 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 529; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       if (unlikely(__pyx_t_12 == 0)) {
         #ifdef WITH_THREAD
         PyGILState_STATE __pyx_gilstate_save = PyGILState_Ensure();
@@ -7912,30 +8508,30 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_9intersect_overl
         #ifdef WITH_THREAD
         PyGILState_Release(__pyx_gilstate_save);
         #endif
-        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 520; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 529; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       }
       __pyx_t_9 = (((((double)__pyx_v_ov_len) / __pyx_t_12) >= __pyx_cur_scope->__pyx_v_cutoff) != 0);
       if (__pyx_t_9) {
 
-        /* "joshua/intervaltree.pyx":521
+        /* "joshua/intervaltree.pyx":530
  *                                                           ov.start, ov.end)
  *                     if (float(ov_len) / len(iv)) >= cutoff:
  *                         overlaps.append((iv.idx, ov.idx, ov_len))             # <<<<<<<<<<<<<<
  *         self.traverse(overlap_fn)
  *         return overlaps
  */
-        if (unlikely(!__pyx_cur_scope->__pyx_v_overlaps)) { __Pyx_RaiseClosureNameError("overlaps"); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 521; __pyx_clineno = __LINE__; goto __pyx_L1_error;} }
+        if (unlikely(!__pyx_cur_scope->__pyx_v_overlaps)) { __Pyx_RaiseClosureNameError("overlaps"); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 530; __pyx_clineno = __LINE__; goto __pyx_L1_error;} }
         if (unlikely(__pyx_cur_scope->__pyx_v_overlaps == Py_None)) {
           PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%s'", "append");
-          {__pyx_filename = __pyx_f[0]; __pyx_lineno = 521; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          {__pyx_filename = __pyx_f[0]; __pyx_lineno = 530; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         }
-        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_iv, __pyx_n_s_idx); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 521; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_iv, __pyx_n_s_idx); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 530; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_ov, __pyx_n_s_idx); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 521; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_ov, __pyx_n_s_idx); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 530; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_8);
-        __pyx_t_13 = PyFloat_FromDouble(__pyx_v_ov_len); if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 521; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_13 = PyFloat_FromDouble(__pyx_v_ov_len); if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 530; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_13);
-        __pyx_t_10 = PyTuple_New(3); if (unlikely(!__pyx_t_10)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 521; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_10 = PyTuple_New(3); if (unlikely(!__pyx_t_10)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 530; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_10);
         PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_3);
         __Pyx_GIVEREF(__pyx_t_3);
@@ -7946,13 +8542,13 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_9intersect_overl
         __pyx_t_3 = 0;
         __pyx_t_8 = 0;
         __pyx_t_13 = 0;
-        __pyx_t_15 = __Pyx_PyList_Append(__pyx_cur_scope->__pyx_v_overlaps, __pyx_t_10); if (unlikely(__pyx_t_15 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 521; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_15 = __Pyx_PyList_Append(__pyx_cur_scope->__pyx_v_overlaps, __pyx_t_10); if (unlikely(__pyx_t_15 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 530; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         goto __pyx_L6;
       }
       __pyx_L6:;
 
-      /* "joshua/intervaltree.pyx":517
+      /* "joshua/intervaltree.pyx":526
  *             cdef list results = other.find(start, end)
  *             if results:
  *                 for ov in results:             # <<<<<<<<<<<<<<
@@ -7965,7 +8561,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_9intersect_overl
   }
   __pyx_L3:;
 
-  /* "joshua/intervaltree.pyx":510
+  /* "joshua/intervaltree.pyx":519
  * 
  *         cdef list overlaps = []
  *         def overlap_fn(IntervalNode node):             # <<<<<<<<<<<<<<
@@ -7997,7 +8593,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_9intersect_overl
   return __pyx_r;
 }
 
-/* "joshua/intervaltree.pyx":503
+/* "joshua/intervaltree.pyx":512
  *         return self.root.traverse(fn)
  * 
  *     def intersect(self, object other, float cutoff=0.9):             # <<<<<<<<<<<<<<
@@ -8006,7 +8602,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_9intersect_overl
  */
 
 static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_22intersect(struct __pyx_obj_6joshua_12intervaltree_IntervalTree *__pyx_v_self, PyObject *__pyx_v_other, float __pyx_v_cutoff) {
-  struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct__intersect *__pyx_cur_scope;
+  struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct_1_intersect *__pyx_cur_scope;
   PyObject *__pyx_v_overlap_fn = 0;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -8020,7 +8616,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_22intersect(stru
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("intersect", 0);
-  __pyx_cur_scope = (struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct__intersect *)__pyx_tp_new_6joshua_12intervaltree___pyx_scope_struct__intersect(__pyx_ptype_6joshua_12intervaltree___pyx_scope_struct__intersect, __pyx_empty_tuple, NULL);
+  __pyx_cur_scope = (struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct_1_intersect *)__pyx_tp_new_6joshua_12intervaltree___pyx_scope_struct_1_intersect(__pyx_ptype_6joshua_12intervaltree___pyx_scope_struct_1_intersect, __pyx_empty_tuple, NULL);
   if (unlikely(!__pyx_cur_scope)) {
     __Pyx_RefNannyFinishContext();
     return NULL;
@@ -8031,7 +8627,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_22intersect(stru
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_other);
   __pyx_cur_scope->__pyx_v_cutoff = __pyx_v_cutoff;
 
-  /* "joshua/intervaltree.pyx":505
+  /* "joshua/intervaltree.pyx":514
  *     def intersect(self, object other, float cutoff=0.9):
  * 
  *         if type(other) is not IntervalTree:             # <<<<<<<<<<<<<<
@@ -8042,84 +8638,84 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_22intersect(stru
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "joshua/intervaltree.pyx":506
+    /* "joshua/intervaltree.pyx":515
  * 
  *         if type(other) is not IntervalTree:
  *             raise TypeError('Expected IntervalTree, go {t}'.format(             # <<<<<<<<<<<<<<
  *                             t=type(other)))
  * 
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Expected_IntervalTree_go_t, __pyx_n_s_format); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 506; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Expected_IntervalTree_go_t, __pyx_n_s_format); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 515; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = PyDict_New(); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 506; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = PyDict_New(); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 515; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
 
-    /* "joshua/intervaltree.pyx":507
+    /* "joshua/intervaltree.pyx":516
  *         if type(other) is not IntervalTree:
  *             raise TypeError('Expected IntervalTree, go {t}'.format(
  *                             t=type(other)))             # <<<<<<<<<<<<<<
  * 
  *         cdef list overlaps = []
  */
-    if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_t, ((PyObject *)Py_TYPE(__pyx_cur_scope->__pyx_v_other))) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 506; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_t, ((PyObject *)Py_TYPE(__pyx_cur_scope->__pyx_v_other))) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 515; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-    /* "joshua/intervaltree.pyx":506
+    /* "joshua/intervaltree.pyx":515
  * 
  *         if type(other) is not IntervalTree:
  *             raise TypeError('Expected IntervalTree, go {t}'.format(             # <<<<<<<<<<<<<<
  *                             t=type(other)))
  * 
  */
-    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_empty_tuple, __pyx_t_4); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 506; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_empty_tuple, __pyx_t_4); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 515; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 506; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 515; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
     PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_5);
     __Pyx_GIVEREF(__pyx_t_5);
     __pyx_t_5 = 0;
-    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_t_4, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 506; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_t_4, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 515; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_Raise(__pyx_t_5, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 506; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 515; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
 
-  /* "joshua/intervaltree.pyx":509
+  /* "joshua/intervaltree.pyx":518
  *                             t=type(other)))
  * 
  *         cdef list overlaps = []             # <<<<<<<<<<<<<<
  *         def overlap_fn(IntervalNode node):
  *             cdef object iv = node.interval
  */
-  __pyx_t_5 = PyList_New(0); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 509; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = PyList_New(0); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 518; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_GIVEREF(__pyx_t_5);
   __pyx_cur_scope->__pyx_v_overlaps = ((PyObject*)__pyx_t_5);
   __pyx_t_5 = 0;
 
-  /* "joshua/intervaltree.pyx":510
+  /* "joshua/intervaltree.pyx":519
  * 
  *         cdef list overlaps = []
  *         def overlap_fn(IntervalNode node):             # <<<<<<<<<<<<<<
  *             cdef object iv = node.interval
  *             cdef float ov_len
  */
-  __pyx_t_5 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6joshua_12intervaltree_12IntervalTree_9intersect_1overlap_fn, 0, __pyx_n_s_intersect_locals_overlap_fn, ((PyObject*)__pyx_cur_scope), __pyx_n_s_joshua_intervaltree, __pyx_d, ((PyObject *)__pyx_codeobj__6)); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 510; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = __Pyx_CyFunction_NewEx(&__pyx_mdef_6joshua_12intervaltree_12IntervalTree_9intersect_1overlap_fn, 0, __pyx_n_s_intersect_locals_overlap_fn, ((PyObject*)__pyx_cur_scope), __pyx_n_s_joshua_intervaltree, __pyx_d, ((PyObject *)__pyx_codeobj__6)); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 519; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_v_overlap_fn = __pyx_t_5;
   __pyx_t_5 = 0;
 
-  /* "joshua/intervaltree.pyx":522
+  /* "joshua/intervaltree.pyx":531
  *                     if (float(ov_len) / len(iv)) >= cutoff:
  *                         overlaps.append((iv.idx, ov.idx, ov_len))
  *         self.traverse(overlap_fn)             # <<<<<<<<<<<<<<
  *         return overlaps
  * 
  */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_traverse); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 522; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_traverse); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 531; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_3 = NULL;
   if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_4))) {
@@ -8132,23 +8728,23 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_22intersect(stru
     }
   }
   if (!__pyx_t_3) {
-    __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_v_overlap_fn); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 522; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_v_overlap_fn); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 531; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
   } else {
-    __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 522; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 531; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_6);
     PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_3); __Pyx_GIVEREF(__pyx_t_3); __pyx_t_3 = NULL;
     __Pyx_INCREF(__pyx_v_overlap_fn);
     PyTuple_SET_ITEM(__pyx_t_6, 0+1, __pyx_v_overlap_fn);
     __Pyx_GIVEREF(__pyx_v_overlap_fn);
-    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 522; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 531; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   }
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "joshua/intervaltree.pyx":523
+  /* "joshua/intervaltree.pyx":532
  *                         overlaps.append((iv.idx, ov.idx, ov_len))
  *         self.traverse(overlap_fn)
  *         return overlaps             # <<<<<<<<<<<<<<
@@ -8160,7 +8756,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_22intersect(stru
   __pyx_r = __pyx_cur_scope->__pyx_v_overlaps;
   goto __pyx_L0;
 
-  /* "joshua/intervaltree.pyx":503
+  /* "joshua/intervaltree.pyx":512
  *         return self.root.traverse(fn)
  * 
  *     def intersect(self, object other, float cutoff=0.9):             # <<<<<<<<<<<<<<
@@ -8184,7 +8780,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_22intersect(stru
   return __pyx_r;
 }
 
-/* "joshua/intervaltree.pyx":525
+/* "joshua/intervaltree.pyx":534
  *         return overlaps
  * 
  *     def __len__(self):             # <<<<<<<<<<<<<<
@@ -8210,17 +8806,17 @@ static Py_ssize_t __pyx_pf_6joshua_12intervaltree_12IntervalTree_24__len__(struc
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__len__", 0);
 
-  /* "joshua/intervaltree.pyx":526
+  /* "joshua/intervaltree.pyx":535
  * 
  *     def __len__(self):
  *         return self.size             # <<<<<<<<<<<<<<
  * 
- * # For backward compatibility
+ *     def __iter__(self):
  */
   __pyx_r = __pyx_v_self->size;
   goto __pyx_L0;
 
-  /* "joshua/intervaltree.pyx":525
+  /* "joshua/intervaltree.pyx":534
  *         return overlaps
  * 
  *     def __len__(self):             # <<<<<<<<<<<<<<
@@ -8233,8 +8829,220 @@ static Py_ssize_t __pyx_pf_6joshua_12intervaltree_12IntervalTree_24__len__(struc
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
+static PyObject *__pyx_gb_6joshua_12intervaltree_12IntervalTree_28generator1(__pyx_GeneratorObject *__pyx_generator, PyObject *__pyx_sent_value); /* proto */
 
-/* "joshua/intervaltree.pyx":396
+/* "joshua/intervaltree.pyx":537
+ *         return self.size
+ * 
+ *     def __iter__(self):             # <<<<<<<<<<<<<<
+ *         if self.root is None:
+ *             return
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalTree_27__iter__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_6joshua_12intervaltree_12IntervalTree_27__iter__(PyObject *__pyx_v_self) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__iter__ (wrapper)", 0);
+  __pyx_r = __pyx_pf_6joshua_12intervaltree_12IntervalTree_26__iter__(((struct __pyx_obj_6joshua_12intervaltree_IntervalTree *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_26__iter__(struct __pyx_obj_6joshua_12intervaltree_IntervalTree *__pyx_v_self) {
+  struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct_2___iter__ *__pyx_cur_scope;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__iter__", 0);
+  __pyx_cur_scope = (struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct_2___iter__ *)__pyx_tp_new_6joshua_12intervaltree___pyx_scope_struct_2___iter__(__pyx_ptype_6joshua_12intervaltree___pyx_scope_struct_2___iter__, __pyx_empty_tuple, NULL);
+  if (unlikely(!__pyx_cur_scope)) {
+    __Pyx_RefNannyFinishContext();
+    return NULL;
+  }
+  __Pyx_GOTREF(__pyx_cur_scope);
+  __pyx_cur_scope->__pyx_v_self = __pyx_v_self;
+  __Pyx_INCREF((PyObject *)__pyx_cur_scope->__pyx_v_self);
+  __Pyx_GIVEREF((PyObject *)__pyx_cur_scope->__pyx_v_self);
+  {
+    __pyx_GeneratorObject *gen = __Pyx_Generator_New((__pyx_generator_body_t) __pyx_gb_6joshua_12intervaltree_12IntervalTree_28generator1, (PyObject *) __pyx_cur_scope, __pyx_n_s_iter, __pyx_n_s_IntervalTree___iter); if (unlikely(!gen)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 537; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __Pyx_DECREF(__pyx_cur_scope);
+    __Pyx_RefNannyFinishContext();
+    return (PyObject *) gen;
+  }
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_AddTraceback("joshua.intervaltree.IntervalTree.__iter__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __Pyx_DECREF(((PyObject *)__pyx_cur_scope));
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_gb_6joshua_12intervaltree_12IntervalTree_28generator1(__pyx_GeneratorObject *__pyx_generator, PyObject *__pyx_sent_value) /* generator body */
+{
+  struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct_2___iter__ *__pyx_cur_scope = ((struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct_2___iter__ *)__pyx_generator->closure);
+  PyObject *__pyx_r = NULL;
+  int __pyx_t_1;
+  int __pyx_t_2;
+  PyObject *__pyx_t_3 = NULL;
+  Py_ssize_t __pyx_t_4;
+  PyObject *(*__pyx_t_5)(PyObject *);
+  PyObject *__pyx_t_6 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("None", 0);
+  switch (__pyx_generator->resume_label) {
+    case 0: goto __pyx_L3_first_run;
+    case 1: goto __pyx_L7_resume_from_yield;
+    default: /* CPython raises the right error here */
+    __Pyx_RefNannyFinishContext();
+    return NULL;
+  }
+  __pyx_L3_first_run:;
+  if (unlikely(!__pyx_sent_value)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 537; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+
+  /* "joshua/intervaltree.pyx":538
+ * 
+ *     def __iter__(self):
+ *         if self.root is None:             # <<<<<<<<<<<<<<
+ *             return
+ *         for iv in self.root:
+ */
+  __pyx_t_1 = (((PyObject *)__pyx_cur_scope->__pyx_v_self->root) == Py_None);
+  __pyx_t_2 = (__pyx_t_1 != 0);
+  if (__pyx_t_2) {
+
+    /* "joshua/intervaltree.pyx":539
+ *     def __iter__(self):
+ *         if self.root is None:
+ *             return             # <<<<<<<<<<<<<<
+ *         for iv in self.root:
+ *             yield iv
+ */
+    __Pyx_XDECREF(__pyx_r);
+    __pyx_r = Py_None; __Pyx_INCREF(Py_None);
+    goto __pyx_L0;
+  }
+
+  /* "joshua/intervaltree.pyx":540
+ *         if self.root is None:
+ *             return
+ *         for iv in self.root:             # <<<<<<<<<<<<<<
+ *             yield iv
+ * 
+ */
+  if (likely(PyList_CheckExact(((PyObject *)__pyx_cur_scope->__pyx_v_self->root))) || PyTuple_CheckExact(((PyObject *)__pyx_cur_scope->__pyx_v_self->root))) {
+    __pyx_t_3 = ((PyObject *)__pyx_cur_scope->__pyx_v_self->root); __Pyx_INCREF(__pyx_t_3); __pyx_t_4 = 0;
+    __pyx_t_5 = NULL;
+  } else {
+    __pyx_t_4 = -1; __pyx_t_3 = PyObject_GetIter(((PyObject *)__pyx_cur_scope->__pyx_v_self->root)); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 540; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_5 = Py_TYPE(__pyx_t_3)->tp_iternext; if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 540; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  }
+  for (;;) {
+    if (likely(!__pyx_t_5)) {
+      if (likely(PyList_CheckExact(__pyx_t_3))) {
+        if (__pyx_t_4 >= PyList_GET_SIZE(__pyx_t_3)) break;
+        #if CYTHON_COMPILING_IN_CPYTHON
+        __pyx_t_6 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_4); __Pyx_INCREF(__pyx_t_6); __pyx_t_4++; if (unlikely(0 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 540; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        #else
+        __pyx_t_6 = PySequence_ITEM(__pyx_t_3, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 540; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        #endif
+      } else {
+        if (__pyx_t_4 >= PyTuple_GET_SIZE(__pyx_t_3)) break;
+        #if CYTHON_COMPILING_IN_CPYTHON
+        __pyx_t_6 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_4); __Pyx_INCREF(__pyx_t_6); __pyx_t_4++; if (unlikely(0 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 540; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        #else
+        __pyx_t_6 = PySequence_ITEM(__pyx_t_3, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 540; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        #endif
+      }
+    } else {
+      __pyx_t_6 = __pyx_t_5(__pyx_t_3);
+      if (unlikely(!__pyx_t_6)) {
+        PyObject* exc_type = PyErr_Occurred();
+        if (exc_type) {
+          if (likely(exc_type == PyExc_StopIteration || PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
+          else {__pyx_filename = __pyx_f[0]; __pyx_lineno = 540; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        }
+        break;
+      }
+      __Pyx_GOTREF(__pyx_t_6);
+    }
+    __Pyx_XGOTREF(__pyx_cur_scope->__pyx_v_iv);
+    __Pyx_XDECREF_SET(__pyx_cur_scope->__pyx_v_iv, __pyx_t_6);
+    __Pyx_GIVEREF(__pyx_t_6);
+    __pyx_t_6 = 0;
+
+    /* "joshua/intervaltree.pyx":541
+ *             return
+ *         for iv in self.root:
+ *             yield iv             # <<<<<<<<<<<<<<
+ * 
+ * # For backward compatibility
+ */
+    __Pyx_INCREF(__pyx_cur_scope->__pyx_v_iv);
+    __pyx_r = __pyx_cur_scope->__pyx_v_iv;
+    __Pyx_XGIVEREF(__pyx_t_3);
+    __pyx_cur_scope->__pyx_t_0 = __pyx_t_3;
+    __pyx_cur_scope->__pyx_t_1 = __pyx_t_4;
+    __pyx_cur_scope->__pyx_t_2 = __pyx_t_5;
+    __Pyx_XGIVEREF(__pyx_r);
+    __Pyx_RefNannyFinishContext();
+    /* return from generator, yielding value */
+    __pyx_generator->resume_label = 1;
+    return __pyx_r;
+    __pyx_L7_resume_from_yield:;
+    __pyx_t_3 = __pyx_cur_scope->__pyx_t_0;
+    __pyx_cur_scope->__pyx_t_0 = 0;
+    __Pyx_XGOTREF(__pyx_t_3);
+    __pyx_t_4 = __pyx_cur_scope->__pyx_t_1;
+    __pyx_t_5 = __pyx_cur_scope->__pyx_t_2;
+    if (unlikely(!__pyx_sent_value)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 541; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+
+    /* "joshua/intervaltree.pyx":540
+ *         if self.root is None:
+ *             return
+ *         for iv in self.root:             # <<<<<<<<<<<<<<
+ *             yield iv
+ * 
+ */
+  }
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+  /* "joshua/intervaltree.pyx":537
+ *         return self.size
+ * 
+ *     def __iter__(self):             # <<<<<<<<<<<<<<
+ *         if self.root is None:
+ *             return
+ */
+
+  /* function exit code */
+  PyErr_SetNone(PyExc_StopIteration);
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_6);
+  __Pyx_AddTraceback("__iter__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_L0:;
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_generator->resume_label = -1;
+  __Pyx_Generator_clear((PyObject*)__pyx_generator);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+}
+
+/* "joshua/intervaltree.pyx":405
  * 
  *     cdef IntervalNode root
  *     cdef public int size             # <<<<<<<<<<<<<<
@@ -8264,7 +9072,7 @@ static PyObject *__pyx_pf_6joshua_12intervaltree_12IntervalTree_4size___get__(st
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->size); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 396; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->size); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 405; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -8302,7 +9110,7 @@ static int __pyx_pf_6joshua_12intervaltree_12IntervalTree_4size_2__set__(struct 
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
-  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_value); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 396; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_value); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 405; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_v_self->size = __pyx_t_1;
 
   /* function exit code */
@@ -8461,7 +9269,7 @@ static PyMethodDef __pyx_methods_6joshua_12intervaltree_IntervalNode[] = {
   {"intersect", (PyCFunction)__pyx_pw_6joshua_12intervaltree_12IntervalNode_7intersect, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6joshua_12intervaltree_12IntervalNode_6intersect},
   {"left", (PyCFunction)__pyx_pw_6joshua_12intervaltree_12IntervalNode_9left, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6joshua_12intervaltree_12IntervalNode_8left},
   {"right", (PyCFunction)__pyx_pw_6joshua_12intervaltree_12IntervalNode_11right, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6joshua_12intervaltree_12IntervalNode_10right},
-  {"traverse", (PyCFunction)__pyx_pw_6joshua_12intervaltree_12IntervalNode_13traverse, METH_O, 0},
+  {"traverse", (PyCFunction)__pyx_pw_6joshua_12intervaltree_12IntervalNode_16traverse, METH_O, 0},
   {0, 0, 0, 0}
 };
 
@@ -8506,7 +9314,7 @@ static PyTypeObject __pyx_type_6joshua_12intervaltree_IntervalNode = {
   __pyx_tp_clear_6joshua_12intervaltree_IntervalNode, /*tp_clear*/
   0, /*tp_richcompare*/
   0, /*tp_weaklistoffset*/
-  0, /*tp_iter*/
+  __pyx_pw_6joshua_12intervaltree_12IntervalNode_13__iter__, /*tp_iter*/
   0, /*tp_iternext*/
   __pyx_methods_6joshua_12intervaltree_IntervalNode, /*tp_methods*/
   0, /*tp_members*/
@@ -8909,7 +9717,7 @@ static PyTypeObject __pyx_type_6joshua_12intervaltree_IntervalTree = {
   __pyx_tp_clear_6joshua_12intervaltree_IntervalTree, /*tp_clear*/
   0, /*tp_richcompare*/
   0, /*tp_weaklistoffset*/
-  0, /*tp_iter*/
+  __pyx_pw_6joshua_12intervaltree_12IntervalTree_27__iter__, /*tp_iter*/
   0, /*tp_iternext*/
   __pyx_methods_6joshua_12intervaltree_IntervalTree, /*tp_methods*/
   0, /*tp_members*/
@@ -8936,14 +9744,14 @@ static PyTypeObject __pyx_type_6joshua_12intervaltree_IntervalTree = {
   #endif
 };
 
-static struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct__intersect *__pyx_freelist_6joshua_12intervaltree___pyx_scope_struct__intersect[8];
-static int __pyx_freecount_6joshua_12intervaltree___pyx_scope_struct__intersect = 0;
+static struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct____iter__ *__pyx_freelist_6joshua_12intervaltree___pyx_scope_struct____iter__[8];
+static int __pyx_freecount_6joshua_12intervaltree___pyx_scope_struct____iter__ = 0;
 
-static PyObject *__pyx_tp_new_6joshua_12intervaltree___pyx_scope_struct__intersect(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
+static PyObject *__pyx_tp_new_6joshua_12intervaltree___pyx_scope_struct____iter__(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
   PyObject *o;
-  if (CYTHON_COMPILING_IN_CPYTHON && likely((__pyx_freecount_6joshua_12intervaltree___pyx_scope_struct__intersect > 0) & (t->tp_basicsize == sizeof(struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct__intersect)))) {
-    o = (PyObject*)__pyx_freelist_6joshua_12intervaltree___pyx_scope_struct__intersect[--__pyx_freecount_6joshua_12intervaltree___pyx_scope_struct__intersect];
-    memset(o, 0, sizeof(struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct__intersect));
+  if (CYTHON_COMPILING_IN_CPYTHON && likely((__pyx_freecount_6joshua_12intervaltree___pyx_scope_struct____iter__ > 0) & (t->tp_basicsize == sizeof(struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct____iter__)))) {
+    o = (PyObject*)__pyx_freelist_6joshua_12intervaltree___pyx_scope_struct____iter__[--__pyx_freecount_6joshua_12intervaltree___pyx_scope_struct____iter__];
+    memset(o, 0, sizeof(struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct____iter__));
     (void) PyObject_INIT(o, t);
     PyObject_GC_Track(o);
   } else {
@@ -8953,48 +9761,69 @@ static PyObject *__pyx_tp_new_6joshua_12intervaltree___pyx_scope_struct__interse
   return o;
 }
 
-static void __pyx_tp_dealloc_6joshua_12intervaltree___pyx_scope_struct__intersect(PyObject *o) {
-  struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct__intersect *p = (struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct__intersect *)o;
+static void __pyx_tp_dealloc_6joshua_12intervaltree___pyx_scope_struct____iter__(PyObject *o) {
+  struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct____iter__ *p = (struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct____iter__ *)o;
   PyObject_GC_UnTrack(o);
-  Py_CLEAR(p->__pyx_v_other);
-  Py_CLEAR(p->__pyx_v_overlaps);
-  if (CYTHON_COMPILING_IN_CPYTHON && ((__pyx_freecount_6joshua_12intervaltree___pyx_scope_struct__intersect < 8) & (Py_TYPE(o)->tp_basicsize == sizeof(struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct__intersect)))) {
-    __pyx_freelist_6joshua_12intervaltree___pyx_scope_struct__intersect[__pyx_freecount_6joshua_12intervaltree___pyx_scope_struct__intersect++] = ((struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct__intersect *)o);
+  Py_CLEAR(p->__pyx_v_e);
+  Py_CLEAR(p->__pyx_v_iv);
+  Py_CLEAR(p->__pyx_v_s);
+  Py_CLEAR(p->__pyx_v_self);
+  Py_CLEAR(p->__pyx_t_0);
+  if (CYTHON_COMPILING_IN_CPYTHON && ((__pyx_freecount_6joshua_12intervaltree___pyx_scope_struct____iter__ < 8) & (Py_TYPE(o)->tp_basicsize == sizeof(struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct____iter__)))) {
+    __pyx_freelist_6joshua_12intervaltree___pyx_scope_struct____iter__[__pyx_freecount_6joshua_12intervaltree___pyx_scope_struct____iter__++] = ((struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct____iter__ *)o);
   } else {
     (*Py_TYPE(o)->tp_free)(o);
   }
 }
 
-static int __pyx_tp_traverse_6joshua_12intervaltree___pyx_scope_struct__intersect(PyObject *o, visitproc v, void *a) {
+static int __pyx_tp_traverse_6joshua_12intervaltree___pyx_scope_struct____iter__(PyObject *o, visitproc v, void *a) {
   int e;
-  struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct__intersect *p = (struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct__intersect *)o;
-  if (p->__pyx_v_other) {
-    e = (*v)(p->__pyx_v_other, a); if (e) return e;
+  struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct____iter__ *p = (struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct____iter__ *)o;
+  if (p->__pyx_v_e) {
+    e = (*v)(p->__pyx_v_e, a); if (e) return e;
   }
-  if (p->__pyx_v_overlaps) {
-    e = (*v)(p->__pyx_v_overlaps, a); if (e) return e;
+  if (p->__pyx_v_iv) {
+    e = (*v)(p->__pyx_v_iv, a); if (e) return e;
+  }
+  if (p->__pyx_v_s) {
+    e = (*v)(p->__pyx_v_s, a); if (e) return e;
+  }
+  if (p->__pyx_v_self) {
+    e = (*v)(((PyObject*)p->__pyx_v_self), a); if (e) return e;
+  }
+  if (p->__pyx_t_0) {
+    e = (*v)(p->__pyx_t_0, a); if (e) return e;
   }
   return 0;
 }
 
-static int __pyx_tp_clear_6joshua_12intervaltree___pyx_scope_struct__intersect(PyObject *o) {
+static int __pyx_tp_clear_6joshua_12intervaltree___pyx_scope_struct____iter__(PyObject *o) {
   PyObject* tmp;
-  struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct__intersect *p = (struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct__intersect *)o;
-  tmp = ((PyObject*)p->__pyx_v_other);
-  p->__pyx_v_other = Py_None; Py_INCREF(Py_None);
+  struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct____iter__ *p = (struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct____iter__ *)o;
+  tmp = ((PyObject*)p->__pyx_v_e);
+  p->__pyx_v_e = Py_None; Py_INCREF(Py_None);
   Py_XDECREF(tmp);
-  tmp = ((PyObject*)p->__pyx_v_overlaps);
-  p->__pyx_v_overlaps = ((PyObject*)Py_None); Py_INCREF(Py_None);
+  tmp = ((PyObject*)p->__pyx_v_iv);
+  p->__pyx_v_iv = Py_None; Py_INCREF(Py_None);
+  Py_XDECREF(tmp);
+  tmp = ((PyObject*)p->__pyx_v_s);
+  p->__pyx_v_s = Py_None; Py_INCREF(Py_None);
+  Py_XDECREF(tmp);
+  tmp = ((PyObject*)p->__pyx_v_self);
+  p->__pyx_v_self = ((struct __pyx_obj_6joshua_12intervaltree_IntervalNode *)Py_None); Py_INCREF(Py_None);
+  Py_XDECREF(tmp);
+  tmp = ((PyObject*)p->__pyx_t_0);
+  p->__pyx_t_0 = Py_None; Py_INCREF(Py_None);
   Py_XDECREF(tmp);
   return 0;
 }
 
-static PyTypeObject __pyx_type_6joshua_12intervaltree___pyx_scope_struct__intersect = {
+static PyTypeObject __pyx_type_6joshua_12intervaltree___pyx_scope_struct____iter__ = {
   PyVarObject_HEAD_INIT(0, 0)
-  "joshua.intervaltree.__pyx_scope_struct__intersect", /*tp_name*/
-  sizeof(struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct__intersect), /*tp_basicsize*/
+  "joshua.intervaltree.__pyx_scope_struct____iter__", /*tp_name*/
+  sizeof(struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct____iter__), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_6joshua_12intervaltree___pyx_scope_struct__intersect, /*tp_dealloc*/
+  __pyx_tp_dealloc_6joshua_12intervaltree___pyx_scope_struct____iter__, /*tp_dealloc*/
   0, /*tp_print*/
   0, /*tp_getattr*/
   0, /*tp_setattr*/
@@ -9015,8 +9844,8 @@ static PyTypeObject __pyx_type_6joshua_12intervaltree___pyx_scope_struct__inters
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
   0, /*tp_doc*/
-  __pyx_tp_traverse_6joshua_12intervaltree___pyx_scope_struct__intersect, /*tp_traverse*/
-  __pyx_tp_clear_6joshua_12intervaltree___pyx_scope_struct__intersect, /*tp_clear*/
+  __pyx_tp_traverse_6joshua_12intervaltree___pyx_scope_struct____iter__, /*tp_traverse*/
+  __pyx_tp_clear_6joshua_12intervaltree___pyx_scope_struct____iter__, /*tp_clear*/
   0, /*tp_richcompare*/
   0, /*tp_weaklistoffset*/
   0, /*tp_iter*/
@@ -9031,7 +9860,234 @@ static PyTypeObject __pyx_type_6joshua_12intervaltree___pyx_scope_struct__inters
   0, /*tp_dictoffset*/
   0, /*tp_init*/
   0, /*tp_alloc*/
-  __pyx_tp_new_6joshua_12intervaltree___pyx_scope_struct__intersect, /*tp_new*/
+  __pyx_tp_new_6joshua_12intervaltree___pyx_scope_struct____iter__, /*tp_new*/
+  0, /*tp_free*/
+  0, /*tp_is_gc*/
+  0, /*tp_bases*/
+  0, /*tp_mro*/
+  0, /*tp_cache*/
+  0, /*tp_subclasses*/
+  0, /*tp_weaklist*/
+  0, /*tp_del*/
+  0, /*tp_version_tag*/
+  #if PY_VERSION_HEX >= 0x030400a1
+  0, /*tp_finalize*/
+  #endif
+};
+
+static struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct_1_intersect *__pyx_freelist_6joshua_12intervaltree___pyx_scope_struct_1_intersect[8];
+static int __pyx_freecount_6joshua_12intervaltree___pyx_scope_struct_1_intersect = 0;
+
+static PyObject *__pyx_tp_new_6joshua_12intervaltree___pyx_scope_struct_1_intersect(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
+  PyObject *o;
+  if (CYTHON_COMPILING_IN_CPYTHON && likely((__pyx_freecount_6joshua_12intervaltree___pyx_scope_struct_1_intersect > 0) & (t->tp_basicsize == sizeof(struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct_1_intersect)))) {
+    o = (PyObject*)__pyx_freelist_6joshua_12intervaltree___pyx_scope_struct_1_intersect[--__pyx_freecount_6joshua_12intervaltree___pyx_scope_struct_1_intersect];
+    memset(o, 0, sizeof(struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct_1_intersect));
+    (void) PyObject_INIT(o, t);
+    PyObject_GC_Track(o);
+  } else {
+    o = (*t->tp_alloc)(t, 0);
+    if (unlikely(!o)) return 0;
+  }
+  return o;
+}
+
+static void __pyx_tp_dealloc_6joshua_12intervaltree___pyx_scope_struct_1_intersect(PyObject *o) {
+  struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct_1_intersect *p = (struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct_1_intersect *)o;
+  PyObject_GC_UnTrack(o);
+  Py_CLEAR(p->__pyx_v_other);
+  Py_CLEAR(p->__pyx_v_overlaps);
+  if (CYTHON_COMPILING_IN_CPYTHON && ((__pyx_freecount_6joshua_12intervaltree___pyx_scope_struct_1_intersect < 8) & (Py_TYPE(o)->tp_basicsize == sizeof(struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct_1_intersect)))) {
+    __pyx_freelist_6joshua_12intervaltree___pyx_scope_struct_1_intersect[__pyx_freecount_6joshua_12intervaltree___pyx_scope_struct_1_intersect++] = ((struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct_1_intersect *)o);
+  } else {
+    (*Py_TYPE(o)->tp_free)(o);
+  }
+}
+
+static int __pyx_tp_traverse_6joshua_12intervaltree___pyx_scope_struct_1_intersect(PyObject *o, visitproc v, void *a) {
+  int e;
+  struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct_1_intersect *p = (struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct_1_intersect *)o;
+  if (p->__pyx_v_other) {
+    e = (*v)(p->__pyx_v_other, a); if (e) return e;
+  }
+  if (p->__pyx_v_overlaps) {
+    e = (*v)(p->__pyx_v_overlaps, a); if (e) return e;
+  }
+  return 0;
+}
+
+static int __pyx_tp_clear_6joshua_12intervaltree___pyx_scope_struct_1_intersect(PyObject *o) {
+  PyObject* tmp;
+  struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct_1_intersect *p = (struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct_1_intersect *)o;
+  tmp = ((PyObject*)p->__pyx_v_other);
+  p->__pyx_v_other = Py_None; Py_INCREF(Py_None);
+  Py_XDECREF(tmp);
+  tmp = ((PyObject*)p->__pyx_v_overlaps);
+  p->__pyx_v_overlaps = ((PyObject*)Py_None); Py_INCREF(Py_None);
+  Py_XDECREF(tmp);
+  return 0;
+}
+
+static PyTypeObject __pyx_type_6joshua_12intervaltree___pyx_scope_struct_1_intersect = {
+  PyVarObject_HEAD_INIT(0, 0)
+  "joshua.intervaltree.__pyx_scope_struct_1_intersect", /*tp_name*/
+  sizeof(struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct_1_intersect), /*tp_basicsize*/
+  0, /*tp_itemsize*/
+  __pyx_tp_dealloc_6joshua_12intervaltree___pyx_scope_struct_1_intersect, /*tp_dealloc*/
+  0, /*tp_print*/
+  0, /*tp_getattr*/
+  0, /*tp_setattr*/
+  #if PY_MAJOR_VERSION < 3
+  0, /*tp_compare*/
+  #else
+  0, /*reserved*/
+  #endif
+  0, /*tp_repr*/
+  0, /*tp_as_number*/
+  0, /*tp_as_sequence*/
+  0, /*tp_as_mapping*/
+  0, /*tp_hash*/
+  0, /*tp_call*/
+  0, /*tp_str*/
+  0, /*tp_getattro*/
+  0, /*tp_setattro*/
+  0, /*tp_as_buffer*/
+  Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
+  0, /*tp_doc*/
+  __pyx_tp_traverse_6joshua_12intervaltree___pyx_scope_struct_1_intersect, /*tp_traverse*/
+  __pyx_tp_clear_6joshua_12intervaltree___pyx_scope_struct_1_intersect, /*tp_clear*/
+  0, /*tp_richcompare*/
+  0, /*tp_weaklistoffset*/
+  0, /*tp_iter*/
+  0, /*tp_iternext*/
+  0, /*tp_methods*/
+  0, /*tp_members*/
+  0, /*tp_getset*/
+  0, /*tp_base*/
+  0, /*tp_dict*/
+  0, /*tp_descr_get*/
+  0, /*tp_descr_set*/
+  0, /*tp_dictoffset*/
+  0, /*tp_init*/
+  0, /*tp_alloc*/
+  __pyx_tp_new_6joshua_12intervaltree___pyx_scope_struct_1_intersect, /*tp_new*/
+  0, /*tp_free*/
+  0, /*tp_is_gc*/
+  0, /*tp_bases*/
+  0, /*tp_mro*/
+  0, /*tp_cache*/
+  0, /*tp_subclasses*/
+  0, /*tp_weaklist*/
+  0, /*tp_del*/
+  0, /*tp_version_tag*/
+  #if PY_VERSION_HEX >= 0x030400a1
+  0, /*tp_finalize*/
+  #endif
+};
+
+static struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct_2___iter__ *__pyx_freelist_6joshua_12intervaltree___pyx_scope_struct_2___iter__[8];
+static int __pyx_freecount_6joshua_12intervaltree___pyx_scope_struct_2___iter__ = 0;
+
+static PyObject *__pyx_tp_new_6joshua_12intervaltree___pyx_scope_struct_2___iter__(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
+  PyObject *o;
+  if (CYTHON_COMPILING_IN_CPYTHON && likely((__pyx_freecount_6joshua_12intervaltree___pyx_scope_struct_2___iter__ > 0) & (t->tp_basicsize == sizeof(struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct_2___iter__)))) {
+    o = (PyObject*)__pyx_freelist_6joshua_12intervaltree___pyx_scope_struct_2___iter__[--__pyx_freecount_6joshua_12intervaltree___pyx_scope_struct_2___iter__];
+    memset(o, 0, sizeof(struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct_2___iter__));
+    (void) PyObject_INIT(o, t);
+    PyObject_GC_Track(o);
+  } else {
+    o = (*t->tp_alloc)(t, 0);
+    if (unlikely(!o)) return 0;
+  }
+  return o;
+}
+
+static void __pyx_tp_dealloc_6joshua_12intervaltree___pyx_scope_struct_2___iter__(PyObject *o) {
+  struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct_2___iter__ *p = (struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct_2___iter__ *)o;
+  PyObject_GC_UnTrack(o);
+  Py_CLEAR(p->__pyx_v_iv);
+  Py_CLEAR(p->__pyx_v_self);
+  Py_CLEAR(p->__pyx_t_0);
+  if (CYTHON_COMPILING_IN_CPYTHON && ((__pyx_freecount_6joshua_12intervaltree___pyx_scope_struct_2___iter__ < 8) & (Py_TYPE(o)->tp_basicsize == sizeof(struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct_2___iter__)))) {
+    __pyx_freelist_6joshua_12intervaltree___pyx_scope_struct_2___iter__[__pyx_freecount_6joshua_12intervaltree___pyx_scope_struct_2___iter__++] = ((struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct_2___iter__ *)o);
+  } else {
+    (*Py_TYPE(o)->tp_free)(o);
+  }
+}
+
+static int __pyx_tp_traverse_6joshua_12intervaltree___pyx_scope_struct_2___iter__(PyObject *o, visitproc v, void *a) {
+  int e;
+  struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct_2___iter__ *p = (struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct_2___iter__ *)o;
+  if (p->__pyx_v_iv) {
+    e = (*v)(p->__pyx_v_iv, a); if (e) return e;
+  }
+  if (p->__pyx_v_self) {
+    e = (*v)(((PyObject*)p->__pyx_v_self), a); if (e) return e;
+  }
+  if (p->__pyx_t_0) {
+    e = (*v)(p->__pyx_t_0, a); if (e) return e;
+  }
+  return 0;
+}
+
+static int __pyx_tp_clear_6joshua_12intervaltree___pyx_scope_struct_2___iter__(PyObject *o) {
+  PyObject* tmp;
+  struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct_2___iter__ *p = (struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct_2___iter__ *)o;
+  tmp = ((PyObject*)p->__pyx_v_iv);
+  p->__pyx_v_iv = Py_None; Py_INCREF(Py_None);
+  Py_XDECREF(tmp);
+  tmp = ((PyObject*)p->__pyx_v_self);
+  p->__pyx_v_self = ((struct __pyx_obj_6joshua_12intervaltree_IntervalTree *)Py_None); Py_INCREF(Py_None);
+  Py_XDECREF(tmp);
+  tmp = ((PyObject*)p->__pyx_t_0);
+  p->__pyx_t_0 = Py_None; Py_INCREF(Py_None);
+  Py_XDECREF(tmp);
+  return 0;
+}
+
+static PyTypeObject __pyx_type_6joshua_12intervaltree___pyx_scope_struct_2___iter__ = {
+  PyVarObject_HEAD_INIT(0, 0)
+  "joshua.intervaltree.__pyx_scope_struct_2___iter__", /*tp_name*/
+  sizeof(struct __pyx_obj_6joshua_12intervaltree___pyx_scope_struct_2___iter__), /*tp_basicsize*/
+  0, /*tp_itemsize*/
+  __pyx_tp_dealloc_6joshua_12intervaltree___pyx_scope_struct_2___iter__, /*tp_dealloc*/
+  0, /*tp_print*/
+  0, /*tp_getattr*/
+  0, /*tp_setattr*/
+  #if PY_MAJOR_VERSION < 3
+  0, /*tp_compare*/
+  #else
+  0, /*reserved*/
+  #endif
+  0, /*tp_repr*/
+  0, /*tp_as_number*/
+  0, /*tp_as_sequence*/
+  0, /*tp_as_mapping*/
+  0, /*tp_hash*/
+  0, /*tp_call*/
+  0, /*tp_str*/
+  0, /*tp_getattro*/
+  0, /*tp_setattro*/
+  0, /*tp_as_buffer*/
+  Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
+  0, /*tp_doc*/
+  __pyx_tp_traverse_6joshua_12intervaltree___pyx_scope_struct_2___iter__, /*tp_traverse*/
+  __pyx_tp_clear_6joshua_12intervaltree___pyx_scope_struct_2___iter__, /*tp_clear*/
+  0, /*tp_richcompare*/
+  0, /*tp_weaklistoffset*/
+  0, /*tp_iter*/
+  0, /*tp_iternext*/
+  0, /*tp_methods*/
+  0, /*tp_members*/
+  0, /*tp_getset*/
+  0, /*tp_base*/
+  0, /*tp_dict*/
+  0, /*tp_descr_get*/
+  0, /*tp_descr_set*/
+  0, /*tp_dictoffset*/
+  0, /*tp_init*/
+  0, /*tp_alloc*/
+  __pyx_tp_new_6joshua_12intervaltree___pyx_scope_struct_2___iter__, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -9071,7 +10127,9 @@ static struct PyModuleDef __pyx_moduledef = {
 static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_s_Expected_IntervalTree_go_t, __pyx_k_Expected_IntervalTree_go_t, sizeof(__pyx_k_Expected_IntervalTree_go_t), 0, 0, 1, 0},
   {&__pyx_n_s_Intersecter, __pyx_k_Intersecter, sizeof(__pyx_k_Intersecter), 0, 0, 1, 1},
+  {&__pyx_n_s_IntervalNode___iter, __pyx_k_IntervalNode___iter, sizeof(__pyx_k_IntervalNode___iter), 0, 0, 1, 1},
   {&__pyx_kp_s_IntervalNode_i_i, __pyx_k_IntervalNode_i_i, sizeof(__pyx_k_IntervalNode_i_i), 0, 0, 1, 0},
+  {&__pyx_n_s_IntervalTree___iter, __pyx_k_IntervalTree___iter, sizeof(__pyx_k_IntervalTree___iter), 0, 0, 1, 1},
   {&__pyx_kp_s_Interval_d_d, __pyx_k_Interval_d_d, sizeof(__pyx_k_Interval_d_d), 0, 0, 1, 0},
   {&__pyx_n_s_TypeError, __pyx_k_TypeError, sizeof(__pyx_k_TypeError), 0, 0, 1, 1},
   {&__pyx_kp_s_Users_camille_w_joshua_joshua_i, __pyx_k_Users_camille_w_joshua_joshua_i, sizeof(__pyx_k_Users_camille_w_joshua_joshua_i), 0, 0, 1, 0},
@@ -9079,9 +10137,11 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_s__4, __pyx_k__4, sizeof(__pyx_k__4), 0, 0, 1, 0},
   {&__pyx_n_s_add, __pyx_k_add, sizeof(__pyx_k_add), 0, 0, 1, 1},
   {&__pyx_n_s_add_interval, __pyx_k_add_interval, sizeof(__pyx_k_add_interval), 0, 0, 1, 1},
+  {&__pyx_n_s_args, __pyx_k_args, sizeof(__pyx_k_args), 0, 0, 1, 1},
   {&__pyx_n_s_attrgetter, __pyx_k_attrgetter, sizeof(__pyx_k_attrgetter), 0, 0, 1, 1},
   {&__pyx_n_s_calc_bases_overlapped_single, __pyx_k_calc_bases_overlapped_single, sizeof(__pyx_k_calc_bases_overlapped_single), 0, 0, 1, 1},
   {&__pyx_n_s_chrom, __pyx_k_chrom, sizeof(__pyx_k_chrom), 0, 0, 1, 1},
+  {&__pyx_n_s_close, __pyx_k_close, sizeof(__pyx_k_close), 0, 0, 1, 1},
   {&__pyx_n_s_cutoff, __pyx_k_cutoff, sizeof(__pyx_k_cutoff), 0, 0, 1, 1},
   {&__pyx_n_s_end, __pyx_k_end, sizeof(__pyx_k_end), 0, 0, 1, 1},
   {&__pyx_n_s_find, __pyx_k_find, sizeof(__pyx_k_find), 0, 0, 1, 1},
@@ -9094,6 +10154,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_intersect, __pyx_k_intersect, sizeof(__pyx_k_intersect), 0, 0, 1, 1},
   {&__pyx_n_s_intersect_locals_overlap_fn, __pyx_k_intersect_locals_overlap_fn, sizeof(__pyx_k_intersect_locals_overlap_fn), 0, 0, 1, 1},
   {&__pyx_n_s_interval, __pyx_k_interval, sizeof(__pyx_k_interval), 0, 0, 1, 1},
+  {&__pyx_n_s_iter, __pyx_k_iter, sizeof(__pyx_k_iter), 0, 0, 1, 1},
   {&__pyx_n_s_iv, __pyx_k_iv, sizeof(__pyx_k_iv), 0, 0, 1, 1},
   {&__pyx_n_s_joshua_intervaltree, __pyx_k_joshua_intervaltree, sizeof(__pyx_k_joshua_intervaltree), 0, 0, 1, 1},
   {&__pyx_n_s_key, __pyx_k_key, sizeof(__pyx_k_key), 0, 0, 1, 1},
@@ -9113,12 +10174,14 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_results, __pyx_k_results, sizeof(__pyx_k_results), 0, 0, 1, 1},
   {&__pyx_n_s_reverse, __pyx_k_reverse, sizeof(__pyx_k_reverse), 0, 0, 1, 1},
   {&__pyx_n_s_right, __pyx_k_right, sizeof(__pyx_k_right), 0, 0, 1, 1},
+  {&__pyx_n_s_send, __pyx_k_send, sizeof(__pyx_k_send), 0, 0, 1, 1},
   {&__pyx_n_s_sort, __pyx_k_sort, sizeof(__pyx_k_sort), 0, 0, 1, 1},
   {&__pyx_n_s_start, __pyx_k_start, sizeof(__pyx_k_start), 0, 0, 1, 1},
   {&__pyx_kp_s_start_must_be_less_than_end, __pyx_k_start_must_be_less_than_end, sizeof(__pyx_k_start_must_be_less_than_end), 0, 0, 1, 0},
   {&__pyx_n_s_strand, __pyx_k_strand, sizeof(__pyx_k_strand), 0, 0, 1, 1},
   {&__pyx_n_s_t, __pyx_k_t, sizeof(__pyx_k_t), 0, 0, 1, 1},
   {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
+  {&__pyx_n_s_throw, __pyx_k_throw, sizeof(__pyx_k_throw), 0, 0, 1, 1},
   {&__pyx_n_s_traverse, __pyx_k_traverse, sizeof(__pyx_k_traverse), 0, 0, 1, 1},
   {&__pyx_n_s_utils, __pyx_k_utils, sizeof(__pyx_k_utils), 0, 0, 1, 1},
   {&__pyx_n_s_value, __pyx_k_value, sizeof(__pyx_k_value), 0, 0, 1, 1},
@@ -9126,8 +10189,8 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, 0, 0, 0, 0, 0, 0}
 };
 static int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_id = __Pyx_GetBuiltinName(__pyx_n_s_id); if (!__pyx_builtin_id) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 305; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_builtin_TypeError = __Pyx_GetBuiltinName(__pyx_n_s_TypeError); if (!__pyx_builtin_TypeError) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 506; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_builtin_id = __Pyx_GetBuiltinName(__pyx_n_s_id); if (!__pyx_builtin_id) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 314; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_builtin_TypeError = __Pyx_GetBuiltinName(__pyx_n_s_TypeError); if (!__pyx_builtin_TypeError) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 515; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -9159,26 +10222,26 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__2);
   __Pyx_GIVEREF(__pyx_tuple__2);
 
-  /* "joshua/intervaltree.pyx":510
+  /* "joshua/intervaltree.pyx":519
  * 
  *         cdef list overlaps = []
  *         def overlap_fn(IntervalNode node):             # <<<<<<<<<<<<<<
  *             cdef object iv = node.interval
  *             cdef float ov_len
  */
-  __pyx_tuple__5 = PyTuple_Pack(7, __pyx_n_s_node, __pyx_n_s_iv, __pyx_n_s_ov_len, __pyx_n_s_start, __pyx_n_s_end, __pyx_n_s_results, __pyx_n_s_ov); if (unlikely(!__pyx_tuple__5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 510; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__5 = PyTuple_Pack(7, __pyx_n_s_node, __pyx_n_s_iv, __pyx_n_s_ov_len, __pyx_n_s_start, __pyx_n_s_end, __pyx_n_s_results, __pyx_n_s_ov); if (unlikely(!__pyx_tuple__5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 519; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__5);
   __Pyx_GIVEREF(__pyx_tuple__5);
-  __pyx_codeobj__6 = (PyObject*)__Pyx_PyCode_New(1, 0, 7, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__5, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_Users_camille_w_joshua_joshua_i, __pyx_n_s_overlap_fn, 510, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 510; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_codeobj__6 = (PyObject*)__Pyx_PyCode_New(1, 0, 7, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__5, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_Users_camille_w_joshua_joshua_i, __pyx_n_s_overlap_fn, 519, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 519; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-  /* "joshua/intervaltree.pyx":273
+  /* "joshua/intervaltree.pyx":282
  *         if self.cright is not EmptyNode: self.cright._traverse(func, results)
  * 
  * cdef IntervalNode EmptyNode = IntervalNode( 0, 0, Interval(0, 0))             # <<<<<<<<<<<<<<
  * 
  * ## ---- Wrappers that retain the old interface -------------------------------
  */
-  __pyx_tuple__7 = PyTuple_Pack(2, __pyx_int_0, __pyx_int_0); if (unlikely(!__pyx_tuple__7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 273; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__7 = PyTuple_Pack(2, __pyx_int_0, __pyx_int_0); if (unlikely(!__pyx_tuple__7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 282; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__7);
   __Pyx_GIVEREF(__pyx_tuple__7);
   __Pyx_RefNannyFinishContext();
@@ -9302,17 +10365,23 @@ PyMODINIT_FUNC PyInit_intervaltree(void)
   if (__Pyx_SetVtable(__pyx_type_6joshua_12intervaltree_IntervalNode.tp_dict, __pyx_vtabptr_6joshua_12intervaltree_IntervalNode) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 62; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (PyObject_SetAttrString(__pyx_m, "IntervalNode", (PyObject *)&__pyx_type_6joshua_12intervaltree_IntervalNode) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 62; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_ptype_6joshua_12intervaltree_IntervalNode = &__pyx_type_6joshua_12intervaltree_IntervalNode;
-  if (PyType_Ready(&__pyx_type_6joshua_12intervaltree_Interval) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 277; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyType_Ready(&__pyx_type_6joshua_12intervaltree_Interval) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 286; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_type_6joshua_12intervaltree_Interval.tp_print = 0;
-  if (PyObject_SetAttrString(__pyx_m, "Interval", (PyObject *)&__pyx_type_6joshua_12intervaltree_Interval) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 277; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyObject_SetAttrString(__pyx_m, "Interval", (PyObject *)&__pyx_type_6joshua_12intervaltree_Interval) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 286; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_ptype_6joshua_12intervaltree_Interval = &__pyx_type_6joshua_12intervaltree_Interval;
-  if (PyType_Ready(&__pyx_type_6joshua_12intervaltree_IntervalTree) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 339; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyType_Ready(&__pyx_type_6joshua_12intervaltree_IntervalTree) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 348; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_type_6joshua_12intervaltree_IntervalTree.tp_print = 0;
-  if (PyObject_SetAttrString(__pyx_m, "IntervalTree", (PyObject *)&__pyx_type_6joshua_12intervaltree_IntervalTree) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 339; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyObject_SetAttrString(__pyx_m, "IntervalTree", (PyObject *)&__pyx_type_6joshua_12intervaltree_IntervalTree) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 348; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_ptype_6joshua_12intervaltree_IntervalTree = &__pyx_type_6joshua_12intervaltree_IntervalTree;
-  if (PyType_Ready(&__pyx_type_6joshua_12intervaltree___pyx_scope_struct__intersect) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 503; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_type_6joshua_12intervaltree___pyx_scope_struct__intersect.tp_print = 0;
-  __pyx_ptype_6joshua_12intervaltree___pyx_scope_struct__intersect = &__pyx_type_6joshua_12intervaltree___pyx_scope_struct__intersect;
+  if (PyType_Ready(&__pyx_type_6joshua_12intervaltree___pyx_scope_struct____iter__) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 263; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_type_6joshua_12intervaltree___pyx_scope_struct____iter__.tp_print = 0;
+  __pyx_ptype_6joshua_12intervaltree___pyx_scope_struct____iter__ = &__pyx_type_6joshua_12intervaltree___pyx_scope_struct____iter__;
+  if (PyType_Ready(&__pyx_type_6joshua_12intervaltree___pyx_scope_struct_1_intersect) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 512; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_type_6joshua_12intervaltree___pyx_scope_struct_1_intersect.tp_print = 0;
+  __pyx_ptype_6joshua_12intervaltree___pyx_scope_struct_1_intersect = &__pyx_type_6joshua_12intervaltree___pyx_scope_struct_1_intersect;
+  if (PyType_Ready(&__pyx_type_6joshua_12intervaltree___pyx_scope_struct_2___iter__) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 537; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_type_6joshua_12intervaltree___pyx_scope_struct_2___iter__.tp_print = 0;
+  __pyx_ptype_6joshua_12intervaltree___pyx_scope_struct_2___iter__ = &__pyx_type_6joshua_12intervaltree___pyx_scope_struct_2___iter__;
   /*--- Type import code ---*/
   /*--- Variable import code ---*/
   /*--- Function import code ---*/
@@ -9384,16 +10453,16 @@ PyMODINIT_FUNC PyInit_intervaltree(void)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_6joshua_12intervaltree_IntervalNode);
 
-  /* "joshua/intervaltree.pyx":273
+  /* "joshua/intervaltree.pyx":282
  *         if self.cright is not EmptyNode: self.cright._traverse(func, results)
  * 
  * cdef IntervalNode EmptyNode = IntervalNode( 0, 0, Interval(0, 0))             # <<<<<<<<<<<<<<
  * 
  * ## ---- Wrappers that retain the old interface -------------------------------
  */
-  __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_6joshua_12intervaltree_Interval)), __pyx_tuple__7, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 273; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_6joshua_12intervaltree_Interval)), __pyx_tuple__7, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 282; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = PyTuple_New(3); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 273; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyTuple_New(3); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 282; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_int_0);
   PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_int_0);
@@ -9404,7 +10473,7 @@ PyMODINIT_FUNC PyInit_intervaltree(void)
   PyTuple_SET_ITEM(__pyx_t_1, 2, __pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_2);
   __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_6joshua_12intervaltree_IntervalNode)), __pyx_t_1, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 273; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_6joshua_12intervaltree_IntervalNode)), __pyx_t_1, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 282; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_XGOTREF(((PyObject *)__pyx_v_6joshua_12intervaltree_EmptyNode));
@@ -9412,38 +10481,38 @@ PyMODINIT_FUNC PyInit_intervaltree(void)
   __Pyx_GIVEREF(__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "joshua/intervaltree.pyx":414
+  /* "joshua/intervaltree.pyx":423
  *         self.size += 1
  * 
  *     add = insert             # <<<<<<<<<<<<<<
  * 
  *     def find( self, start, end ):
  */
-  __pyx_t_2 = __Pyx_GetNameInClass((PyObject *)__pyx_ptype_6joshua_12intervaltree_IntervalTree, __pyx_n_s_insert); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 414; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_GetNameInClass((PyObject *)__pyx_ptype_6joshua_12intervaltree_IntervalTree, __pyx_n_s_insert); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 423; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_6joshua_12intervaltree_IntervalTree->tp_dict, __pyx_n_s_add, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 414; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_6joshua_12intervaltree_IntervalTree->tp_dict, __pyx_n_s_add, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 423; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_6joshua_12intervaltree_IntervalTree);
 
-  /* "joshua/intervaltree.pyx":451
+  /* "joshua/intervaltree.pyx":460
  *         self.insert( interval.start, interval.end, interval )
  * 
  *     add_interval = insert_interval             # <<<<<<<<<<<<<<
  * 
  *     def before_interval( self, interval, num_intervals=1, max_dist=2500 ):
  */
-  __pyx_t_2 = __Pyx_GetNameInClass((PyObject *)__pyx_ptype_6joshua_12intervaltree_IntervalTree, __pyx_n_s_insert_interval); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 451; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_GetNameInClass((PyObject *)__pyx_ptype_6joshua_12intervaltree_IntervalTree, __pyx_n_s_insert_interval); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 460; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_6joshua_12intervaltree_IntervalTree->tp_dict, __pyx_n_s_add_interval, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 451; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_6joshua_12intervaltree_IntervalTree->tp_dict, __pyx_n_s_add_interval, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 460; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_6joshua_12intervaltree_IntervalTree);
 
-  /* "joshua/intervaltree.pyx":529
+  /* "joshua/intervaltree.pyx":544
  * 
  * # For backward compatibility
  * Intersecter = IntervalTree             # <<<<<<<<<<<<<<
  */
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_Intersecter, ((PyObject *)((PyObject*)__pyx_ptype_6joshua_12intervaltree_IntervalTree))) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 529; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_Intersecter, ((PyObject *)((PyObject*)__pyx_ptype_6joshua_12intervaltree_IntervalTree))) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 544; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
   /* "joshua/intervaltree.pyx":1
  * """             # <<<<<<<<<<<<<<
@@ -9810,6 +10879,62 @@ static CYTHON_INLINE PyObject* __Pyx_PyTuple_GetSlice(
     return dest;
 }
 #endif
+
+static CYTHON_INLINE void __Pyx_RaiseTooManyValuesError(Py_ssize_t expected) {
+    PyErr_Format(PyExc_ValueError,
+                 "too many values to unpack (expected %" CYTHON_FORMAT_SSIZE_T "d)", expected);
+}
+
+static CYTHON_INLINE void __Pyx_RaiseNeedMoreValuesError(Py_ssize_t index) {
+    PyErr_Format(PyExc_ValueError,
+                 "need more than %" CYTHON_FORMAT_SSIZE_T "d value%.1s to unpack",
+                 index, (index == 1) ? "" : "s");
+}
+
+static CYTHON_INLINE int __Pyx_IterFinish(void) {
+#if CYTHON_COMPILING_IN_CPYTHON
+    PyThreadState *tstate = PyThreadState_GET();
+    PyObject* exc_type = tstate->curexc_type;
+    if (unlikely(exc_type)) {
+        if (likely(exc_type == PyExc_StopIteration) || PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration)) {
+            PyObject *exc_value, *exc_tb;
+            exc_value = tstate->curexc_value;
+            exc_tb = tstate->curexc_traceback;
+            tstate->curexc_type = 0;
+            tstate->curexc_value = 0;
+            tstate->curexc_traceback = 0;
+            Py_DECREF(exc_type);
+            Py_XDECREF(exc_value);
+            Py_XDECREF(exc_tb);
+            return 0;
+        } else {
+            return -1;
+        }
+    }
+    return 0;
+#else
+    if (unlikely(PyErr_Occurred())) {
+        if (likely(PyErr_ExceptionMatches(PyExc_StopIteration))) {
+            PyErr_Clear();
+            return 0;
+        } else {
+            return -1;
+        }
+    }
+    return 0;
+#endif
+}
+
+static int __Pyx_IternextUnpackEndCheck(PyObject *retval, Py_ssize_t expected) {
+    if (unlikely(retval)) {
+        Py_DECREF(retval);
+        __Pyx_RaiseTooManyValuesError(expected);
+        return -1;
+    } else {
+        return __Pyx_IterFinish();
+    }
+    return 0;
+}
 
 #if CYTHON_COMPILING_IN_CPYTHON
 static CYTHON_INLINE PyObject* __Pyx_PyObject_CallMethO(PyObject *func, PyObject *arg) {
@@ -11447,6 +12572,601 @@ raise_neg_overflow:
     PyErr_SetString(PyExc_OverflowError,
         "can't convert negative value to long");
     return (long) -1;
+}
+
+static CYTHON_INLINE void __Pyx_ExceptionSwap(PyObject **type, PyObject **value, PyObject **tb) {
+    PyObject *tmp_type, *tmp_value, *tmp_tb;
+#if CYTHON_COMPILING_IN_CPYTHON
+    PyThreadState *tstate = PyThreadState_GET();
+    tmp_type = tstate->exc_type;
+    tmp_value = tstate->exc_value;
+    tmp_tb = tstate->exc_traceback;
+    tstate->exc_type = *type;
+    tstate->exc_value = *value;
+    tstate->exc_traceback = *tb;
+#else
+    PyErr_GetExcInfo(&tmp_type, &tmp_value, &tmp_tb);
+    PyErr_SetExcInfo(*type, *value, *tb);
+#endif
+    *type = tmp_type;
+    *value = tmp_value;
+    *tb = tmp_tb;
+}
+
+static PyObject* __Pyx_PyObject_CallMethod1(PyObject* obj, PyObject* method_name, PyObject* arg) {
+    PyObject *method, *result = NULL;
+    method = __Pyx_PyObject_GetAttrStr(obj, method_name);
+    if (unlikely(!method)) goto bad;
+#if CYTHON_COMPILING_IN_CPYTHON
+    if (likely(PyMethod_Check(method))) {
+        PyObject *self = PyMethod_GET_SELF(method);
+        if (likely(self)) {
+            PyObject *args;
+            PyObject *function = PyMethod_GET_FUNCTION(method);
+            args = PyTuple_New(2);
+            if (unlikely(!args)) goto bad;
+            Py_INCREF(self);
+            PyTuple_SET_ITEM(args, 0, self);
+            Py_INCREF(arg);
+            PyTuple_SET_ITEM(args, 1, arg);
+            Py_INCREF(function);
+            Py_DECREF(method); method = NULL;
+            result = __Pyx_PyObject_Call(function, args, NULL);
+            Py_DECREF(args);
+            Py_DECREF(function);
+            return result;
+        }
+    }
+#endif
+    result = __Pyx_PyObject_CallOneArg(method, arg);
+bad:
+    Py_XDECREF(method);
+    return result;
+}
+
+static PyObject *__Pyx_Generator_Next(PyObject *self);
+static PyObject *__Pyx_Generator_Send(PyObject *self, PyObject *value);
+static PyObject *__Pyx_Generator_Close(PyObject *self);
+static PyObject *__Pyx_Generator_Throw(PyObject *gen, PyObject *args);
+static PyTypeObject *__pyx_GeneratorType = 0;
+#define __Pyx_Generator_CheckExact(obj) (Py_TYPE(obj) == __pyx_GeneratorType)
+#define __Pyx_Generator_Undelegate(gen) Py_CLEAR((gen)->yieldfrom)
+#if 1 || PY_VERSION_HEX < 0x030300B0
+static int __Pyx_PyGen_FetchStopIterationValue(PyObject **pvalue) {
+    PyObject *et, *ev, *tb;
+    PyObject *value = NULL;
+    __Pyx_ErrFetch(&et, &ev, &tb);
+    if (!et) {
+        Py_XDECREF(tb);
+        Py_XDECREF(ev);
+        Py_INCREF(Py_None);
+        *pvalue = Py_None;
+        return 0;
+    }
+    if (unlikely(et != PyExc_StopIteration) &&
+            unlikely(!PyErr_GivenExceptionMatches(et, PyExc_StopIteration))) {
+        __Pyx_ErrRestore(et, ev, tb);
+        return -1;
+    }
+    if (likely(et == PyExc_StopIteration)) {
+        if (likely(!ev) || !PyObject_IsInstance(ev, PyExc_StopIteration)) {
+            if (!ev) {
+                Py_INCREF(Py_None);
+                ev = Py_None;
+            }
+            Py_XDECREF(tb);
+            Py_DECREF(et);
+            *pvalue = ev;
+            return 0;
+        }
+    }
+    PyErr_NormalizeException(&et, &ev, &tb);
+    if (unlikely(!PyObject_IsInstance(ev, PyExc_StopIteration))) {
+        __Pyx_ErrRestore(et, ev, tb);
+        return -1;
+    }
+    Py_XDECREF(tb);
+    Py_DECREF(et);
+#if PY_VERSION_HEX >= 0x030300A0
+    value = ((PyStopIterationObject *)ev)->value;
+    Py_INCREF(value);
+    Py_DECREF(ev);
+#else
+    {
+        PyObject* args = PyObject_GetAttr(ev, __pyx_n_s_args);
+        Py_DECREF(ev);
+        if (likely(args)) {
+            value = PyObject_GetItem(args, 0);
+            Py_DECREF(args);
+        }
+        if (unlikely(!value)) {
+            __Pyx_ErrRestore(NULL, NULL, NULL);
+            Py_INCREF(Py_None);
+            value = Py_None;
+        }
+    }
+#endif
+    *pvalue = value;
+    return 0;
+}
+#endif
+static CYTHON_INLINE
+void __Pyx_Generator_ExceptionClear(__pyx_GeneratorObject *self) {
+    PyObject *exc_type = self->exc_type;
+    PyObject *exc_value = self->exc_value;
+    PyObject *exc_traceback = self->exc_traceback;
+    self->exc_type = NULL;
+    self->exc_value = NULL;
+    self->exc_traceback = NULL;
+    Py_XDECREF(exc_type);
+    Py_XDECREF(exc_value);
+    Py_XDECREF(exc_traceback);
+}
+static CYTHON_INLINE
+int __Pyx_Generator_CheckRunning(__pyx_GeneratorObject *gen) {
+    if (unlikely(gen->is_running)) {
+        PyErr_SetString(PyExc_ValueError,
+                        "generator already executing");
+        return 1;
+    }
+    return 0;
+}
+static CYTHON_INLINE
+PyObject *__Pyx_Generator_SendEx(__pyx_GeneratorObject *self, PyObject *value) {
+    PyObject *retval;
+    assert(!self->is_running);
+    if (unlikely(self->resume_label == 0)) {
+        if (unlikely(value && value != Py_None)) {
+            PyErr_SetString(PyExc_TypeError,
+                            "can't send non-None value to a "
+                            "just-started generator");
+            return NULL;
+        }
+    }
+    if (unlikely(self->resume_label == -1)) {
+        PyErr_SetNone(PyExc_StopIteration);
+        return NULL;
+    }
+    if (value) {
+#if CYTHON_COMPILING_IN_PYPY
+#else
+        if (self->exc_traceback) {
+            PyThreadState *tstate = PyThreadState_GET();
+            PyTracebackObject *tb = (PyTracebackObject *) self->exc_traceback;
+            PyFrameObject *f = tb->tb_frame;
+            Py_XINCREF(tstate->frame);
+            assert(f->f_back == NULL);
+            f->f_back = tstate->frame;
+        }
+#endif
+        __Pyx_ExceptionSwap(&self->exc_type, &self->exc_value,
+                            &self->exc_traceback);
+    } else {
+        __Pyx_Generator_ExceptionClear(self);
+    }
+    self->is_running = 1;
+    retval = self->body((PyObject *) self, value);
+    self->is_running = 0;
+    if (retval) {
+        __Pyx_ExceptionSwap(&self->exc_type, &self->exc_value,
+                            &self->exc_traceback);
+#if CYTHON_COMPILING_IN_PYPY
+#else
+        if (self->exc_traceback) {
+            PyTracebackObject *tb = (PyTracebackObject *) self->exc_traceback;
+            PyFrameObject *f = tb->tb_frame;
+            Py_CLEAR(f->f_back);
+        }
+#endif
+    } else {
+        __Pyx_Generator_ExceptionClear(self);
+    }
+    return retval;
+}
+static CYTHON_INLINE
+PyObject *__Pyx_Generator_FinishDelegation(__pyx_GeneratorObject *gen) {
+    PyObject *ret;
+    PyObject *val = NULL;
+    __Pyx_Generator_Undelegate(gen);
+    __Pyx_PyGen_FetchStopIterationValue(&val);
+    ret = __Pyx_Generator_SendEx(gen, val);
+    Py_XDECREF(val);
+    return ret;
+}
+static PyObject *__Pyx_Generator_Next(PyObject *self) {
+    __pyx_GeneratorObject *gen = (__pyx_GeneratorObject*) self;
+    PyObject *yf = gen->yieldfrom;
+    if (unlikely(__Pyx_Generator_CheckRunning(gen)))
+        return NULL;
+    if (yf) {
+        PyObject *ret;
+        gen->is_running = 1;
+        ret = Py_TYPE(yf)->tp_iternext(yf);
+        gen->is_running = 0;
+        if (likely(ret)) {
+            return ret;
+        }
+        return __Pyx_Generator_FinishDelegation(gen);
+    }
+    return __Pyx_Generator_SendEx(gen, Py_None);
+}
+static PyObject *__Pyx_Generator_Send(PyObject *self, PyObject *value) {
+    __pyx_GeneratorObject *gen = (__pyx_GeneratorObject*) self;
+    PyObject *yf = gen->yieldfrom;
+    if (unlikely(__Pyx_Generator_CheckRunning(gen)))
+        return NULL;
+    if (yf) {
+        PyObject *ret;
+        gen->is_running = 1;
+        if (__Pyx_Generator_CheckExact(yf)) {
+            ret = __Pyx_Generator_Send(yf, value);
+        } else {
+            if (value == Py_None)
+                ret = PyIter_Next(yf);
+            else
+                ret = __Pyx_PyObject_CallMethod1(yf, __pyx_n_s_send, value);
+        }
+        gen->is_running = 0;
+        if (likely(ret)) {
+            return ret;
+        }
+        return __Pyx_Generator_FinishDelegation(gen);
+    }
+    return __Pyx_Generator_SendEx(gen, value);
+}
+static int __Pyx_Generator_CloseIter(__pyx_GeneratorObject *gen, PyObject *yf) {
+    PyObject *retval = NULL;
+    int err = 0;
+    if (__Pyx_Generator_CheckExact(yf)) {
+        retval = __Pyx_Generator_Close(yf);
+        if (!retval)
+            return -1;
+    } else {
+        PyObject *meth;
+        gen->is_running = 1;
+        meth = PyObject_GetAttr(yf, __pyx_n_s_close);
+        if (unlikely(!meth)) {
+            if (!PyErr_ExceptionMatches(PyExc_AttributeError)) {
+                PyErr_WriteUnraisable(yf);
+            }
+            PyErr_Clear();
+        } else {
+            retval = PyObject_CallFunction(meth, NULL);
+            Py_DECREF(meth);
+            if (!retval)
+                err = -1;
+        }
+        gen->is_running = 0;
+    }
+    Py_XDECREF(retval);
+    return err;
+}
+static PyObject *__Pyx_Generator_Close(PyObject *self) {
+    __pyx_GeneratorObject *gen = (__pyx_GeneratorObject *) self;
+    PyObject *retval, *raised_exception;
+    PyObject *yf = gen->yieldfrom;
+    int err = 0;
+    if (unlikely(__Pyx_Generator_CheckRunning(gen)))
+        return NULL;
+    if (yf) {
+        Py_INCREF(yf);
+        err = __Pyx_Generator_CloseIter(gen, yf);
+        __Pyx_Generator_Undelegate(gen);
+        Py_DECREF(yf);
+    }
+    if (err == 0)
+        PyErr_SetNone(PyExc_GeneratorExit);
+    retval = __Pyx_Generator_SendEx(gen, NULL);
+    if (retval) {
+        Py_DECREF(retval);
+        PyErr_SetString(PyExc_RuntimeError,
+                        "generator ignored GeneratorExit");
+        return NULL;
+    }
+    raised_exception = PyErr_Occurred();
+    if (!raised_exception
+        || raised_exception == PyExc_StopIteration
+        || raised_exception == PyExc_GeneratorExit
+        || PyErr_GivenExceptionMatches(raised_exception, PyExc_GeneratorExit)
+        || PyErr_GivenExceptionMatches(raised_exception, PyExc_StopIteration))
+    {
+        if (raised_exception) PyErr_Clear();
+        Py_INCREF(Py_None);
+        return Py_None;
+    }
+    return NULL;
+}
+static PyObject *__Pyx_Generator_Throw(PyObject *self, PyObject *args) {
+    __pyx_GeneratorObject *gen = (__pyx_GeneratorObject *) self;
+    PyObject *typ;
+    PyObject *tb = NULL;
+    PyObject *val = NULL;
+    PyObject *yf = gen->yieldfrom;
+    if (!PyArg_UnpackTuple(args, (char *)"throw", 1, 3, &typ, &val, &tb))
+        return NULL;
+    if (unlikely(__Pyx_Generator_CheckRunning(gen)))
+        return NULL;
+    if (yf) {
+        PyObject *ret;
+        Py_INCREF(yf);
+        if (PyErr_GivenExceptionMatches(typ, PyExc_GeneratorExit)) {
+            int err = __Pyx_Generator_CloseIter(gen, yf);
+            Py_DECREF(yf);
+            __Pyx_Generator_Undelegate(gen);
+            if (err < 0)
+                return __Pyx_Generator_SendEx(gen, NULL);
+            goto throw_here;
+        }
+        gen->is_running = 1;
+        if (__Pyx_Generator_CheckExact(yf)) {
+            ret = __Pyx_Generator_Throw(yf, args);
+        } else {
+            PyObject *meth = PyObject_GetAttr(yf, __pyx_n_s_throw);
+            if (unlikely(!meth)) {
+                Py_DECREF(yf);
+                if (!PyErr_ExceptionMatches(PyExc_AttributeError)) {
+                    gen->is_running = 0;
+                    return NULL;
+                }
+                PyErr_Clear();
+                __Pyx_Generator_Undelegate(gen);
+                gen->is_running = 0;
+                goto throw_here;
+            }
+            ret = PyObject_CallObject(meth, args);
+            Py_DECREF(meth);
+        }
+        gen->is_running = 0;
+        Py_DECREF(yf);
+        if (!ret) {
+            ret = __Pyx_Generator_FinishDelegation(gen);
+        }
+        return ret;
+    }
+throw_here:
+    __Pyx_Raise(typ, val, tb, NULL);
+    return __Pyx_Generator_SendEx(gen, NULL);
+}
+static int __Pyx_Generator_traverse(PyObject *self, visitproc visit, void *arg) {
+    __pyx_GeneratorObject *gen = (__pyx_GeneratorObject *) self;
+    Py_VISIT(gen->closure);
+    Py_VISIT(gen->classobj);
+    Py_VISIT(gen->yieldfrom);
+    Py_VISIT(gen->exc_type);
+    Py_VISIT(gen->exc_value);
+    Py_VISIT(gen->exc_traceback);
+    return 0;
+}
+static int __Pyx_Generator_clear(PyObject *self) {
+    __pyx_GeneratorObject *gen = (__pyx_GeneratorObject *) self;
+    Py_CLEAR(gen->closure);
+    Py_CLEAR(gen->classobj);
+    Py_CLEAR(gen->yieldfrom);
+    Py_CLEAR(gen->exc_type);
+    Py_CLEAR(gen->exc_value);
+    Py_CLEAR(gen->exc_traceback);
+    Py_CLEAR(gen->gi_name);
+    Py_CLEAR(gen->gi_qualname);
+    return 0;
+}
+static void __Pyx_Generator_dealloc(PyObject *self) {
+    __pyx_GeneratorObject *gen = (__pyx_GeneratorObject *) self;
+    PyObject_GC_UnTrack(gen);
+    if (gen->gi_weakreflist != NULL)
+        PyObject_ClearWeakRefs(self);
+    if (gen->resume_label > 0) {
+        PyObject_GC_Track(self);
+#if PY_VERSION_HEX >= 0x030400a1
+        if (PyObject_CallFinalizerFromDealloc(self))
+#else
+        Py_TYPE(gen)->tp_del(self);
+        if (self->ob_refcnt > 0)
+#endif
+        {
+            return;
+        }
+        PyObject_GC_UnTrack(self);
+    }
+    __Pyx_Generator_clear(self);
+    PyObject_GC_Del(gen);
+}
+static void __Pyx_Generator_del(PyObject *self) {
+    PyObject *res;
+    PyObject *error_type, *error_value, *error_traceback;
+    __pyx_GeneratorObject *gen = (__pyx_GeneratorObject *) self;
+    if (gen->resume_label <= 0)
+        return ;
+#if PY_VERSION_HEX < 0x030400a1
+    assert(self->ob_refcnt == 0);
+    self->ob_refcnt = 1;
+#endif
+    __Pyx_ErrFetch(&error_type, &error_value, &error_traceback);
+    res = __Pyx_Generator_Close(self);
+    if (res == NULL)
+        PyErr_WriteUnraisable(self);
+    else
+        Py_DECREF(res);
+    __Pyx_ErrRestore(error_type, error_value, error_traceback);
+#if PY_VERSION_HEX < 0x030400a1
+    assert(self->ob_refcnt > 0);
+    if (--self->ob_refcnt == 0) {
+        return;
+    }
+    {
+        Py_ssize_t refcnt = self->ob_refcnt;
+        _Py_NewReference(self);
+        self->ob_refcnt = refcnt;
+    }
+#if CYTHON_COMPILING_IN_CPYTHON
+    assert(PyType_IS_GC(self->ob_type) &&
+           _Py_AS_GC(self)->gc.gc_refs != _PyGC_REFS_UNTRACKED);
+    _Py_DEC_REFTOTAL;
+#endif
+#ifdef COUNT_ALLOCS
+    --Py_TYPE(self)->tp_frees;
+    --Py_TYPE(self)->tp_allocs;
+#endif
+#endif
+}
+static PyObject *
+__Pyx_Generator_get_name(__pyx_GeneratorObject *self)
+{
+    Py_INCREF(self->gi_name);
+    return self->gi_name;
+}
+static int
+__Pyx_Generator_set_name(__pyx_GeneratorObject *self, PyObject *value)
+{
+    PyObject *tmp;
+#if PY_MAJOR_VERSION >= 3
+    if (unlikely(value == NULL || !PyUnicode_Check(value))) {
+#else
+    if (unlikely(value == NULL || !PyString_Check(value))) {
+#endif
+        PyErr_SetString(PyExc_TypeError,
+                        "__name__ must be set to a string object");
+        return -1;
+    }
+    tmp = self->gi_name;
+    Py_INCREF(value);
+    self->gi_name = value;
+    Py_XDECREF(tmp);
+    return 0;
+}
+static PyObject *
+__Pyx_Generator_get_qualname(__pyx_GeneratorObject *self)
+{
+    Py_INCREF(self->gi_qualname);
+    return self->gi_qualname;
+}
+static int
+__Pyx_Generator_set_qualname(__pyx_GeneratorObject *self, PyObject *value)
+{
+    PyObject *tmp;
+#if PY_MAJOR_VERSION >= 3
+    if (unlikely(value == NULL || !PyUnicode_Check(value))) {
+#else
+    if (unlikely(value == NULL || !PyString_Check(value))) {
+#endif
+        PyErr_SetString(PyExc_TypeError,
+                        "__qualname__ must be set to a string object");
+        return -1;
+    }
+    tmp = self->gi_qualname;
+    Py_INCREF(value);
+    self->gi_qualname = value;
+    Py_XDECREF(tmp);
+    return 0;
+}
+static PyGetSetDef __pyx_Generator_getsets[] = {
+    {(char *) "__name__", (getter)__Pyx_Generator_get_name, (setter)__Pyx_Generator_set_name,
+     (char*) PyDoc_STR("name of the generator"), 0},
+    {(char *) "__qualname__", (getter)__Pyx_Generator_get_qualname, (setter)__Pyx_Generator_set_qualname,
+     (char*) PyDoc_STR("qualified name of the generator"), 0},
+    {0, 0, 0, 0, 0}
+};
+static PyMemberDef __pyx_Generator_memberlist[] = {
+    {(char *) "gi_running", T_BOOL, offsetof(__pyx_GeneratorObject, is_running), READONLY, NULL},
+    {0, 0, 0, 0, 0}
+};
+static PyMethodDef __pyx_Generator_methods[] = {
+    {"send", (PyCFunction) __Pyx_Generator_Send, METH_O, 0},
+    {"throw", (PyCFunction) __Pyx_Generator_Throw, METH_VARARGS, 0},
+    {"close", (PyCFunction) __Pyx_Generator_Close, METH_NOARGS, 0},
+    {0, 0, 0, 0}
+};
+static PyTypeObject __pyx_GeneratorType_type = {
+    PyVarObject_HEAD_INIT(0, 0)
+    "generator",
+    sizeof(__pyx_GeneratorObject),
+    0,
+    (destructor) __Pyx_Generator_dealloc,
+    0,
+    0,
+    0,
+#if PY_MAJOR_VERSION < 3
+    0,
+#else
+    0,
+#endif
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    Py_TPFLAGS_DEFAULT | Py_TPFLAGS_HAVE_GC | Py_TPFLAGS_HAVE_FINALIZE,
+    0,
+    (traverseproc) __Pyx_Generator_traverse,
+    0,
+    0,
+    offsetof(__pyx_GeneratorObject, gi_weakreflist),
+    0,
+    (iternextfunc) __Pyx_Generator_Next,
+    __pyx_Generator_methods,
+    __pyx_Generator_memberlist,
+    __pyx_Generator_getsets,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+#if PY_VERSION_HEX >= 0x030400a1
+    0,
+#else
+    __Pyx_Generator_del,
+#endif
+    0,
+#if PY_VERSION_HEX >= 0x030400a1
+    __Pyx_Generator_del,
+#endif
+};
+static __pyx_GeneratorObject *__Pyx_Generator_New(__pyx_generator_body_t body,
+                                                  PyObject *closure, PyObject *name, PyObject *qualname) {
+    __pyx_GeneratorObject *gen =
+        PyObject_GC_New(__pyx_GeneratorObject, &__pyx_GeneratorType_type);
+    if (gen == NULL)
+        return NULL;
+    gen->body = body;
+    gen->closure = closure;
+    Py_XINCREF(closure);
+    gen->is_running = 0;
+    gen->resume_label = 0;
+    gen->classobj = NULL;
+    gen->yieldfrom = NULL;
+    gen->exc_type = NULL;
+    gen->exc_value = NULL;
+    gen->exc_traceback = NULL;
+    gen->gi_weakreflist = NULL;
+    Py_XINCREF(qualname);
+    gen->gi_qualname = qualname;
+    Py_XINCREF(name);
+    gen->gi_name = name;
+    PyObject_GC_Track(gen);
+    return gen;
+}
+static int __pyx_Generator_init(void) {
+    __pyx_GeneratorType_type.tp_getattro = PyObject_GenericGetAttr;
+    __pyx_GeneratorType_type.tp_iter = PyObject_SelfIter;
+    __pyx_GeneratorType = __Pyx_FetchCommonType(&__pyx_GeneratorType_type);
+    if (__pyx_GeneratorType == NULL) {
+        return -1;
+    }
+    return 0;
 }
 
 static int __Pyx_check_binary_version(void) {

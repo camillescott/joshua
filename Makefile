@@ -8,4 +8,4 @@ test:
 	python setup.py test
 
 clean:
-	rm -rf build/ *.pyc joshua/*.pyc joshua/*.egg-info joshua/*.so joshua/intervaltree.c joshua/utils.c
+	rm -rf build/ *.pyc joshua/*.pyc joshua/*.egg-info joshua/*.so joshua/intervaltree.c joshua/utils.c *.egg-info

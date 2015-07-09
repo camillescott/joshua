@@ -216,6 +216,28 @@ class IntervalTreeTest(unittest.TestCase):
         fn = lambda ival: self.assert_(ival.interval)
         self.iv.traverse(fn)
 
+class IntervalTreeIterTest(unittest.TestCase):
+
+    def setUp(self):
+        self.tree = IntervalTree()
+        self.intervals = []
+        import random
+        for i in xrange(10000):
+            start = random.randint(0, 1000)
+            end = start + random.randint(0, 100)
+            iv = Interval(start, end, idx=i)
+            self.intervals.append(iv)
+            self.tree.insert_interval(iv)
+
+    def test_iter(self):
+        c = 0
+        for s, e, iv in self.tree:
+            c += 1
+            exp_iv = self.intervals[iv.idx]
+            self.assertTrue(s == exp_iv.start)
+            self.assertTrue(e == exp_iv.end)
+            self.assertTrue(iv is exp_iv)
+        self.assertEqual(c, len(self.intervals))
 
 class IntervalTreeIntersectTest(unittest.TestCase):
 

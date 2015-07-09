@@ -260,6 +260,15 @@ cdef class IntervalNode:
         r.sort(key=operator.attrgetter('start'))
         return r[:n]
 
+    def __iter__(self):
+        if self.cleft is not EmptyNode:
+            for s, e, iv in self.cleft:
+                yield s, e, iv
+        yield self.start, self.end, self.interval
+        if self.cright is not EmptyNode: 
+            for s, e, iv in self.cright:
+                yield s, e, iv
+
     def traverse(self, func):
         results = []
         self._traverse(func, results)
@@ -524,6 +533,12 @@ cdef class IntervalTree:
 
     def __len__(self):
         return self.size
+
+    def __iter__(self):
+        if self.root is None:
+            return
+        for iv in self.root:
+            yield iv
 
 # For backward compatibility
 Intersecter = IntervalTree
