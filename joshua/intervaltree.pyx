@@ -21,7 +21,8 @@ preserves all information about the intervals (unlike bitset projection methods)
 #cython: cdivision=True
 
 import operator
-from utils import calc_bases_overlapped_single
+from utils import calc_bases_overlapped_single, \
+                  calc_bases_overlapped_mult
 
 cdef extern from "stdlib.h":
     int ceil(float f)
@@ -509,7 +510,7 @@ cdef class IntervalTree:
             return None
         return self.root.traverse(fn)
     
-    def intersect(self, object other, float cutoff=0.9):
+    def intersect(self, object other, float self_cutoff=0.9, float other_cutoff=0.1):
 
         if type(other) is not IntervalTree:
             raise TypeError('Expected IntervalTree, go {t}'.format(
@@ -526,8 +527,29 @@ cdef class IntervalTree:
                 for ov in results:
                     ov_len = calc_bases_overlapped_single(start, end,
                                                           ov.start, ov.end)
-                    if (float(ov_len) / len(iv)) >= cutoff:
+                    if (float(ov_len) / len(iv)) >= self_cutoff \
+                        and (float(ov_len) / len(ov)) >= other_cutoff:
                         overlaps.append((iv.idx, ov.idx, ov_len))
+        self.traverse(overlap_fn)
+        return overlaps
+
+    def coverage_intersect(self, object other, float cutoff=0.9):
+        
+        if type(other) is not IntervalTree:
+            raise TypeError('Expected IntervalTree, go {t}'.format(
+                            t=type(other)))
+
+        cdef list overlaps = []
+        def overlap_fn(node):
+            cdef object iv = node.interval
+            cdef float ov_len
+            cdef int start = iv.start
+            cdef int end = iv.end
+            cdef list results = other.find(start, end)
+            if results:
+                ov_len = calc_bases_overlapped_mult(iv, results)
+                if (float(ov_len) / len(iv)) >= cutoff:
+                    overlaps.append((iv.idx, ov_len))
         self.traverse(overlap_fn)
         return overlaps
 

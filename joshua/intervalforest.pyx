@@ -38,17 +38,34 @@ cdef class IntervalForest:
         for key, tree in self.trees.iteritems():
             yield key, tree
 
-    def intersect(self, object other, float cutoff=0.9):
+    def intersect(self, object other, float self_cutoff=0.9, float other_cutoff=0.1):
 
         if type(other) is not IntervalForest:
             raise TypeError('Expected IntervalForest, got {t}'.format(
                             t=type(other)))
         
         cdef list overlaps = []
+        cdef object other_tree
         for key, tree in self:
             try:
                 other_tree = other[key]
-                overlaps.extend(tree.intersect(other_tree, cutoff=cutoff))
+                overlaps.extend(tree.intersect(other_tree, self_cutoff=self_cutoff, other_cutoff=other_cutoff))
+            except KeyError:
+                continue
+        return overlaps
+
+    def coverage_intersect(self, object other, float cutoff=0.9):
+
+        if type(other) is not IntervalForest:
+            raise TypeError('Expected IntervalForest, got {t}'.format(
+                            t=type(other)))
+
+        cdef list overlaps = []
+        cdef object other_tree
+        for key, tree in self:
+            try:
+                other_tree = other[key]
+                overlaps.extend(tree.coverage_intersect(other_tree, cutoff=cutoff))
             except KeyError:
                 continue
         return overlaps
